@@ -24,7 +24,7 @@ export default function FeaturedProducts() {
                             category: 'Productivity',
                             rating: 4.9,
                             users: '12k+',
-                            image: '/placeholder.svg?height=200&width=300',
+                            image: '/images/app.jpg',
                         },
                         {
                             name: 'ContentCraft',
@@ -32,7 +32,7 @@ export default function FeaturedProducts() {
                             category: 'Content',
                             rating: 4.8,
                             users: '8k+',
-                            image: '/placeholder.svg?height=200&width=300',
+                            image: '/images/app.jpg',
                         },
                         {
                             name: 'AnalyticsPro',
@@ -40,7 +40,7 @@ export default function FeaturedProducts() {
                             category: 'Analytics',
                             rating: 4.7,
                             users: '15k+',
-                            image: '/placeholder.svg?height=200&width=300',
+                            image: '/images/app.jpg',
                         },
                     ].map((app, index) => (
                         <div

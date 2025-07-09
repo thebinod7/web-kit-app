@@ -1,3 +1,4 @@
+import { APP_TITLE, FOOTER_TITLE } from '@/app/constants/constants';
 import React from 'react';
 
 export default function Footer() {
@@ -7,19 +8,17 @@ export default function Footer() {
                 <div className="grid md:grid-cols-4 gap-8">
                     <div className="md:col-span-2">
                         <div className="flex items-center space-x-2 mb-4">
-                            <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
                                 <span className="text-white font-bold text-sm">
-                                    PH
+                                    BFK
                                 </span>
                             </div>
                             <span className="text-xl font-semibold">
-                                Product Hunterr
+                                {APP_TITLE}
                             </span>
                         </div>
                         <p className="text-gray-400 mb-6 max-w-md">
-                            Empowering indie hackers and content creators to
-                            showcase their products and connect with a thriving
-                            community.
+                            {FOOTER_TITLE}
                         </p>
                         <div className="flex space-x-4">
                             <button className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors">
@@ -111,7 +110,10 @@ export default function Footer() {
                 </div>
 
                 <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-                    <p>&copy; 2024 Product Hunterr. All rights reserved.</p>
+                    <p>
+                        &copy; {new Date().getFullYear()} {APP_TITLE}. All
+                        rights reserved.
+                    </p>
                 </div>
             </div>
         </footer>
