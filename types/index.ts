@@ -1,9 +1,8 @@
 export interface ICurrentUser {
     cuid: string;
-    firstName: string;
-    lastName: string;
+    name: string;
     gender: string;
-    email: string;
+    username: string;
     countryCode?: string;
     phone?: string;
     profilePicture?: string;

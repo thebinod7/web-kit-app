@@ -2,11 +2,9 @@ import { create } from 'zustand';
 
 interface ILoggedInUser {
     cuid: string;
-    firstName: string;
-    lastName: string;
+    name: string;
     gender: string;
-    email: string;
-    countryCode?: string;
+    username: string;
     phone?: string;
     profilePicture?: string;
     createdAt: string;

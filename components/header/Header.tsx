@@ -1,9 +1,28 @@
+'use client';
 import { APP_TITLE } from '@/app/constants/constants';
+import { useGetMeUser } from '@/hooks/api/user/hook.user';
+import { useAppStore } from '@/store/store.app';
 import { Search } from 'lucide-react';
 import Link from 'next/link';
-import React from 'react';
+import { useEffect } from 'react';
+import UserProfileDropdown from '../UserProfileDropdown';
 
 export default function Header() {
+    const { data, isLoading } = useGetMeUser();
+    const { result } = data?.data || {};
+
+    const setLoggedInUser = useAppStore((state) => state.setLoggedInUser);
+    const loggedUser = useAppStore((state) => state.loggedInUser);
+
+    useEffect(() => {
+        if (result) {
+            setLoggedInUser(result);
+        }
+    }, [result]);
+
+    console.log('Logged User:', loggedUser);
+    console.log('Is Loading:', isLoading);
+
     return (
         <nav className="border-b border-gray-100 bg-white/80 backdrop-blur-sm sticky top-0 z-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -58,12 +77,16 @@ export default function Header() {
                             </a>
                         </div>
 
-                        <Link
-                            href={'/login'}
-                            className="bg-gray-900 cursor-pointer text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors text-sm font-medium"
-                        >
-                            Submit App
-                        </Link>
+                        {loggedUser ? (
+                            <UserProfileDropdown loggedInUser={loggedUser} />
+                        ) : (
+                            <Link
+                                href={'/login'}
+                                className="bg-gray-900 cursor-pointer text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors text-sm font-medium"
+                            >
+                                {isLoading ? 'Loading...' : 'Login'}
+                            </Link>
+                        )}
                     </div>
                 </div>
 
