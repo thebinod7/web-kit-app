@@ -1,5 +1,6 @@
 import { APP_TITLE } from '@/app/constants/constants';
 import { Search } from 'lucide-react';
+import Link from 'next/link';
 import React from 'react';
 
 export default function Header() {
@@ -57,9 +58,12 @@ export default function Header() {
                             </a>
                         </div>
 
-                        <button className="bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors text-sm font-medium">
+                        <Link
+                            href={'/login'}
+                            className="bg-gray-900 cursor-pointer text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors text-sm font-medium"
+                        >
                             Submit App
-                        </button>
+                        </Link>
                     </div>
                 </div>
 
