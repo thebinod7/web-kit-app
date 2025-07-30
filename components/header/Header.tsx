@@ -20,14 +20,11 @@ export default function Header() {
         }
     }, [result]);
 
-    console.log('Logged User:', loggedUser);
-    console.log('Is Loading:', isLoading);
-
     return (
         <nav className="border-b border-gray-100 bg-white/80 backdrop-blur-sm sticky top-0 z-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
-                    <div className="flex items-center space-x-2">
+                    <Link href="/" className="flex items-center space-x-2">
                         <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
                             <span className="text-white font-bold text-sm">
                                 BFK
@@ -36,7 +33,7 @@ export default function Header() {
                         <span className="text-xl font-semibold text-gray-900">
                             {APP_TITLE}
                         </span>
-                    </div>
+                    </Link>
 
                     {/* Search Bar - Hidden on mobile, shown on tablet+ */}
                     <div className="hidden md:flex flex-1 max-w-lg mx-8">

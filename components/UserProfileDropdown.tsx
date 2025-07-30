@@ -2,7 +2,8 @@
 
 import { ICurrentUser } from '@/types';
 import { clearLocalStorage } from '@/utils/localstorage';
-import { ChevronDown, LogOut, Settings, User } from 'lucide-react';
+import { ChevronDown, LogOut, Settings, User, Wrench } from 'lucide-react';
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
 interface UserProfileDropdownProps {
@@ -45,7 +46,7 @@ export default function UserProfileDropdown({
             <div>
                 <button
                     type="button"
-                    className="inline-flex items-center justify-center rounded-full bg-white text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                    className="inline-flex cursor-pointer items-center justify-center rounded-full bg-white text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                     id="menu-button"
                     aria-expanded={isOpen}
                     aria-haspopup="true"
@@ -100,6 +101,16 @@ export default function UserProfileDropdown({
                             <Settings className="mr-2 h-4 w-4" />
                             Settings
                         </a>
+                        <Link
+                            href="my-products"
+                            className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            role="menuitem"
+                            tabIndex={-1}
+                            id="menu-item-1"
+                        >
+                            <Wrench className="mr-2 h-4 w-4" />
+                            My Products
+                        </Link>
                         <button
                             onClick={handleLogout}
                             className="flex items-center px-4 py-2 text-sm text-gray-700 text-red-600 hover:bg-gray-100"
