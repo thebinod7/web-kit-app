@@ -1,5 +1,6 @@
 'use client';
 
+import { PRICING_TYPES } from '@/app/constants/constants';
 import { useGetProductDetailsQuery } from '@/hooks/api/product/hook.product';
 import { IProduct } from '@/types/product';
 import { PUBLIC_ENV } from '@/utils/env';
@@ -50,7 +51,9 @@ export default function ProductDashboardPage() {
     const [activeTab, setActiveTab] = useState(TABS.GENERAL);
 
     const handleInputChange = (
-        event: React.ChangeEvent<HTMLInputElement>
+        event: React.ChangeEvent<
+            HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+        >
     ) => {};
 
     useEffect(() => {
@@ -204,7 +207,9 @@ export default function ProductDashboardPage() {
                                                 type="text"
                                                 id="slug"
                                                 className="block w-full flex-1 rounded-r-md border border-gray-300 bg-gray-50 p-2 text-gray-900 focus:border-black focus:ring-black sm:text-sm"
-                                                defaultValue="invomaker"
+                                                defaultValue={
+                                                    productDetails.slug
+                                                }
                                             />
                                         </div>
                                     </div>
@@ -221,8 +226,11 @@ export default function ProductDashboardPage() {
                                         <input
                                             type="url"
                                             id="url"
+                                            name="url"
                                             className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
-                                            defaultValue="https://www.invomaker.com/"
+                                            value={productDetails.websiteUrl}
+                                            onChange={handleInputChange}
+                                            placeholder="https://www.your-product.com"
                                         />
                                     </div>
                                     <div>
@@ -247,7 +255,7 @@ export default function ProductDashboardPage() {
                                     </div>
                                     <div>
                                         <label
-                                            htmlFor="pricing"
+                                            htmlFor="pricingType"
                                             className="mb-1 block text-sm font-medium text-gray-700"
                                         >
                                             Pricing{' '}
@@ -255,27 +263,48 @@ export default function ProductDashboardPage() {
                                                 *
                                             </span>
                                         </label>
-                                        <input
-                                            type="text"
-                                            id="pricing"
+                                        <select
+                                            id="pricingType"
+                                            name="pricingType"
+                                            onChange={handleInputChange}
+                                            value={productDetails.pricingType}
                                             className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
-                                        />
+                                        >
+                                            <option
+                                                value={
+                                                    PRICING_TYPES.NOT_SPECIFIED
+                                                }
+                                            >
+                                                {PRICING_TYPES.NOT_SPECIFIED}
+                                            </option>
+                                            <option>
+                                                {PRICING_TYPES.FREE}
+                                            </option>
+                                            <option>
+                                                {PRICING_TYPES.FREEMIUM}
+                                            </option>
+                                            <option>
+                                                {PRICING_TYPES.PAID}
+                                            </option>
+                                            <option>
+                                                {PRICING_TYPES.LIFETIME}
+                                            </option>
+                                        </select>
                                     </div>
                                     <div className="md:col-span-2">
                                         <label
                                             htmlFor="tags"
                                             className="mb-1 block text-sm font-medium text-gray-700"
                                         >
-                                            Tags{' '}
-                                            <span className="text-red-500">
-                                                *
-                                            </span>
+                                            Tags
                                         </label>
                                         <input
                                             type="text"
+                                            name="tags"
                                             id="tags"
                                             className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
-                                            defaultValue="Invoicing,Freelance,Personal Finances"
+                                            value={productDetails.tags}
+                                            onChange={handleInputChange}
                                         />
                                     </div>
                                 </div>
