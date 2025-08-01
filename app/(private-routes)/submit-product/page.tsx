@@ -1,6 +1,54 @@
+'use client';
+import { API_ROUTES } from '@/app/constants/api';
+import { generateTokenHeaders } from '@/utils/localstorage';
+import { postRequest } from '@/utils/request';
+import { sanitizeError } from '@/utils/utils';
+import { useMutation } from '@tanstack/react-query';
 import { TriangleAlert } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { toast } from 'sonner';
+
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
 
 export default function SubmitProductPage() {
+    const router = useRouter();
+    const [productDetails, setProductDetails] = useState({
+        name: '',
+        websiteUrl: '',
+        tagline: '',
+    });
+
+    const saveProductMutation = useMutation({
+        mutationFn: (payload: any) => {
+            return postRequest(
+                API_ROUTES.PRODUCTS,
+                payload,
+                generateTokenHeaders()
+            );
+        },
+        onError: (error: any) => {
+            toast.error(sanitizeError(error));
+        },
+        onSuccess: ({ data }) => {
+            toast.success('Product added successfully!');
+            router.push('/edit-product/' + data.result.cuid);
+        },
+    });
+
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = event.target;
+        setProductDetails((prevDetails) => ({
+            ...prevDetails,
+            [name]: value,
+        }));
+    };
+
+    const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        return saveProductMutation.mutate(productDetails);
+    };
+
     return (
         <div className="min-h-screen bg-white py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl mx-auto">
@@ -34,45 +82,70 @@ export default function SubmitProductPage() {
                 </div>
 
                 {/* Form */}
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleFormSubmit}>
                     <div>
                         <label
-                            htmlFor="product-name"
+                            htmlFor="name"
                             className="block text-lg font-medium text-gray-700 mb-2"
                         >
                             Your product name*
                         </label>
                         <input
                             type="text"
-                            id="product-name"
-                            name="product-name"
-                            placeholder="Uneed"
+                            id="name"
+                            name="name"
+                            value={productDetails.name}
+                            onChange={handleInputChange}
+                            required
+                            placeholder="Enter your product name"
                             className="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-gray-700 focus:border-gray-700 sm:text-base placeholder-gray-400"
                         />
                         <p className="mt-2 text-sm text-gray-500">
-                            https://www.uneed.best/tool/
+                            {APP_URL}/tools/{productDetails.name}
                         </p>
                     </div>
 
                     <div>
                         <label
-                            htmlFor="product-address"
+                            htmlFor="tagline"
+                            className="block text-lg font-medium text-gray-700 mb-2"
+                        >
+                            Your product tagline*
+                        </label>
+                        <input
+                            type="text"
+                            id="tagline"
+                            name="tagline"
+                            value={productDetails.tagline}
+                            onChange={handleInputChange}
+                            required
+                            placeholder="Describe your product in a few words"
+                            className="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-gray-700 focus:border-gray-700 sm:text-base placeholder-gray-400"
+                        />
+                    </div>
+
+                    <div>
+                        <label
+                            htmlFor="websiteUrl"
                             className="block text-lg font-medium text-gray-700 mb-2"
                         >
                             Your product address*
                         </label>
                         <input
                             type="url"
-                            id="product-address"
-                            name="product-address"
-                            placeholder="https://www.uneed.best"
+                            id="websiteUrl"
+                            name="websiteUrl"
+                            value={productDetails.websiteUrl}
+                            onChange={handleInputChange}
+                            required
+                            placeholder="https://www.your-product.com"
                             className="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-gray-700 focus:border-gray-700 sm:text-base placeholder-gray-400"
                         />
                     </div>
 
                     <button
                         type="submit"
-                        className="w-auto bg-gradient-to-r from-gray-800 to-black hover:from-gray-900 hover:to-gray-950 text-white font-semibold py-3 px-6 rounded-md shadow-md text-lg"
+                        className="w-auto cursor-pointer bg-gradient-to-r from-gray-800 to-black hover:from-gray-900 hover:to-gray-950 text-white font-semibold py-3 px-6 rounded-md shadow-md text-lg"
                     >
                         Submit your Product
                     </button>
