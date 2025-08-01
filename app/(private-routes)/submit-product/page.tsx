@@ -1,5 +1,6 @@
 'use client';
 import { API_ROUTES } from '@/app/constants/api';
+import { PUBLIC_ENV } from '@/utils/env';
 import { generateTokenHeaders } from '@/utils/localstorage';
 import { postRequest } from '@/utils/request';
 import { sanitizeError } from '@/utils/utils';
@@ -8,8 +9,6 @@ import { TriangleAlert } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { toast } from 'sonner';
-
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
 
 export default function SubmitProductPage() {
     const router = useRouter();
@@ -101,7 +100,7 @@ export default function SubmitProductPage() {
                             className="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-gray-700 focus:border-gray-700 sm:text-base placeholder-gray-400"
                         />
                         <p className="mt-2 text-sm text-gray-500">
-                            {APP_URL}/tools/{productDetails.name}
+                            {PUBLIC_ENV.APP_URL}/tools/{productDetails.name}
                         </p>
                     </div>
 

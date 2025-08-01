@@ -14,4 +14,8 @@ export const QUERY_KEYS = {
         CREATE: 'CREATE_USER',
         ME: 'ME_USER',
     },
+    PRODUCT: {
+        GET_BY_CUID: 'GET_PRODUCT_BY_CUID',
+        LIST: 'LIST_PRODUCTS',
+    },
 };

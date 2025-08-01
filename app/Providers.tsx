@@ -5,15 +5,14 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { useState } from 'react';
 import AppWrapper from './AppWrapper';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import { PUBLIC_ENV } from '@/utils/env';
 
 const Providers = ({ children }: { readonly children: React.ReactNode }) => {
     const [queryClient] = useState(() => new QueryClient());
 
     return (
         <GoogleOAuthProvider
-            clientId={
-                process.env.NEXT_PUBLIC_GOOGLE_OAUTH_WEB_CLIENT_ID as string
-            }
+            clientId={PUBLIC_ENV.GOOGLE_OAUTH_WEB_CLIENT_ID as string}
         >
             <QueryClientProvider client={queryClient}>
                 <AppWrapper>{children}</AppWrapper>

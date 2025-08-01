@@ -1,18 +1,66 @@
 'use client';
 
-import { useState } from 'react';
+import { useGetProductDetailsQuery } from '@/hooks/api/product/hook.product';
+import { IProduct } from '@/types/product';
+import { PUBLIC_ENV } from '@/utils/env';
 import {
-    MonitorPlay,
-    TriangleAlert,
+    ArrowUpRight,
     Eye,
     ImageIcon,
     MessageSquare,
+    MonitorPlay,
     Tag,
-    ArrowUpRight,
+    TriangleAlert,
 } from 'lucide-react';
+import { useParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
+
+const TABS = {
+    GENERAL: 'General',
+    MEDIA: 'Media',
+    SOCIALS: 'Socials',
+};
 
 export default function ProductDashboardPage() {
-    const [activeTab, setActiveTab] = useState('general');
+    const params = useParams();
+    const cuid = params.cuid as string;
+
+    const [productDetails, setProductDetails] = useState<IProduct>({
+        name: '',
+        slug: '',
+        tagline: '',
+        websiteUrl: '',
+        description: '',
+        logoUrl: '',
+        videoUrl: '',
+        reviewComment: '',
+        pricingType: '',
+        status: '',
+        isFeatured: false,
+        categoryId: '',
+        submittedById: '',
+        tags: [],
+        keywords: [],
+        images: [],
+    });
+
+    const { data: productResponse } = useGetProductDetailsQuery(cuid);
+    const result = productResponse?.data?.result;
+
+    const [activeTab, setActiveTab] = useState(TABS.GENERAL);
+
+    const handleInputChange = (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {};
+
+    useEffect(() => {
+        if (result) {
+            const { details, ...rest } = result;
+            setProductDetails(rest);
+        }
+    }, [result]);
+
+    console.log('PRODUCT DETAILS', productDetails);
 
     return (
         <div className="min-h-screen bg-gray-50 p-4 md:p-8">
@@ -84,49 +132,40 @@ export default function ProductDashboardPage() {
                         <div className="mb-6 flex flex-wrap rounded-lg bg-gray-100 p-1 shadow-sm">
                             <button
                                 className={`flex-1 rounded-md px-4 py-2 text-sm font-medium transition-colors duration-200 ${
-                                    activeTab === 'general'
+                                    activeTab === TABS.GENERAL
                                         ? 'bg-black text-white shadow-sm'
                                         : 'text-gray-700 hover:bg-gray-200'
                                 } flex items-center justify-center gap-2`}
-                                onClick={() => setActiveTab('general')}
+                                onClick={() => setActiveTab(TABS.GENERAL)}
                             >
-                                <Eye className="h-4 w-4" /> General
+                                <Eye className="h-4 w-4" /> {TABS.GENERAL}
                             </button>
                             <button
                                 className={`flex-1 rounded-md px-4 py-2 text-sm font-medium transition-colors duration-200 ${
-                                    activeTab === 'media'
+                                    activeTab === TABS.MEDIA
                                         ? 'bg-black text-white shadow-sm'
                                         : 'text-gray-700 hover:bg-gray-200'
                                 } flex items-center justify-center gap-2`}
-                                onClick={() => setActiveTab('media')}
+                                onClick={() => setActiveTab(TABS.MEDIA)}
                             >
-                                <ImageIcon className="h-4 w-4" /> Media
+                                <ImageIcon className="h-4 w-4" /> {TABS.MEDIA}
                             </button>
                             <button
                                 className={`flex-1 rounded-md px-4 py-2 text-sm font-medium transition-colors duration-200 ${
-                                    activeTab === 'socials'
+                                    activeTab === TABS.SOCIALS
                                         ? 'bg-black text-white shadow-sm'
                                         : 'text-gray-700 hover:bg-gray-200'
                                 } flex items-center justify-center gap-2`}
-                                onClick={() => setActiveTab('socials')}
+                                onClick={() => setActiveTab(TABS.SOCIALS)}
                             >
-                                <MessageSquare className="h-4 w-4" /> Socials
-                            </button>
-                            <button
-                                className={`flex-1 rounded-md px-4 py-2 text-sm font-medium transition-colors duration-200 ${
-                                    activeTab === 'sell'
-                                        ? 'bg-black text-white shadow-sm'
-                                        : 'text-gray-700 hover:bg-gray-200'
-                                } flex items-center justify-center gap-2`}
-                                onClick={() => setActiveTab('sell')}
-                            >
-                                <Tag className="h-4 w-4" /> Sell
+                                <MessageSquare className="h-4 w-4" />{' '}
+                                {TABS.SOCIALS}
                             </button>
                         </div>
 
                         {/* Tab Content */}
                         <div className="rounded-lg bg-white p-6 shadow-sm">
-                            {activeTab === 'general' && (
+                            {activeTab === TABS.GENERAL && (
                                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                                     <div>
                                         <label
@@ -141,8 +180,10 @@ export default function ProductDashboardPage() {
                                         <input
                                             type="text"
                                             id="name"
+                                            name="name"
+                                            value={productDetails.name}
+                                            onChange={handleInputChange}
                                             className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
-                                            defaultValue="invomaker"
                                         />
                                     </div>
                                     <div>
@@ -157,7 +198,7 @@ export default function ProductDashboardPage() {
                                         </label>
                                         <div className="flex rounded-md shadow-sm">
                                             <span className="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-100 px-3 text-gray-500 sm:text-sm">
-                                                uneed.best/tool/
+                                                {PUBLIC_ENV.APP_URL}/tools/
                                             </span>
                                             <input
                                                 type="text"
@@ -239,19 +280,14 @@ export default function ProductDashboardPage() {
                                     </div>
                                 </div>
                             )}
-                            {activeTab === 'media' && (
+                            {activeTab === TABS.MEDIA && (
                                 <div className="text-center text-gray-500">
                                     Media content goes here.
                                 </div>
                             )}
-                            {activeTab === 'socials' && (
+                            {activeTab === TABS.SOCIALS && (
                                 <div className="text-center text-gray-500">
                                     Socials content goes here.
-                                </div>
-                            )}
-                            {activeTab === 'sell' && (
-                                <div className="text-center text-gray-500">
-                                    Sell content goes here.
                                 </div>
                             )}
                         </div>
