@@ -11,3 +11,9 @@ export const PRICING_TYPES = {
     PAID: 'PAID',
     LIFETIME: 'LIFETIME',
 };
+
+export const PRODUCT_TABS = {
+    GENERAL: 'General',
+    MEDIA: 'Media',
+    SOCIALS: 'Socials',
+};
