@@ -18,3 +18,21 @@ export const getNameInitials = (name: string) => {
     }
     return '';
 };
+
+export const createCategoryDropdownOptions = (categories: any[]) => {
+    if (!categories || !categories.length) return [];
+    return categories.map((category: any) => ({
+        cuid: category.cuid,
+        label: category.name,
+        value: category.name,
+        slug: category.slug,
+    }));
+};
+
+export const formatEnum = (inputText: string) => {
+    return inputText
+        .toLowerCase()
+        .split('_')
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+};

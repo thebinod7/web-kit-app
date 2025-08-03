@@ -1,16 +1,23 @@
 'use client';
 
+import { API_ROUTES } from '@/app/constants/api';
 import { PRICING_TYPES, PRODUCT_TABS } from '@/app/constants/constants';
+import ProductTabs from '@/components/ProductTabs';
+import { useFetchAllCountries } from '@/hooks/api/app';
 import { useGetProductDetailsQuery } from '@/hooks/api/product/hook.product';
 import { IProduct } from '@/types/product';
-import { PUBLIC_ENV } from '@/utils/env';
+import { generateTokenHeaders } from '@/utils/localstorage';
+import { patchRequest } from '@/utils/request';
+import { formatEnum, sanitizeError } from '@/utils/utils';
+import { useMutation } from '@tanstack/react-query';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import LeftPanel from '../LeftPanel';
+import { toast } from 'sonner';
+import SidePanel from '../SidePanel';
 import SubmitToday from '../SubmitToday';
-import ProductTabs from '@/components/ProductTabs';
 
 export default function ProductDashboardPage() {
+    const { all_categories } = useFetchAllCountries();
     const params = useParams();
     const cuid = params.cuid as string;
 
@@ -42,7 +49,38 @@ export default function ProductDashboardPage() {
         event: React.ChangeEvent<
             HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
         >
-    ) => {};
+    ) => {
+        const { name } = event.target;
+        let value: any = event.target.value;
+        if (name === 'tags') {
+            value = value.split(',') || [];
+        }
+        setProductDetails((prevDetails) => ({
+            ...prevDetails,
+            [name]: value,
+        }));
+    };
+
+    const updateProductMutation = useMutation({
+        mutationFn: (payload: any) => {
+            return patchRequest(
+                `${API_ROUTES.PRODUCTS}/${cuid}`,
+                payload,
+                generateTokenHeaders()
+            );
+        },
+        onError: (error: any) => {
+            toast.error(sanitizeError(error));
+        },
+        onSuccess: ({ data }) => {
+            toast.success('Product updated successfully!');
+        },
+    });
+
+    const handleUpdateClick = () => {
+        console.log('ProductDetails:', productDetails);
+        return updateProductMutation.mutate(productDetails);
+    };
 
     useEffect(() => {
         if (result) {
@@ -52,6 +90,7 @@ export default function ProductDashboardPage() {
     }, [result]);
 
     console.log('PRODUCT DETAILS', productDetails);
+    console.log('ALL_Categories:', all_categories);
 
     return (
         <div className="min-h-screen bg-gray-50 p-4 md:p-8">
@@ -60,9 +99,7 @@ export default function ProductDashboardPage() {
 
                 {/* Main Content Area */}
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-                    <LeftPanel />
-
-                    {/* Right Column: Tabs and Form */}
+                    {/* Left Column: Tabs and Form */}
                     <div className="md:col-span-2">
                         <ProductTabs
                             activeTab={activeTab}
@@ -93,42 +130,34 @@ export default function ProductDashboardPage() {
                                     </div>
                                     <div>
                                         <label
-                                            htmlFor="slug"
+                                            htmlFor="tagline"
                                             className="mb-1 block text-sm font-medium text-gray-700"
                                         >
-                                            Slug{' '}
-                                            <span className="text-red-500">
-                                                *
-                                            </span>
-                                        </label>
-                                        <div className="flex rounded-md shadow-sm">
-                                            <span className="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-100 px-3 text-gray-500 sm:text-sm">
-                                                {PUBLIC_ENV.APP_URL}/tools/
-                                            </span>
-                                            <input
-                                                type="text"
-                                                id="slug"
-                                                className="block w-full flex-1 rounded-r-md border border-gray-300 bg-gray-50 p-2 text-gray-900 focus:border-black focus:ring-black sm:text-sm"
-                                                defaultValue={
-                                                    productDetails.slug
-                                                }
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="md:col-span-2">
-                                        <label
-                                            htmlFor="url"
-                                            className="mb-1 block text-sm font-medium text-gray-700"
-                                        >
-                                            Url{' '}
+                                            Tagline{' '}
                                             <span className="text-red-500">
                                                 *
                                             </span>
                                         </label>
                                         <input
-                                            type="url"
-                                            id="url"
-                                            name="url"
+                                            type="text"
+                                            id="tagline"
+                                            name="tagline"
+                                            value={productDetails.tagline}
+                                            onChange={handleInputChange}
+                                            className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
+                                        />
+                                    </div>
+                                    <div className="md:col-span-2">
+                                        <label
+                                            htmlFor="websiteUrl"
+                                            className="mb-1 block text-sm font-medium text-gray-700"
+                                        >
+                                            Website Link{' '}
+                                        </label>
+                                        <input
+                                            type="websiteUrl"
+                                            id="websiteUrl"
+                                            name="websiteUrl"
                                             className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
                                             value={productDetails.websiteUrl}
                                             onChange={handleInputChange}
@@ -146,13 +175,38 @@ export default function ProductDashboardPage() {
                                             </span>
                                         </label>
                                         <select
-                                            id="category"
+                                            id="categoryId"
+                                            name="categoryId"
                                             className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
-                                            defaultValue="Business"
+                                            value={
+                                                productDetails?.categoryId ||
+                                                'None'
+                                            }
+                                            onChange={handleInputChange}
                                         >
-                                            <option>Business</option>
-                                            <option>Productivity</option>
-                                            <option>Finance</option>
+                                            <option value="None">
+                                                --Select--
+                                            </option>
+                                            {all_categories.length > 0
+                                                ? all_categories.map(
+                                                      (category) => {
+                                                          return (
+                                                              <option
+                                                                  key={
+                                                                      category.cuid
+                                                                  }
+                                                                  value={
+                                                                      category.cuid
+                                                                  }
+                                                              >
+                                                                  {
+                                                                      category.label
+                                                                  }
+                                                              </option>
+                                                          );
+                                                      }
+                                                  )
+                                                : ''}
                                         </select>
                                     </div>
                                     <div>
@@ -177,19 +231,29 @@ export default function ProductDashboardPage() {
                                                     PRICING_TYPES.NOT_SPECIFIED
                                                 }
                                             >
-                                                {PRICING_TYPES.NOT_SPECIFIED}
+                                                {formatEnum(
+                                                    PRICING_TYPES.NOT_SPECIFIED
+                                                )}
                                             </option>
-                                            <option>
-                                                {PRICING_TYPES.FREE}
+                                            <option value={PRICING_TYPES.FREE}>
+                                                {formatEnum(PRICING_TYPES.FREE)}
                                             </option>
-                                            <option>
-                                                {PRICING_TYPES.FREEMIUM}
+                                            <option
+                                                value={PRICING_TYPES.FREEMIUM}
+                                            >
+                                                {formatEnum(
+                                                    PRICING_TYPES.FREEMIUM
+                                                )}
                                             </option>
-                                            <option>
-                                                {PRICING_TYPES.PAID}
+                                            <option value={PRICING_TYPES.PAID}>
+                                                {formatEnum(PRICING_TYPES.PAID)}
                                             </option>
-                                            <option>
-                                                {PRICING_TYPES.LIFETIME}
+                                            <option
+                                                value={PRICING_TYPES.LIFETIME}
+                                            >
+                                                {formatEnum(
+                                                    PRICING_TYPES.LIFETIME
+                                                )}
                                             </option>
                                         </select>
                                     </div>
@@ -198,15 +262,41 @@ export default function ProductDashboardPage() {
                                             htmlFor="tags"
                                             className="mb-1 block text-sm font-medium text-gray-700"
                                         >
-                                            Tags
+                                            Tags (Enter comma separated tags at
+                                            max 5)
                                         </label>
                                         <input
                                             type="text"
                                             name="tags"
                                             id="tags"
                                             className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
-                                            value={productDetails.tags}
+                                            value={
+                                                productDetails.tags?.join(
+                                                    ','
+                                                ) || ''
+                                            }
                                             onChange={handleInputChange}
+                                            placeholder="Eg: freelancing, business, content creation"
+                                        />
+                                    </div>
+
+                                    <div className="md:col-span-2">
+                                        <label
+                                            htmlFor="description"
+                                            className="mb-1 block text-sm font-medium text-gray-700"
+                                        >
+                                            Description
+                                        </label>
+                                        <textarea
+                                            rows={4}
+                                            name="description"
+                                            id="description"
+                                            className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
+                                            value={
+                                                productDetails.description || ''
+                                            }
+                                            onChange={handleInputChange}
+                                            placeholder="Describe your product in brief"
                                         />
                                     </div>
                                 </div>
@@ -223,6 +313,8 @@ export default function ProductDashboardPage() {
                             )}
                         </div>
                     </div>
+
+                    <SidePanel handleUpdateClick={handleUpdateClick} />
                 </div>
             </div>
         </div>

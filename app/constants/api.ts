@@ -2,6 +2,7 @@ const API_VERSION = '/api/v1';
 export const API_ROUTES = {
     APP: `${API_VERSION}/app`,
     AUTH: `${API_VERSION}/auth`,
+    CATEGORY: `${API_VERSION}/category`,
     USERS: `${API_VERSION}/users`,
     PRODUCTS: `${API_VERSION}/products`,
 };
