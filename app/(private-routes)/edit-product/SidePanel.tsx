@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface SidPanelProps {
-    handleUpdateClick: () => {};
+    handleUpdateClick: any;
 }
 
 export default function SidePanelProps({ handleUpdateClick }: SidPanelProps) {

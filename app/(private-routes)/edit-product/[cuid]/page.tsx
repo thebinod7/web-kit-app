@@ -96,9 +96,6 @@ export default function ProductDashboardPage() {
         }
     }, [result]);
 
-    console.log('PRODUCT DETAILS', productDetails);
-    console.log('ALL_Categories:', all_categories);
-
     return (
         <div className="min-h-screen bg-gray-50 p-4 md:p-8">
             <div className="mx-auto max-w-7xl">
@@ -311,8 +308,117 @@ export default function ProductDashboardPage() {
                                 </div>
                             )}
                             {activeTab === PRODUCT_TABS.SOCIALS && (
-                                <div className="text-center text-gray-500">
-                                    Socials content goes here.
+                                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                                    <div>
+                                        <label
+                                            htmlFor="contactEmail"
+                                            className="mb-1 block text-sm font-medium text-gray-700"
+                                        >
+                                            Contact Email
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="contactEmail"
+                                            name="contactEmail"
+                                            placeholder="Enter your contact email address"
+                                            className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label
+                                            htmlFor="twitterUrl"
+                                            className="mb-1 block text-sm font-medium text-gray-700"
+                                        >
+                                            X (Twitter)
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="twitterUrl"
+                                            name="twitterUrl"
+                                            placeholder="ex: https://x.com/username"
+                                            className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <label
+                                            htmlFor="githubUrl"
+                                            className="mb-1 block text-sm font-medium text-gray-700"
+                                        >
+                                            Github
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="githubUrl"
+                                            name="githubUrl"
+                                            placeholder="ex: https://github.com/username"
+                                            className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <label
+                                            htmlFor="linkedinUrl"
+                                            className="mb-1 block text-sm font-medium text-gray-700"
+                                        >
+                                            LinkedIn
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="linkedinUrl"
+                                            name="linkedinUrl"
+                                            placeholder="ex: https://www.linkedin.com/in/username"
+                                            className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <label
+                                            htmlFor="youtubeUrl"
+                                            className="mb-1 block text-sm font-medium text-gray-700"
+                                        >
+                                            Youtube
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="youtubeUrl"
+                                            name="youtubeUrl"
+                                            placeholder="ex: https://www.youtube.com/@username"
+                                            className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <label
+                                            htmlFor="facebookUrl"
+                                            className="mb-1 block text-sm font-medium text-gray-700"
+                                        >
+                                            Facebook
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="facebookUrl"
+                                            name="facebookUrl"
+                                            placeholder="ex:  https://facebook.com/username"
+                                            className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <label
+                                            htmlFor="instagramUrl"
+                                            className="mb-1 block text-sm font-medium text-gray-700"
+                                        >
+                                            Instagram
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="instagramUrl"
+                                            name="instagramUrl"
+                                            placeholder="ex:  https://instagram.com/username"
+                                            className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
+                                        />
+                                    </div>
                                 </div>
                             )}
                         </div>
