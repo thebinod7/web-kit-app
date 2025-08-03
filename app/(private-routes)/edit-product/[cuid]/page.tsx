@@ -79,6 +79,13 @@ export default function ProductDashboardPage() {
 
     const handleUpdateClick = () => {
         console.log('ProductDetails:', productDetails);
+        if (
+            !productDetails.name ||
+            !productDetails.tagline ||
+            !productDetails.websiteUrl
+        ) {
+            return toast.error('Fields with * are required! Please fill them.');
+        }
         return updateProductMutation.mutate(productDetails);
     };
 
@@ -115,7 +122,7 @@ export default function ProductDashboardPage() {
                                             className="mb-1 block text-sm font-medium text-gray-700"
                                         >
                                             Name{' '}
-                                            <span className="text-red-500">
+                                            <span className="text-red-500 font-bold text-xl">
                                                 *
                                             </span>
                                         </label>
@@ -134,7 +141,7 @@ export default function ProductDashboardPage() {
                                             className="mb-1 block text-sm font-medium text-gray-700"
                                         >
                                             Tagline{' '}
-                                            <span className="text-red-500">
+                                            <span className="text-red-500 font-bold text-xl">
                                                 *
                                             </span>
                                         </label>
@@ -153,6 +160,9 @@ export default function ProductDashboardPage() {
                                             className="mb-1 block text-sm font-medium text-gray-700"
                                         >
                                             Website Link{' '}
+                                            <span className="text-red-500 font-bold text-xl">
+                                                *
+                                            </span>
                                         </label>
                                         <input
                                             type="websiteUrl"
@@ -170,9 +180,6 @@ export default function ProductDashboardPage() {
                                             className="mb-1 block text-sm font-medium text-gray-700"
                                         >
                                             Category{' '}
-                                            <span className="text-red-500">
-                                                *
-                                            </span>
                                         </label>
                                         <select
                                             id="categoryId"
@@ -215,9 +222,6 @@ export default function ProductDashboardPage() {
                                             className="mb-1 block text-sm font-medium text-gray-700"
                                         >
                                             Pricing{' '}
-                                            <span className="text-red-500">
-                                                *
-                                            </span>
                                         </label>
                                         <select
                                             id="pricingType"
