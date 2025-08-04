@@ -15,13 +15,19 @@ import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
 import SidePanel from '../SidePanel';
 import SubmitToday from '../SubmitToday';
+import SocialDetailsForm from '../SocialDetailsForm';
+import { useProductStore } from '@/store/store.product';
 
 export default function ProductDashboardPage() {
     const { all_categories } = useFetchAllCountries();
     const params = useParams();
     const cuid = params.cuid as string;
 
-    const [productDetails, setProductDetails] = useState<IProduct>({
+    const { productDetails, setProductDetails } = useProductStore(
+        (state) => state
+    );
+
+    const [productBasicInfo, setProductBasicInfo] = useState<IProduct>({
         name: '',
         slug: '',
         tagline: '',
@@ -55,7 +61,7 @@ export default function ProductDashboardPage() {
         if (name === 'tags') {
             value = value.split(',') || [];
         }
-        setProductDetails((prevDetails) => ({
+        setProductBasicInfo((prevDetails) => ({
             ...prevDetails,
             [name]: value,
         }));
@@ -78,21 +84,22 @@ export default function ProductDashboardPage() {
     });
 
     const handleUpdateClick = () => {
-        console.log('ProductDetails:', productDetails);
         if (
-            !productDetails.name ||
-            !productDetails.tagline ||
-            !productDetails.websiteUrl
+            !productBasicInfo.name ||
+            !productBasicInfo.tagline ||
+            !productBasicInfo.websiteUrl
         ) {
             return toast.error('Fields with * are required! Please fill them.');
         }
-        return updateProductMutation.mutate(productDetails);
+        productBasicInfo.details = productDetails || {};
+        return updateProductMutation.mutate(productBasicInfo);
     };
 
     useEffect(() => {
         if (result) {
             const { details, ...rest } = result;
-            setProductDetails(rest);
+            setProductBasicInfo(rest);
+            setProductDetails(details);
         }
     }, [result]);
 
@@ -127,7 +134,7 @@ export default function ProductDashboardPage() {
                                             type="text"
                                             id="name"
                                             name="name"
-                                            value={productDetails.name}
+                                            value={productBasicInfo.name}
                                             onChange={handleInputChange}
                                             className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
                                         />
@@ -146,7 +153,7 @@ export default function ProductDashboardPage() {
                                             type="text"
                                             id="tagline"
                                             name="tagline"
-                                            value={productDetails.tagline}
+                                            value={productBasicInfo.tagline}
                                             onChange={handleInputChange}
                                             className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
                                         />
@@ -166,7 +173,7 @@ export default function ProductDashboardPage() {
                                             id="websiteUrl"
                                             name="websiteUrl"
                                             className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
-                                            value={productDetails.websiteUrl}
+                                            value={productBasicInfo.websiteUrl}
                                             onChange={handleInputChange}
                                             placeholder="https://www.your-product.com"
                                         />
@@ -183,14 +190,12 @@ export default function ProductDashboardPage() {
                                             name="categoryId"
                                             className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
                                             value={
-                                                productDetails?.categoryId ||
-                                                'None'
+                                                productBasicInfo?.categoryId ||
+                                                ''
                                             }
                                             onChange={handleInputChange}
                                         >
-                                            <option value="None">
-                                                --Select--
-                                            </option>
+                                            <option value="">--Select--</option>
                                             {all_categories.length > 0
                                                 ? all_categories.map(
                                                       (category) => {
@@ -224,7 +229,7 @@ export default function ProductDashboardPage() {
                                             id="pricingType"
                                             name="pricingType"
                                             onChange={handleInputChange}
-                                            value={productDetails.pricingType}
+                                            value={productBasicInfo.pricingType}
                                             className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
                                         >
                                             <option
@@ -272,7 +277,7 @@ export default function ProductDashboardPage() {
                                             id="tags"
                                             className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
                                             value={
-                                                productDetails.tags?.join(
+                                                productBasicInfo.tags?.join(
                                                     ','
                                                 ) || ''
                                             }
@@ -294,7 +299,8 @@ export default function ProductDashboardPage() {
                                             id="description"
                                             className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
                                             value={
-                                                productDetails.description || ''
+                                                productBasicInfo.description ||
+                                                ''
                                             }
                                             onChange={handleInputChange}
                                             placeholder="Describe your product in brief"
@@ -308,118 +314,7 @@ export default function ProductDashboardPage() {
                                 </div>
                             )}
                             {activeTab === PRODUCT_TABS.SOCIALS && (
-                                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                                    <div>
-                                        <label
-                                            htmlFor="contactEmail"
-                                            className="mb-1 block text-sm font-medium text-gray-700"
-                                        >
-                                            Contact Email
-                                        </label>
-                                        <input
-                                            type="text"
-                                            id="contactEmail"
-                                            name="contactEmail"
-                                            placeholder="Enter your contact email address"
-                                            className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
-                                        />
-                                    </div>
-                                    <div>
-                                        <label
-                                            htmlFor="twitterUrl"
-                                            className="mb-1 block text-sm font-medium text-gray-700"
-                                        >
-                                            X (Twitter)
-                                        </label>
-                                        <input
-                                            type="text"
-                                            id="twitterUrl"
-                                            name="twitterUrl"
-                                            placeholder="ex: https://x.com/username"
-                                            className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
-                                        />
-                                    </div>
-
-                                    <div>
-                                        <label
-                                            htmlFor="githubUrl"
-                                            className="mb-1 block text-sm font-medium text-gray-700"
-                                        >
-                                            Github
-                                        </label>
-                                        <input
-                                            type="text"
-                                            id="githubUrl"
-                                            name="githubUrl"
-                                            placeholder="ex: https://github.com/username"
-                                            className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
-                                        />
-                                    </div>
-
-                                    <div>
-                                        <label
-                                            htmlFor="linkedinUrl"
-                                            className="mb-1 block text-sm font-medium text-gray-700"
-                                        >
-                                            LinkedIn
-                                        </label>
-                                        <input
-                                            type="text"
-                                            id="linkedinUrl"
-                                            name="linkedinUrl"
-                                            placeholder="ex: https://www.linkedin.com/in/username"
-                                            className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
-                                        />
-                                    </div>
-
-                                    <div>
-                                        <label
-                                            htmlFor="youtubeUrl"
-                                            className="mb-1 block text-sm font-medium text-gray-700"
-                                        >
-                                            Youtube
-                                        </label>
-                                        <input
-                                            type="text"
-                                            id="youtubeUrl"
-                                            name="youtubeUrl"
-                                            placeholder="ex: https://www.youtube.com/@username"
-                                            className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
-                                        />
-                                    </div>
-
-                                    <div>
-                                        <label
-                                            htmlFor="facebookUrl"
-                                            className="mb-1 block text-sm font-medium text-gray-700"
-                                        >
-                                            Facebook
-                                        </label>
-                                        <input
-                                            type="text"
-                                            id="facebookUrl"
-                                            name="facebookUrl"
-                                            placeholder="ex:  https://facebook.com/username"
-                                            className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
-                                        />
-                                    </div>
-
-                                    <div>
-                                        <label
-                                            htmlFor="instagramUrl"
-                                            className="mb-1 block text-sm font-medium text-gray-700"
-                                        >
-                                            Instagram
-                                        </label>
-                                        <input
-                                            type="text"
-                                            id="instagramUrl"
-                                            name="instagramUrl"
-                                            placeholder="ex:  https://instagram.com/username"
-                                            className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
-                                        />
-                                    </div>
-                                </div>
+                                <SocialDetailsForm />
                             )}
                         </div>
                     </div>

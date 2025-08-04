@@ -1,3 +1,14 @@
+export interface IProductDetails {
+    contactEmail?: string;
+    twitterUrl?: string;
+    facebookUrl?: string;
+    instagramUrl?: string;
+    linkedinUrl?: string;
+    youtubeUrl?: string;
+    githubUrl?: string;
+    productId?: string;
+}
+
 export interface IProduct {
     name: string;
     slug?: string;
@@ -18,4 +29,6 @@ export interface IProduct {
     createdAt?: string;
     updatedAt?: string;
     deletedAt?: string;
+
+    details?: IProductDetails;
 }
