@@ -7,16 +7,17 @@ import { useFetchAllCountries } from '@/hooks/api/app';
 import { useGetProductDetailsQuery } from '@/hooks/api/product/hook.product';
 import { IProduct } from '@/types/product';
 import { generateTokenHeaders } from '@/utils/localstorage';
-import { patchRequest } from '@/utils/request';
+import { patchRequest, postRequest } from '@/utils/request';
 import { formatEnum, sanitizeError } from '@/utils/utils';
 import { useMutation } from '@tanstack/react-query';
 import { useParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { toast } from 'sonner';
 import SidePanel from '../SidePanel';
 import SubmitToday from '../SubmitToday';
 import SocialDetailsForm from '../SocialDetailsForm';
 import { useProductStore } from '@/store/store.product';
+import DropzoneUploader from '@/components/DropzoneUploader';
 
 export default function ProductDashboardPage() {
     const { all_categories } = useFetchAllCountries();
@@ -94,6 +95,46 @@ export default function ProductDashboardPage() {
         productBasicInfo.details = productDetails || {};
         return updateProductMutation.mutate(productBasicInfo);
     };
+
+    const uploadLogoMutation = useMutation({
+        mutationFn: (payload: any) => {
+            return postRequest(
+                API_ROUTES.APP + '/upload-single',
+                payload,
+                generateTokenHeaders()
+            );
+        },
+        onError: (error) => {
+            toast.error(sanitizeError(error));
+        },
+        onSuccess: (data) => {
+            const result: any = data?.data?.result;
+            console.log('Result', result);
+            // setPhotoUrl(result.Location);
+            setProductBasicInfo({
+                ...productBasicInfo,
+                logoUrl: result.Location,
+            });
+        },
+    });
+
+    const uploadPhotoToS3 = async (file: File) => {
+        const formData: any = new FormData();
+        formData.append('file', file);
+        return uploadLogoMutation.mutate(formData);
+    };
+
+    const handleLogoUpload = useCallback(
+        (acceptedFiles: any, fileRejection: any) => {
+            if (fileRejection.length) {
+                console.log('ERROR', fileRejection);
+            }
+            // setPhotoErrors([]);
+            const file = acceptedFiles[0];
+            return uploadPhotoToS3(file);
+        },
+        []
+    );
 
     useEffect(() => {
         if (result) {
@@ -310,7 +351,15 @@ export default function ProductDashboardPage() {
                             )}
                             {activeTab === PRODUCT_TABS.MEDIA && (
                                 <div className="text-center text-gray-500">
-                                    Media content goes here.
+                                    <DropzoneUploader
+                                        onFileUplad={handleLogoUpload}
+                                        label="Upload Photo*"
+                                        maxFiles={1}
+                                        isUploadig={
+                                            uploadLogoMutation.isPending
+                                        }
+                                        previewFile={productBasicInfo.logoUrl}
+                                    />
                                 </div>
                             )}
                             {activeTab === PRODUCT_TABS.SOCIALS && (

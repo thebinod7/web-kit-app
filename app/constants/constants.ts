@@ -17,3 +17,13 @@ export const PRODUCT_TABS = {
     MEDIA: 'Media',
     SOCIALS: 'Socials',
 };
+
+export const DROPZONE = {
+    MAX_UPLOAD_SIZE: 15145728, // 15MB
+    MAX_FILES: 1,
+    ERROR_CODE: {
+        MAX_FILES: 'too-many-files',
+        MAX_SIZE: 'file-too-large',
+        INVALID_TYPE: 'file-invalid-type',
+    },
+};
