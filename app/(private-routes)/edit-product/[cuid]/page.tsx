@@ -4,7 +4,6 @@ import { API_ROUTES } from '@/app/constants/api';
 import { PRICING_TYPES, PRODUCT_TABS } from '@/app/constants/constants';
 import DropzoneUploader from '@/components/DropzoneUploader';
 import ProductTabs from '@/components/ProductTabs';
-import UploadProgressBar from '@/components/UploadProgressBar';
 import { useFetchAllCountries } from '@/hooks/api/app';
 import { useGetProductDetailsQuery } from '@/hooks/api/product/hook.product';
 import { useProductStore } from '@/store/store.product';
@@ -19,6 +18,7 @@ import { toast } from 'sonner';
 import SidePanel from '../SidePanel';
 import SocialDetailsForm from '../SocialDetailsForm';
 import SubmitToday from '../SubmitToday';
+import SingleLineLoader from '@/components/mini/SingleLineLoader';
 
 export default function ProductDashboardPage() {
     const { all_categories } = useFetchAllCountries();
@@ -426,7 +426,6 @@ export default function ProductDashboardPage() {
                                     </div>
 
                                     {/* ====== Multiple photos upload====== */}
-
                                     <div className="mb-6 text-left">
                                         <h2 className="text-sm font-bold text-gray-700">
                                             Upload Images
@@ -436,7 +435,11 @@ export default function ProductDashboardPage() {
                                             product.
                                         </p>
 
-                                        {/* Progress bar for loading */}
+                                        {uploadGallaryImageMutation.isPending && (
+                                            <div className="mt-2">
+                                                <SingleLineLoader message="Uploading your file. Please wait..." />
+                                            </div>
+                                        )}
                                     </div>
 
                                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
