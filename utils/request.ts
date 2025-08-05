@@ -29,6 +29,21 @@ const getRequest = async (url: string, config = {}) =>
 const postRequest = async (url: string, body: any, config = {}) =>
     axiosInstance.post(url, body, config);
 
+const postWithProgressRequest = async (
+    url: string,
+    body: any,
+    tokenHeaderObject: { headers: Record<string, string> },
+    config: any = {}
+) => {
+    return axiosInstance.post(url, body, {
+        ...config,
+        headers: {
+            ...(tokenHeaderObject?.headers || {}),
+            ...(config?.headers || {}),
+        },
+    });
+};
+
 const putRequest = async (url: string, body: any, config = {}) =>
     axiosInstance.put(url, body, config);
 
@@ -44,5 +59,6 @@ export {
     putRequest,
     delRequest,
     patchRequest,
+    postWithProgressRequest,
     axiosInstance,
 };

@@ -2,23 +2,26 @@
 
 import { API_ROUTES } from '@/app/constants/api';
 import { PRICING_TYPES, PRODUCT_TABS } from '@/app/constants/constants';
+import DropzoneUploader from '@/components/DropzoneUploader';
 import ProductTabs from '@/components/ProductTabs';
 import { useFetchAllCountries } from '@/hooks/api/app';
 import { useGetProductDetailsQuery } from '@/hooks/api/product/hook.product';
+import { useProductStore } from '@/store/store.product';
 import { IProduct } from '@/types/product';
 import { generateTokenHeaders } from '@/utils/localstorage';
-import { patchRequest, postRequest } from '@/utils/request';
+import {
+    patchRequest,
+    postRequest,
+    postWithProgressRequest,
+} from '@/utils/request';
 import { formatEnum, sanitizeError } from '@/utils/utils';
 import { useMutation } from '@tanstack/react-query';
 import { useParams } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 import { toast } from 'sonner';
 import SidePanel from '../SidePanel';
-import SubmitToday from '../SubmitToday';
 import SocialDetailsForm from '../SocialDetailsForm';
-import { useProductStore } from '@/store/store.product';
-import DropzoneUploader from '@/components/DropzoneUploader';
-import ImgUrlPreview from '@/components/ImageUrlPreview';
+import SubmitToday from '../SubmitToday';
 
 export default function ProductDashboardPage() {
     const { all_categories } = useFetchAllCountries();
@@ -110,8 +113,6 @@ export default function ProductDashboardPage() {
         },
         onSuccess: (data) => {
             const result: any = data?.data?.result;
-            console.log('Result', result);
-            // setPhotoUrl(result.Location);
             setProductBasicInfo({
                 ...productBasicInfo,
                 logoUrl: result.Location,
@@ -119,12 +120,54 @@ export default function ProductDashboardPage() {
         },
     });
 
-    const uploadPhotoToS3 = async (file: File) => {
-        const formData: any = new FormData();
-        formData.append('file', file);
-        return uploadLogoMutation.mutate(formData);
-    };
+    const uploadGallaryImageMutation = useMutation({
+        mutationFn: (payload: any) => {
+            return postWithProgressRequest(
+                API_ROUTES.APP + '/upload-single',
+                payload,
+                generateTokenHeaders(),
+                {
+                    onUploadProgress: (progressEvent: ProgressEvent) => {
+                        console.log('PROgress:', progressEvent);
+                        const percent = Math.round(
+                            (progressEvent.loaded * 100) / progressEvent.total
+                        );
+                        console.log(percent);
+                    },
+                }
+            );
+        },
+        onError: (error) => {
+            toast.error(sanitizeError(error));
+        },
+        onSuccess: (data) => {
+            const result: any = data?.data?.result;
+            const currentImages: string[] = productBasicInfo.images || [];
+            currentImages.push(result.Location);
+            setProductBasicInfo({
+                ...productBasicInfo,
+                images: currentImages,
+            });
+        },
+    });
 
+    // TODO Set Errors
+    const handleGalleryImageUpload = useCallback(
+        (acceptedFiles: any, fileRejection: any) => {
+            if (fileRejection.length) {
+                // setError()
+                console.log('ERROR', fileRejection);
+            }
+            // setPhotoErrors([]);
+            const file = acceptedFiles[0];
+            const formData: any = new FormData();
+            formData.append('file', file);
+            return uploadGallaryImageMutation.mutate(formData);
+        },
+        []
+    );
+
+    // TODO Set Errors
     const handleLogoUpload = useCallback(
         (acceptedFiles: any, fileRejection: any) => {
             if (fileRejection.length) {
@@ -132,10 +175,30 @@ export default function ProductDashboardPage() {
             }
             // setPhotoErrors([]);
             const file = acceptedFiles[0];
-            return uploadPhotoToS3(file);
+            const formData: any = new FormData();
+            formData.append('file', file);
+            return uploadLogoMutation.mutate(formData);
         },
         []
     );
+
+    const clearLogoPreview = () => {
+        setProductBasicInfo({
+            ...productBasicInfo,
+            logoUrl: '',
+        });
+    };
+
+    const clearGalleryPreview = (imageUrl: string) => {
+        const currentImages: string[] = productBasicInfo.images || [];
+        const filteredImages = currentImages.filter(
+            (image) => image !== imageUrl
+        );
+        setProductBasicInfo({
+            ...productBasicInfo,
+            images: filteredImages,
+        });
+    };
 
     useEffect(() => {
         if (result) {
@@ -351,24 +414,15 @@ export default function ProductDashboardPage() {
                                 </div>
                             )}
                             {activeTab === PRODUCT_TABS.MEDIA && (
-                                <div className="text-center text-gray-500">
+                                <div className="text-center ">
                                     <div className="mb-6 text-left">
-                                        <h2 className="text-xl font-bold text-gray-900">
+                                        <h2 className="text-sm font-bold text-gray-700">
                                             Upload Product Logo
                                         </h2>
-                                        {/* <p className="mt-2 text-md text-gray-600">
-                                            Use a square format, at least
-                                            128x128px for best results.
-                                        </p> */}
                                     </div>
                                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                                         <DropzoneUploader
-                                            clearPreview={() => {
-                                                setProductBasicInfo({
-                                                    ...productBasicInfo,
-                                                    logoUrl: '',
-                                                });
-                                            }}
+                                            clearPreview={clearLogoPreview}
                                             onFileUplad={handleLogoUpload}
                                             label="Drag 'n' drop an image, or click to select"
                                             maxFiles={1}
@@ -382,18 +436,90 @@ export default function ProductDashboardPage() {
                                         />
                                     </div>
 
-                                    <div className="w-full md:hidden">
-                                        {productBasicInfo.logoUrl && (
-                                            <ImgUrlPreview
-                                                handleClearPreview={() =>
-                                                    setProductBasicInfo({
-                                                        ...productBasicInfo,
-                                                        logoUrl: '',
-                                                    })
-                                                }
-                                                url={productBasicInfo.logoUrl}
-                                            />
-                                        )}
+                                    {/* ====== Multiple photos upload====== */}
+
+                                    <div className="mb-6 text-left">
+                                        <h2 className="text-sm font-bold text-gray-700">
+                                            Upload Images
+                                        </h2>
+                                        <p className="mt-2 text-sm text-gray-600">
+                                            Upload up to 3 images for your
+                                            product.
+                                        </p>
+
+                                        <div className="mt-4">
+                                            <div className="flex justify-between mb-1">
+                                                <span className="text-sm font-medium text-gray-700">
+                                                    Uploading...
+                                                </span>
+                                                <span className="text-sm font-medium text-gray-700">
+                                                    {20}%
+                                                </span>
+                                            </div>
+                                            <div className="w-full bg-gray-200 rounded-full h-2.5">
+                                                <div
+                                                    className={`h-2.5 rounded-full transition-all duration-300 ease-out bg-purple-600`}
+                                                    style={{ width: `${20}%` }}
+                                                    role="progressbar"
+                                                    aria-valuenow={20}
+                                                    aria-valuemin={0}
+                                                    aria-valuemax={100}
+                                                ></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                                        <DropzoneUploader
+                                            clearPreview={(imgUrl) =>
+                                                clearGalleryPreview(imgUrl)
+                                            }
+                                            onFileUplad={
+                                                handleGalleryImageUpload
+                                            }
+                                            label="Drag 'n' drop an image, or click to select"
+                                            maxFiles={1}
+                                            uploadError={''}
+                                            previewUrl={
+                                                productBasicInfo.images?.length
+                                                    ? productBasicInfo.images[0]
+                                                    : ''
+                                            }
+                                        />
+
+                                        <DropzoneUploader
+                                            clearPreview={(imgUrl) =>
+                                                clearGalleryPreview(imgUrl)
+                                            }
+                                            onFileUplad={
+                                                handleGalleryImageUpload
+                                            }
+                                            label="Drag 'n' drop an image, or click to select"
+                                            maxFiles={1}
+                                            uploadError={''}
+                                            previewUrl={
+                                                productBasicInfo.images?.length
+                                                    ? productBasicInfo.images[1]
+                                                    : ''
+                                            }
+                                        />
+
+                                        <DropzoneUploader
+                                            clearPreview={(imgUrl) =>
+                                                clearGalleryPreview(imgUrl)
+                                            }
+                                            onFileUplad={
+                                                handleGalleryImageUpload
+                                            }
+                                            label="Drag 'n' drop an image, or click to select"
+                                            maxFiles={1}
+                                            uploadError={''}
+                                            previewUrl={
+                                                productBasicInfo.images?.length
+                                                    ? productBasicInfo.images[2]
+                                                    : ''
+                                            }
+                                        />
                                     </div>
                                 </div>
                             )}

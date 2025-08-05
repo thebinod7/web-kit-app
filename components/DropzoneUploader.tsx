@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 interface DropzoneUploadProps {
     onFileUplad: (files: any, rejections: any) => void;
-    clearPreview: () => void;
+    clearPreview: (imgUrl: string) => void;
     label?: string;
     maxFiles?: number;
     uploadError?: any;
@@ -24,7 +24,6 @@ export default function DropzoneUpload({
     previewUrl,
     clearPreview,
 }: DropzoneUploadProps) {
-    console.log({ previewUrl });
     const acceptedFiles: Accept = { 'image/*': [] };
     const { getRootProps, getInputProps } = useDropzone({
         maxFiles: maxFiles || 1,
@@ -45,7 +44,7 @@ export default function DropzoneUpload({
                     />
                     <button
                         type="button"
-                        onClick={() => clearPreview()}
+                        onClick={() => clearPreview(previewUrl)}
                         aria-label={`Remove ${label}`}
                         className="absolute cursor-pointer top-2 right-2 p-1 rounded-full bg-red-500 text-white opacity-0 group-hover:opacity-100 transition-opacity"
                     >
