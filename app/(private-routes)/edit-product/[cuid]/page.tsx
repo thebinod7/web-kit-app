@@ -18,6 +18,7 @@ import SubmitToday from '../SubmitToday';
 import SocialDetailsForm from '../SocialDetailsForm';
 import { useProductStore } from '@/store/store.product';
 import DropzoneUploader from '@/components/DropzoneUploader';
+import ImgUrlPreview from '@/components/ImageUrlPreview';
 
 export default function ProductDashboardPage() {
     const { all_categories } = useFetchAllCountries();
@@ -351,15 +352,49 @@ export default function ProductDashboardPage() {
                             )}
                             {activeTab === PRODUCT_TABS.MEDIA && (
                                 <div className="text-center text-gray-500">
-                                    <DropzoneUploader
-                                        onFileUplad={handleLogoUpload}
-                                        label="Upload Photo*"
-                                        maxFiles={1}
-                                        isUploadig={
-                                            uploadLogoMutation.isPending
-                                        }
-                                        previewFile={productBasicInfo.logoUrl}
-                                    />
+                                    <div className="mb-6 text-left">
+                                        <h2 className="text-xl font-bold text-gray-900">
+                                            Upload Product Logo
+                                        </h2>
+                                        {/* <p className="mt-2 text-md text-gray-600">
+                                            Use a square format, at least
+                                            128x128px for best results.
+                                        </p> */}
+                                    </div>
+                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                                        <DropzoneUploader
+                                            clearPreview={() => {
+                                                setProductBasicInfo({
+                                                    ...productBasicInfo,
+                                                    logoUrl: '',
+                                                });
+                                            }}
+                                            onFileUplad={handleLogoUpload}
+                                            label="Drag 'n' drop an image, or click to select"
+                                            maxFiles={1}
+                                            uploadError={''}
+                                            isUploadig={
+                                                uploadLogoMutation.isPending
+                                            }
+                                            previewUrl={
+                                                productBasicInfo.logoUrl
+                                            }
+                                        />
+                                    </div>
+
+                                    <div className="w-full md:hidden">
+                                        {productBasicInfo.logoUrl && (
+                                            <ImgUrlPreview
+                                                handleClearPreview={() =>
+                                                    setProductBasicInfo({
+                                                        ...productBasicInfo,
+                                                        logoUrl: '',
+                                                    })
+                                                }
+                                                url={productBasicInfo.logoUrl}
+                                            />
+                                        )}
+                                    </div>
                                 </div>
                             )}
                             {activeTab === PRODUCT_TABS.SOCIALS && (

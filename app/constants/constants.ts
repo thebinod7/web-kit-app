@@ -18,6 +18,8 @@ export const PRODUCT_TABS = {
     SOCIALS: 'Socials',
 };
 
+export const MAX_MULTIPLE_FILES = 4;
+
 export const DROPZONE = {
     MAX_UPLOAD_SIZE: 15145728, // 15MB
     MAX_FILES: 1,

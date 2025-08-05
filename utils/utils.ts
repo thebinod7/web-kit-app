@@ -36,3 +36,30 @@ export const formatEnum = (inputText: string) => {
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' ');
 };
+
+export const extractFileNameAfterLastHyphen = (
+    s3Url: string,
+    maxLength?: number
+) => {
+    if (!maxLength) maxLength = 16;
+    const fullFileName = s3Url.split('/').pop();
+    const prefix = 'file-';
+    if (!fullFileName) return '';
+
+    const prefixIndex = fullFileName.indexOf(prefix);
+    if (prefixIndex === -1) return trimText(fullFileName, maxLength);
+
+    const nameAfterPrefix = fullFileName.slice(prefixIndex + prefix.length);
+
+    return trimText(nameAfterPrefix, maxLength);
+};
+
+export const trimText = (text: string, maxLength: number) => {
+    if (text.length > maxLength) {
+        const extIndex = text.lastIndexOf('.');
+        const extension = extIndex !== -1 ? text.slice(extIndex) : '';
+        const baseName = text.slice(0, maxLength - extension.length - 3);
+        return `${baseName}...${extension}`;
+    }
+    return text;
+};

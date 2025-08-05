@@ -1,18 +1,18 @@
-import { UploadCloud, UploadIcon } from 'lucide-react';
-import { Accept, useDropzone } from 'react-dropzone';
 import { DROPZONE } from '@/app/constants/constants';
+import { UploadCloud, UploadIcon, XCircle } from 'lucide-react';
+import { Accept, useDropzone } from 'react-dropzone';
+import InvalidFileError from './InvalidFileError';
 import Spinner from './Spinner';
-import DropzoneFilePreview from './DropzoneFilePreview';
+import Image from 'next/image';
 
 interface DropzoneUploadProps {
     onFileUplad: (files: any, rejections: any) => void;
+    clearPreview: () => void;
     label?: string;
     maxFiles?: number;
     uploadError?: any;
-    previewFile?: any;
+    previewUrl?: string;
     isUploadig?: boolean;
-    requiredDocs?: string[];
-    acceptPdf?: boolean;
 }
 
 export default function DropzoneUpload({
@@ -20,14 +20,12 @@ export default function DropzoneUpload({
     label,
     maxFiles,
     uploadError,
-    previewFile,
     isUploadig = false,
-    requiredDocs,
-    acceptPdf,
+    previewUrl,
+    clearPreview,
 }: DropzoneUploadProps) {
-    const acceptedFiles: Accept = acceptPdf
-        ? { 'application/pdf': [], 'image/*': [] }
-        : { 'image/*': [] };
+    console.log({ previewUrl });
+    const acceptedFiles: Accept = { 'image/*': [] };
     const { getRootProps, getInputProps } = useDropzone({
         maxFiles: maxFiles || 1,
         maxSize: DROPZONE.MAX_UPLOAD_SIZE,
@@ -35,18 +33,28 @@ export default function DropzoneUpload({
         onDrop: onFileUplad,
     });
     return (
-        <div className="flex justify-center items-center  bg-gray-50 p-4">
-            <div className="w-full max-w-md rounded-lg bg-white p-6 shadow-sm">
-                <div className="mb-2">
-                    <h2 className="text-xl font-semibold text-gray-900">
-                        Upload Product Logo
-                    </h2>
-                    <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                        Use a square format, at least 128x128px.
-                    </p>
+        <>
+            {previewUrl ? (
+                <div className="relative w-full h-48 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 group">
+                    <Image
+                        src={previewUrl || '/placeholder.svg'}
+                        alt={`Preview for ${label}`}
+                        layout="fill"
+                        objectFit="contain"
+                        className="p-2"
+                    />
+                    <button
+                        type="button"
+                        onClick={() => clearPreview()}
+                        aria-label={`Remove ${label}`}
+                        className="absolute cursor-pointer top-2 right-2 p-1 rounded-full bg-red-500 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                    >
+                        <XCircle className="h-5 w-5" />
+                    </button>
                 </div>
+            ) : (
                 <div
-                    className="border-2 border-dashed mt-1 rounded-lg p-5"
+                    className="border-2 border-dashed mt-1 rounded-lg p-5 hover:border-blue-200 transition-colors duration-200 ease-in-out"
                     {...getRootProps()}
                 >
                     <input {...getInputProps()} />
@@ -54,31 +62,21 @@ export default function DropzoneUpload({
                         {isUploadig ? (
                             <Spinner clsPadding="p-2" text="Uploading..." />
                         ) : (
-                            <div className="cursor-pointer flex flex-col items-center">
-                                <div className="text-center">
-                                    <UploadCloud className="mx-auto h-12 w-12 text-gray-400" />
-                                    <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                                        Drag 'n' drop your file here, or click
-                                        to select file.
-                                    </p>
-                                    <p className="text-xs text-gray-500">
-                                        PNG, JPG, WEBP up to 15MB
-                                    </p>
-                                </div>
+                            <div className="cursor-pointer">
+                                <UploadCloud className="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500" />
+                                <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                                    {label}
+                                </p>
                             </div>
                         )}
 
-                        {/* {uploadError?.length > 0 && (
-                        <InvalidFileError fileErrors={uploadError} />
-                    )}
-                    {previewFile && <UploadPreview file={previewFile} />} */}
-                        <DropzoneFilePreview
-                            fileUrl={previewFile}
-                            onRemove={() => {}}
-                        />
+                        {uploadError?.length > 0 && (
+                            <InvalidFileError fileErrors={uploadError} />
+                        )}
+                        {/* {previewUrl && <UploadPreview file={previewUrl} />} */}
                     </div>
                 </div>
-            </div>
-        </div>
+            )}
+        </>
     );
 }
