@@ -1,4 +1,5 @@
 import { APP_TITLE, FOOTER_TITLE } from '@/app/constants/constants';
+import { Facebook, LinkedinIcon, Twitter } from 'lucide-react';
 import React from 'react';
 
 export default function Footer() {
@@ -8,11 +9,6 @@ export default function Footer() {
                 <div className="grid md:grid-cols-4 gap-8">
                     <div className="md:col-span-2">
                         <div className="flex items-center space-x-2 mb-4">
-                            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                                <span className="text-white font-bold text-sm">
-                                    BFK
-                                </span>
-                            </div>
                             <span className="text-xl font-semibold">
                                 {APP_TITLE}
                             </span>
@@ -22,12 +18,13 @@ export default function Footer() {
                         </p>
                         <div className="flex space-x-4">
                             <button className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors">
-                                <span className="sr-only">Twitter</span>
-                                <div className="w-5 h-5 bg-gray-400"></div>
+                                <Twitter className="w-5 h-5" />
                             </button>
                             <button className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors">
-                                <span className="sr-only">GitHub</span>
-                                <div className="w-5 h-5 bg-gray-400"></div>
+                                <Facebook className="w-5 h-5" />
+                            </button>
+                            <button className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors">
+                                <LinkedinIcon className="w-5 h-5" />
                             </button>
                         </div>
                     </div>

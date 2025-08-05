@@ -502,7 +502,10 @@ export default function ProductDashboardPage() {
                         </div>
                     </div>
 
-                    <SidePanel handleUpdateClick={handleUpdateClick} />
+                    <SidePanel
+                        handleUpdateClick={handleUpdateClick}
+                        productSlug={productBasicInfo.slug}
+                    />
                 </div>
             </div>
         </div>

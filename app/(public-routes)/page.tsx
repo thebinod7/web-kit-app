@@ -6,8 +6,6 @@ import ProductListings from '../sections/ProductListings';
 export default function HomePage() {
     return (
         <div className="min-h-screen bg-white">
-            {/* Navigation */}
-
             {/* Hero Section */}
             <Hero />
 

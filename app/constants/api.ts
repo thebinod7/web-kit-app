@@ -11,4 +11,7 @@ export const APP_PATHS = {
     LOGIN: '/',
     SIGNUP: '/signup',
     DASHBOARD: '/dashboard',
+    MY_PRODUCTS: '/my-products',
+    SUBMIT_PRODUCT: '/submit-product',
+    EDIT_PRODUCT: '/edit-product',
 };

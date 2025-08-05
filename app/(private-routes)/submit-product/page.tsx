@@ -3,7 +3,7 @@ import { API_ROUTES } from '@/app/constants/api';
 import { PUBLIC_ENV } from '@/utils/env';
 import { generateTokenHeaders } from '@/utils/localstorage';
 import { postRequest } from '@/utils/request';
-import { sanitizeError } from '@/utils/utils';
+import { createSlug, sanitizeError } from '@/utils/utils';
 import { useMutation } from '@tanstack/react-query';
 import { TriangleAlert } from 'lucide-react';
 import { useRouter } from 'next/navigation';
@@ -52,13 +52,14 @@ export default function SubmitProductPage() {
         <div className="min-h-screen bg-white py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl mx-auto">
                 <h1 className="text-4xl font-bold text-gray-800 mb-4">
-                    Submit your Product
+                    Submit Your Product
                 </h1>
                 <p className="text-lg text-gray-600 mb-8">
-                    Let our robots do the work and gather all your product's
-                    data for you{' '}
+                    Get your product in front of more people! Add it to our
+                    platform and boost your visibility, reach, and credibility,
+                    all in just a few clicks.
                     <span role="img" aria-label="smiling face with sunglasses">
-                        😎
+                        🌟
                     </span>
                 </p>
 
@@ -100,7 +101,8 @@ export default function SubmitProductPage() {
                             className="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-gray-700 focus:border-gray-700 sm:text-base placeholder-gray-400"
                         />
                         <p className="mt-2 text-sm text-gray-500">
-                            {PUBLIC_ENV.APP_URL}/tools/{productDetails.name}
+                            {PUBLIC_ENV.APP_URL}/tools/
+                            {createSlug(productDetails.name)}
                         </p>
                     </div>
 
@@ -128,7 +130,7 @@ export default function SubmitProductPage() {
                             htmlFor="websiteUrl"
                             className="block text-lg font-medium text-gray-700 mb-2"
                         >
-                            Your product address*
+                            Product website link*
                         </label>
                         <input
                             type="url"

@@ -1,5 +1,7 @@
 import { ArrowRight, Calendar, Star, Users } from 'lucide-react';
+import Link from 'next/link';
 import React from 'react';
+import { APP_PATHS } from '../constants/api';
 
 export default function Hero() {
     return (
@@ -8,21 +10,23 @@ export default function Hero() {
                 <div className="text-center">
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
                         Discover & Promote
-                        <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-                            Indie Products
+                        <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-500">
+                            Innovative Apps
                         </span>
                     </h1>
                     <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-                        The ultimate platform for indie hackers and content
-                        creators to showcase their websites, apps, and digital
-                        products to a community that matters.
+                        Launch, showcase, and grow your product with a community
+                        built for makers.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-                        <button className="bg-gray-900 text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition-all transform hover:scale-105 flex items-center space-x-2">
+                        <Link
+                            href={APP_PATHS.SUBMIT_PRODUCT}
+                            className="bg-gray-900 text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition-all transform hover:scale-105 flex items-center space-x-2"
+                        >
                             <span>Submit Your Product</span>
                             <ArrowRight className="w-5 h-5" />
-                        </button>
+                        </Link>
                         <button className="border border-gray-300 text-gray-700 px-8 py-4 rounded-lg hover:border-gray-400 transition-colors">
                             Browse Products
                         </button>
