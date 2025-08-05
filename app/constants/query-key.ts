@@ -17,6 +17,7 @@ export const QUERY_KEYS = {
     PRODUCT: {
         GET_BY_CUID: 'GET_PRODUCT_BY_CUID',
         LIST: 'LIST_PRODUCTS',
+        MY_LIST: 'MY_LIST_PRODUCTS',
     },
     CATEGORY: {
         LIST_ALL: 'LIST_ALL',

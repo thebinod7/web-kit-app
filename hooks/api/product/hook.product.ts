@@ -16,3 +16,13 @@ export const useGetProductDetailsQuery = (cuid: string | undefined) => {
         staleTime: 0,
     });
 };
+
+export const useListMyProductQuery = () => {
+    return useQuery({
+        queryKey: [QUERY_KEYS.PRODUCT.GET_BY_CUID],
+        queryFn: () =>
+            getRequest(`${API_ROUTES.PRODUCTS}/me`, generateTokenHeaders()),
+        enabled: true,
+        staleTime: 0,
+    });
+};

@@ -4,16 +4,13 @@ import { API_ROUTES } from '@/app/constants/api';
 import { PRICING_TYPES, PRODUCT_TABS } from '@/app/constants/constants';
 import DropzoneUploader from '@/components/DropzoneUploader';
 import ProductTabs from '@/components/ProductTabs';
+import UploadProgressBar from '@/components/UploadProgressBar';
 import { useFetchAllCountries } from '@/hooks/api/app';
 import { useGetProductDetailsQuery } from '@/hooks/api/product/hook.product';
 import { useProductStore } from '@/store/store.product';
 import { IProduct } from '@/types/product';
 import { generateTokenHeaders } from '@/utils/localstorage';
-import {
-    patchRequest,
-    postRequest,
-    postWithProgressRequest,
-} from '@/utils/request';
+import { patchRequest, postRequest } from '@/utils/request';
 import { formatEnum, sanitizeError } from '@/utils/utils';
 import { useMutation } from '@tanstack/react-query';
 import { useParams } from 'next/navigation';
@@ -122,19 +119,10 @@ export default function ProductDashboardPage() {
 
     const uploadGallaryImageMutation = useMutation({
         mutationFn: (payload: any) => {
-            return postWithProgressRequest(
+            return postRequest(
                 API_ROUTES.APP + '/upload-single',
                 payload,
-                generateTokenHeaders(),
-                {
-                    onUploadProgress: (progressEvent: ProgressEvent) => {
-                        console.log('PROgress:', progressEvent);
-                        const percent = Math.round(
-                            (progressEvent.loaded * 100) / progressEvent.total
-                        );
-                        console.log(percent);
-                    },
-                }
+                generateTokenHeaders()
             );
         },
         onError: (error) => {
@@ -162,6 +150,7 @@ export default function ProductDashboardPage() {
             const file = acceptedFiles[0];
             const formData: any = new FormData();
             formData.append('file', file);
+
             return uploadGallaryImageMutation.mutate(formData);
         },
         []
@@ -447,26 +436,7 @@ export default function ProductDashboardPage() {
                                             product.
                                         </p>
 
-                                        <div className="mt-4">
-                                            <div className="flex justify-between mb-1">
-                                                <span className="text-sm font-medium text-gray-700">
-                                                    Uploading...
-                                                </span>
-                                                <span className="text-sm font-medium text-gray-700">
-                                                    {20}%
-                                                </span>
-                                            </div>
-                                            <div className="w-full bg-gray-200 rounded-full h-2.5">
-                                                <div
-                                                    className={`h-2.5 rounded-full transition-all duration-300 ease-out bg-purple-600`}
-                                                    style={{ width: `${20}%` }}
-                                                    role="progressbar"
-                                                    aria-valuenow={20}
-                                                    aria-valuemin={0}
-                                                    aria-valuemax={100}
-                                                ></div>
-                                            </div>
-                                        </div>
+                                        {/* Progress bar for loading */}
                                     </div>
 
                                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
