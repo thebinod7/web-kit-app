@@ -19,6 +19,7 @@ export const PRODUCT_TABS = {
 };
 
 export const MAX_MULTIPLE_FILES = 4;
+export const COOKIE_EXPIRY = 7 * 24 * 60 * 60; // 7 days
 
 export const DROPZONE = {
     MAX_UPLOAD_SIZE: 15145728, // 15MB

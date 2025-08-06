@@ -1,10 +1,11 @@
 'use client';
-import { API_ROUTES } from '@/app/constants/api';
-import { APP_CODE, APP_TITLE } from '@/app/constants/constants';
-import { saveAccessToken } from '@/utils/localstorage';
+import { API_ROUTES, APP_PATHS } from '@/app/constants/api';
+import { APP_CODE, APP_TITLE, COOKIE_EXPIRY } from '@/app/constants/constants';
+import { LOCAL_KEYS } from '@/utils/localstorage';
 import { postRequest } from '@/utils/request';
 import { useGoogleLogin } from '@react-oauth/google';
 import { useMutation } from '@tanstack/react-query';
+import { setCookie } from 'cookies-next/client';
 import { ChromeIcon } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -18,11 +19,15 @@ export default function Component() {
             toast.error('Failed to login with Google, Please try again.');
         },
         onSuccess: ({ data }) => {
-            console.log('Google login success:', data);
             toast.success('Successfully logged in with Google!');
             const { accessToken } = data.result;
-            saveAccessToken(accessToken);
-            window.location.replace('/dashboard');
+            setCookie(LOCAL_KEYS.ACCESS_TOKEN, accessToken, {
+                secure: true,
+                maxAge: COOKIE_EXPIRY,
+                sameSite: 'strict',
+                path: '/',
+            });
+            window.location.replace(APP_PATHS.MY_PRODUCTS);
         },
     });
 

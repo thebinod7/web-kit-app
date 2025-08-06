@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 import UserProfileDropdown from '../UserProfileDropdown';
 
 export default function Header() {
-    const { data, isLoading } = useGetMeUser();
+    const { data } = useGetMeUser();
     const { result } = data?.data || {};
 
     const setLoggedInUser = useAppStore((state) => state.setLoggedInUser);
@@ -81,7 +81,7 @@ export default function Header() {
                                 href={'/login'}
                                 className="bg-gray-900 cursor-pointer text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors text-sm font-medium"
                             >
-                                {isLoading ? 'Loading...' : 'Login'}
+                                Login
                             </Link>
                         )}
                     </div>

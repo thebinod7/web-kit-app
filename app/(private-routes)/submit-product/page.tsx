@@ -1,7 +1,7 @@
 'use client';
 import { API_ROUTES } from '@/app/constants/api';
 import { PUBLIC_ENV } from '@/utils/env';
-import { generateTokenHeaders } from '@/utils/localstorage';
+import { generateCookieHeaders } from '@/utils/localstorage';
 import { postRequest } from '@/utils/request';
 import { createSlug, sanitizeError } from '@/utils/utils';
 import { useMutation } from '@tanstack/react-query';
@@ -23,7 +23,7 @@ export default function SubmitProductPage() {
             return postRequest(
                 API_ROUTES.PRODUCTS,
                 payload,
-                generateTokenHeaders()
+                generateCookieHeaders()
             );
         },
         onError: (error: any) => {

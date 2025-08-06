@@ -8,7 +8,7 @@ import { useFetchAllCountries } from '@/hooks/api/app';
 import { useGetProductDetailsQuery } from '@/hooks/api/product/hook.product';
 import { useProductStore } from '@/store/store.product';
 import { IProduct } from '@/types/product';
-import { generateTokenHeaders } from '@/utils/localstorage';
+import { generateCookieHeaders } from '@/utils/localstorage';
 import { patchRequest, postRequest } from '@/utils/request';
 import { formatEnum, sanitizeError } from '@/utils/utils';
 import { useMutation } from '@tanstack/react-query';
@@ -74,7 +74,7 @@ export default function ProductDashboardPage() {
             return patchRequest(
                 `${API_ROUTES.PRODUCTS}/${cuid}`,
                 payload,
-                generateTokenHeaders()
+                generateCookieHeaders()
             );
         },
         onError: (error: any) => {
@@ -102,7 +102,7 @@ export default function ProductDashboardPage() {
             return postRequest(
                 API_ROUTES.APP + '/upload-single',
                 payload,
-                generateTokenHeaders()
+                generateCookieHeaders()
             );
         },
         onError: (error) => {
@@ -122,7 +122,7 @@ export default function ProductDashboardPage() {
             return postRequest(
                 API_ROUTES.APP + '/upload-single',
                 payload,
-                generateTokenHeaders()
+                generateCookieHeaders()
             );
         },
         onError: (error) => {

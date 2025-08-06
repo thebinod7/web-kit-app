@@ -6,6 +6,7 @@ const axiosInstance = axios.create({
     headers: {
         'ngrok-skip-browser-warning': 'yes',
     },
+    withCredentials: true,
 });
 
 //use to logout use when token expire

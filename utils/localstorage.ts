@@ -1,3 +1,9 @@
+import { getCookie } from 'cookies-next/client';
+
+export const LOCAL_KEYS = {
+    ACCESS_TOKEN: 'accessToken',
+};
+
 export const saveAccessToken = (token: string) => {
     localStorage.setItem('accessToken', token);
 };
@@ -10,8 +16,9 @@ export const clearLocalStorage = () => {
     localStorage.clear();
 };
 
-export const generateTokenHeaders = () => {
-    const accessToken = getAccessToken();
+export const generateCookieHeaders = () => {
+    const accessToken = getCookie(LOCAL_KEYS.ACCESS_TOKEN);
+    console.log({ accessToken });
     return {
         headers: {
             Authorization: `Bearer ${accessToken}`,

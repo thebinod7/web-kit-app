@@ -1,7 +1,8 @@
 'use client';
 
 import { ICurrentUser } from '@/types';
-import { clearLocalStorage } from '@/utils/localstorage';
+import { clearLocalStorage, LOCAL_KEYS } from '@/utils/localstorage';
+import { deleteCookie } from 'cookies-next/client';
 import { ChevronDown, LogOut, Settings, User, Wrench } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
@@ -38,8 +39,11 @@ export default function UserProfileDropdown({
 
     const handleLogout = () => {
         clearLocalStorage();
+        deleteCookie(LOCAL_KEYS.ACCESS_TOKEN);
         window.location.replace('/login');
     };
+
+    const onMenuItemClick = () => setIsOpen(false);
 
     return (
         <div className="relative inline-block text-left mt-2">
@@ -102,6 +106,7 @@ export default function UserProfileDropdown({
                             Settings
                         </a>
                         <Link
+                            onClick={onMenuItemClick}
                             href="my-products"
                             className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                             role="menuitem"
@@ -113,7 +118,7 @@ export default function UserProfileDropdown({
                         </Link>
                         <button
                             onClick={handleLogout}
-                            className="flex items-center px-4 py-2 text-sm text-gray-700 text-red-600 hover:bg-gray-100"
+                            className="flex w-full cursor-pointer items-center px-4 py-2 text-sm  text-red-600 hover:bg-gray-100"
                             role="menuitem"
                             tabIndex={-1}
                             id="menu-item-2"
