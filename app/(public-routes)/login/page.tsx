@@ -7,9 +7,13 @@ import { useGoogleLogin } from '@react-oauth/google';
 import { useMutation } from '@tanstack/react-query';
 import { setCookie } from 'cookies-next/client';
 import { ChromeIcon } from 'lucide-react';
+import { useSearchParams } from 'next/navigation';
 import { toast } from 'sonner';
 
 export default function Component() {
+    const searchParams = useSearchParams();
+    const redirectUrl = searchParams.get('redirectUrl');
+
     const loginWithGoogleMutation = useMutation({
         mutationFn: (payload: any) => {
             return postRequest(API_ROUTES.AUTH + '/google-login', payload);
@@ -27,6 +31,7 @@ export default function Component() {
                 sameSite: 'strict',
                 path: '/',
             });
+            if (redirectUrl) return window.location.replace(`${redirectUrl}`);
             window.location.replace(APP_PATHS.MY_PRODUCTS);
         },
     });

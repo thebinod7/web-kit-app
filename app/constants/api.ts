@@ -8,7 +8,7 @@ export const API_ROUTES = {
 };
 
 export const APP_PATHS = {
-    LOGIN: '/',
+    LOGIN: '/login',
     SIGNUP: '/signup',
     DASHBOARD: '/dashboard',
     MY_PRODUCTS: '/my-products',
