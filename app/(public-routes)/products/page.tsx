@@ -8,12 +8,18 @@ import {
 } from 'lucide-react';
 import HeaderSection from './HeaderSection';
 import SearchBar from './SearchBar';
-import ProductCategorySection from './ProductCategorySection';
 import ProductCard from './ProductCard';
 import CategoriesSection from './CategorySection';
 import PartnersSection from './Partners';
+import { PUBLIC_ENV } from '@/utils/env';
 
-export default function Home() {
+export default async function page() {
+    const resposnse = await fetch(
+        `${PUBLIC_ENV.API_ENDPOINT!}/api/v1/products`
+    );
+    const data = await resposnse.json();
+    const result = data?.result || {};
+
     const products = [
         {
             id: '1',
@@ -70,20 +76,24 @@ export default function Home() {
     return (
         <main className="min-h-screen bg-gray-50 text-gray-900">
             <div className="container mx-auto px-4 py-12 lg:grid lg:grid-cols-3 lg:gap-12">
-                {' '}
-                {/* Increased py and lg:gap */}
                 {/* Left Column */}
                 <div className="lg:col-span-2">
                     <HeaderSection />
                     <SearchBar />
-                    <ProductCategorySection />
                     {/* <SortDropdown /> */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {' '}
                         {/* Increased gap */}
-                        {products.map((product) => (
-                            <ProductCard key={product.id} product={product} />
-                        ))}
+                        {result?.rows.length > 0 &&
+                            result.rows.map((product: any) => (
+                                <ProductCard
+                                    key={product.cuid}
+                                    logoUrl={product.logoUrl}
+                                    name={product.name}
+                                    tagline={product.tagline}
+                                    pricingType={product.pricingType}
+                                />
+                            ))}
                     </div>
                 </div>
                 {/* Right Column */}
