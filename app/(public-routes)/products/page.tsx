@@ -9,14 +9,15 @@ import SearchBar from './SearchBar';
 
 export default async function page({ searchParams }: any) {
     let API_ENDPOINT = `${PUBLIC_ENV.API_ENDPOINT}/api/v1/products`;
-    const category = (await searchParams).category;
-    if (category) {
-        const params = new URLSearchParams({
-            categorySlug: category,
-        });
+    const category = (await searchParams).category || '';
+    const search = (await searchParams).search || '';
+    const params = new URLSearchParams();
+    if (category) params.append('categorySlug', category);
+    if (search) params.append('name', search);
+    if (params.toString()) {
         API_ENDPOINT += `?${params.toString()}`;
     }
-    const resposnse = await fetch(`${API_ENDPOINT}`);
+    const resposnse = await fetch(`${API_ENDPOINT}`, { cache: 'no-store' });
     const data = await resposnse.json();
     const result = data?.result || {};
 
