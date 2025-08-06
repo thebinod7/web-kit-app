@@ -6,6 +6,7 @@ import { Search } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect } from 'react';
 import UserProfileDropdown from '../UserProfileDropdown';
+import { APP_PATHS } from '@/app/constants/api';
 
 export default function Header() {
     const { data } = useGetMeUser();
@@ -60,12 +61,12 @@ export default function Header() {
                             >
                                 Featured
                             </a>
-                            <a
-                                href="#apps"
+                            <Link
+                                href={APP_PATHS.PRODUCTS}
                                 className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium"
                             >
-                                Apps
-                            </a>
+                                Products
+                            </Link>
                             <a
                                 href="#blog"
                                 className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium"

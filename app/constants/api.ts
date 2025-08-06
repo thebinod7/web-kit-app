@@ -14,4 +14,5 @@ export const APP_PATHS = {
     MY_PRODUCTS: '/my-products',
     SUBMIT_PRODUCT: '/submit-product',
     EDIT_PRODUCT: '/edit-product',
+    PRODUCTS: '/products',
 };
