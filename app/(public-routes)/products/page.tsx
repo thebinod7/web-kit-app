@@ -1,19 +1,26 @@
 import BlankResult from '@/components/BlankResult';
 import IconResolver from '@/components/mini/IconResolver';
+import ServerSidePagination from '@/components/ServerSidePagination';
 import { PUBLIC_ENV } from '@/utils/env';
 import Link from 'next/link';
 import HeaderSection from './HeaderSection';
 import PartnersSection from './Partners';
 import ProductCard from './ProductCard';
+import ResetFilters from './ResetFilters';
 import SearchBar from './SearchBar';
 
 export default async function page({ searchParams }: any) {
     let API_ENDPOINT = `${PUBLIC_ENV.API_ENDPOINT}/api/v1/products`;
-    const category = (await searchParams).category || '';
-    const search = (await searchParams).search || '';
+
+    const categorySlug = (await searchParams).categorySlug || '';
+    const name = (await searchParams).search || '';
+    const page = (await searchParams).page;
+
     const params = new URLSearchParams();
-    if (category) params.append('categorySlug', category);
-    if (search) params.append('name', search);
+    if (page) params.set('page', page);
+    if (name) params.set('name', name);
+    if (categorySlug) params.set('categorySlug', categorySlug);
+
     if (params.toString()) {
         API_ENDPOINT += `?${params.toString()}`;
     }
@@ -27,6 +34,8 @@ export default async function page({ searchParams }: any) {
                 {/* Left Column */}
                 <div className="lg:col-span-2">
                     <HeaderSection />
+                    {categorySlug && <ResetFilters />}
+
                     <SearchBar />
                     {/* <SortDropdown /> */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -46,6 +55,9 @@ export default async function page({ searchParams }: any) {
                             <BlankResult message="No result found for your search. Please try different query." />
                         )}
                     </div>
+                    {result?.rows.length > 0 && (
+                        <ServerSidePagination meta={result.meta} />
+                    )}
                 </div>
                 {/* Right Column */}
                 <div className="lg:col-span-1 mt-10 lg:mt-0">
@@ -58,16 +70,15 @@ export default async function page({ searchParams }: any) {
                                 result.categories.map((cat: any) => {
                                     return (
                                         <Link
-                                            href={`/products?category=${cat.slug}`}
+                                            href={`/products?categorySlug=${cat.slug}`}
                                             key={cat.cuid}
                                             className={`flex flex-col items-center justify-center p-4 rounded-lg border transition-all duration-200 hover:shadow-md cursor-pointer
         ${
-            category === cat.slug
+            categorySlug === cat.slug
                 ? 'bg-blue-50 border-blue-200 text-blue-600'
                 : 'bg-white border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-blue-300'
         }`}
                                         >
-                                            {/* {icon} */}
                                             <IconResolver name={cat.slug} />
                                             <span className="mt-2 text-sm font-medium">
                                                 {cat.name}
