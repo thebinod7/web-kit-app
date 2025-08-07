@@ -64,7 +64,7 @@ export default function ProductDetailsSidebar({
                     {socialDetails.contactEmail || '-'}
                 </div>
 
-                <div className="text-gray-500">Added On</div>
+                <div className="text-gray-500">Listed On</div>
                 <div className="text-gray-800 font-medium">
                     {humanizeDate(launchDate)}
                 </div>
