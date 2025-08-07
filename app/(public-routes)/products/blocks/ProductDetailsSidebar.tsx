@@ -6,8 +6,6 @@ interface ProductSidebarProps {
     launchDate: string;
     category: string;
     pricing: string;
-    socials: { icon: React.ElementType; url: string }[];
-    forSale: string;
     tags: string[];
 }
 
@@ -17,8 +15,6 @@ export default function ProductDetailsSidebar({
     launchDate,
     category,
     pricing,
-    socials,
-    forSale,
     tags,
 }: ProductSidebarProps) {
     return (
@@ -55,14 +51,15 @@ export default function ProductDetailsSidebar({
             <div className="mt-6">
                 <h3 className="text-sm font-medium text-gray-500 mb-2">Tags</h3>
                 <div className="flex flex-wrap gap-2">
-                    {tags.map((tag, i) => (
-                        <span
-                            key={i}
-                            className="px-3 py-1 text-xs font-medium text-gray-700 bg-gray-200 rounded-full"
-                        >
-                            {tag}
-                        </span>
-                    ))}
+                    {tags.length > 0 &&
+                        tags.map((tag, i) => (
+                            <span
+                                key={i}
+                                className="px-3 py-1 text-xs font-medium text-gray-700 bg-gray-200 rounded-full"
+                            >
+                                {tag}
+                            </span>
+                        ))}
                 </div>
             </div>
         </div>

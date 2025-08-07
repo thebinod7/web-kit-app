@@ -1,25 +1,24 @@
 import Image from 'next/image';
 import { Star } from 'lucide-react';
+import { ICONS } from '@/app/constants/images';
 
 interface ProductHeaderProps {
     logo: string;
     name: string;
     rating: number;
-    shortDescription: string;
-    upvotedByAvatars: string[];
+    tagline: string;
 }
 
 export default function ProductHeader({
     logo,
     name,
     rating,
-    shortDescription,
-    upvotedByAvatars,
+    tagline,
 }: ProductHeaderProps) {
     return (
         <div className="flex items-start gap-4">
             <Image
-                src={logo || '/placeholder.svg'}
+                src={logo || ICONS.BLANK_IMAGE}
                 alt={`${name} logo`}
                 width={64}
                 height={64}
@@ -37,22 +36,7 @@ export default function ProductHeader({
                         ))}
                     </div>
                 </h2>
-                <p className="text-gray-600 mt-1">{shortDescription}</p>
-                <div className="mt-4 flex items-center text-sm text-gray-500">
-                    Upvoted by
-                    <div className="flex -space-x-2 ml-2">
-                        {upvotedByAvatars.map((avatar, i) => (
-                            <Image
-                                key={i}
-                                src={avatar || '/placeholder.svg'}
-                                alt={`Upvoter ${i + 1}`}
-                                width={24}
-                                height={24}
-                                className="rounded-full border-2 border-white"
-                            />
-                        ))}
-                    </div>
-                </div>
+                <p className="text-gray-600 mt-1">{tagline}</p>
             </div>
         </div>
     );
