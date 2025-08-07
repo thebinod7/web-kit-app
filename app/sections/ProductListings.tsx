@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { APP_PATHS } from '../constants/api';
 import { formatEnum } from '@/utils/utils';
 import Advertising from './Advertising';
-import Partners from './Partners';
+import FeaturedProducts from './FeaturedProducts';
 
 export default function ProductListings({ products }: { products: any[] }) {
     return (
@@ -105,7 +105,7 @@ export default function ProductListings({ products }: { products: any[] }) {
 
                     {/* Sidebar for Partners and Advertising */}
                     <aside className="lg:w-80 flex-shrink-0 space-y-8">
-                        <Partners />
+                        <FeaturedProducts />
 
                         <Advertising />
                     </aside>

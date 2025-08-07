@@ -30,7 +30,7 @@ export default function ProductCard({
             target="_blank"
             rel="noopener noreferrer"
         >
-            <div className="relative flex items-start gap-4 p-4 bg-white rounded-lg shadow-sm border border-gray-200 transition-all duration-200 hover:shadow-md hover:border-blue-300 group">
+            <div className="relative flex items-start gap-4 p-4 bg-white rounded-lg shadow-sm border border-gray-200 transition-all duration-200 hover:shadow-md hover:border-orange-300 group">
                 <div className="flex-shrink-0 p-3 bg-gray-100 rounded-md border border-gray-200 flex items-center justify-center h-12 w-12">
                     <Image
                         src={logoUrl || ICONS.BLANK_IMAGE}
@@ -62,7 +62,7 @@ export default function ProductCard({
                     className={`absolute top-2 right-2 px-2 py-1 text-xs font-semibold rounded-full transition-all duration-200
           ${
               pricingType === PRICING_TYPES.FREE
-                  ? 'bg-blue-100 text-blue-700'
+                  ? 'bg-blue-100 text-blue-500'
                   : 'bg-gray-800 text-white'
           }
           opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0`}
