@@ -1,4 +1,5 @@
 import BlogArticles from '../sections/BlogArticles';
+import Faq from '../sections/Faq';
 import FeaturedProducts from '../sections/FeaturedProducts';
 import Hero from '../sections/Hero';
 import ProductListings from '../sections/ProductListings';
@@ -13,7 +14,7 @@ export default function page() {
             <FeaturedProducts />
 
             {/* App Listing */}
-            <ProductListings />
+            <Faq />
 
             {/* Blog Articles */}
             <BlogArticles />
