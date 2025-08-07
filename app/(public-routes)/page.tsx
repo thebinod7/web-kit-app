@@ -3,7 +3,7 @@ import FeaturedProducts from '../sections/FeaturedProducts';
 import Hero from '../sections/Hero';
 import ProductListings from '../sections/ProductListings';
 
-export default function HomePage() {
+export default function page() {
     return (
         <div className="min-h-screen bg-white">
             {/* Hero Section */}
