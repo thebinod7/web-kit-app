@@ -1,3 +1,5 @@
+import { ICONS } from '@/app/constants/images';
+import { humanizeDate } from '@/utils/date';
 import Image from 'next/image';
 
 interface ProductSidebarProps {
@@ -25,7 +27,7 @@ export default function ProductDetailsSidebar({
                 </h3>
                 <div className="flex items-center gap-2">
                     <Image
-                        src={publisherLogo || '/placeholder.svg'}
+                        src={publisherLogo || ICONS.USER}
                         alt={`${publisherName} logo`}
                         width={24}
                         height={24}
@@ -38,14 +40,16 @@ export default function ProductDetailsSidebar({
             </div>
 
             <div className="grid grid-cols-2 gap-y-4 text-sm">
-                <div className="text-gray-500">Launch Date</div>
-                <div className="text-gray-800 font-medium">{launchDate}</div>
+                <div className="text-gray-500">Added On</div>
+                <div className="text-gray-800 font-medium">
+                    {humanizeDate(launchDate)}
+                </div>
 
                 <div className="text-gray-500">Category</div>
                 <div className="text-gray-800 font-medium">{category}</div>
 
                 <div className="text-gray-500">Pricing</div>
-                <div className="font-medium text-green-600">{pricing}</div>
+                <div className="font-medium text-orange-600">{pricing}</div>
             </div>
 
             <div className="mt-6">

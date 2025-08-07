@@ -8,19 +8,8 @@ import ProductDetailsTabs from '../blocks/ProductDetailsTabs';
 import ProductHeader from '../blocks/ProductHeader';
 import ProductOverview from '../blocks/ProductOverview';
 
-interface ProductDetailsPageProps {
-    rating: number;
-    upvotes: number;
-    upvotedByAvatars: string[];
-    tabs: { icon: React.ElementType; label: string; count?: number }[];
-    publisherLogo: string;
-    publisherName: string;
-    launchDate: string;
-    category: string;
-}
-
 // Mock data for the product details
-const productData: ProductDetailsPageProps = {
+const productData: any = {
     rating: 5,
     upvotes: 48,
     upvotedByAvatars: [ICONS.USER, ICONS.USER],
@@ -73,10 +62,10 @@ export default async function ProductDetailsPage({ params }: { params: any }) {
                 {/* Right Column (Sidebar) */}
                 <div className="md:col-span-1">
                     <ProductDetailsSidebar
-                        publisherLogo={productData.publisherLogo}
-                        publisherName={productData.publisherName}
-                        launchDate={productData.launchDate}
-                        category={productData.category}
+                        publisherLogo={result?.submittedBy?.profilePicture}
+                        publisherName={result?.submittedBy?.name || '-'}
+                        launchDate={result.createdAt}
+                        category={result.category?.name || '-'}
                         pricing={formatEnum(result.pricingType)}
                         tags={result.tags}
                     />
