@@ -49,11 +49,11 @@ export default function Component() {
     return (
         <main className="flex min-h-screen flex-col items-center justify-center bg-white px-4 py-12 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-md text-center mb-8">
-                <h1 className="text-4xl font-bold text-gray-900">
-                    Break<span className="text-blue-400">FreeKit</span>
+                <h1 className="text-3xl font-bold text-gray-900">
+                    BreakFree<span className="text-blue-400">Kit</span>
                 </h1>
                 <p className="mt-2 text-lg text-gray-600">
-                    Discover and be discovered.
+                    Discover and be discovered globally.
                 </p>
             </div>
 

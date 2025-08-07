@@ -47,6 +47,7 @@ export default async function page({ searchParams }: any) {
                                     key={product.cuid}
                                     logoUrl={product.logoUrl}
                                     name={product.name}
+                                    slug={product.slug}
                                     tagline={product.tagline}
                                     pricingType={product.pricingType}
                                 />
