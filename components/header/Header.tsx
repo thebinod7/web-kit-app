@@ -1,15 +1,18 @@
 'use client';
+import { APP_PATHS } from '@/app/constants/api';
 import { APP_TITLE } from '@/app/constants/constants';
 import { useGetMeUser } from '@/hooks/api/user/hook.user';
 import { useAppStore } from '@/store/store.app';
+import { LOCAL_KEYS } from '@/utils/localstorage';
+import { getCookie } from 'cookies-next/client';
 import { Search } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect } from 'react';
 import UserProfileDropdown from '../UserProfileDropdown';
-import { APP_PATHS } from '@/app/constants/api';
 
 export default function Header() {
-    const { data } = useGetMeUser();
+    const accessToken = getCookie(LOCAL_KEYS.ACCESS_TOKEN);
+    const { data } = useGetMeUser(accessToken || '');
     const { result } = data?.data || {};
 
     const setLoggedInUser = useAppStore((state) => state.setLoggedInUser);

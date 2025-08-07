@@ -27,6 +27,7 @@ export default function ProductDetailsSidebar({
                 </h3>
                 <div className="flex items-center gap-2">
                     <Image
+                        referrerPolicy="no-referrer"
                         src={publisherLogo || ICONS.USER}
                         alt={`${publisherName} logo`}
                         width={24}

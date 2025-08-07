@@ -14,21 +14,6 @@ export default function AppsPage() {
 
     return (
         <div className="container mx-auto px-4 py-8 md:px-6 lg:px-8">
-            {/* <div className="flex justify-between items-center mb-8">
-                <h1 className="text-2xl font-bold text-gray-800">
-                    Your Products
-                </h1>
-                <Link
-                    href={'/submit-product'}
-                    className="inline-flex cursor-pointer items-center justify-center whitespace-nowrap rounded-md text-sm font-medium
-                           ring-offset-background focus-visible:outline-none focus-visible:ring-2
-                           focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none
-                           disabled:opacity-50 bg-gray-900 text-gray-50 hover:bg-gray-900/90 h-10 px-4 py-2
-                           shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-200"
-                >
-                    Submit New Product
-                </Link>
-            </div> */}
             <SubmitToday
                 iconName="tv-minimal"
                 heading="Your Products"

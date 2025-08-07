@@ -5,12 +5,16 @@ import { generateCookieHeaders } from '@/utils/localstorage';
 import { getRequest } from '@/utils/request';
 import { useQuery } from '@tanstack/react-query';
 
-export const useGetMeUser = () => {
+export const useGetMeUser = (accessToken: string) => {
+    const cookieHeader = {
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+        },
+    };
     return useQuery({
         queryKey: [QUERY_KEYS.USER.ME],
-        queryFn: () =>
-            getRequest(`${API_ROUTES.USERS}/me`, generateCookieHeaders()),
-        enabled: true,
+        queryFn: () => getRequest(`${API_ROUTES.USERS}/me`, cookieHeader),
+        enabled: accessToken ? true : false,
         staleTime: 0,
     });
 };

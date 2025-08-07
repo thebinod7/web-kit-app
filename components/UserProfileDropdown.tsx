@@ -1,5 +1,6 @@
 'use client';
 
+import { APP_PATHS } from '@/app/constants/api';
 import { ICurrentUser } from '@/types';
 import { clearLocalStorage, LOCAL_KEYS } from '@/utils/localstorage';
 import { deleteCookie } from 'cookies-next/client';
@@ -107,7 +108,7 @@ export default function UserProfileDropdown({
                         </a>
                         <Link
                             onClick={onMenuItemClick}
-                            href="my-products"
+                            href={APP_PATHS.MY_PRODUCTS}
                             className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                             role="menuitem"
                             tabIndex={-1}

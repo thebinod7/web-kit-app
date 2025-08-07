@@ -29,7 +29,8 @@ export default async function ProductDetailsPage({ params }: { params: any }) {
     let API_ENDPOINT = `${PUBLIC_ENV.API_ENDPOINT}/api/v1/products/details/${slug}`;
     const resposnse = await fetch(`${API_ENDPOINT}`, { cache: 'no-store' });
     const data = await resposnse.json();
-    const result = data?.result || {};
+    const result = data?.result || null;
+    if (!result) return <div>Product not found</div>;
     console.log('RESULT:', result);
 
     return (
@@ -66,8 +67,8 @@ export default async function ProductDetailsPage({ params }: { params: any }) {
                         publisherName={result?.submittedBy?.name || '-'}
                         launchDate={result.createdAt}
                         category={result.category?.name || '-'}
-                        pricing={formatEnum(result.pricingType)}
-                        tags={result.tags}
+                        pricing={formatEnum(result?.pricingType || '')}
+                        tags={result?.tags}
                     />
                 </div>
             </div>
