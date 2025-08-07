@@ -63,12 +63,13 @@ export default async function ProductDetailsPage({ params }: { params: any }) {
                 {/* Right Column (Sidebar) */}
                 <div className="md:col-span-1">
                     <ProductDetailsSidebar
-                        publisherLogo={result?.submittedBy?.profilePicture}
-                        publisherName={result?.submittedBy?.name || '-'}
+                        publisherLogo={result.submittedBy?.profilePicture}
+                        publisherName={result.submittedBy?.name || '-'}
                         launchDate={result.createdAt}
                         category={result.category?.name || '-'}
                         pricing={formatEnum(result?.pricingType || '')}
-                        tags={result?.tags}
+                        tags={result.tags}
+                        socialDetails={result.details}
                     />
                 </div>
             </div>

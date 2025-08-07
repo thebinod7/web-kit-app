@@ -1,6 +1,22 @@
 import { ICONS } from '@/app/constants/images';
 import { humanizeDate } from '@/utils/date';
+import {
+    Facebook,
+    FacebookIcon,
+    Github,
+    GithubIcon,
+    Globe,
+    Instagram,
+    InstagramIcon,
+    Linkedin,
+    LinkedinIcon,
+    LucideIcon,
+    Twitter,
+    X,
+    Youtube,
+} from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface ProductSidebarProps {
     publisherLogo: string;
@@ -9,6 +25,7 @@ interface ProductSidebarProps {
     category: string;
     pricing: string;
     tags: string[];
+    socialDetails: Record<string, any>;
 }
 
 export default function ProductDetailsSidebar({
@@ -18,6 +35,7 @@ export default function ProductDetailsSidebar({
     category,
     pricing,
     tags,
+    socialDetails,
 }: ProductSidebarProps) {
     return (
         <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
@@ -41,6 +59,11 @@ export default function ProductDetailsSidebar({
             </div>
 
             <div className="grid grid-cols-2 gap-y-4 text-sm">
+                <div className="text-gray-500">Contact Email</div>
+                <div className="text-gray-800 font-medium">
+                    {socialDetails.contactEmail || '-'}
+                </div>
+
                 <div className="text-gray-500">Added On</div>
                 <div className="text-gray-800 font-medium">
                     {humanizeDate(launchDate)}
@@ -52,6 +75,82 @@ export default function ProductDetailsSidebar({
                 <div className="text-gray-500">Pricing</div>
                 <div className="font-medium text-orange-600">{pricing}</div>
             </div>
+
+            {socialDetails && (
+                <div className="mt-6 pt-6 border-t border-gray-200">
+                    <h3 className="text-sm font-medium text-gray-500 mb-2">
+                        Social
+                    </h3>
+                    <div className="flex flex-wrap gap-3">
+                        {socialDetails.twitterUrl && (
+                            <Link
+                                href={socialDetails.twitterUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-gray-600 hover:text-gray-900 transition-colors"
+                                aria-label={`Link to Twitter`}
+                            >
+                                <Twitter />
+                            </Link>
+                        )}
+                        {socialDetails.githubUrl && (
+                            <Link
+                                href={socialDetails.githubUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-gray-600 hover:text-gray-900 transition-colors"
+                                aria-label={`Link to Github`}
+                            >
+                                <GithubIcon />
+                            </Link>
+                        )}
+                        {socialDetails.linkedinUrl && (
+                            <Link
+                                href={socialDetails.linkedinUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-gray-600 hover:text-gray-900 transition-colors"
+                                aria-label={`Link to Linkedin`}
+                            >
+                                <LinkedinIcon />
+                            </Link>
+                        )}
+                        {socialDetails.youtubeUrl && (
+                            <Link
+                                href={socialDetails.youtubeUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-gray-600 hover:text-gray-900 transition-colors"
+                                aria-label={`Link to Youtube`}
+                            >
+                                <Youtube />
+                            </Link>
+                        )}
+                        {socialDetails.facebookUrl && (
+                            <Link
+                                href={socialDetails.facebookUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-gray-600 hover:text-gray-900 transition-colors"
+                                aria-label={`Link to Facebook`}
+                            >
+                                <FacebookIcon />
+                            </Link>
+                        )}
+                        {socialDetails.instagramUrl && (
+                            <Link
+                                href={socialDetails.instagramUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-gray-600 hover:text-gray-900 transition-colors"
+                                aria-label={`Link to Instagram`}
+                            >
+                                <InstagramIcon />
+                            </Link>
+                        )}
+                    </div>
+                </div>
+            )}
 
             <div className="mt-6">
                 <h3 className="text-sm font-medium text-gray-500 mb-2">Tags</h3>
