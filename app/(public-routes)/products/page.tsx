@@ -76,8 +76,8 @@ export default async function page({ searchParams }: any) {
                                             className={`flex flex-col items-center justify-center p-4 rounded-lg border transition-all duration-200 hover:shadow-md cursor-pointer
         ${
             categorySlug === cat.slug
-                ? 'bg-blue-50 border-blue-200 text-blue-600'
-                : 'bg-white border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-blue-300'
+                ? 'bg-blue-50 border-orange-200 text-orange-600'
+                : 'bg-white border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-orange-300'
         }`}
                                         >
                                             <IconResolver name={cat.slug} />

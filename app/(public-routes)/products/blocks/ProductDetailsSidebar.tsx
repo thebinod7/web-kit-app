@@ -1,18 +1,11 @@
 import { ICONS } from '@/app/constants/images';
 import { humanizeDate } from '@/utils/date';
 import {
-    Facebook,
     FacebookIcon,
-    Github,
     GithubIcon,
-    Globe,
-    Instagram,
     InstagramIcon,
-    Linkedin,
     LinkedinIcon,
-    LucideIcon,
     Twitter,
-    X,
     Youtube,
 } from 'lucide-react';
 import Image from 'next/image';
@@ -61,7 +54,7 @@ export default function ProductDetailsSidebar({
             <div className="grid grid-cols-2 gap-y-4 text-sm">
                 <div className="text-gray-500">Contact Email</div>
                 <div className="text-gray-800 font-medium">
-                    {socialDetails.contactEmail || '-'}
+                    {socialDetails?.contactEmail || '-'}
                 </div>
 
                 <div className="text-gray-500">Listed On</div>

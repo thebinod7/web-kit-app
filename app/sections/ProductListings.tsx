@@ -1,150 +1,114 @@
-import { ChevronRight, ExternalLink, Filter, Star } from 'lucide-react';
-import React from 'react';
+import { ArrowRight, ChevronRight, ExternalLink, Star } from 'lucide-react';
+import { ICONS } from '../constants/images';
+import Link from 'next/link';
+import { APP_PATHS } from '../constants/api';
+import { formatEnum } from '@/utils/utils';
+import Advertising from './Advertising';
+import Partners from './Partners';
 
-export default function ProductListings() {
+export default function ProductListings({ products }: { products: any[] }) {
     return (
-        <section id="apps" className="py-20 bg-gray-50">
+        <section id="apps" className="py-10 bg-gray-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-12">
                     <div>
                         <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                            All Products
+                            New Products
                         </h2>
                         <p className="text-lg text-gray-600">
-                            Explore our complete collection of indie products
+                            Explore our recently launched products.
                         </p>
                     </div>
-
-                    <div className="flex flex-col sm:flex-row gap-4 mt-6 lg:mt-0">
-                        <div className="relative">
-                            <search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                            <input
-                                type="text"
-                                placeholder="Search products..."
-                                className="pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none w-full sm:w-64"
-                            />
-                        </div>
-                        <button className="flex items-center space-x-2 px-4 py-3 border border-gray-300 rounded-lg hover:border-gray-400 transition-colors bg-white">
-                            <Filter className="w-5 h-5 text-gray-500" />
-                            <span className="text-gray-700">Filter</span>
-                        </button>
-                    </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                    {[
-                        {
-                            name: 'MindMap Studio',
-                            category: 'Design',
-                            users: '5k+',
-                            rating: 4.6,
-                            image: '/images/app.jpg',
-                            description:
-                                'Create stunning mind maps effortlessly',
-                        },
-                        {
-                            name: 'CodeSnippet Pro',
-                            category: 'Developer',
-                            users: '18k+',
-                            rating: 4.9,
-                            image: '/images/app.jpg',
-                            description:
-                                'Organize and share your code snippets',
-                        },
-                        {
-                            name: 'SocialBoost',
-                            category: 'Marketing',
-                            users: '7k+',
-                            rating: 4.5,
-                            image: '/images/app.jpg',
-                            description: 'Boost your social media presence',
-                        },
-                        {
-                            name: 'InvoiceEasy',
-                            category: 'Finance',
-                            users: '12k+',
-                            rating: 4.8,
-                            image: '/images/app.jpg',
-                            description: 'Create and manage invoices with ease',
-                        },
-                        {
-                            name: 'BlogCraft',
-                            category: 'Content',
-                            users: '9k+',
-                            rating: 4.7,
-                            image: '/images/app.jpg',
-                            description: 'Craft beautiful blogs in minutes',
-                        },
-                        {
-                            name: 'TeamSync',
-                            category: 'Productivity',
-                            users: '14k+',
-                            rating: 4.6,
-                            image: '/images/app.jpg',
-                            description: 'Sync your team’s tasks and projects',
-                        },
-                        {
-                            name: 'PixelPerfect',
-                            category: 'Design',
-                            users: '6k+',
-                            rating: 4.8,
-                            image: '/images/app.jpg',
-                            description: 'Design pixel-perfect graphics easily',
-                        },
-                        {
-                            name: 'DataViz Pro',
-                            category: 'Analytics',
-                            users: '11k+',
-                            rating: 4.9,
-                            image: '/images/app.jpg',
-                            description:
-                                'Visualize your data like never before',
-                        },
-                    ].map((app, index) => (
-                        <div
-                            key={index}
-                            className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group"
-                        >
-                            <div className="aspect-video bg-gray-100 rounded-lg mb-4 overflow-hidden">
-                                <img
-                                    src={app.image || '/placeholder.svg'}
-                                    alt={app.name}
-                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                                />
-                            </div>
-                            <div className="flex items-center justify-between mb-2">
-                                <span className="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded-full">
-                                    {app.category}
-                                </span>
-                                <div className="flex items-center space-x-1 text-sm text-gray-500">
-                                    <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                                    <span>{app.rating}</span>
+                <div className="flex flex-col lg:flex-row gap-8">
+                    {/* Main Content Area for Product Listings */}
+                    <div className="flex-1 flex flex-col gap-6">
+                        {products.map((app, index) => (
+                            <div
+                                key={index}
+                                className="bg-white border border-gray-200 rounded-xl p-4 hover:shadow-lg transition-all duration-300 group flex items-center gap-4" // Card itself is horizontal flex
+                            >
+                                <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+                                    <img
+                                        src={app.logoUrl || ICONS.BLANK_IMAGE}
+                                        alt={app.name}
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
+                                <div className="flex-grow grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1 items-center">
+                                    {/* Content area next to image */}
+                                    <div>
+                                        <h3 className="text-lg font-semibold text-gray-900">
+                                            {app.name}
+                                        </h3>
+                                        <p className="text-gray-600 text-sm line-clamp-1">
+                                            {app.tagline}
+                                        </p>{' '}
+                                        {/* Line clamp 1 for single line */}
+                                    </div>
+                                    <div className="flex items-center justify-between sm:justify-end gap-4">
+                                        <span className="text-xs font-medium text-orange-600 bg-blue-50 px-2 py-1 rounded-full">
+                                            {formatEnum(app.pricingType)}
+                                        </span>
+                                        {/* <div className="flex items-center space-x-1 text-sm text-gray-500">
+                                            <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                                            <span>{app?.rating || 5}</span>
+                                        </div> */}
+                                    </div>
+                                    <div className="flex items-center justify-between col-span-full mt-2">
+                                        {' '}
+                                        {/* Users and View Details */}
+                                        <span className="text-sm text-gray-500">
+                                            {app.tags.length > 0 &&
+                                                app.tags.map(
+                                                    (
+                                                        tag: string,
+                                                        i: number
+                                                    ) => (
+                                                        <span
+                                                            key={i}
+                                                            className="px-3 py-1 text-xs font-medium text-gray-700 bg-gray-200 rounded-full"
+                                                        >
+                                                            {tag}
+                                                        </span>
+                                                    )
+                                                )}
+                                        </span>
+                                        <Link
+                                            href={
+                                                APP_PATHS.PRODUCTS +
+                                                '/' +
+                                                app.slug
+                                            }
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-blue-400 hover:text-blue-500 flex items-center space-x-1 text-sm font-medium"
+                                        >
+                                            <span>View Details</span>
+                                            <ExternalLink className="w-4 h-4" />
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
-                            <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                                {app.name}
-                            </h3>
-                            <p className="text-gray-600 text-sm mb-4">
-                                {app.description}
-                            </p>
-                            <div className="flex items-center justify-between">
-                                <span className="text-sm text-gray-500">
-                                    {app.users} users
-                                </span>
-                                <button className="text-blue-600 hover:text-blue-700 flex items-center space-x-1 text-sm font-medium">
-                                    <span>View Details</span>
-                                    <ExternalLink className="w-4 h-4" />
-                                </button>
-                            </div>
+                        ))}
+                        <div className="flex justify-center">
+                            <Link
+                                href={APP_PATHS.PRODUCTS}
+                                className="inline-flex items-center space-x-2 bg-gray-900 text-white px-8 py-4 rounded-full hover:bg-gray-800 transition-all transform hover:scale-105"
+                            >
+                                <span>View More</span>
+                                <ArrowRight className="w-5 h-5" />
+                            </Link>
                         </div>
-                    ))}
-                </div>
+                    </div>
 
-                <div className="text-center">
-                    <button className="bg-white border border-gray-300 text-gray-700 px-8 py-3 rounded-lg hover:border-gray-400 transition-colors flex items-center space-x-2 mx-auto">
-                        <span>See More Products</span>
-                        <ChevronRight className="w-5 h-5" />
-                    </button>
+                    {/* Sidebar for Partners and Advertising */}
+                    <aside className="lg:w-80 flex-shrink-0 space-y-8">
+                        <Partners />
+
+                        <Advertising />
+                    </aside>
                 </div>
             </div>
         </section>
