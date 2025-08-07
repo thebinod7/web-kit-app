@@ -1,50 +1,89 @@
-import { ArrowRight, Calendar, Star, Users } from 'lucide-react';
+import { ArrowRight, Leaf, LeafyGreen } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
 import { APP_PATHS } from '../constants/api';
+import { ICONS } from '../constants/images';
 
 export default function Hero() {
     return (
-        <section className="relative overflow-hidden bg-gradient-to-b from-gray-50 to-white">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+        <section className="relative overflow-hidden bg-white py-20 lg:py-32">
+            <Leaf
+                className="absolute top-1/4 left-15 -translate-x-1/2 text-gray-300 opacity-70 hidden md:block"
+                size={200}
+                strokeWidth={1}
+            />
+            <Leaf
+                className="absolute top-1/4 right-16 translate-x-1/2 text-gray-300 opacity-70 hidden md:block rotate-250" // Rotate for variety
+                size={200}
+                strokeWidth={1}
+            />
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="text-center">
+                    {/* Trusted by section */}
+                    <div className="mb-8">
+                        <p className="text-sm text-gray-600 mb-2">
+                            Trusted by <span className="font-bold">1,168</span>{' '}
+                            founders
+                        </p>
+                        <div className="flex justify-center -space-x-2 overflow-hidden">
+                            <Image
+                                src={ICONS.USER}
+                                alt="Founder avatar"
+                                width={32}
+                                height={32}
+                                className="inline-block h-8 w-8 rounded-full ring-2 ring-white"
+                            />
+                            <Image
+                                src={ICONS.USER}
+                                alt="Founder avatar"
+                                width={32}
+                                height={32}
+                                className="inline-block h-8 w-8 rounded-full ring-2 ring-white"
+                            />
+                            <Image
+                                src={ICONS.USER}
+                                alt="Founder avatar"
+                                width={32}
+                                height={32}
+                                className="inline-block h-8 w-8 rounded-full ring-2 ring-white"
+                            />
+                            <Image
+                                src={ICONS.USER}
+                                alt="Founder avatar"
+                                width={32}
+                                height={32}
+                                className="inline-block h-8 w-8 rounded-full ring-2 ring-white"
+                            />
+                            <div className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-gray-900 text-white text-xs font-medium ring-2 ring-white">
+                                +162
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Headline */}
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
                         Discover & Promote
-                        <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-500">
+                        <span className="block text-blue-400">
                             Innovative Apps
                         </span>
                     </h1>
-                    <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+
+                    {/* Description */}
+                    <p className="text-xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
                         Launch, showcase, and grow your product with a community
                         built for makers.
                     </p>
 
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+                    {/* Call to Action Button */}
+                    <div className="flex justify-center">
                         <Link
                             href={APP_PATHS.SUBMIT_PRODUCT}
-                            className="bg-gray-900 text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition-all transform hover:scale-105 flex items-center space-x-2"
+                            className="inline-flex items-center space-x-2 bg-gray-900 text-white px-8 py-4 rounded-full hover:bg-gray-800 transition-all transform hover:scale-105"
                         >
                             <span>Submit Your Product</span>
                             <ArrowRight className="w-5 h-5" />
                         </Link>
-                        <button className="border border-gray-300 text-gray-700 px-8 py-4 rounded-lg hover:border-gray-400 transition-colors">
-                            Browse Products
-                        </button>
-                    </div>
-
-                    <div className="flex items-center justify-center space-x-8 text-sm text-gray-500">
-                        <div className="flex items-center space-x-2">
-                            <Users className="w-4 h-4" />
-                            <span>2,500+ Creators</span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                            <Star className="w-4 h-4" />
-                            <span>1,200+ Products</span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                            <Calendar className="w-4 h-4" />
-                            <span>Daily Updates</span>
-                        </div>
                     </div>
                 </div>
             </div>

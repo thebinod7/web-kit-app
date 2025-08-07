@@ -37,7 +37,7 @@ export default function ServerSidePagination({ meta }: { meta: IMeta }) {
       rounded-lg border
       ${
           isActive
-              ? 'bg-orange-500 text-white'
+              ? 'bg-blue-400 text-white'
               : 'bg-white border-neutral-200 text-neutral-700 hover:bg-neutral-100'
       }
       transition-colors duration-200
