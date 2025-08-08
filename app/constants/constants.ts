@@ -2,7 +2,7 @@ export const APP_TITLE = 'BreakFreeKit';
 export const APP_CODE = 'BFK';
 export const APP_DESCRIPTION = 'Publish your app today with BreakFreeKit.';
 export const FOOTER_TITLE =
-    'Empowering indie hackers and content creators to showcase their products and connect with a thriving community';
+    'Find us on social media and stay up to date with the latest news and updates.';
 
 export const PRICING_TYPES = {
     NOT_SPECIFIED: 'NOT_SPECIFIED',

@@ -64,7 +64,7 @@ export default function Hero() {
                     {/* Headline */}
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
                         Discover & Promote
-                        <span className="block text-orange-300">
+                        <span className="block text-orange-400">
                             Innovative Apps
                         </span>
                     </h1>

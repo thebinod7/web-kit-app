@@ -1,16 +1,15 @@
 import { APP_TITLE, FOOTER_TITLE } from '@/app/constants/constants';
 import { Facebook, LinkedinIcon, Twitter } from 'lucide-react';
-import React from 'react';
 
 export default function Footer() {
     return (
-        <footer className="bg-gray-900 text-white py-16">
+        <footer className=" bg-gradient-to-r from-slate-900 to-slate-800 text-white py-16">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid md:grid-cols-4 gap-8">
                     <div className="md:col-span-2">
                         <div className="flex items-center space-x-2 mb-4">
                             <span className="text-xl font-semibold">
-                                {APP_TITLE}
+                                Social Media
                             </span>
                         </div>
                         <p className="text-gray-400 mb-6 max-w-md">
@@ -109,7 +108,7 @@ export default function Footer() {
                 <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
                     <p>
                         &copy; {new Date().getFullYear()} {APP_TITLE}. All
-                        rights reserved.
+                        Rights Reserved.
                     </p>
                 </div>
             </div>
