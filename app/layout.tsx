@@ -4,6 +4,7 @@ import './globals.css';
 import Providers from './Providers';
 import { Suspense } from 'react';
 import { APP_DESCRIPTION, APP_TITLE } from './constants/constants';
+import { Loader2 } from 'lucide-react';
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -31,7 +32,14 @@ export default function RootLayout({
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
             >
                 <Providers>
-                    <Suspense fallback={<div>Loading...</div>}>
+                    <Suspense
+                        fallback={
+                            <div className="flex items-center justify-center p-4 min-h-screen">
+                                <Loader2 className="h-8 w-8 animate-spin text-gray-500" />
+                                <span className="sr-only">Loading...</span>
+                            </div>
+                        }
+                    >
                         {children}
                     </Suspense>
                 </Providers>
