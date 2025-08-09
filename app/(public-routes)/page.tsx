@@ -12,7 +12,7 @@ export default async function page() {
     const result = data?.result || {};
     return (
         <div className="min-h-screen bg-white">
-            <Hero />
+            <Hero totalUsers={result.totalUsers} />
 
             <ProductListings products={result?.rows || []} />
 
