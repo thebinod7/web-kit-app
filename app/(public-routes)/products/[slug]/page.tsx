@@ -56,7 +56,10 @@ export default async function ProductDetailsPage({ params }: { params: any }) {
                     <ProductDetailsTabs tabs={productData.tabs} />
 
                     <div className="mt-6">
-                        <ProductOverview description={result.description} />
+                        <ProductOverview
+                            description={result.description}
+                            images={result.images}
+                        />
                     </div>
                 </div>
 
