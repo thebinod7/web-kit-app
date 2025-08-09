@@ -86,26 +86,17 @@ export default function UserProfileDropdown({
                     ref={dropdownRef}
                 >
                     <div className="py-1" role="none">
-                        <a
-                            href="#"
+                        <Link
+                            onClick={onMenuItemClick}
+                            href={APP_PATHS.MY_PROFILE}
                             className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                             role="menuitem"
                             tabIndex={-1}
                             id="menu-item-0"
                         >
                             <User className="mr-2 h-4 w-4" />
-                            Profile
-                        </a>
-                        <a
-                            href="#"
-                            className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                            role="menuitem"
-                            tabIndex={-1}
-                            id="menu-item-1"
-                        >
-                            <Settings className="mr-2 h-4 w-4" />
-                            Settings
-                        </a>
+                            My Profile
+                        </Link>
                         <Link
                             onClick={onMenuItemClick}
                             href={APP_PATHS.MY_PRODUCTS}

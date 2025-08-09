@@ -31,3 +31,10 @@ export const DROPZONE = {
         INVALID_TYPE: 'file-invalid-type',
     },
 };
+
+export const GENDERS = {
+    MALE: 'MALE',
+    FEMALE: 'FEMALE',
+    OTHER: 'OTHER',
+    UNKNOWN: 'UNKNOWN',
+};

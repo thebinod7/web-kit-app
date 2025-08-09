@@ -64,7 +64,7 @@ export default function SubmitProductPage() {
                 </p>
 
                 {/* Alert Box */}
-                <div className="bg-orange-100 border border-gray-300 text-gray-800 p-4 rounded-lg flex items-start space-x-3 mb-10">
+                <div className="bg-orange-100 border border-orange-200 text-gray-800 p-4 rounded-lg flex items-start space-x-3 mb-10">
                     <TriangleAlert className="h-6 w-6 flex-shrink-0 mt-0.5" />
                     <div>
                         <h3 className="font-semibold text-lg mb-1">

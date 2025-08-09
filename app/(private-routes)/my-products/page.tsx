@@ -24,6 +24,7 @@ export default function AppsPage() {
                     {rows.length > 0 ? (
                         rows.map((row: any) => (
                             <AppCard
+                                key={row.cuid}
                                 name={row.name}
                                 logoUrl={row.logoUrl}
                                 tagline={row.tagline}
