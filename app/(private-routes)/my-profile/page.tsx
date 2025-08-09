@@ -47,7 +47,6 @@ export default function page() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        console.log('FOrmData:', formData);
         return updateProfileMutation.mutate(formData);
     };
 
@@ -173,10 +172,13 @@ export default function page() {
 
                     <div className="flex justify-end space-x-3">
                         <button
+                            disabled={updateProfileMutation.isPending}
                             type="submit"
-                            className="px-6 cursor-pointer py-2.5 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-all duration-200"
+                            className="px-6 cursor-pointer py-2.5 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-200"
                         >
-                            Save Changes
+                            {updateProfileMutation.isPending
+                                ? 'Saving Changes...'
+                                : 'Save Changes'}
                         </button>
                     </div>
                 </form>
