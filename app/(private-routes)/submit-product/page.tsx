@@ -64,20 +64,19 @@ export default function SubmitProductPage() {
                 </p>
 
                 {/* Alert Box */}
-                <div className="bg-gray-100 border border-gray-300 text-gray-800 p-4 rounded-lg flex items-start space-x-3 mb-10">
+                <div className="bg-orange-100 border border-gray-300 text-gray-800 p-4 rounded-lg flex items-start space-x-3 mb-10">
                     <TriangleAlert className="h-6 w-6 flex-shrink-0 mt-0.5" />
                     <div>
                         <h3 className="font-semibold text-lg mb-1">
-                            The waiting line is temporarily closed
+                            Quality First: Every Product, Carefully Reviewed
                         </h3>
                         <p className="text-base mb-3">
-                            The free waiting line is closed until October 1st.
-                            You can still publish your product the day of your
-                            choice by skipping the waiting line.
+                            To maintain the quality and credibility of our
+                            platform, every product is carefully reviewed by our
+                            team before going live. Providing accurate, and
+                            complete details will help us approve your
+                            submission faster.
                         </p>
-                        <button className="bg-gray-800 hover:bg-gray-900 text-white font-medium py-2 px-4 rounded-md text-sm">
-                            More info
-                        </button>
                     </div>
                 </div>
 
@@ -88,7 +87,8 @@ export default function SubmitProductPage() {
                             htmlFor="name"
                             className="block text-lg font-medium text-gray-700 mb-2"
                         >
-                            Your product name*
+                            Your product name {}
+                            <span className="text-red-500 font-bold">*</span>
                         </label>
                         <input
                             type="text"
@@ -101,7 +101,7 @@ export default function SubmitProductPage() {
                             className="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-gray-700 focus:border-gray-700 sm:text-base placeholder-gray-400"
                         />
                         <p className="mt-2 text-sm text-gray-500">
-                            {PUBLIC_ENV.APP_URL}/tools/
+                            {PUBLIC_ENV.APP_URL}/products/
                             {createSlug(productDetails.name)}
                         </p>
                     </div>
@@ -111,7 +111,8 @@ export default function SubmitProductPage() {
                             htmlFor="tagline"
                             className="block text-lg font-medium text-gray-700 mb-2"
                         >
-                            Your product tagline*
+                            Your product tagline {}
+                            <span className="text-red-500 font-bold">*</span>
                         </label>
                         <input
                             type="text"
@@ -130,7 +131,8 @@ export default function SubmitProductPage() {
                             htmlFor="websiteUrl"
                             className="block text-lg font-medium text-gray-700 mb-2"
                         >
-                            Product website link*
+                            Product website link{' '}
+                            <span className="text-red-500 font-bold">*</span>
                         </label>
                         <input
                             type="url"
