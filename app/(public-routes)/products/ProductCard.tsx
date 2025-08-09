@@ -1,11 +1,9 @@
 import { APP_PATHS } from '@/app/constants/api';
-import { PRICING_TYPES } from '@/app/constants/constants';
 import { ICONS } from '@/app/constants/images';
 import { formatEnum } from '@/utils/utils';
 import { Star } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
 
 interface ProductCardProps {
     logoUrl: string;
@@ -59,13 +57,8 @@ export default function ProductCard({
                 </div>
 
                 <div
-                    className={`absolute top-2 right-2 px-2 py-1 text-xs font-semibold rounded-full transition-all duration-200
-          ${
-              pricingType === PRICING_TYPES.FREE
-                  ? 'bg-blue-100 text-blue-500'
-                  : 'bg-gray-800 text-white'
-          }
-          opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0`}
+                    className={`absolute top-2 right-2 px-2 py-1 text-xs font-semibold rounded-full transition-all duration-200 bg-blue-100 text-blue-500
+                                opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0`}
                 >
                     {formatEnum(pricingType)}
                 </div>
