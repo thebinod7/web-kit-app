@@ -388,7 +388,7 @@ export default function ProductDashboardPage() {
                                             Description
                                         </label>
                                         <textarea
-                                            rows={4}
+                                            rows={8}
                                             name="description"
                                             id="description"
                                             className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
@@ -397,7 +397,7 @@ export default function ProductDashboardPage() {
                                                 ''
                                             }
                                             onChange={handleInputChange}
-                                            placeholder="Describe your product in brief"
+                                            placeholder="Describe your product in detail."
                                         />
                                     </div>
                                 </div>

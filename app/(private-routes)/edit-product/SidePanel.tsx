@@ -33,19 +33,18 @@ export default function SidePanelProps({
                 <p className="text-sm text-gray-600">
                     Your product will be accessible at: <br />
                     <Link
-                        href="https://www.example.com"
+                        href={`${APP_PATHS.PRODUCTS}/${productSlug}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="break-all text-blue-600 hover:underline"
+                        className="break-all text-blue-500 hover:underline"
                     >
-                        {PUBLIC_ENV.APP_URL + '/tools/' + productSlug || ''}
+                        {PUBLIC_ENV.APP_URL + '/products/' + productSlug || ''}
                     </Link>
                 </p>
             </div>
             <p className="mt-4 text-sm text-gray-500">
-                🚀 Your product will be launched as soon as all the required
-                information is submitted. No need to wait, complete the details
-                to go live today!
+                🌟 Your launch is just one step away. Complete your details and
+                go live within a day. Reviews may take up to 24 hours.
             </p>
             <button
                 type="button"
@@ -57,9 +56,9 @@ export default function SidePanelProps({
             <button
                 type="button"
                 onClick={handleMyListingsClick}
-                className="mt-3 cursor-pointer w-full rounded-md border border-blue-300 px-4 py-2 text-sm font-medium text-blue-400 shadow-sm hover:bg-blue-50 focus:outline-none "
+                className="mt-3 cursor-pointer w-full rounded-md border border-orange-300 px-4 py-2 text-sm font-medium text-orange-400 shadow-sm hover:bg-orange-50 focus:outline-none "
             >
-                My Listings
+                Your Products
             </button>
         </div>
     );
