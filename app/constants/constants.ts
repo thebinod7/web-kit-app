@@ -38,3 +38,9 @@ export const GENDERS = {
     OTHER: 'OTHER',
     UNKNOWN: 'UNKNOWN',
 };
+
+export const PRODUCT_DETAIL_SECTIONS = {
+    OVERVIEW: 'Overview',
+    RATING: 'Rate this product',
+    COMMENTS: 'Comments',
+};

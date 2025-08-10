@@ -1,28 +1,18 @@
-import { ICONS } from '@/app/constants/images';
 import { PUBLIC_ENV } from '@/utils/env';
 import { formatEnum } from '@/utils/utils';
-import { Eye, MessageSquare } from 'lucide-react';
 import ProductDetailActions from '../blocks/ProductDetailActions';
 import ProductDetailsSidebar from '../blocks/ProductDetailsSidebar';
 import ProductDetailsTabs from '../blocks/ProductDetailsTabs';
 import ProductHeader from '../blocks/ProductHeader';
-import ProductOverview from '../blocks/ProductOverview';
-
-const productData: any = {
-    tabs: [
-        { icon: Eye, label: 'Overview' },
-        { icon: MessageSquare, label: 'Comments', count: 4 },
-    ],
-};
 
 export default async function ProductDetailsPage({ params }: { params: any }) {
     const slug = params.slug;
-    console.log('slug', slug);
     let API_ENDPOINT = `${PUBLIC_ENV.API_ENDPOINT}/api/v1/products/details/${slug}`;
     const resposnse = await fetch(`${API_ENDPOINT}`, { cache: 'no-store' });
     const data = await resposnse.json();
     const result = data?.result || null;
-    if (!result) return <div>Product not found</div>;
+    if (!result)
+        return <div className="py-24 text-center">Product not found!</div>;
     console.log('RESULT:', result);
 
     return (
@@ -46,14 +36,17 @@ export default async function ProductDetailsPage({ params }: { params: any }) {
                         </div>
                     </div>
 
-                    <ProductDetailsTabs tabs={productData.tabs} />
+                    <ProductDetailsTabs
+                        description={result.description}
+                        images={result.images}
+                    />
 
-                    <div className="mt-6">
+                    {/* <div className="mt-6">
                         <ProductOverview
                             description={result.description}
                             images={result.images}
                         />
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* Right Column (Sidebar) */}
