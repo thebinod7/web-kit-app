@@ -24,22 +24,6 @@ export default function Advertising() {
                         Learn More
                     </a>
                 </div>
-                <div className="border border-gray-200 rounded-lg p-4 text-center">
-                    <img
-                        src={ICONS.BLANK_IMAGE}
-                        alt="Ad 2"
-                        className="w-full h-auto rounded-md mb-2"
-                    />
-                    <p className="text-sm font-medium text-gray-800">
-                        Get 50% Off Cloud Hosting!
-                    </p>
-                    <a
-                        href="#"
-                        className="text-xs text-blue-400 hover:underline"
-                    >
-                        Claim Offer
-                    </a>
-                </div>
             </div>
         </div>
     );
