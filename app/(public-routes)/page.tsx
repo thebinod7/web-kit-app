@@ -14,7 +14,9 @@ export default async function page() {
         <div className="min-h-screen bg-white">
             <Hero totalUsers={result.totalUsers} />
 
-            <ProductListings products={result?.rows || []} />
+            <section id="featured">
+                <ProductListings products={result?.rows || []} />
+            </section>
 
             <BlogArticles />
 

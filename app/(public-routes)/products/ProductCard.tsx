@@ -23,29 +23,36 @@ export default function ProductCard({
     pricingType,
 }: ProductCardProps) {
     return (
-        <Link href={`${APP_PATHS.PRODUCTS}/${slug}`} rel="noopener noreferrer">
-            <div className="relative flex items-start gap-4 p-4 bg-white rounded-lg shadow-sm border border-gray-200 transition-all duration-200 hover:shadow-md hover:border-orange-300 group">
-                <div className="flex-shrink-0 p-3 bg-gray-100 rounded-md border border-gray-200 flex items-center justify-center h-12 w-12">
-                    <Image
-                        src={logoUrl || ICONS.BLANK_IMAGE}
-                        alt="Product Logo"
-                        width={24}
-                        height={24}
-                    />
-                </div>
-                <div className="flex-grow">
-                    <h3 className="text-lg font-medium text-gray-900">
-                        {name}
-                    </h3>
-                    <FiveStarRating rating={rating} />
-                    <p className="text-gray-700 text-sm">{tagline}</p>
-                </div>
+        <Link href={`${APP_PATHS.PRODUCTS}/${slug}`}>
+            <div className="relative overflow-hidden bg-white rounded-2xl border border-gray-100 shadow-sm transition-all duration-700 hover:shadow-xl hover:shadow-orange-100/50 group">
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-50 via-white to-red-50 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
 
-                <div
-                    className={`absolute top-2 right-2 px-2 py-1 text-xs font-semibold rounded-full transition-all duration-200 bg-blue-100 text-blue-500
+                <div className="relative flex items-start gap-5 p-6">
+                    <div className="flex-shrink-0">
+                        <div className="relative p-4 bg-gradient-to-br from-gray-100 to-gray-50 rounded-2xl border border-gray-200 flex items-center justify-center h-16 w-16 group-hover:border-orange-200 group-hover:shadow-lg transition-all duration-500">
+                            <Image
+                                src={logoUrl || ICONS.BLANK_IMAGE}
+                                alt="Product Logo"
+                                width={32}
+                                height={32}
+                                className="transform group-hover:scale-110 transition-transform duration-300"
+                            />
+                        </div>
+                    </div>
+                    <div className="flex-grow space-y-3">
+                        <h3 className="text-xl font-bold text-gray-900 group-hover:text-gray-800 transform group-hover:-translate-y-0.5 transition-all duration-300">
+                            {name}
+                        </h3>
+                        <p className="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                            {tagline}
+                        </p>
+                    </div>
+                    <div
+                        className={`absolute top-2 right-2 px-2 py-1 text-xs font-semibold rounded-full transition-all duration-200 bg-blue-100 text-blue-500
                                 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0`}
-                >
-                    {formatEnum(pricingType)}
+                    >
+                        {formatEnum(pricingType)}
+                    </div>
                 </div>
             </div>
         </Link>

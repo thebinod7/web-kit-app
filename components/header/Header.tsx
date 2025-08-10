@@ -57,24 +57,24 @@ export default function Header() {
                         </button>
 
                         <div className="hidden lg:flex items-center space-x-6">
-                            <a
-                                href="#featured"
+                            <Link
+                                href="/#featured"
                                 className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium"
                             >
                                 Featured
-                            </a>
+                            </Link>
                             <Link
                                 href={APP_PATHS.PRODUCTS}
                                 className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium"
                             >
                                 Products
                             </Link>
-                            <a
-                                href="#blog"
+                            <Link
+                                href="/#leaderboard"
                                 className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium"
                             >
-                                Blog
-                            </a>
+                                Leaderboard
+                            </Link>
                         </div>
 
                         {loggedUser ? (

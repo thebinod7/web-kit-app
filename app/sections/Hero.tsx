@@ -73,10 +73,12 @@ export default function Hero({ totalUsers }: { totalUsers: number }) {
                     </div>
 
                     {/* Headline */}
-                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-                        Discover & Promote
-                        <span className="block text-orange-400">
-                            Innovative Apps
+                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+                        <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+                            Discover & Promote
+                        </span>
+                        <span className="block bg-gradient-to-r from-amber-500 via-orange-500 to-red-600 bg-clip-text text-transparent animate-pulse">
+                            Amazing Apps
                         </span>
                     </h1>
 

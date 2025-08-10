@@ -28,6 +28,8 @@ export default async function page({ searchParams }: any) {
     const data = await resposnse.json();
     const result = data?.result || {};
 
+    console.log('RESULT:', result);
+
     return (
         <main className="min-h-screen bg-gray-50 text-gray-900">
             <div className="container mx-auto px-4 py-12 lg:grid lg:grid-cols-3 lg:gap-12">
@@ -38,7 +40,7 @@ export default async function page({ searchParams }: any) {
 
                     <SearchBar />
                     {/* <SortDropdown /> */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
                         {result?.rows.length > 0 ? (
                             result.rows.map((product: any) => (
                                 <ProductCard

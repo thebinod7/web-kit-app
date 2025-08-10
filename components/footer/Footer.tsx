@@ -1,5 +1,7 @@
+import { APP_PATHS } from '@/app/constants/api';
 import { APP_TITLE, FOOTER_TITLE } from '@/app/constants/constants';
 import { Facebook, LinkedinIcon, Twitter } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Footer() {
     return (
@@ -32,28 +34,28 @@ export default function Footer() {
                         <h4 className="font-semibold mb-4">Product</h4>
                         <ul className="space-y-2 text-gray-400">
                             <li>
-                                <a
-                                    href="#"
+                                <Link
+                                    href="#featured"
                                     className="hover:text-white transition-colors"
                                 >
                                     Featured
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a
-                                    href="#"
+                                <Link
+                                    href={APP_PATHS.PRODUCTS}
                                     className="hover:text-white transition-colors"
                                 >
                                     Browse All
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a
-                                    href="#"
+                                <Link
+                                    href={APP_PATHS.SUBMIT_PRODUCT}
                                     className="hover:text-white transition-colors"
                                 >
                                     Submit Product
-                                </a>
+                                </Link>
                             </li>
                             <li>
                                 <a
@@ -70,36 +72,36 @@ export default function Footer() {
                         <h4 className="font-semibold mb-4">Company</h4>
                         <ul className="space-y-2 text-gray-400">
                             <li>
-                                <a
+                                <Link
                                     href="#"
                                     className="hover:text-white transition-colors"
                                 >
                                     About
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a
+                                <Link
                                     href="#"
                                     className="hover:text-white transition-colors"
                                 >
                                     Blog
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a
+                                <Link
                                     href="#"
                                     className="hover:text-white transition-colors"
                                 >
                                     Contact
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a
+                                <Link
                                     href="#"
                                     className="hover:text-white transition-colors"
                                 >
                                     Privacy
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>
