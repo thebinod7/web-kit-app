@@ -66,7 +66,9 @@ export default function ProductDetailsSidebar({
                 <div className="text-gray-800 font-medium">{category}</div>
 
                 <div className="text-gray-500">Pricing</div>
-                <div className="font-medium text-orange-600">{pricing}</div>
+                <div className="font-medium border px-2 py-1 rounded-sm border-orange-300 text-orange-600">
+                    {pricing}
+                </div>
             </div>
 
             {socialDetails && (

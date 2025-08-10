@@ -5,10 +5,10 @@ import {
     generateCookieHeaders,
     LOCAL_KEYS,
 } from '@/utils/localstorage';
-import { postRequest } from '@/utils/request';
+import { putRequest } from '@/utils/request';
 import { useMutation } from '@tanstack/react-query';
 import { getCookie } from 'cookies-next/client';
-import { ArrowUp, ExternalLink, LogIn } from 'lucide-react';
+import { ArrowUp, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 import { toast } from 'sonner';
@@ -29,7 +29,7 @@ export default function ProductDetailActions({
 
     const toggleUpvoteMutation = useMutation({
         mutationFn: (payload: any) => {
-            return postRequest(
+            return putRequest(
                 API_ROUTES.PRODUCT_FEEDBACK + '/toggle-vote',
                 payload,
                 generateCookieHeaders()
@@ -49,12 +49,13 @@ export default function ProductDetailActions({
     });
 
     const toggleUpvote = () => {
+        if (!accessToken) return gotoLogin();
         return toggleUpvoteMutation.mutate({
             productId: productId,
         });
     };
 
-    const loginToUpvote = () => {
+    const gotoLogin = () => {
         clearLocalStorage();
         const redirectUrl = window.location.href;
         window.location.href = APP_PATHS.LOGIN + `?redirectUrl=${redirectUrl}`;
@@ -72,26 +73,14 @@ export default function ProductDetailActions({
                 Visit website
                 <ExternalLink className="h-4 w-4" />
             </Link>
-            {accessToken ? (
-                <button
-                    onClick={toggleUpvote}
-                    className="inline-flex cursor-pointer items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50
+            <button
+                onClick={toggleUpvote}
+                className="inline-flex cursor-pointer items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50
                    border border-orange-300 bg-white text-orange-700 hover:bg-orange-50 h-10 px-4 py-2 gap-2"
-                >
-                    <ArrowUp className="h-4 w-4" />
-                    {upvoteCount} Upvotes
-                </button>
-            ) : (
-                <button
-                    type="button"
-                    onClick={loginToUpvote}
-                    className="inline-flex cursor-pointer items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50
-                   border border-orange-300 bg-white text-orange-700 hover:bg-orange-50 h-10 px-4 py-2 gap-2"
-                >
-                    Login to Upvote
-                    <LogIn className="h-4 w-4" />
-                </button>
-            )}
+            >
+                <ArrowUp className="h-4 w-4" />
+                {upvoteCount} Upvotes
+            </button>
         </div>
     );
 }
