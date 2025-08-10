@@ -9,7 +9,7 @@ export default function ProductDetailsTabs({ tabs }: ProductTabsProps) {
                 {tabs.map((tab, index) => (
                     <li key={tab.label} className="mr-2">
                         <button
-                            className={`inline-flex items-center justify-center p-4 border-b-2 rounded-t-lg group
+                            className={`inline-flex cursor-pointer items-center justify-center p-4 border-b-2 rounded-t-lg group
                 ${
                     index === 0
                         ? 'border-gray-900 text-gray-900'

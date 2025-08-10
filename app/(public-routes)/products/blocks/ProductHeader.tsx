@@ -1,6 +1,6 @@
-import Image from 'next/image';
-import { Star } from 'lucide-react';
 import { ICONS } from '@/app/constants/images';
+import FiveStarRating from '@/components/mini/FiveStarRating';
+import Image from 'next/image';
 
 interface ProductHeaderProps {
     logo: string;
@@ -27,14 +27,7 @@ export default function ProductHeader({
             <div>
                 <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
                     {name}
-                    <div className="flex">
-                        {Array.from({ length: rating }).map((_, i) => (
-                            <Star
-                                key={i}
-                                className="h-5 w-5 fill-yellow-400 text-yellow-400"
-                            />
-                        ))}
-                    </div>
+                    <FiveStarRating rating={rating} />
                 </h2>
                 <p className="text-gray-600 mt-1">{tagline}</p>
             </div>

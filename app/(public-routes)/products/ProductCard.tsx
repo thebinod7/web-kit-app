@@ -1,7 +1,7 @@
 import { APP_PATHS } from '@/app/constants/api';
 import { ICONS } from '@/app/constants/images';
+import FiveStarRating from '@/components/mini/FiveStarRating';
 import { formatEnum } from '@/utils/utils';
-import { Star } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -10,7 +10,7 @@ interface ProductCardProps {
     name: string;
     slug: string;
     tagline: string;
-    rating?: number;
+    rating: number;
     pricingType: string;
 }
 
@@ -37,18 +37,7 @@ export default function ProductCard({
                     <h3 className="text-lg font-medium text-gray-900">
                         {name}
                     </h3>
-                    <div className="flex items-center gap-0.5 mb-1">
-                        {Array.from({ length: 5 }).map((_, i) => (
-                            <Star
-                                key={i}
-                                className={`h-4 w-4 ${
-                                    i < rating
-                                        ? 'text-yellow-400 fill-yellow-400'
-                                        : 'text-gray-300'
-                                }`}
-                            />
-                        ))}
-                    </div>
+                    <FiveStarRating rating={rating} />
                     <p className="text-gray-700 text-sm">{tagline}</p>
                 </div>
 

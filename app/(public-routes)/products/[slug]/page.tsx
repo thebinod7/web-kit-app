@@ -8,19 +8,11 @@ import ProductDetailsTabs from '../blocks/ProductDetailsTabs';
 import ProductHeader from '../blocks/ProductHeader';
 import ProductOverview from '../blocks/ProductOverview';
 
-// Mock data for the product details
 const productData: any = {
-    rating: 5,
-    upvotes: 48,
-    upvotedByAvatars: [ICONS.USER, ICONS.USER],
     tabs: [
         { icon: Eye, label: 'Overview' },
         { icon: MessageSquare, label: 'Comments', count: 4 },
     ],
-    publisherLogo: ICONS.USER,
-    publisherName: 'invomaker',
-    launchDate: '2025-11-27',
-    category: 'Business',
 };
 
 export default async function ProductDetailsPage({ params }: { params: any }) {
@@ -42,7 +34,7 @@ export default async function ProductDetailsPage({ params }: { params: any }) {
                         <ProductHeader
                             logo={result.logoUrl}
                             name={result.name}
-                            rating={productData.rating}
+                            rating={result?.feedback?.rating || 0}
                             tagline={result.tagline}
                         />
                         <div className="flex-shrink-0 sm:ml-auto">

@@ -42,7 +42,7 @@ export default function ProductDetailActions({
             const { result } = data;
             setUpvoteCount(result?.upvoted ? upvoteCount + 1 : upvoteCount - 1);
             const flag = result?.upvoted ? 'Upvoted' : ' Downvoted';
-            toast.success(`${flag} successfully!`, {
+            toast.success(`${flag} the product!`, {
                 icon: result?.upvoted ? '👍' : '👎',
             });
         },

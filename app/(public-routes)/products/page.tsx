@@ -39,8 +39,6 @@ export default async function page({ searchParams }: any) {
                     <SearchBar />
                     {/* <SortDropdown /> */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {' '}
-                        {/* Increased gap */}
                         {result?.rows.length > 0 ? (
                             result.rows.map((product: any) => (
                                 <ProductCard
@@ -50,6 +48,7 @@ export default async function page({ searchParams }: any) {
                                     slug={product.slug}
                                     tagline={product.tagline}
                                     pricingType={product.pricingType}
+                                    rating={product?.feedback?.rating || 0}
                                 />
                             ))
                         ) : (
