@@ -58,10 +58,16 @@ export default function Header() {
 
                         <div className="hidden lg:flex items-center space-x-6">
                             <Link
-                                href="/#featured"
+                                href={APP_PATHS.SUBMIT_PRODUCT}
                                 className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium"
                             >
-                                Featured
+                                Get Started
+                            </Link>
+                            <Link
+                                href="/#leaderboard"
+                                className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium"
+                            >
+                                Leaderboard
                             </Link>
                             <Link
                                 href={APP_PATHS.PRODUCTS}
@@ -70,10 +76,10 @@ export default function Header() {
                                 Products
                             </Link>
                             <Link
-                                href="/#leaderboard"
+                                href="/#faq"
                                 className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium"
                             >
-                                Leaderboard
+                                FAQs
                             </Link>
                         </div>
 

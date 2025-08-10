@@ -1,7 +1,7 @@
 import { PUBLIC_ENV } from '@/utils/env';
-import BlogArticles from '../sections/BlogArticles';
 import Faq from '../sections/Faq';
 import Hero from '../sections/Hero';
+import Leaderboard from '../sections/Leaderboard';
 import ProductListings from '../sections/ProductListings';
 
 const API_ENDPOINT = `${PUBLIC_ENV.API_ENDPOINT}/api/v1/products`;
@@ -18,9 +18,13 @@ export default async function page() {
                 <ProductListings products={result?.rows || []} />
             </section>
 
-            <BlogArticles />
+            <section id="leaderboard">
+                <Leaderboard />
+            </section>
 
-            <Faq />
+            <section id="faq">
+                <Faq />
+            </section>
         </div>
     );
 }

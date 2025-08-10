@@ -49,32 +49,10 @@ export default function ProductListings({ products }: { products: any[] }) {
                                     </div>
                                     <div className="flex items-center justify-between sm:justify-end gap-4">
                                         <span className="text-xs font-medium text-orange-600 bg-blue-50 px-2 py-1 rounded-full">
-                                            {formatEnum(app.pricingType)}
+                                            {app.category?.name || 'Category'}
                                         </span>
-                                        {/* <div className="flex items-center space-x-1 text-sm text-gray-500">
-                                            <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                                            <span>{app?.rating || 5}</span>
-                                        </div> */}
                                     </div>
                                     <div className="flex items-center justify-between col-span-full mt-2">
-                                        {' '}
-                                        {/* Users and View Details */}
-                                        <span className="text-sm text-gray-500">
-                                            {app.tags.length > 0 &&
-                                                app.tags.map(
-                                                    (
-                                                        tag: string,
-                                                        i: number
-                                                    ) => (
-                                                        <span
-                                                            key={i}
-                                                            className="px-3 py-1 text-xs font-medium text-gray-700 bg-gray-200 rounded-full"
-                                                        >
-                                                            {tag}
-                                                        </span>
-                                                    )
-                                                )}
-                                        </span>
                                         <Link
                                             href={
                                                 APP_PATHS.PRODUCTS +
@@ -95,7 +73,7 @@ export default function ProductListings({ products }: { products: any[] }) {
                         <div className="flex justify-center">
                             <Link
                                 href={APP_PATHS.PRODUCTS}
-                                className="inline-flex items-center space-x-2 bg-gray-900 text-white px-8 py-4 rounded-full hover:bg-gray-800 transition-all transform hover:scale-105"
+                                className="inline-flex items-center space-x-2  text-blue-400 rounded-full transition-all transform hover:scale-105"
                             >
                                 <span>View More</span>
                                 <ArrowRight className="w-5 h-5" />
