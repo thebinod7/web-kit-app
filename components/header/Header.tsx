@@ -1,6 +1,5 @@
 'use client';
 import { APP_PATHS } from '@/app/constants/api';
-import { APP_TITLE } from '@/app/constants/constants';
 import { useGetMeUser } from '@/hooks/api/user/hook.user';
 import { useAppStore } from '@/store/store.app';
 import { LOCAL_KEYS } from '@/utils/localstorage';

@@ -48,7 +48,8 @@ export default async function ProductDetailsPage({ params }: { params: any }) {
                         <div className="flex-shrink-0 sm:ml-auto">
                             <ProductDetailActions
                                 websiteUrl={result.websiteUrl}
-                                upvotes={productData.upvotes}
+                                upvotes={result?.feedback?.upvotes || 0}
+                                productId={result.cuid}
                             />
                         </div>
                     </div>

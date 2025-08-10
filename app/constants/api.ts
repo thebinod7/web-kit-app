@@ -5,6 +5,7 @@ export const API_ROUTES = {
     CATEGORY: `${API_VERSION}/category`,
     USERS: `${API_VERSION}/users`,
     PRODUCTS: `${API_VERSION}/products`,
+    PRODUCT_FEEDBACK: `${API_VERSION}/product-feedback`,
 };
 
 export const APP_PATHS = {
