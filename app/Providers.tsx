@@ -6,11 +6,6 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { useState } from 'react';
 import AppWrapper from './AppWrapper';
 
-console.log(
-    'Process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID:',
-    process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID
-);
-
 const Providers = ({ children }: { readonly children: React.ReactNode }) => {
     const [queryClient] = useState(() => new QueryClient());
 
