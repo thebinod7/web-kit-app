@@ -10,7 +10,6 @@ export default async function page() {
     const resposnse = await fetch(`${API_ENDPOINT}`, { cache: 'no-store' });
     const data = await resposnse.json();
     const result = data?.result || {};
-    console.log('RESLUT:', result);
     return (
         <div className="min-h-screen bg-white">
             <Hero totalUsers={result.totalUsers} />
@@ -23,7 +22,7 @@ export default async function page() {
             </section>
 
             <section id="leaderboard">
-                <Leaderboard />
+                <Leaderboard leaders={result?.leaders || []} />
             </section>
 
             <section id="faq">
