@@ -1,50 +1,75 @@
-import React from 'react';
-import { ICONS } from '../constants/images';
-import { ExternalLink, Star } from 'lucide-react';
+import { IFeaturedProducts } from '@/types/product';
+import { ExternalLink } from 'lucide-react';
 import Link from 'next/link';
+import { ICONS } from '../constants/images';
 
-const FEATURED_LIST = [
-    {
-        id: 1,
-        name: ' Creative Solutions Inc. EverestKart Prvate Limited',
-        icon: ICONS.BLANK_IMAGE,
-    },
-    { id: 2, name: ' Creative Solutions Inc.', icon: ICONS.BLANK_IMAGE },
-    { id: 3, name: ' Creative Solutions Inc.', icon: ICONS.BLANK_IMAGE },
-    { id: 4, name: ' Creative Solutions Inc.', icon: ICONS.BLANK_IMAGE },
-    { id: 5, name: ' Creative Solutions Inc.', icon: ICONS.BLANK_IMAGE },
-    { id: 6, name: ' Creative Solutions Inc.', icon: ICONS.BLANK_IMAGE },
-    { id: 7, name: ' Creative Solutions Inc.', icon: ICONS.BLANK_IMAGE },
-    { id: 8, name: ' Creative Solutions Inc.', icon: ICONS.BLANK_IMAGE },
-];
-
-export default function FeaturedProducts() {
+export default function FeaturedProducts({
+    featuredList,
+}: {
+    featuredList: IFeaturedProducts[];
+}) {
     return (
-        <div className="bg-white border border-gray-200 rounded-xl p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                Feature Products
-            </h3>
-            <ul className="space-y-4">
-                {FEATURED_LIST.map((item) => {
+        <div className="bg-gradient-to-br from-white via-slate-50/50 to-blue-50/30 border border-slate-200/60 rounded-2xl p-6 shadow-sm backdrop-blur-sm relative overflow-hidden">
+            {/* Background decoration */}
+            <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-full blur-3xl"></div>
+            <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-gradient-to-tr from-orange-500/5 to-pink-500/5 rounded-full blur-2xl"></div>
+
+            {/* Header with featured badge */}
+            <div className="relative z-10 flex items-center justify-between mb-6">
+                <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full animate-pulse"></div>
+                        <h3 className="text-lg font-semibold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+                            Featured Products
+                        </h3>
+                    </div>
+                </div>
+                <div className="w-6 h-6 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
+                    <span className="text-white text-xs">✨</span>
+                </div>
+            </div>
+
+            {/* Products list */}
+            <ul className="space-y-3 relative z-10">
+                {featuredList.map((item: IFeaturedProducts, index: number) => {
                     return (
                         <li
-                            key={item.id}
-                            className="group  bg-white hover:bg-gray-50 border border-gray-100 hover:border-gray-200 rounded-lg transition-all duration-200"
+                            key={item.cuid}
+                            className="group bg-white/70 hover:bg-white/90 border border-slate-200/50 hover:border-slate-300/60 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/5 hover:-translate-y-0.5 backdrop-blur-sm relative overflow-hidden"
+                            style={{ animationDelay: `${index * 100}ms` }}
                         >
-                            <div className="flex items-center gap-3 p-3">
-                                <img
-                                    src={item.icon}
-                                    alt={item.name}
-                                    className="w-10 h-10 rounded-lg object-cover"
-                                />
-                                <p className="font-medium text-gray-800 flex-1">
+                            {/* Hover gradient overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/3 group-hover:to-pink-500/5 transition-all duration-300 rounded-xl"></div>
+
+                            {/* Featured indicator for top items */}
+                            {index < 3 && (
+                                <div className="absolute top-2 left-2 w-1.5 h-1.5 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full shadow-sm"></div>
+                            )}
+
+                            <div className="flex items-center gap-3 p-4 relative z-10">
+                                {/* Logo with enhanced styling */}
+                                <div className="relative">
+                                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-xl blur-sm group-hover:blur-md transition-all duration-300"></div>
+                                    <img
+                                        src={item.logoUrl || ICONS.BLANK_IMAGE}
+                                        alt={item.name}
+                                        className="w-12 h-12 rounded-xl object-cover border-2 border-white/50 shadow-sm relative z-10 group-hover:scale-105 transition-transform duration-300"
+                                    />
+                                    {/* Shine effect */}
+                                    <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/0 via-white/20 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                </div>
+
+                                {/* Product name with gradient */}
+                                <p className="font-semibold text-slate-800 group-hover:text-slate-900 flex-1 transition-colors duration-200">
                                     {item.name}
                                 </p>
+
+                                {/* Enhanced external link */}
                                 <Link
-                                    href="#"
+                                    href={item.websiteUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-gray-400 hover:text-blue-500 transition-colors duration-200"
+                                    className="text-slate-400 hover:text-blue-500 transition-all duration-200 p-2 rounded-lg hover:bg-blue-50/50 group-hover:scale-110"
                                 >
                                     <ExternalLink className="w-4 h-4" />
                                 </Link>
@@ -53,6 +78,9 @@ export default function FeaturedProducts() {
                     );
                 })}
             </ul>
+
+            {/* Bottom accent */}
+            <div className="mt-4 h-1 bg-gradient-to-r from-blue-500/20 via-purple-500/30 to-pink-500/20 rounded-full"></div>
         </div>
     );
 }

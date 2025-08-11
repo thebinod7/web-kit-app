@@ -1,12 +1,20 @@
-import { ArrowRight, ChevronRight, ExternalLink, Star } from 'lucide-react';
-import { ICONS } from '../constants/images';
+import { IFeaturedProducts } from '@/types/product';
+import { ArrowRight, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 import { APP_PATHS } from '../constants/api';
-import { formatEnum } from '@/utils/utils';
+import { ICONS } from '../constants/images';
 import Advertising from './Advertising';
 import FeaturedProducts from './FeaturedProducts';
 
-export default function ProductListings({ products }: { products: any[] }) {
+interface ProductListProps {
+    products: any[];
+    featuredList: IFeaturedProducts[];
+}
+
+export default function ProductListings({
+    products,
+    featuredList,
+}: ProductListProps) {
     return (
         <section id="apps" className="py-10 bg-gray-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -16,7 +24,9 @@ export default function ProductListings({ products }: { products: any[] }) {
                             New Products
                         </h2>
                         <p className="text-lg text-gray-600">
-                            Explore our recently launched products.
+                            {products.length > 0
+                                ? 'Explore our recently launched products.'
+                                : 'No products found. Please visit later.'}
                         </p>
                     </div>
                 </div>
@@ -70,20 +80,22 @@ export default function ProductListings({ products }: { products: any[] }) {
                                 </div>
                             </div>
                         ))}
-                        <div className="flex justify-center">
-                            <Link
-                                href={APP_PATHS.PRODUCTS}
-                                className="inline-flex items-center space-x-2  text-blue-400 rounded-full transition-all transform hover:scale-105"
-                            >
-                                <span>View More</span>
-                                <ArrowRight className="w-5 h-5" />
-                            </Link>
-                        </div>
+                        {products.length > 0 && (
+                            <div className="flex justify-center">
+                                <Link
+                                    href={APP_PATHS.PRODUCTS}
+                                    className="inline-flex items-center space-x-2  text-blue-400 rounded-full transition-all transform hover:scale-105"
+                                >
+                                    <span>View More</span>
+                                    <ArrowRight className="w-5 h-5" />
+                                </Link>
+                            </div>
+                        )}
                     </div>
 
                     {/* Sidebar for Partners and Advertising */}
                     <aside className="lg:w-80 flex-shrink-0 space-y-8">
-                        <FeaturedProducts />
+                        <FeaturedProducts featuredList={featuredList} />
 
                         <Advertising />
                     </aside>
