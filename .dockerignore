@@ -1,0 +1,22 @@
+# Write docker ignore rules for Next JS project
+node_modules
+npm-debug.log
+yarn-error.log
+.DS_Store
+
+out
+coverage
+dist
+
+.env*
+.env
+
+.git
+.gitignore
+.next
+.vscode 
+
+
+*.log
+
+

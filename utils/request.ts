@@ -45,6 +45,5 @@ export {
     putRequest,
     delRequest,
     patchRequest,
-    postWithProgressRequest,
     axiosInstance,
 };
