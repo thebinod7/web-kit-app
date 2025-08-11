@@ -10,6 +10,8 @@ import { PUBLIC_ENV } from '@/utils/env';
 const Providers = ({ children }: { readonly children: React.ReactNode }) => {
     const [queryClient] = useState(() => new QueryClient());
 
+    console.log('PUBLIC_ENV_AUTH===>', PUBLIC_ENV);
+
     return (
         <GoogleOAuthProvider
             clientId={PUBLIC_ENV.GOOGLE_OAUTH_WEB_CLIENT_ID as string}
