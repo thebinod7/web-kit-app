@@ -94,7 +94,7 @@ export default function ProductListings({
                     </div>
 
                     {/* Sidebar for Partners and Advertising */}
-                    <aside className="lg:w-80 flex-shrink-0 space-y-8">
+                    <aside className="lg:w-80 flex-shrink-0 space-y-6">
                         <FeaturedProducts featuredList={featuredList} />
 
                         <Advertising />

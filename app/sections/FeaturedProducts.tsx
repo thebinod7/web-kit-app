@@ -2,6 +2,9 @@ import { IFeaturedProducts } from '@/types/product';
 import { ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 import { ICONS } from '../constants/images';
+import { APP_PATHS } from '../constants/api';
+
+const TOTAL_AVAILABLE = 7;
 
 export default function FeaturedProducts({
     featuredList,
@@ -78,6 +81,49 @@ export default function FeaturedProducts({
                     );
                 })}
             </ul>
+
+            {/* Get Featured CTA */}
+            <Link
+                href={APP_PATHS.MY_PRODUCTS}
+                className="mt-8 relative z-10 cursor-pointer"
+            >
+                <div className="bg-gradient-to-r mt-2 from-blue-500/10 via-purple-500/10 to-pink-500/10 border border-blue-200/50 rounded-xl p-4 backdrop-blur-sm">
+                    <div className="flex items-center justify-between">
+                        <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-1">
+                                <div className="w-2 h-2 bg-gradient-to-r from-orange-500 to-red-500 rounded-full animate-pulse"></div>
+                                <h4 className="font-semibold text-slate-800">
+                                    Get Featured
+                                </h4>
+                            </div>
+                            <p className="text-sm text-slate-600">
+                                Boost your product visibility and reach more
+                                users.{' '}
+                                <span className="text-blue-500">
+                                    Click here to get started.
+                                </span>
+                            </p>
+                            <div className="flex items-center gap-1 mt-2">
+                                <span className="text-xs font-medium text-orange-600">
+                                    {TOTAL_AVAILABLE === featuredList.length
+                                        ? ''
+                                        : `Only ${
+                                              TOTAL_AVAILABLE -
+                                              featuredList.length
+                                          }
+                                    remaining`}
+                                </span>
+                                <div className="flex gap-1">
+                                    <div className="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
+                                    <div className="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
+                                    <div className="w-1.5 h-1.5 bg-slate-300 rounded-full"></div>
+                                    <div className="w-1.5 h-1.5 bg-slate-200 rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </Link>
 
             {/* Bottom accent */}
             <div className="mt-4 h-1 bg-gradient-to-r from-blue-500/20 via-purple-500/30 to-pink-500/20 rounded-full"></div>
