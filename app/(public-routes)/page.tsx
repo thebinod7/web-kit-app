@@ -4,7 +4,7 @@ import Hero from '../sections/Hero';
 import Leaderboard from '../sections/Leaderboard';
 import ProductListings from '../sections/ProductListings';
 
-console.log('PUBLIC_ENV=>', PUBLIC_ENV);
+console.log('PUBLIC_ENV===>', PUBLIC_ENV);
 
 const API_ENDPOINT = `${PUBLIC_ENV.API_ENDPOINT}/api/v1/products/home`;
 
