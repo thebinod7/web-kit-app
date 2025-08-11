@@ -25,3 +25,7 @@ jobs:
                   context: .
                   push: true
                   tags: thebinod7/breakfreekit-website:latest
+                  build-args: |
+                      NEXT_PUBLIC_GOOGLE_CLIENT_ID=${{ secrets.NEXT_PUBLIC_GOOGLE_CLIENT_ID }}
+                      NEXT_PUBLIC_API_ENDPOINT=${{ secrets.NEXT_PUBLIC_API_ENDPOINT }}
+                      NEXT_PUBLIC_APP_URL=${{ secrets.NEXT_PUBLIC_APP_URL }}
