@@ -7,15 +7,14 @@ import AppWrapper from './AppWrapper';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { PUBLIC_ENV } from '@/utils/env';
 
+const GOOGLE_CLIENT_ID = PUBLIC_ENV.GOOGLE_OAUTH_WEB_CLIENT_ID!;
+console.log('GOOGLE_CLIENT_ID===>', GOOGLE_CLIENT_ID);
+
 const Providers = ({ children }: { readonly children: React.ReactNode }) => {
     const [queryClient] = useState(() => new QueryClient());
 
-    console.log('PUBLIC_ENV_AUTH===>', PUBLIC_ENV);
-
     return (
-        <GoogleOAuthProvider
-            clientId={PUBLIC_ENV.GOOGLE_OAUTH_WEB_CLIENT_ID as string}
-        >
+        <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
             <QueryClientProvider client={queryClient}>
                 <AppWrapper>{children}</AppWrapper>
                 <ReactQueryDevtools initialIsOpen={false} />
