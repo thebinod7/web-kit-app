@@ -56,7 +56,7 @@ export default function page() {
 
     return (
         <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6 sm:p-8 lg:p-12">
-            <div className="bg-white shadow-xl rounded-2xl p-8 sm:p-10 w-full max-w-3xl border border-gray-200">
+            <div className="bg-white rounded-2xl p-8 sm:p-10 w-full max-w-3xl">
                 <h1 className="text-4xl font-extrabold text-gray-900 mb-8 text-center tracking-tight">
                     My Profile
                 </h1>
@@ -174,7 +174,7 @@ export default function page() {
                         <button
                             disabled={updateProfileMutation.isPending}
                             type="submit"
-                            className="px-6 cursor-pointer py-2.5 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-200"
+                            className="px-6 cursor-pointer py-2.5 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-orange-500 focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-200"
                         >
                             {updateProfileMutation.isPending
                                 ? 'Saving Changes...'
