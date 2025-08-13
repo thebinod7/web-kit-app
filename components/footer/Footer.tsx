@@ -38,7 +38,7 @@ export default function Footer() {
                                     href="#featured"
                                     className="hover:text-white transition-colors"
                                 >
-                                    Featured
+                                    Get Featured
                                 </Link>
                             </li>
                             <li>
@@ -84,14 +84,6 @@ export default function Footer() {
                                     href="#"
                                     className="hover:text-white transition-colors"
                                 >
-                                    Blog
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="#"
-                                    className="hover:text-white transition-colors"
-                                >
                                     Contact
                                 </Link>
                             </li>
@@ -100,7 +92,15 @@ export default function Footer() {
                                     href="/privacy"
                                     className="hover:text-white transition-colors"
                                 >
-                                    Privacy
+                                    Privacy Policy
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/terms"
+                                    className="hover:text-white transition-colors"
+                                >
+                                    Terms of Service
                                 </Link>
                             </li>
                         </ul>

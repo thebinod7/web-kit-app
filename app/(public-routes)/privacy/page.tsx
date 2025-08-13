@@ -368,15 +368,7 @@ export default function PrivacyPolicy() {
                             </p>
                             <div className="mt-3 text-gray-600">
                                 <p>
-                                    Email: privacy@
-                                    {APP_TITLE.toLowerCase().replace(
-                                        /\s+/g,
-                                        ''
-                                    )}
-                                    .com
-                                </p>
-                                <p>
-                                    For data protection inquiries: dpo@
+                                    Email: support@
                                     {APP_TITLE.toLowerCase().replace(
                                         /\s+/g,
                                         ''
