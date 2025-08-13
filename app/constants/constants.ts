@@ -1,7 +1,7 @@
 export const APP_TITLE = 'BreakFreeKit';
 export const APP_CODE = 'BFK';
 export const APP_DESCRIPTION =
-    'Discover and launch the best new apps, startups, and tech products daily. The premier platform for innovators and early adopters.';
+    'Discover, Launch, and Dominate: The Product Discovery Platform.';
 export const FOOTER_TITLE =
     'Find us on social media and stay up to date with the latest news and updates.';
 

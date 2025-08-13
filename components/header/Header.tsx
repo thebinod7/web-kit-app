@@ -28,9 +28,9 @@ export default function Header() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                     <Link href="/" className="flex items-center space-x-2">
-                        <div className="w-10 h-10 bg-orange-500 rounded-4xl flex items-center justify-center">
-                            <span className="text-white font-bold text-md">
-                                BK
+                        <div className="w-12 h-12 bg-orange-500 rounded-4xl flex items-center justify-center">
+                            <span className="text-white font-bold text-2xl">
+                                B
                             </span>
                         </div>
                         <span className="text-xl font-semibold text-gray-900">
