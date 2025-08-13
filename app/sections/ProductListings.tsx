@@ -59,7 +59,7 @@ export default function ProductListings({
                                     </div>
                                     <div className="flex items-center justify-between sm:justify-end gap-4">
                                         <span className="text-xs font-medium text-orange-600 bg-blue-50 px-2 py-1 rounded-full">
-                                            {app.category?.name || 'Category'}
+                                            {app.category?.name || '-'}
                                         </span>
                                     </div>
                                     <div className="flex items-center justify-between col-span-full mt-2">

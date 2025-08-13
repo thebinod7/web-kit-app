@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: `${APP_TITLE} - Best new tech tools and apps to simplify your life.`,
+    title: `${APP_TITLE} - Discover, Launch, and Dominate: The Product Discovery Platform.`,
     description: APP_DESCRIPTION,
 };
 
