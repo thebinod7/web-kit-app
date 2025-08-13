@@ -2,9 +2,15 @@ import { ArrowRight, Leaf } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { APP_PATHS } from '../constants/api';
-import { FOUNDER_AVATARS } from '../constants/images';
+import { ICONS } from '../constants/images';
 
-export default function Hero({ totalUsers }: { totalUsers: number }) {
+export default function Hero({
+    totalUsers,
+    userProfiles,
+}: {
+    totalUsers: number;
+    userProfiles: any[];
+}) {
     return (
         <section className="relative overflow-hidden bg-white py-20 lg:py-32">
             <Leaf
@@ -21,56 +27,37 @@ export default function Hero({ totalUsers }: { totalUsers: number }) {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="text-center">
                     {/* Trusted by section */}
-                    <div className="mb-8">
-                        <p className="text-sm text-gray-600 mb-2">
-                            Trusted by{' '}
-                            <span className="font-bold">{totalUsers}</span>{' '}
-                            founders
-                        </p>
-                        <div className="flex justify-center -space-x-2 overflow-hidden">
-                            <Image
-                                src={FOUNDER_AVATARS.DINO}
-                                alt="Founder avatar"
-                                width={32}
-                                height={32}
-                                className="inline-block h-8 w-8 rounded-full ring-2 ring-white"
-                            />
-                            <Image
-                                src={FOUNDER_AVATARS.BRAD}
-                                alt="Founder avatar"
-                                width={32}
-                                height={32}
-                                className="inline-block h-8 w-8 rounded-full ring-2 ring-white"
-                            />
-                            <Image
-                                src={FOUNDER_AVATARS.ABHI}
-                                alt="Founder avatar"
-                                width={32}
-                                height={32}
-                                className="inline-block h-8 w-8 rounded-full ring-2 ring-white"
-                            />
+                    {userProfiles.length > 0 && (
+                        <div className="mb-8">
+                            <p className="text-sm text-gray-600 mb-2">
+                                Trusted by{' '}
+                                <span className="font-bold">{totalUsers}</span>{' '}
+                                founders
+                            </p>
+                            <div className="flex justify-center -space-x-2 overflow-hidden">
+                                {userProfiles.map((profile) => {
+                                    return (
+                                        <Image
+                                            key={profile.cuid}
+                                            src={
+                                                profile.profilePicture ||
+                                                ICONS.USER
+                                            }
+                                            referrerPolicy="no-referrer"
+                                            alt="Founder avatar"
+                                            width={32}
+                                            height={32}
+                                            className="inline-block h-8 w-8 rounded-full ring-2 ring-white"
+                                        />
+                                    );
+                                })}
 
-                            <Image
-                                src={FOUNDER_AVATARS.SIMI}
-                                alt="Founder avatar"
-                                width={32}
-                                height={32}
-                                className="inline-block h-8 w-8 rounded-full ring-2 ring-white"
-                            />
-
-                            <Image
-                                src={FOUNDER_AVATARS.THIAGO}
-                                alt="Founder avatar"
-                                width={32}
-                                height={32}
-                                className="inline-block h-8 w-8 rounded-full ring-2 ring-white"
-                            />
-
-                            <div className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-gray-900 text-white text-xs font-medium ring-2 ring-white">
-                                +{totalUsers - 5}
+                                <div className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-gray-900 text-white text-xs font-medium ring-2 ring-white">
+                                    +{totalUsers - userProfiles.length}
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    )}
 
                     {/* Headline */}
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
