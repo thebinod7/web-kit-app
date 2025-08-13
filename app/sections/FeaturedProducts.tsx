@@ -114,8 +114,8 @@ export default function FeaturedProducts({
                                     remaining`}
                                 </span>
                                 <div className="flex gap-1">
-                                    <div className="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
-                                    <div className="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
+                                    <div className="w-1.5 h-1.5 bg-orange-400 rounded-full"></div>
+                                    <div className="w-1.5 h-1.5 bg-orange-400 rounded-full"></div>
                                     <div className="w-1.5 h-1.5 bg-slate-300 rounded-full"></div>
                                     <div className="w-1.5 h-1.5 bg-slate-200 rounded-full"></div>
                                 </div>

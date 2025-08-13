@@ -52,7 +52,7 @@ export default function ContactForm() {
             <div className="max-w-2xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-12">
-                    <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-500 rounded-full mb-6">
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-400 rounded-full mb-6">
                         <Mail className="w-8 h-8 text-white" />
                     </div>
                     <h1 className="text-4xl font-bold text-gray-900 mb-4">
@@ -167,7 +167,7 @@ export default function ContactForm() {
                             <button
                                 type="submit"
                                 disabled={useContactMutation.isPending}
-                                className="w-full cursor-pointer flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                                className="w-full cursor-pointer flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-orange-400 hover:bg-orange-400 focus:outline-none focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                             >
                                 {useContactMutation.isPending ? (
                                     <>
