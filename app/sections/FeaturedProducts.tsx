@@ -93,14 +93,14 @@ export default function FeaturedProducts({
                             <div className="flex items-center gap-2 mb-1">
                                 <div className="w-2 h-2 bg-gradient-to-r from-orange-500 to-red-500 rounded-full animate-pulse"></div>
                                 <h4 className="font-semibold text-slate-800">
-                                    Get Featured
+                                    Premium Spot
                                 </h4>
                             </div>
                             <p className="text-sm text-slate-600">
                                 Boost your product visibility and reach more
                                 users.{' '}
                                 <span className="text-blue-500">
-                                    Click here to get started.
+                                    Click here to get featured.
                                 </span>
                             </p>
                             <div className="flex items-center gap-1 mt-2">
