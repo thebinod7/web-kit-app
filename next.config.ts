@@ -10,6 +10,10 @@ const nextConfig: NextConfig = {
                 protocol: 'https',
                 hostname: 'apply-visa-assets.s3.eu-north-1.amazonaws.com',
             },
+            {
+                protocol: 'https',
+                hostname: 'breakfreekit-assets.s3.eu-north-1.amazonaws.com',
+            },
         ],
     },
 };
