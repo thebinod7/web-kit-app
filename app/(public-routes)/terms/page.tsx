@@ -1,4 +1,4 @@
-import { APP_TITLE } from '@/app/constants/constants';
+import { APP_TITLE, CONTACT_EMAIL } from '@/app/constants/constants';
 
 export default function TermsOfService() {
     return (
@@ -617,14 +617,7 @@ export default function TermsOfService() {
                                 contact us at:
                             </p>
                             <div className="mt-2 text-gray-600">
-                                <p>
-                                    Support: support@
-                                    {APP_TITLE.toLowerCase().replace(
-                                        /\s+/g,
-                                        ''
-                                    )}
-                                    .com
-                                </p>
+                                <p>Support: {CONTACT_EMAIL}</p>
                             </div>
                         </section>
                     </div>

@@ -1,4 +1,4 @@
-import { APP_TITLE } from '@/app/constants/constants';
+import { APP_TITLE, CONTACT_EMAIL } from '@/app/constants/constants';
 
 export default function PrivacyPolicy() {
     return (
@@ -367,14 +367,7 @@ export default function PrivacyPolicy() {
                                 practices, please contact us at:
                             </p>
                             <div className="mt-3 text-gray-600">
-                                <p>
-                                    Email: support@
-                                    {APP_TITLE.toLowerCase().replace(
-                                        /\s+/g,
-                                        ''
-                                    )}
-                                    .com
-                                </p>
+                                <p>Email: {CONTACT_EMAIL}</p>
                             </div>
                         </section>
                     </div>

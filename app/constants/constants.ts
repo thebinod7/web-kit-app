@@ -19,6 +19,8 @@ export const PRODUCT_TABS = {
     SOCIALS: 'Socials',
 };
 
+export const CONTACT_EMAIL = 'connect@breakfreekit.com';
+
 export const MAX_MULTIPLE_FILES = 4;
 export const COOKIE_EXPIRY = 7 * 24 * 60 * 60; // 7 days
 

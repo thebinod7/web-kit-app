@@ -35,7 +35,7 @@ export default function Footer() {
                         <ul className="space-y-2 text-gray-400">
                             <li>
                                 <Link
-                                    href="#featured"
+                                    href="/#featured"
                                     className="hover:text-white transition-colors"
                                 >
                                     Get Featured
@@ -73,7 +73,7 @@ export default function Footer() {
                         <ul className="space-y-2 text-gray-400">
                             <li>
                                 <Link
-                                    href="#"
+                                    href="/about"
                                     className="hover:text-white transition-colors"
                                 >
                                     About
@@ -81,7 +81,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <Link
-                                    href="#"
+                                    href="/contact"
                                     className="hover:text-white transition-colors"
                                 >
                                     Contact
