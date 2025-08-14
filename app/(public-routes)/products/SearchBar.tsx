@@ -1,11 +1,10 @@
 'use client';
 
 import { APP_PATHS } from '@/app/constants/api';
+import { DEBOUNCE_DELAY } from '@/app/constants/constants';
 import { Search } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState, useEffect } from 'react';
-
-const DEBOUNCE_DELAY = 300; // 300ms
 
 export default function SearchBar() {
     const searchParams = useSearchParams();

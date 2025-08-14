@@ -39,7 +39,7 @@ export default function Header() {
                     </Link>
 
                     {/* Search Bar - Hidden on mobile, shown on tablet+ */}
-                    <div className="hidden md:flex flex-1 max-w-lg mx-8">
+                    {/* <div className="hidden md:flex flex-1 max-w-lg mx-8">
                         <div className="relative w-full">
                             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                             <input
@@ -48,13 +48,13 @@ export default function Header() {
                                 className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-white outline-none transition-all duration-200 text-sm"
                             />
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className="flex items-center space-x-4">
                         {/* Mobile search button */}
-                        <button className="md:hidden p-2 text-gray-600 hover:text-gray-900 transition-colors">
+                        {/* <button className="md:hidden p-2 text-gray-600 hover:text-gray-900 transition-colors">
                             <Search className="w-5 h-5" />
-                        </button>
+                        </button> */}
 
                         <div className="hidden lg:flex items-center space-x-6">
                             <Link
@@ -97,7 +97,7 @@ export default function Header() {
                 </div>
 
                 {/* Mobile Search Bar - Expandable */}
-                <div className="md:hidden pb-3">
+                {/* <div className="md:hidden pb-3">
                     <div className="relative">
                         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                         <input
@@ -106,7 +106,7 @@ export default function Header() {
                             className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-white outline-none transition-all duration-200 text-sm"
                         />
                     </div>
-                </div>
+                </div> */}
             </div>
         </nav>
     );

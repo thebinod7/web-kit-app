@@ -1,6 +1,10 @@
 import { APP_PATHS } from '@/app/constants/api';
-import { APP_TITLE, FOOTER_TITLE } from '@/app/constants/constants';
-import { Facebook, LinkedinIcon, Twitter } from 'lucide-react';
+import {
+    APP_TITLE,
+    FOOTER_TITLE,
+    SOCIAL_LINKS,
+} from '@/app/constants/constants';
+import { Facebook, Instagram, Twitter } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Footer() {
@@ -18,15 +22,25 @@ export default function Footer() {
                             {FOOTER_TITLE}
                         </p>
                         <div className="flex space-x-4">
-                            <button className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors">
+                            <Link
+                                href={SOCIAL_LINKS.TWITTER}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors"
+                            >
                                 <Twitter className="w-5 h-5" />
-                            </button>
-                            <button className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors">
+                            </Link>
+                            {/* <button className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors">
                                 <Facebook className="w-5 h-5" />
-                            </button>
-                            <button className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors">
-                                <LinkedinIcon className="w-5 h-5" />
-                            </button>
+                            </button> */}
+                            <Link
+                                href={SOCIAL_LINKS.INSTAGRAM}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors"
+                            >
+                                <Instagram className="w-5 h-5" />
+                            </Link>
                         </div>
                     </div>
 

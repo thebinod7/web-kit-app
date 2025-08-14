@@ -19,6 +19,7 @@ export const PRODUCT_TABS = {
     SOCIALS: 'Socials',
 };
 
+export const DEBOUNCE_DELAY = 300; // 300ms
 export const CONTACT_EMAIL = 'connect@breakfreekit.com';
 
 export const MAX_MULTIPLE_FILES = 4;
@@ -45,4 +46,10 @@ export const PRODUCT_DETAIL_SECTIONS = {
     OVERVIEW: 'Overview',
     RATING: 'Rate this product',
     COMMENTS: 'Comments',
+};
+
+export const SOCIAL_LINKS = {
+    INSTAGRAM: 'https://www.instagram.com/breakfreekit',
+    FACEBOOK: '',
+    TWITTER: 'https://x.com/breakfreekit',
 };

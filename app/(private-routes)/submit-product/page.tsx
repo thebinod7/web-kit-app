@@ -5,7 +5,7 @@ import { generateCookieHeaders } from '@/utils/localstorage';
 import { postRequest } from '@/utils/request';
 import { createSlug, sanitizeError } from '@/utils/utils';
 import { useMutation } from '@tanstack/react-query';
-import { TriangleAlert } from 'lucide-react';
+import { Clock, TriangleAlert, Users, Zap } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { toast } from 'sonner';
@@ -55,28 +55,64 @@ export default function SubmitProductPage() {
                     Submit Your Product
                 </h1>
                 <p className="text-lg text-gray-600 mb-8">
-                    Get your product in front of more people! Add it to our
-                    platform and boost your visibility, reach, and credibility,
-                    all in just a few clicks.
+                    To maintain the quality and credibility of our platform,
+                    every product is carefully reviewed by our team before going
+                    live. Providing accurate, and complete details will help us
+                    approve your submission faster.
                     <span role="img" aria-label="smiling face with sunglasses">
                         🌟
                     </span>
                 </p>
 
                 {/* Alert Box */}
-                <div className="bg-orange-100 border border-orange-200 text-gray-800 p-4 rounded-lg flex items-start space-x-3 mb-10">
-                    <TriangleAlert className="h-6 w-6 flex-shrink-0 mt-0.5" />
-                    <div>
-                        <h3 className="font-semibold text-lg mb-1">
-                            Quality First: Every Product, Carefully Reviewed
-                        </h3>
-                        <p className="text-base mb-3">
-                            To maintain the quality and credibility of our
-                            platform, every product is carefully reviewed by our
-                            team before going live. Providing accurate, and
-                            complete details will help us approve your
-                            submission faster.
-                        </p>
+                <div className="bg-gradient-to-r from-purple-100 to-blue-100 border-2 border-purple-300 text-gray-800 p-6 rounded-xl flex items-start space-x-4 mb-10 shadow-lg">
+                    <div className="flex-shrink-0">
+                        <div className="relative">
+                            <Zap className="h-8 w-8 text-purple-600 animate-pulse" />
+                            <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-ping"></div>
+                        </div>
+                    </div>
+                    <div className="flex-1">
+                        <div className="flex items-center space-x-2 mb-2">
+                            <h3 className="font-bold text-xl text-purple-800">
+                                Early Access - Limited Time Only!
+                            </h3>
+                            <span className="bg-red-500 text-white text-xs px-2 py-1 rounded-full animate-bounce">
+                                FREE
+                            </span>
+                        </div>
+                        <div className="space-y-3">
+                            <p className="text-base font-medium text-gray-700">
+                                You're among the first to experience our
+                                platform! Submit your app now and get:
+                            </p>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+                                <div className="flex items-center space-x-2 bg-white p-3 rounded-lg shadow-sm">
+                                    <Zap className="h-4 w-4 text-yellow-500" />
+                                    <span className="font-semibold">
+                                        Same Day Publish
+                                    </span>
+                                </div>
+                                <div className="flex items-center space-x-2 bg-white p-3 rounded-lg shadow-sm">
+                                    <Users className="h-4 w-4 text-green-500" />
+                                    <span className="font-semibold">
+                                        Priority Support
+                                    </span>
+                                </div>
+                                <div className="flex items-center space-x-2 bg-white p-3 rounded-lg shadow-sm">
+                                    <Clock className="h-4 w-4 text-blue-500" />
+                                    <span className="font-semibold">
+                                        No Waiting List
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="bg-yellow-50 border border-yellow-200 p-3 rounded-lg">
+                                <p className="text-sm text-yellow-800 font-medium">
+                                    ⚠️ <strong>Coming Soon:</strong> Paid
+                                    submissions ($10) + to skip waiting list
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
