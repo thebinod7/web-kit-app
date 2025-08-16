@@ -73,10 +73,10 @@ export default function Footer() {
                             </li>
                             <li>
                                 <a
-                                    href="#"
+                                    href="#leaderboard"
                                     className="hover:text-white transition-colors"
                                 >
-                                    Pricing
+                                    Leaderboard
                                 </a>
                             </li>
                         </ul>

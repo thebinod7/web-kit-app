@@ -12,8 +12,11 @@ export default async function ProductDetailsPage({ params }: { params: any }) {
     const data = await resposnse.json();
     const result = data?.result || null;
     if (!result)
-        return <div className="py-24 text-center">Product not found!</div>;
-    console.log('RESULT:', result);
+        return (
+            <div className="py-24 text-center">
+                Product not found! Product must be approved to be visible.
+            </div>
+        );
 
     return (
         <div className="bg-white mt-8 rounded-lg shadow-lg w-full max-w-6xl mx-auto overflow-hidden">

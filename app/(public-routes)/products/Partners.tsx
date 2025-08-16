@@ -1,4 +1,5 @@
 import { CircleDot, Square } from 'lucide-react';
+import Link from 'next/link';
 import React from 'react';
 
 interface PartnerCardProps {
@@ -48,16 +49,21 @@ export default function PartnersSection() {
 
     return (
         <section className="mb-10">
-            {' '}
-            {/* Increased mb */}
             <h2 className="text-sm font-semibold uppercase text-gray-700 mb-4">
                 Our Partners
             </h2>
-            <div className="space-y-4">
+            <Link
+                href={'/contact'}
+                className="text-md text-blue-400 hover:underline"
+            >
+                {' '}
+                Reach out to us to become a partner
+            </Link>
+            {/* <div className="space-y-4">
                 {partners.map((partner) => (
                     <PartnerCard key={partner.id} partner={partner} />
                 ))}
-            </div>
+            </div> */}
         </section>
     );
 }

@@ -10,7 +10,7 @@ interface ProductCardProps {
     name: string;
     slug: string;
     tagline: string;
-    rating: number;
+    category: string;
     pricingType: string;
 }
 
@@ -19,7 +19,7 @@ export default function ProductCard({
     name,
     slug,
     tagline,
-    rating = 0,
+    category,
     pricingType,
 }: ProductCardProps) {
     return (
@@ -51,7 +51,7 @@ export default function ProductCard({
                         className={`absolute top-2 right-2 px-2 py-1 text-xs font-semibold rounded-full transition-all duration-200 bg-blue-100 text-blue-500
                                 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0`}
                     >
-                        {formatEnum(pricingType)}
+                        {category || 'Uncategorized'}
                     </div>
                 </div>
             </div>

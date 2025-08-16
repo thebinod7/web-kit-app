@@ -49,7 +49,7 @@ export default async function page({ searchParams }: any) {
                                     slug={product.slug}
                                     tagline={product.tagline}
                                     pricingType={product.pricingType}
-                                    rating={product?.feedback?.rating || 0}
+                                    category={product?.category?.name}
                                 />
                             ))
                         ) : (
