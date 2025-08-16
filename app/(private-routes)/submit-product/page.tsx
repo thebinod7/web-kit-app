@@ -72,7 +72,7 @@ export default function SubmitProductPage() {
                     <div>
                         <label
                             htmlFor="name"
-                            className="block text-lg font-medium text-gray-700 mb-2"
+                            className="block text-lg font-medium text-gray-900 mb-2"
                         >
                             Your product name {}
                             <span className="text-red-500 font-bold">*</span>
@@ -85,7 +85,11 @@ export default function SubmitProductPage() {
                             onChange={handleInputChange}
                             required
                             placeholder="Enter your product name"
-                            className="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-gray-700 focus:border-gray-700 sm:text-base placeholder-gray-400"
+                            className="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm 
+             focus:ring-gray-700 focus:border-gray-700 sm:text-base 
+             placeholder-gray-400 
+             bg-white text-gray-900 
+             dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400"
                         />
                         <p className="mt-2 text-sm text-gray-500">
                             {PUBLIC_ENV.APP_URL}/products/
@@ -96,7 +100,7 @@ export default function SubmitProductPage() {
                     <div>
                         <label
                             htmlFor="tagline"
-                            className="block text-lg font-medium text-gray-700 mb-2"
+                            className="block text-lg font-medium text-gray-900 mb-2"
                         >
                             Your product tagline {}
                             <span className="text-red-500 font-bold">*</span>
@@ -109,14 +113,18 @@ export default function SubmitProductPage() {
                             onChange={handleInputChange}
                             required
                             placeholder="Describe your product in a few words"
-                            className="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-gray-700 focus:border-gray-700 sm:text-base placeholder-gray-400"
+                            className="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm 
+             focus:ring-gray-700 focus:border-gray-700 sm:text-base 
+             placeholder-gray-400 
+             bg-white text-gray-900 
+             dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400"
                         />
                     </div>
 
                     <div>
                         <label
                             htmlFor="websiteUrl"
-                            className="block text-lg font-medium text-gray-700 mb-2"
+                            className="block text-lg font-medium text-gray-900 mb-2"
                         >
                             Product website link{' '}
                             <span className="text-red-500 font-bold">*</span>
@@ -129,7 +137,11 @@ export default function SubmitProductPage() {
                             onChange={handleInputChange}
                             required
                             placeholder="https://www.your-product.com"
-                            className="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-gray-700 focus:border-gray-700 sm:text-base placeholder-gray-400"
+                            className="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm 
+             focus:ring-gray-700 focus:border-gray-700 sm:text-base 
+             placeholder-gray-400 
+             bg-white text-gray-900 
+             dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400"
                         />
                     </div>
 
