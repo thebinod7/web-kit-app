@@ -1,5 +1,4 @@
 import BlankResult from '@/components/BlankResult';
-import IconResolver from '@/components/mini/IconResolver';
 import ServerSidePagination from '@/components/ServerSidePagination';
 import { PUBLIC_ENV } from '@/utils/env';
 import Link from 'next/link';
@@ -81,7 +80,6 @@ export default async function page({ searchParams }: any) {
                 : 'bg-white border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-orange-300'
         }`}
                                         >
-                                            <IconResolver name={cat.slug} />
                                             <span className="mt-2 text-sm font-medium">
                                                 {cat.name}
                                             </span>
