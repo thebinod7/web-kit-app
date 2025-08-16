@@ -24,39 +24,26 @@ export default function Header() {
     }, [result]);
 
     return (
-        <nav className="border-b border-gray-100 bg-white/80 backdrop-blur-sm sticky top-0 z-50">
+        <nav className="border-b border-gray-100 bg-white sticky top-0 z-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center h-16">
-                    <Link href="/" className="flex items-center space-x-2">
-                        <div className="w-12 h-12 bg-orange-400 rounded-4xl flex items-center justify-center">
-                            <span className="text-white font-bold text-2xl">
-                                B
+                <div className="flex items-center h-16">
+                    {/* Left: Logo */}
+                    <div className="flex-shrink-0">
+                        <Link href="/" className="flex items-center space-x-2">
+                            <div className="w-11 h-11 bg-orange-400 rounded-4xl flex items-center justify-center">
+                                <span className="text-white font-bold text-2xl">
+                                    B
+                                </span>
+                            </div>
+                            <span className="text-xl font-semibold text-gray-900">
+                                BreakFreeKit
                             </span>
-                        </div>
-                        <span className="text-xl font-semibold text-gray-900">
-                            {}
-                        </span>
-                    </Link>
+                        </Link>
+                    </div>
 
-                    {/* Search Bar - Hidden on mobile, shown on tablet+ */}
-                    {/* <div className="hidden md:flex flex-1 max-w-lg mx-8">
-                        <div className="relative w-full">
-                            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                            <input
-                                type="text"
-                                placeholder="Search products, categories, or creators..."
-                                className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-white outline-none transition-all duration-200 text-sm"
-                            />
-                        </div>
-                    </div> */}
-
-                    <div className="flex items-center space-x-4">
-                        {/* Mobile search button */}
-                        {/* <button className="md:hidden p-2 text-gray-600 hover:text-gray-900 transition-colors">
-                            <Search className="w-5 h-5" />
-                        </button> */}
-
-                        <div className="hidden lg:flex items-center space-x-6">
+                    {/* Center: Menu */}
+                    <div className="flex-1 flex justify-center">
+                        <div className="hidden md:flex items-center space-x-6">
                             <Link
                                 href={APP_PATHS.SUBMIT_PRODUCT}
                                 className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium"
@@ -82,7 +69,10 @@ export default function Header() {
                                 FAQs
                             </Link>
                         </div>
+                    </div>
 
+                    {/* Right: Profile/Login */}
+                    <div className="flex-shrink-0">
                         {loggedUser ? (
                             <UserProfileDropdown loggedInUser={loggedUser} />
                         ) : (
@@ -95,18 +85,6 @@ export default function Header() {
                         )}
                     </div>
                 </div>
-
-                {/* Mobile Search Bar - Expandable */}
-                {/* <div className="md:hidden pb-3">
-                    <div className="relative">
-                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                        <input
-                            type="text"
-                            placeholder="Search products..."
-                            className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-white outline-none transition-all duration-200 text-sm"
-                        />
-                    </div>
-                </div> */}
             </div>
         </nav>
     );
