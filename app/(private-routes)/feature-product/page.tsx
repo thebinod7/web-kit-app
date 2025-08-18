@@ -1,8 +1,8 @@
 'use client';
 import FeatureProductSelectCard from '@/components/FeatureProductSelectCard';
 import { useListMyProductQuery } from '@/hooks/api/product/hook.product';
-import { Plus, Search } from 'lucide-react';
 import { useState } from 'react';
+import FeatureOptionSelector, { FEATURE_TYPE } from './FeatureOptionSelector';
 
 export default function FeatureProduct() {
     const { data, isLoading } = useListMyProductQuery();
@@ -20,23 +20,21 @@ export default function FeatureProduct() {
     });
 
     const handleSubmit = () => {
-        if (selectedOption === 'existing' && selectedProduct) {
-            console.log('Featuring existing product:', selectedProduct);
-            alert(`Featuring ${selectedProduct.name}!`);
+        if (selectedOption === FEATURE_TYPE.EXISTING && selectedProduct) {
+            alert('Featuring existing product!');
         } else if (
-            selectedOption === 'new' &&
+            selectedOption === FEATURE_TYPE.NEW_ONE &&
             newProduct.name &&
             newProduct.description
         ) {
-            console.log('Featuring new product:', newProduct);
-            alert(`Featuring ${newProduct.name}!`);
+            alert('Featuring new product!');
         }
     };
 
     const isFormValid = () => {
-        if (selectedOption === 'existing') {
+        if (selectedOption === FEATURE_TYPE.EXISTING) {
             return selectedProduct !== null;
-        } else if (selectedOption === 'new') {
+        } else if (selectedOption === FEATURE_TYPE.NEW_ONE) {
             return (
                 newProduct.name.trim() &&
                 newProduct.description.trim() &&
@@ -70,53 +68,14 @@ export default function FeatureProduct() {
                         <h2 className="text-xl font-semibold text-gray-800">
                             Choose an Option
                         </h2>
-                        <div className="grid md:grid-cols-2 gap-4">
-                            <div
-                                onClick={() => setSelectedOption('existing')}
-                                className={`p-6 border-2 rounded-lg cursor-pointer transition-all ${
-                                    selectedOption === 'existing'
-                                        ? 'border-orange-500 bg-orange-50'
-                                        : 'border-gray-200 hover:border-gray-300'
-                                }`}
-                            >
-                                <div className="flex items-start space-x-3">
-                                    <Search className="w-6 h-6 text-orange-500 mt-1" />
-                                    <div>
-                                        <h3 className="font-semibold text-gray-800">
-                                            Feature Existing Product
-                                        </h3>
-                                        <p className="text-gray-600 text-sm mt-1">
-                                            Select from your existing products
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div
-                                onClick={() => setSelectedOption('new')}
-                                className={`p-6 border-2 rounded-lg cursor-pointer transition-all ${
-                                    selectedOption === 'new'
-                                        ? 'border-orange-500 bg-orange-50'
-                                        : 'border-gray-200 hover:border-gray-300'
-                                }`}
-                            >
-                                <div className="flex items-start space-x-3">
-                                    <Plus className="w-6 h-6 text-orange-500 mt-1" />
-                                    <div>
-                                        <h3 className="font-semibold text-gray-800">
-                                            Create New Product
-                                        </h3>
-                                        <p className="text-gray-600 text-sm mt-1">
-                                            Add a new product to feature
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <FeatureOptionSelector
+                            selectedOption={selectedOption}
+                            setSelectedOption={setSelectedOption}
+                        />
                     </div>
 
                     {/* Existing Product Selection */}
-                    {selectedOption === 'existing' && (
+                    {selectedOption === FEATURE_TYPE.EXISTING && (
                         <div className="space-y-4">
                             <h3 className="text-lg font-semibold text-gray-800">
                                 Select Your Product
@@ -149,10 +108,10 @@ export default function FeatureProduct() {
                     )}
 
                     {/* New Product Form */}
-                    {selectedOption === 'new' && (
+                    {selectedOption === FEATURE_TYPE.NEW_ONE && (
                         <div className="space-y-6">
                             <h3 className="text-lg font-semibold text-gray-800">
-                                Product Details
+                                Product Details (All fields are required)
                             </h3>
 
                             <div className="grid md:grid-cols-2 gap-6">
