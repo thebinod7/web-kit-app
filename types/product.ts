@@ -33,9 +33,9 @@ export interface IProduct {
     details?: IProductDetails;
 }
 
-export interface IFeaturedProducts {
-    cuid: string;
-    name: string;
-    logoUrl: string;
-    websiteUrl: string;
-}
+// export interface IFeaturedProductLite {
+//     cuid: string;
+//     name: string;
+//     logoUrl: string;
+//     websiteUrl: string;
+// }

@@ -1,19 +1,18 @@
-import { IFeaturedProducts } from '@/types/product';
 import { ArrowRight, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 import { APP_PATHS } from '../constants/api';
 import { ICONS } from '../constants/images';
 import Advertising from './Advertising';
-import FeaturedProducts from './FeaturedProducts';
+import FeaturedProductsLite from './FeaturedProductsLite';
 
 interface ProductListProps {
     products: any[];
-    featuredList: IFeaturedProducts[];
+    featuredListLite: any[];
 }
 
 export default function ProductListings({
     products,
-    featuredList,
+    featuredListLite,
 }: ProductListProps) {
     return (
         <section id="apps" className="py-10 bg-gray-50">
@@ -95,7 +94,9 @@ export default function ProductListings({
 
                     {/* Sidebar for Partners and Advertising */}
                     <aside className="lg:w-80 flex-shrink-0 space-y-6">
-                        <FeaturedProducts featuredList={featuredList} />
+                        <FeaturedProductsLite
+                            featuredListLite={featuredListLite}
+                        />
 
                         <Advertising />
                     </aside>
