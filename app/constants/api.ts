@@ -17,4 +17,5 @@ export const APP_PATHS = {
     EDIT_PRODUCT: '/edit-product',
     PRODUCTS: '/products',
     MY_PROFILE: '/my-profile',
+    FEATURE_PRODUCT: '/feature-product',
 };

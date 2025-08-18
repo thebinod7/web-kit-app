@@ -5,7 +5,6 @@ import { generateCookieHeaders } from '@/utils/localstorage';
 import { postRequest } from '@/utils/request';
 import { createSlug, sanitizeError } from '@/utils/utils';
 import { useMutation } from '@tanstack/react-query';
-import { Clock, TriangleAlert, Users, Zap } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { toast } from 'sonner';

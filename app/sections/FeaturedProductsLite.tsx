@@ -100,7 +100,7 @@ export default function FeaturedProductsLite({
 
             {/* Get Featured CTA */}
             <Link
-                href={APP_PATHS.MY_PRODUCTS}
+                href={APP_PATHS.FEATURE_PRODUCT}
                 className="mt-8 relative z-10 cursor-pointer"
             >
                 <div className="bg-gradient-to-r mt-2 from-blue-500/10 via-purple-500/10 to-pink-500/10 border border-blue-200/50 rounded-xl p-4 backdrop-blur-sm">

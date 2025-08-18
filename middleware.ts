@@ -8,6 +8,7 @@ const PROTECTED_ROUTES = [
     '/edit-product',
     '/my-products',
     '/submit-product',
+    '/feature-product',
 ];
 
 export function isTokenExpired(token: string) {
