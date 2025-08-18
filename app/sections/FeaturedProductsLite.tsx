@@ -18,9 +18,9 @@ interface ISideProduct {
 const SidebarProductCard = ({ product }: { product: ISideProduct }) => (
     <Link
         href={`${APP_PATHS.PRODUCTS}/${product.slug}`}
-        className="group cursor-pointer mb-3"
+        className="group cursor-pointer"
     >
-        <div className="bg-white border border-gray-200 rounded-lg p-3 hover:border-gray-300 hover:shadow-md transition-all duration-200">
+        <div className="bg-white border mt-3 border-gray-200 rounded-lg p-3 hover:border-gray-300 hover:shadow-md transition-all duration-200">
             <div className="flex gap-3">
                 {/* Product Image */}
                 <div className="flex-shrink-0">

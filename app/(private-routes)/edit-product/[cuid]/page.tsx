@@ -263,7 +263,7 @@ export default function ProductDashboardPage() {
                                             </span>
                                         </label>
                                         <input
-                                            type="websiteUrl"
+                                            type="url"
                                             id="websiteUrl"
                                             name="websiteUrl"
                                             className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
