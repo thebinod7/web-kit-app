@@ -37,9 +37,11 @@ const Leaderboard = ({ leaders }: { leaders: any }) => {
         <div className="max-w-2xl mx-auto p-6 mt-8">
             <div className="text-center mb-8">
                 <h1 className="text-3xl font-bold text-gray-900 mb-2">
-                    Top Products This Week
+                    Leaderboard 🏆
                 </h1>
-                <p className="text-gray-600">Battle for the crown continues.</p>
+                <p className="text-gray-600">
+                    The top 10 products ranked by community votes.
+                </p>
             </div>
 
             {/* Leaderboard */}
@@ -139,11 +141,8 @@ const Leaderboard = ({ leaders }: { leaders: any }) => {
                                             href={product.websiteUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className={`inline-flex items-center justify-center w-8 h-8 rounded-lg transition-all duration-200 ${
-                                                isTopThree
-                                                    ? 'bg-gray-900 hover:bg-gray-800 text-white shadow-md hover:shadow-lg transform hover:scale-105'
-                                                    : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
-                                            }`}
+                                            className={`inline-flex items-center justify-center w-8 h-8 rounded-lg transition-all duration-200 
+                                      bg-gray-100 hover:bg-gray-200 text-gray-700`}
                                         >
                                             <ExternalLink className="w-4 h-4" />
                                         </Link>

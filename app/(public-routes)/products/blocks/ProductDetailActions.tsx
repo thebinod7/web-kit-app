@@ -58,7 +58,8 @@ export default function ProductDetailActions({
     const gotoLogin = () => {
         clearLocalStorage();
         const redirectUrl = window.location.href;
-        window.location.href = APP_PATHS.LOGIN + `?redirectUrl=${redirectUrl}`;
+        const encodedUrl = encodeURIComponent(redirectUrl);
+        window.location.href = APP_PATHS.LOGIN + `?redirectUrl=${encodedUrl}`;
     };
 
     return (

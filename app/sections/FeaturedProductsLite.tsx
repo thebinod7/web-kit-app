@@ -1,4 +1,4 @@
-import { ExternalLink } from 'lucide-react';
+import WebsiteLink from '@/components/mini/WebsiteLink';
 import Image from 'next/image';
 import Link from 'next/link';
 import { APP_PATHS } from '../constants/api';
@@ -16,53 +16,43 @@ interface ISideProduct {
 }
 
 const SidebarProductCard = ({ product }: { product: ISideProduct }) => (
-    <Link
-        href={`${APP_PATHS.PRODUCTS}/${product.slug}`}
-        className="group cursor-pointer"
-    >
-        <div className="bg-white border mt-3 border-gray-200 rounded-lg p-3 hover:border-gray-300 hover:shadow-md transition-all duration-200">
-            <div className="flex gap-3">
-                {/* Product Image */}
-                <div className="flex-shrink-0">
-                    <Image
-                        src={product.logoUrl || ICONS.BLANK_IMAGE}
-                        width={48}
-                        height={48}
-                        alt={product.name}
-                        className="w-12 h-12 rounded-lg object-cover bg-gray-100"
-                    />
-                </div>
-
-                {/* Content */}
-                <div className="flex-grow min-w-0">
-                    {/* Header */}
-                    <div className="flex items-center justify-between mb-1">
-                        <span className="bg-gray-100 px-2 py-0.5 rounded text-xs font-medium text-gray-600">
-                            {product.category?.name || 'Uncategorized'}
-                        </span>
-                        <Link
-                            href={product.websiteUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <ExternalLink
-                                size={12}
-                                className="text-gray-400 group-hover:text-gray-600 transition-colors cursor-pointer"
-                            />
-                        </Link>
+    <>
+        <div className="group cursor-pointer">
+            <div className="bg-white border mt-3 border-gray-200 rounded-lg p-3 hover:border-gray-300 hover:shadow-md transition-all duration-200">
+                <div className="flex gap-3">
+                    {/* Product Image */}
+                    <div className="flex-shrink-0">
+                        <Image
+                            src={product.logoUrl || ICONS.BLANK_IMAGE}
+                            width={48}
+                            height={48}
+                            alt={product.name}
+                            className="w-12 h-12 rounded-lg object-cover bg-gray-100"
+                        />
                     </div>
 
-                    {/* Product Info */}
-                    <h3 className="font-semibold text-gray-900 text-sm leading-tight mb-1 group-hover:text-gray-700 transition-colors">
-                        {product.name}
-                    </h3>
-                    <p className="text-xs text-gray-600 line-clamp-2 leading-relaxed">
-                        {product.tagline}
-                    </p>
+                    {/* Content */}
+                    <div className="flex-grow min-w-0">
+                        {/* Header */}
+                        <div className="flex items-center justify-between mb-1">
+                            <span className="bg-gray-100 px-2 py-0.5 rounded text-xs font-medium text-gray-600">
+                                {product.category?.name || 'Uncategorized'}
+                            </span>
+                            <WebsiteLink websiteUrl={product.websiteUrl} />
+                        </div>
+
+                        {/* Product Info */}
+                        <h3 className="font-semibold text-gray-900 text-sm leading-tight mb-1 group-hover:text-gray-700 transition-colors">
+                            {product.name}
+                        </h3>
+                        <p className="text-xs text-gray-600 line-clamp-2 leading-relaxed">
+                            {product.tagline}
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-    </Link>
+    </>
 );
 
 export default function FeaturedProductsLite({

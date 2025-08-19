@@ -9,7 +9,7 @@ import {
     TrendingUp,
 } from 'lucide-react';
 
-const ProductCard = ({ product, index }) => (
+const ProductCard = ({ product, index }: { product: any; index: number }) => (
     <div className="relative group cursor-pointer">
         {/* Featured badge */}
         <div className="absolute -top-2 -left-2 z-10">
@@ -69,7 +69,7 @@ const ProductCard = ({ product, index }) => (
 
                     {/* Tags */}
                     <div className="flex flex-wrap gap-1 mb-4">
-                        {product.tags.map((tag) => (
+                        {product.tags.map((tag: string) => (
                             <span
                                 key={tag}
                                 className="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium hover:bg-gray-200 transition-colors"

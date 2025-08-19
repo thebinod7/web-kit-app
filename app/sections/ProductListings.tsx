@@ -4,6 +4,7 @@ import { APP_PATHS } from '../constants/api';
 import { ICONS } from '../constants/images';
 import Advertising from './Advertising';
 import FeaturedProductsLite from './FeaturedProductsLite';
+import SuperProductCard from '@/components/SuperProductCard';
 
 interface ProductListProps {
     products: any[];
@@ -19,12 +20,12 @@ export default function ProductListings({
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-12">
                     <div>
-                        <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                            New Products
+                        <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
+                            Our Recent Launches
                         </h2>
-                        <p className="text-lg text-gray-600">
+                        <p className="text-md text-gray-600">
                             {products.length > 0
-                                ? 'Explore our recently launched products.'
+                                ? 'Every product is visible for 24-48 hours.'
                                 : 'No products found. Please visit later.'}
                         </p>
                     </div>
@@ -34,50 +35,15 @@ export default function ProductListings({
                     {/* Main Content Area for Product Listings */}
                     <div className="flex-1 flex flex-col gap-6">
                         {products.map((app, index) => (
-                            <div
+                            <SuperProductCard
+                                name={app.name}
+                                slug={app.slug}
+                                tagline={app.tagline}
+                                category={app.category?.name}
+                                logoUrl={app.logoUrl}
+                                websiteUrl={app.websiteUrl}
                                 key={index}
-                                className="bg-white border border-gray-200 rounded-xl p-4 hover:shadow-lg transition-all duration-300 group flex items-center gap-4" // Card itself is horizontal flex
-                            >
-                                <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
-                                    <img
-                                        src={app.logoUrl || ICONS.BLANK_IMAGE}
-                                        alt={app.name}
-                                        className="w-full h-full object-cover"
-                                    />
-                                </div>
-                                <div className="flex-grow grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1 items-center">
-                                    {/* Content area next to image */}
-                                    <div>
-                                        <h3 className="text-lg font-semibold text-gray-900">
-                                            {app.name}
-                                        </h3>
-                                        <p className="text-gray-600 text-sm line-clamp-1">
-                                            {app.tagline}
-                                        </p>{' '}
-                                        {/* Line clamp 1 for single line */}
-                                    </div>
-                                    <div className="flex items-center justify-between sm:justify-end gap-4">
-                                        <span className="text-xs font-medium text-orange-600 bg-blue-50 px-2 py-1 rounded-full">
-                                            {app.category?.name || '-'}
-                                        </span>
-                                    </div>
-                                    <div className="flex items-center justify-between col-span-full mt-2">
-                                        <Link
-                                            href={
-                                                APP_PATHS.PRODUCTS +
-                                                '/' +
-                                                app.slug
-                                            }
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-blue-400 hover:text-blue-500 flex items-center space-x-1 text-sm font-medium"
-                                        >
-                                            <span>View Details</span>
-                                            <ExternalLink className="w-4 h-4" />
-                                        </Link>
-                                    </div>
-                                </div>
-                            </div>
+                            />
                         ))}
                         {products.length > 0 && (
                             <div className="flex justify-center">

@@ -6,7 +6,6 @@ import HeaderSection from './HeaderSection';
 import PartnersSection from './Partners';
 import ProductCard from './ProductCard';
 import ResetFilters from './ResetFilters';
-import SearchBar from './SearchBar';
 
 export default async function page({ searchParams }: any) {
     let API_ENDPOINT = `${PUBLIC_ENV.API_ENDPOINT}/api/v1/products`;
@@ -37,7 +36,7 @@ export default async function page({ searchParams }: any) {
                     <HeaderSection />
                     {categorySlug && <ResetFilters />}
 
-                    <SearchBar />
+                    {/* <SearchBar /> */}
                     {/* <SortDropdown /> */}
                     <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
                         {result?.rows.length > 0 ? (
