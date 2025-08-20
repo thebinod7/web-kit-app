@@ -17,7 +17,7 @@ interface ISideProduct {
 
 const SidebarProductCard = ({ product }: { product: ISideProduct }) => (
     <>
-        <div className="group cursor-pointer">
+        <div className="group">
             <div className="bg-white border mt-3 border-gray-200 rounded-lg p-3 hover:border-gray-300 hover:shadow-md transition-all duration-200">
                 <div className="flex gap-3">
                     {/* Product Image */}
@@ -43,7 +43,12 @@ const SidebarProductCard = ({ product }: { product: ISideProduct }) => (
 
                         {/* Product Info */}
                         <h3 className="font-semibold text-gray-900 text-sm leading-tight mb-1 group-hover:text-gray-700 transition-colors">
-                            {product.name}
+                            <Link
+                                className="hover:underline"
+                                href={`${APP_PATHS.PRODUCTS}/${product.slug}`}
+                            >
+                                {product.name}
+                            </Link>
                         </h3>
                         <p className="text-xs text-gray-600 line-clamp-2 leading-relaxed">
                             {product.tagline}

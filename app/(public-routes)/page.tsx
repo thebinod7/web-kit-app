@@ -1,7 +1,5 @@
 import { PUBLIC_ENV } from '@/utils/env';
 import Faq from '../sections/Faq';
-import Hero from '../sections/Hero';
-import Leaderboard from '../sections/Leaderboard';
 import ProductListings from '../sections/ProductListings';
 
 const API_ENDPOINT = `${PUBLIC_ENV.API_ENDPOINT}/api/v1/products/home`;
@@ -14,10 +12,10 @@ export default async function page() {
     const result = data?.result || {};
     return (
         <div className="min-h-screen bg-white">
-            <Hero
+            {/* <Hero
                 totalUsers={result.totalUsers}
                 userProfiles={result.userProfiles}
-            />
+            /> */}
 
             {/* <FeaturedProductsHero /> */}
 
@@ -28,9 +26,9 @@ export default async function page() {
                 />
             </section>
 
-            <section id="leaderboard">
+            {/* <section id="leaderboard">
                 <Leaderboard leaders={result?.leaders || []} />
-            </section>
+            </section> */}
 
             <section id="faq">
                 <Faq />

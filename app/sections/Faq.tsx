@@ -1,5 +1,6 @@
 import { ChevronDown } from 'lucide-react';
 import { APP_TITLE } from '../constants/constants';
+import HeaderH2 from '@/components/mini/HeaderH2';
 
 const faqItems = [
     {
@@ -30,14 +31,13 @@ const faqItems = [
 
 export default function Faq() {
     return (
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
-            <div className="container px-4 md:px-6 max-w-3xl mx-auto">
-                <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-[#212B36]">
-                        Frequently Asked Questions
-                    </h2>
+        <section className="w-full py-24 bg-gray-50">
+            <div className="container px-4 md:px-6 max-w-3xl mx-auto mb-12">
+                <div className="flex flex-col items-center justify-center space-y-4 text-center mb-10">
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-[#212B36]"></h2>
+                    <HeaderH2 text=" Frequently Asked Questions" />
                     <p className="max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                        Everything you need to know about {APP_TITLE}
+                        Know your way around {APP_TITLE}.
                     </p>
                 </div>
                 <div className="space-y-4">

@@ -1,10 +1,7 @@
-import { ArrowRight, ExternalLink } from 'lucide-react';
-import Link from 'next/link';
-import { APP_PATHS } from '../constants/api';
-import { ICONS } from '../constants/images';
-import Advertising from './Advertising';
-import FeaturedProductsLite from './FeaturedProductsLite';
+import HeaderH2 from '@/components/mini/HeaderH2';
 import SuperProductCard from '@/components/SuperProductCard';
+import FeaturedProductsLite from './FeaturedProductsLite';
+import WeeklyStats from './WeeklyStats';
 
 interface ProductListProps {
     products: any[];
@@ -16,16 +13,14 @@ export default function ProductListings({
     featuredListLite,
 }: ProductListProps) {
     return (
-        <section id="apps" className="py-10 bg-gray-50">
+        <section id="apps" className="py-5 bg-gray-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-12">
+                <div className="flex flex-col lg:flex-rowlg:items-center lg:justify-between mb-4">
                     <div>
-                        <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
-                            Our Recent Launches
-                        </h2>
-                        <p className="text-md text-gray-600">
+                        <HeaderH2 text="Bring Your Product into the Spotlight" />
+                        <p className="text-md text-gray-600 mt-2">
                             {products.length > 0
-                                ? 'Every product is visible for 24-48 hours.'
+                                ? 'Every product get at least 24-48 hours of exposure.'
                                 : 'No products found. Please visit later.'}
                         </p>
                     </div>
@@ -33,7 +28,7 @@ export default function ProductListings({
 
                 <div className="flex flex-col lg:flex-row gap-8">
                     {/* Main Content Area for Product Listings */}
-                    <div className="flex-1 flex flex-col gap-6">
+                    <div className="flex-1 flex flex-col gap-4">
                         {products.map((app, index) => (
                             <SuperProductCard
                                 name={app.name}
@@ -45,8 +40,8 @@ export default function ProductListings({
                                 key={index}
                             />
                         ))}
-                        {products.length > 0 && (
-                            <div className="flex justify-center">
+                        {/* {products.length > 0 && (
+                            <div className="flex justify-center mt-2">
                                 <Link
                                     href={APP_PATHS.PRODUCTS}
                                     className="inline-flex items-center space-x-2  text-blue-400 rounded-full transition-all transform hover:scale-105"
@@ -55,16 +50,16 @@ export default function ProductListings({
                                     <ArrowRight className="w-5 h-5" />
                                 </Link>
                             </div>
-                        )}
+                        )} */}
                     </div>
 
-                    {/* Sidebar for Partners and Advertising */}
-                    <aside className="lg:w-80 flex-shrink-0 space-y-6">
+                    {/* Sidebar */}
+                    <aside className="lg:w-80 flex-shrink-0 space-y-4">
+                        <WeeklyStats />
+
                         <FeaturedProductsLite
                             featuredListLite={featuredListLite}
                         />
-
-                        <Advertising />
                     </aside>
                 </div>
             </div>

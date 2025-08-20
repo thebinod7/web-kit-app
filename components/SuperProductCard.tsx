@@ -51,7 +51,7 @@ export default function SuperProductCard({
                 {/* Text content - horizontal layout */}
                 <div className="flex-1 min-w-0 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
                     <div className="min-w-0">
-                        <h2 className="text-lg md:text-xl font-semibold text-gray-900 mb-1">
+                        <h2 className="text-lg font-semibold text-gray-900 mb-1">
                             <Link
                                 href={`${APP_PATHS.PRODUCTS}/${slug}`}
                                 className="hover:underline"
