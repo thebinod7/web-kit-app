@@ -15,7 +15,7 @@ export default function FeatureProduct() {
     const rows = data?.data?.result.rows || [];
 
     const [selectedOption, setSelectedOption] = useState('');
-    const [selectedProduct, setSelectedProduct] = useState(null);
+    const [selectedProduct, setSelectedProduct] = useState('');
 
     const handleSubmit = () => {
         const isValid = hasAllValues(productPrimaryDetails);
@@ -30,7 +30,7 @@ export default function FeatureProduct() {
         <div className="min-h-screen bg-white">
             {/* Header */}
             <header className="border-b border-gray-200">
-                <div className="max-w-4xl mx-auto px-4 py-6">
+                <div className="max-w-4xl mx-auto px-4 py-4">
                     <h1 className="text-3xl font-bold text-gray-800">
                         Feature a Product
                     </h1>
@@ -41,7 +41,7 @@ export default function FeatureProduct() {
                 </div>
             </header>
 
-            <main className="max-w-4xl mx-auto px-4 py-8">
+            <main className="max-w-4xl mx-auto px-4 py-4">
                 <div className="space-y-8">
                     {/* Option Selection */}
                     <div className="space-y-4">
@@ -106,7 +106,7 @@ export default function FeatureProduct() {
                             <button
                                 type="button"
                                 onClick={handleSubmit}
-                                className={`px-8 py-3 rounded-lg font-semibold transition-all bg-orange-500 text-white hover:bg-orange-600`}
+                                className={`px-6 cursor-pointer py-3 rounded-lg font-semibold transition-all bg-orange-400 text-white hover:bg-orange-500`}
                             >
                                 Feature Product
                             </button>
