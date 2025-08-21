@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { useState } from 'react';
 import AppWrapper from './AppWrapper';
+import { PostHogProvider } from './PosthogProvider';
 
 const Providers = ({ children }: { readonly children: React.ReactNode }) => {
     const [queryClient] = useState(() => new QueryClient());
@@ -14,7 +15,9 @@ const Providers = ({ children }: { readonly children: React.ReactNode }) => {
             clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!}
         >
             <QueryClientProvider client={queryClient}>
-                <AppWrapper>{children}</AppWrapper>
+                <PostHogProvider>
+                    <AppWrapper>{children}</AppWrapper>
+                </PostHogProvider>
                 <ReactQueryDevtools initialIsOpen={false} />
             </QueryClientProvider>
         </GoogleOAuthProvider>
