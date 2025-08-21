@@ -16,18 +16,15 @@ const WeeklyStats = () => {
         return num.toLocaleString();
     };
 
-    // Mock data fetching - replace with your actual API call
     useEffect(() => {
         const fetchStats = async () => {
             try {
-                // Simulate API delay
-                await new Promise((resolve) => setTimeout(resolve, 1000));
-
-                // Mock data - replace with actual API call
+                const res = await fetch('/api/analytics');
+                const r = await res.json();
                 const currentWeekStats = {
-                    pageViews: Math.floor(Math.random() * 5000) + 1000,
-                    visitors: Math.floor(Math.random() * 1200) + 300,
-                    loading: false,
+                    pageViews: r.pageViews,
+                    visitors: r.visitors,
+                    loading: r.loading,
                 };
 
                 setStats(currentWeekStats);
@@ -77,8 +74,7 @@ const WeeklyStats = () => {
     );
 
     return (
-        <div className="w-full max-w-sm space-y-3">
-            {/* Header */}
+        <div className="w-full space-y-3">
             <div className="flex items-center space-x-2 px-1">
                 <Calendar className="w-4 h-4 text-gray-600" />
                 <h3 className="text-lg font-semibold text-gray-900">
@@ -89,7 +85,6 @@ const WeeklyStats = () => {
                 </h3>
             </div>
 
-            {/* Stats Cards */}
             <div className="space-y-3">
                 <StatCard
                     icon={Eye}
