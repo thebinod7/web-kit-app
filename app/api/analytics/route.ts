@@ -5,6 +5,9 @@ const POSTHOG_PERSONAL_API_KEY = process.env.POSTHOG_PERSONAL_API_KEY;
 
 const FULL_API_URL = `${POSTHOG_API_ENDPOINT}/insights/trend/`;
 
+const PV = 103;
+const VI = 32;
+
 export async function GET() {
     const res = await fetch(FULL_API_URL, {
         method: 'POST',
@@ -36,8 +39,8 @@ export async function GET() {
     const json = await res.json();
 
     const data = {
-        pageViews: json.result[0]?.aggregated_value || 0,
-        visitors: json.result[1]?.aggregated_value || 0,
+        pageViews: json.result[0]?.aggregated_value + PV || PV,
+        visitors: json.result[1]?.aggregated_value + VI || VI,
         loading: false,
     };
     return NextResponse.json(data);
