@@ -1,3 +1,12 @@
+export interface IProductPrimaryDetails {
+    logoUrl: string;
+    name: string;
+    tagline: string;
+    websiteUrl: string;
+    category: string;
+    description: string;
+}
+
 export interface IProductDetails {
     contactEmail?: string;
     twitterUrl?: string;

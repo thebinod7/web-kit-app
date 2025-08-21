@@ -4,7 +4,7 @@ import { getRequest } from '@/utils/request';
 import { createCategoryDropdownOptions } from '@/utils/utils';
 import { useQuery } from '@tanstack/react-query';
 
-export const useFetchAllCountries = () => {
+export const useFetchAllCategory = () => {
     const { data, isLoading, error } = useQuery({
         queryKey: [QUERY_KEYS.CATEGORY.LIST_ALL],
         queryFn: async () => {

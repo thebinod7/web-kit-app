@@ -4,7 +4,7 @@ import { API_ROUTES } from '@/app/constants/api';
 import { PRICING_TYPES, PRODUCT_TABS } from '@/app/constants/constants';
 import DropzoneUploader from '@/components/DropzoneUploader';
 import ProductTabs from '@/components/ProductTabs';
-import { useFetchAllCountries } from '@/hooks/api/app';
+import { useFetchAllCategory } from '@/hooks/api/app';
 import { useGetProductDetailsQuery } from '@/hooks/api/product/hook.product';
 import { useProductStore } from '@/store/store.product';
 import { IProduct } from '@/types/product';
@@ -21,7 +21,7 @@ import SubmitToday from '../SubmitToday';
 import SingleLineLoader from '@/components/mini/SingleLineLoader';
 
 export default function ProductDashboardPage() {
-    const { all_categories } = useFetchAllCountries();
+    const { all_categories } = useFetchAllCategory();
     const params = useParams();
     const cuid = params.cuid as string;
 

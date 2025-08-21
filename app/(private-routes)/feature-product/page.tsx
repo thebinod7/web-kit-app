@@ -3,45 +3,25 @@ import FeatureProductSelectCard from '@/components/FeatureProductSelectCard';
 import { useListMyProductQuery } from '@/hooks/api/product/hook.product';
 import { useState } from 'react';
 import FeatureOptionSelector, { FEATURE_TYPE } from './FeatureOptionSelector';
+import { ProductForm } from './ProductForm';
+import { useProductStore } from '@/store/store.product';
+import { hasAllValues } from '@/utils/utils';
+import { toast } from 'sonner';
 
 export default function FeatureProduct() {
+    const { productPrimaryDetails } = useProductStore((state) => state);
+
     const { data, isLoading } = useListMyProductQuery();
     const rows = data?.data?.result.rows || [];
 
     const [selectedOption, setSelectedOption] = useState('');
     const [selectedProduct, setSelectedProduct] = useState(null);
-    const [newProduct, setNewProduct] = useState({
-        name: '',
-        tagline: '',
-        description: '',
-        website: '',
-        category: '',
-        logo: '',
-    });
 
     const handleSubmit = () => {
-        if (selectedOption === FEATURE_TYPE.EXISTING && selectedProduct) {
-            alert('Featuring existing product!');
-        } else if (
-            selectedOption === FEATURE_TYPE.NEW_ONE &&
-            newProduct.name &&
-            newProduct.description
-        ) {
-            alert('Featuring new product!');
-        }
-    };
-
-    const isFormValid = () => {
-        if (selectedOption === FEATURE_TYPE.EXISTING) {
-            return selectedProduct !== null;
-        } else if (selectedOption === FEATURE_TYPE.NEW_ONE) {
-            return (
-                newProduct.name.trim() &&
-                newProduct.description.trim() &&
-                newProduct.website.trim()
-            );
-        }
-        return false;
+        const isValid = hasAllValues(productPrimaryDetails);
+        if (!isValid)
+            return toast.error('Please make sure all fields are filled!');
+        console.log('Submit:', productPrimaryDetails);
     };
 
     console.log('Rows:', rows);
@@ -111,131 +91,22 @@ export default function FeatureProduct() {
                     {selectedOption === FEATURE_TYPE.NEW_ONE && (
                         <div className="space-y-6">
                             <h3 className="text-lg font-semibold text-gray-800">
-                                Product Details (All fields are required)
+                                Product Details{' '}
+                                <span className="text-xs text-red-500">
+                                    All fields are required
+                                </span>
                             </h3>
 
-                            <div className="grid md:grid-cols-2 gap-6">
-                                <div className="space-y-4">
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                                            Product Name *
-                                        </label>
-                                        <input
-                                            type="text"
-                                            required
-                                            value={newProduct.name}
-                                            onChange={(e) =>
-                                                setNewProduct({
-                                                    ...newProduct,
-                                                    name: e.target.value,
-                                                })
-                                            }
-                                            className="w-full px-4 py-3 border border-gray-200 rounded-lg"
-                                            placeholder="Enter product name"
-                                        />
-                                    </div>
-
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                                            Website URL *
-                                        </label>
-                                        <input
-                                            type="url"
-                                            required
-                                            value={newProduct.website}
-                                            onChange={(e) =>
-                                                setNewProduct({
-                                                    ...newProduct,
-                                                    website: e.target.value,
-                                                })
-                                            }
-                                            className="w-full px-4 py-3 border border-gray-200 rounded-lg"
-                                            placeholder="https://your-product.com"
-                                        />
-                                    </div>
-
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                                            Category
-                                        </label>
-                                        <select
-                                            value={newProduct.category}
-                                            onChange={(e) =>
-                                                setNewProduct({
-                                                    ...newProduct,
-                                                    category: e.target.value,
-                                                })
-                                            }
-                                            className="w-full px-4 py-3 border border-gray-200 rounded-lg"
-                                        >
-                                            <option value="">
-                                                Select category
-                                            </option>
-                                            <option value="Productivity">
-                                                Productivity
-                                            </option>
-                                            <option value="Design Tools">
-                                                Design Tools
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div className="space-y-4">
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                                            Description *
-                                        </label>
-                                        <textarea
-                                            required
-                                            rows={4}
-                                            value={newProduct.description}
-                                            onChange={(e) =>
-                                                setNewProduct({
-                                                    ...newProduct,
-                                                    description: e.target.value,
-                                                })
-                                            }
-                                            className="w-full px-4 py-3 border border-gray-200 rounded-lg resize-none"
-                                            placeholder="Describe your product in a few sentences..."
-                                        />
-                                    </div>
-
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                                            Tagline
-                                        </label>
-                                        <input
-                                            type="text"
-                                            value={newProduct.logo}
-                                            onChange={(e) =>
-                                                setNewProduct({
-                                                    ...newProduct,
-                                                    logo: e.target.value,
-                                                })
-                                            }
-                                            className="w-full px-4 py-3 border border-gray-200 rounded-lg"
-                                            placeholder="Enter your tagline"
-                                            maxLength={2}
-                                        />
-                                    </div>
-                                </div>
-                            </div>
+                            <ProductForm />
                         </div>
                     )}
 
-                    {/* Submit Button */}
                     {selectedOption && (
                         <div className="flex justify-end pt-6 border-t border-gray-200">
                             <button
                                 type="button"
                                 onClick={handleSubmit}
-                                disabled={!isFormValid()}
-                                className={`px-8 py-3 rounded-lg font-semibold transition-all ${
-                                    isFormValid()
-                                        ? 'bg-orange-500 text-white hover:bg-orange-600'
-                                        : 'bg-gray-200 text-gray-500 cursor-not-allowed'
-                                }`}
+                                className={`px-8 py-3 rounded-lg font-semibold transition-all bg-orange-500 text-white hover:bg-orange-600`}
                             >
                                 Feature Product
                             </button>

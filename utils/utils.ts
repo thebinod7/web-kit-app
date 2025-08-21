@@ -71,3 +71,12 @@ export const createSlug = (text: string) => {
         .replace(/[^\w ]+/g, '')
         .replace(/ +/g, '-');
 };
+
+export const hasAllValues = (payload: any) => {
+    return Object.keys(payload).every((key) => {
+        const value = payload[key];
+        if (value === null || value === undefined) return false;
+        if (typeof value === 'string') return value.trim() !== '';
+        return true; // accept numbers, booleans, objects as long as not null/undefined
+    });
+};
