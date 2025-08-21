@@ -24,7 +24,7 @@ const WeeklyStats = () => {
                 const currentWeekStats = {
                     pageViews: r.pageViews,
                     visitors: r.visitors,
-                    loading: r.loading,
+                    loading: false,
                 };
 
                 setStats(currentWeekStats);

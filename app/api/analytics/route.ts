@@ -41,7 +41,6 @@ export async function GET() {
     const data = {
         pageViews: json.result[0]?.aggregated_value + PV || PV,
         visitors: json.result[1]?.aggregated_value + VI || VI,
-        loading: false,
     };
     return NextResponse.json(data);
 }

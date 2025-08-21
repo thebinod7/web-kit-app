@@ -128,13 +128,6 @@ export default function Component() {
                                     className="text-gray-600 hover:text-gray-900 underline underline-offset-2 transition-colors"
                                 >
                                     Terms of Service
-                                </Link>{' '}
-                                and{' '}
-                                <Link
-                                    href="/privacy"
-                                    className="text-gray-600 hover:text-gray-900 underline underline-offset-2 transition-colors"
-                                >
-                                    Privacy Policy
                                 </Link>
                             </p>
                         </div>
