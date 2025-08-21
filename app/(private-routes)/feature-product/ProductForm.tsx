@@ -42,7 +42,7 @@ export function ProductForm() {
                 name: productPrimaryDetails?.name ?? '',
                 tagline: productPrimaryDetails?.tagline ?? '',
                 websiteUrl: productPrimaryDetails?.websiteUrl ?? '',
-                category: productPrimaryDetails?.category ?? '',
+                categoryId: productPrimaryDetails?.categoryId ?? '',
                 description: productPrimaryDetails?.description ?? '',
             });
         },
@@ -55,7 +55,7 @@ export function ProductForm() {
             name: productPrimaryDetails?.name || '',
             tagline: productPrimaryDetails?.tagline || '',
             websiteUrl: productPrimaryDetails?.websiteUrl || '',
-            category: productPrimaryDetails?.category || '',
+            categoryId: productPrimaryDetails?.categoryId || '',
             description: productPrimaryDetails?.description || '',
         });
     };
@@ -165,10 +165,10 @@ export function ProductForm() {
                             Category
                         </label>
                         <select
-                            id="category"
-                            value={productPrimaryDetails?.category}
+                            id="categoryId"
+                            value={productPrimaryDetails?.categoryId}
                             onChange={(e) =>
-                                handleInputChange('category', e.target.value)
+                                handleInputChange('categoryId', e.target.value)
                             }
                             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                             required

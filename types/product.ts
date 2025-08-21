@@ -3,7 +3,7 @@ export interface IProductPrimaryDetails {
     name: string;
     tagline: string;
     websiteUrl: string;
-    category: string;
+    categoryId: string;
     description: string;
 }
 

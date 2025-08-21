@@ -16,7 +16,7 @@ export const useProductStore = create<ProductStore>((set) => ({
         websiteUrl: '',
         tagline: '',
         logoUrl: '',
-        category: '',
+        categoryId: '',
         description: '',
     },
     setProductPrimaryDetails: (payload) =>
