@@ -7,6 +7,7 @@ import { ProductForm } from './ProductForm';
 import { useProductStore } from '@/store/store.product';
 import { hasAllValues } from '@/utils/utils';
 import { toast } from 'sonner';
+import BtnPrimary from '@/components/mini/BtnPrimary';
 
 export default function FeatureProduct() {
     const { productPrimaryDetails } = useProductStore((state) => state);
@@ -103,13 +104,10 @@ export default function FeatureProduct() {
 
                     {selectedOption && (
                         <div className="flex justify-end pt-6 border-t border-gray-200">
-                            <button
-                                type="button"
-                                onClick={handleSubmit}
-                                className={`px-6 cursor-pointer py-3 rounded-lg font-semibold transition-all bg-orange-400 text-white hover:bg-orange-500`}
-                            >
-                                Feature Product
-                            </button>
+                            <BtnPrimary
+                                handleClick={handleSubmit}
+                                text="Feature Product"
+                            />
                         </div>
                     )}
                 </div>

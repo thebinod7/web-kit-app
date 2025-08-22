@@ -175,7 +175,7 @@ export function ProductForm() {
                         >
                             <option value="">Select a category</option>
                             {all_categories.map((c) => (
-                                <option key={c.cuid} value={c.value}>
+                                <option key={c.cuid} value={c.cuid}>
                                     {c.label}
                                 </option>
                             ))}

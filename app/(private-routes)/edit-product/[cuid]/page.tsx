@@ -200,7 +200,7 @@ export default function ProductDashboardPage() {
     return (
         <div className="min-h-screen bg-gray-50 p-4 md:p-8">
             <div className="mx-auto max-w-7xl">
-                <SubmitToday />
+                {/* <SubmitToday /> */}
 
                 {/* Main Content Area */}
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-3">

@@ -1,53 +1,88 @@
-import { Clock, Users, Zap } from 'lucide-react';
-import React from 'react';
+import { Zap, Users, Clock, Sparkles, Clock1 } from 'lucide-react';
 
 export default function FomoAlertBox() {
     return (
-        <div className="bg-gradient-to-r from-purple-100 to-blue-100 border-2 border-purple-300 text-gray-800 p-6 rounded-xl flex items-start space-x-4 mb-10 shadow-lg">
-            <div className="flex-shrink-0">
-                <div className="relative">
-                    <Zap className="h-8 w-8 text-purple-600 animate-pulse" />
-                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-ping"></div>
+        <div className="relative overflow-hidden bg-white border border-gray-200 text-gray-900 p-5 rounded-2xl mb-10 shadow-sm hover:shadow-md transition-shadow duration-300">
+            {/* Subtle gradient background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/30 via-white to-purple-50/30"></div>
+
+            {/* Top badge */}
+            <div className="relative flex items-center justify-between mb-6">
+                <div className="flex items-center space-x-3">
+                    <div className="relative">
+                        <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center">
+                            <Sparkles className="h-5 w-5 text-white" />
+                        </div>
+                        <div className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-500 rounded-full"></div>
+                    </div>
+                    <div>
+                        <h3 className="font-semibold text-lg text-gray-900">
+                            Founder Access
+                        </h3>
+                        <p className="text-sm text-gray-600">
+                            Join the first 100 creators
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div className="flex-1">
-                <div className="flex items-center space-x-2 mb-2">
-                    <h3 className="font-bold text-xl text-purple-800">
-                        Early Access - Limited Time Only!
-                    </h3>
-                    <span className="bg-red-500 text-white text-xs px-2 py-1 rounded-full animate-bounce">
-                        FREE
+
+                <div className="flex items-center space-x-2">
+                    <span className="bg-gray-100 text-gray-600 text-xs font-medium px-3 py-1 rounded-full">
+                        Limited time
                     </span>
                 </div>
-                <div className="space-y-3">
-                    <p className="text-base font-medium text-gray-700">
-                        You're among the first to experience our platform!
-                        Submit your app now and get:
-                    </p>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
-                        <div className="flex items-center space-x-2 bg-white p-3 rounded-lg shadow-sm">
-                            <Zap className="h-4 w-4 text-yellow-500" />
-                            <span className="font-semibold">
-                                Same Day Publish
-                            </span>
+            </div>
+
+            {/* Main content */}
+            <div className="relative space-y-4">
+                {/* <p className="text-gray-700 leading-relaxed">
+                    Be part of our founding community. Submit your product today
+                    and receive exclusive benefits as we build the future of
+                    product discovery together.
+                </p> */}
+
+                {/* Benefits grid */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="flex items-center space-x-3 p-4 bg-gray-50/80 rounded-xl border border-gray-100">
+                        <div className="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center">
+                            <Zap className="h-4 w-4 text-amber-600" />
                         </div>
-                        <div className="flex items-center space-x-2 bg-white p-3 rounded-lg shadow-sm">
-                            <Users className="h-4 w-4 text-green-500" />
-                            <span className="font-semibold">
-                                Priority Support
-                            </span>
-                        </div>
-                        <div className="flex items-center space-x-2 bg-white p-3 rounded-lg shadow-sm">
-                            <Clock className="h-4 w-4 text-blue-500" />
-                            <span className="font-semibold">
-                                No Waiting List
-                            </span>
-                        </div>
+                        <span className="font-medium text-gray-800 text-sm">
+                            Same Day Publish
+                        </span>
                     </div>
-                    <div className="bg-yellow-50 border border-yellow-200 p-3 rounded-lg">
-                        <p className="text-sm text-yellow-800 font-medium">
-                            ⚠️ <strong>Coming Soon:</strong> Paid submissions
-                            ($10) + to skip waiting list
+
+                    <div className="flex items-center space-x-3 p-4 bg-gray-50/80 rounded-xl border border-gray-100">
+                        <div className="w-8 h-8 bg-emerald-100 rounded-lg flex items-center justify-center">
+                            <Clock1 className="h-4 w-4 text-emerald-600" />
+                        </div>
+                        <span className="font-medium text-gray-800 text-sm">
+                            No Waiting List
+                        </span>
+                    </div>
+
+                    <div className="flex items-center space-x-3 p-4 bg-gray-50/80 rounded-xl border border-gray-100">
+                        <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <Users className="h-4 w-4 text-blue-600" />
+                        </div>
+                        <span className="font-medium text-gray-800 text-sm">
+                            Priority Support
+                        </span>
+                    </div>
+                </div>
+
+                {/* Future pricing note */}
+                <div className="flex items-start space-x-3 p-4 bg-amber-50/80 border border-amber-200/60 rounded-xl">
+                    <div className="w-5 h-5 bg-amber-100 rounded-full flex items-center justify-center mt-0.5">
+                        <span className="text-amber-600 text-xs font-bold">
+                            !
+                        </span>
+                    </div>
+                    <div className="flex-1">
+                        <p className="text-sm text-amber-800">
+                            <span className="font-medium">
+                                Future submissions
+                            </span>{' '}
+                            will cost $10+ to skip waiting list.
                         </p>
                     </div>
                 </div>
