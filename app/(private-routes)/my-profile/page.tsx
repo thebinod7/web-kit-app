@@ -174,7 +174,7 @@ export default function page() {
                         <button
                             disabled={updateProfileMutation.isPending}
                             type="submit"
-                            className="px-6 cursor-pointer py-2.5 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-orange-400 focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-200"
+                            className={`px-6 cursor-pointer py-2.5 rounded-lg font-semibold transition-all bg-orange-400 text-white hover:bg-orange-500`}
                         >
                             {updateProfileMutation.isPending
                                 ? 'Saving Changes...'

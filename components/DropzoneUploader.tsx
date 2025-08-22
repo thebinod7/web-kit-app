@@ -1,9 +1,9 @@
 import { DROPZONE } from '@/app/constants/constants';
-import { UploadCloud, UploadIcon, XCircle } from 'lucide-react';
+import { UploadCloud, XCircle } from 'lucide-react';
+import Image from 'next/image';
 import { Accept, useDropzone } from 'react-dropzone';
 import InvalidFileError from './InvalidFileError';
 import Spinner from './Spinner';
-import Image from 'next/image';
 
 interface DropzoneUploadProps {
     onFileUplad: (files: any, rejections: any) => void;

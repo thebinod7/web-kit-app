@@ -25,6 +25,8 @@ export const CONTACT_EMAIL = 'connect@breakfreekit.com';
 export const MAX_MULTIPLE_FILES = 4;
 export const COOKIE_EXPIRY = 7 * 24 * 60 * 60; // 7 days
 
+export const MAX_FILE_SIZE_MB = 15;
+
 export const DROPZONE = {
     MAX_UPLOAD_SIZE: 15145728, // 15MB
     MAX_FILES: 1,

@@ -4,8 +4,8 @@ import { PUBLIC_ENV } from '@/utils/env';
 import Link from 'next/link';
 import HeaderSection from './HeaderSection';
 import PartnersSection from './Partners';
-import ProductCard from './ProductCard';
 import ResetFilters from './ResetFilters';
+import SuperProductCard from '@/components/SuperProductCard';
 
 export default async function page({ searchParams }: any) {
     let API_ENDPOINT = `${PUBLIC_ENV.API_ENDPOINT}/api/v1/products`;
@@ -26,8 +26,6 @@ export default async function page({ searchParams }: any) {
     const data = await resposnse.json();
     const result = data?.result || {};
 
-    console.log('RESULT:', result);
-
     return (
         <main className="min-h-screen bg-gray-50 text-gray-900">
             <div className="container mx-auto px-4 py-12 lg:grid lg:grid-cols-3 lg:gap-12">
@@ -41,13 +39,13 @@ export default async function page({ searchParams }: any) {
                     <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
                         {result?.rows.length > 0 ? (
                             result.rows.map((product: any) => (
-                                <ProductCard
+                                <SuperProductCard
                                     key={product.cuid}
+                                    websiteUrl={product.websiteUrl}
                                     logoUrl={product.logoUrl}
                                     name={product.name}
                                     slug={product.slug}
                                     tagline={product.tagline}
-                                    pricingType={product.pricingType}
                                     category={product?.category?.name}
                                 />
                             ))

@@ -39,11 +39,11 @@ export function ProductForm() {
             setProductPrimaryDetails({
                 ...productPrimaryDetails,
                 logoUrl: result.Location,
-                name: productPrimaryDetails?.name ?? '',
-                tagline: productPrimaryDetails?.tagline ?? '',
-                websiteUrl: productPrimaryDetails?.websiteUrl ?? '',
-                categoryId: productPrimaryDetails?.categoryId ?? '',
-                description: productPrimaryDetails?.description ?? '',
+                name: productPrimaryDetails?.name || '',
+                tagline: productPrimaryDetails?.tagline || '',
+                websiteUrl: productPrimaryDetails?.websiteUrl || '',
+                categoryId: productPrimaryDetails?.categoryId || '',
+                description: productPrimaryDetails?.description || '',
             });
         },
     });
@@ -62,9 +62,8 @@ export function ProductForm() {
 
     const handleLogoUpload = useCallback(
         (acceptedFiles: any, fileRejection: any) => {
-            if (fileRejection.length) {
-                setLogoUploadError(fileRejection);
-            }
+            if (fileRejection.length) return setLogoUploadError(fileRejection);
+
             setLogoUploadError([]);
             const file = acceptedFiles[0];
             const formData: any = new FormData();
@@ -128,7 +127,7 @@ export function ProductForm() {
                         onChange={(e) =>
                             handleInputChange('name', e.target.value)
                         }
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-gray-800 focus:border-gray-800"
                         required
                     />
                 </div>
@@ -151,7 +150,7 @@ export function ProductForm() {
                             onChange={(e) =>
                                 handleInputChange('websiteUrl', e.target.value)
                             }
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-gray-800 focus:border-gray-800"
                             required
                         />
                     </div>
@@ -170,7 +169,7 @@ export function ProductForm() {
                             onChange={(e) =>
                                 handleInputChange('categoryId', e.target.value)
                             }
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-gray-800 focus:border-gray-800"
                             required
                         >
                             <option value="">Select a category</option>
@@ -200,7 +199,7 @@ export function ProductForm() {
                         onChange={(e) =>
                             handleInputChange('tagline', e.target.value)
                         }
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-gray-800 focus:border-gray-800"
                         maxLength={100}
                         required
                     />
@@ -225,7 +224,7 @@ export function ProductForm() {
                         onChange={(e) =>
                             handleInputChange('description', e.target.value)
                         }
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 min-h-[120px] resize-none"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-gray-800 focus:border-gray-800 min-h-[120px]"
                         maxLength={500}
                         required
                     />

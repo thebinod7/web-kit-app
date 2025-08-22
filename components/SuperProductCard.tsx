@@ -1,7 +1,6 @@
 'use client';
 import { APP_PATHS } from '@/app/constants/api';
 import { ICONS } from '@/app/constants/images';
-import { ArrowUp, ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import WebsiteLink from './mini/WebsiteLink';
@@ -24,7 +23,7 @@ export default function SuperProductCard({
     websiteUrl,
 }: ISuperProduct) {
     return (
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 w-full relative transition-all duration-300 ease-out hover:shadow-lg hover:shadow-blue-500/10 hover:-translate-y-1">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 w-full relative transition-all duration-300 ease-out hover:shadow-xl hover:shadow-orange-100/50 hover:-translate-y-1">
             {/* Award icon in top-left */}
             {/* <div className="absolute top-3 left-3">
                 <div className="w-5 h-5 bg-yellow-400 rounded-full flex items-center justify-center transition-transform duration-200 hover:scale-110">
@@ -32,20 +31,22 @@ export default function SuperProductCard({
                 </div>
             </div> */}
 
-            <div className="absolute top-3 right-3 flex items-center gap-2">
+            <div className="absolute top-4 right-4 flex items-center gap-2">
                 <WebsiteLink websiteUrl={websiteUrl} />
             </div>
 
             <div className="flex items-center gap-4 mt-3">
                 {/* App icon */}
                 <div className="w-12 h-12 md:w-14 md:h-14 bg-blue-500 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-200 hover:bg-blue-600 hover:scale-105">
-                    <Image
-                        src={logoUrl || ICONS.BLANK_IMAGE}
-                        width={12}
-                        height={12}
-                        alt={name}
-                        className="w-12 h-12 md:w-14 md:h-14 rounded-xl object-cover bg-gray-100"
-                    />
+                    <Link href={`${APP_PATHS.PRODUCTS}/${slug}`}>
+                        <Image
+                            src={logoUrl || ICONS.BLANK_IMAGE}
+                            width={12}
+                            height={12}
+                            alt={name}
+                            className="w-12 h-12 md:w-14 md:h-14 rounded-xl object-cover bg-gray-100"
+                        />
+                    </Link>
                 </div>
 
                 {/* Text content - horizontal layout */}

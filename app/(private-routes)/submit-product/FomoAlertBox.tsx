@@ -1,6 +1,6 @@
 import { Clock1, Sparkles, Users, Zap } from 'lucide-react';
 
-const ALLOWED_CREATORS = 50;
+const ALLOWED_CREATORS = 100;
 const FUTURE_COST = 5;
 
 export default function FomoAlertBox() {
