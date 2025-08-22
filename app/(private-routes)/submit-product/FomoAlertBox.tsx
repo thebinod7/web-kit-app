@@ -1,4 +1,7 @@
-import { Zap, Users, Clock, Sparkles, Clock1 } from 'lucide-react';
+import { Clock1, Sparkles, Users, Zap } from 'lucide-react';
+
+const ALLOWED_CREATORS = 50;
+const FUTURE_COST = 5;
 
 export default function FomoAlertBox() {
     return (
@@ -20,7 +23,8 @@ export default function FomoAlertBox() {
                             Founder Access
                         </h3>
                         <p className="text-sm text-gray-600">
-                            Join the first 100 creators
+                            Join the first {ALLOWED_CREATORS} creators and
+                            receive exclusive benefits.
                         </p>
                     </div>
                 </div>
@@ -82,7 +86,7 @@ export default function FomoAlertBox() {
                             <span className="font-medium">
                                 Future submissions
                             </span>{' '}
-                            will cost $10+ to skip waiting list.
+                            will cost ${FUTURE_COST}+ to skip waiting list.
                         </p>
                     </div>
                 </div>

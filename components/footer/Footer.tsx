@@ -49,7 +49,15 @@ export default function Footer() {
                         <ul className="space-y-2 text-gray-400">
                             <li>
                                 <Link
-                                    href="/#featured"
+                                    href={APP_PATHS.SUBMIT_PRODUCT}
+                                    className="hover:text-white transition-colors"
+                                >
+                                    Submit Product
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/feature-product"
                                     className="hover:text-white transition-colors"
                                 >
                                     Get Featured
@@ -61,14 +69,6 @@ export default function Footer() {
                                     className="hover:text-white transition-colors"
                                 >
                                     Browse All
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href={APP_PATHS.SUBMIT_PRODUCT}
-                                    className="hover:text-white transition-colors"
-                                >
-                                    Submit Product
                                 </Link>
                             </li>
                             <li>

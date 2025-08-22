@@ -4,7 +4,6 @@ import { useGetMeUser } from '@/hooks/api/user/hook.user';
 import { useAppStore } from '@/store/store.app';
 import { LOCAL_KEYS } from '@/utils/localstorage';
 import { getCookie } from 'cookies-next/client';
-import { Search } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect } from 'react';
 import UserProfileDropdown from '../UserProfileDropdown';
@@ -45,12 +44,6 @@ export default function Header() {
                     <div className="flex-1 flex justify-center">
                         <div className="hidden md:flex items-center space-x-6">
                             <Link
-                                href={APP_PATHS.SUBMIT_PRODUCT}
-                                className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium"
-                            >
-                                Get Started
-                            </Link>
-                            <Link
                                 href="/#leaderboard"
                                 className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium"
                             >
@@ -67,6 +60,12 @@ export default function Header() {
                                 className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium"
                             >
                                 FAQs
+                            </Link>
+                            <Link
+                                href={APP_PATHS.SUBMIT_PRODUCT}
+                                className="mt-4 cursor-pointer flex items-center gap-2 rounded-md bg-black px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-gray-800 focus:outline-none focus:ring-offset-2 md:mt-0"
+                            >
+                                + Submit Product
                             </Link>
                         </div>
                     </div>
