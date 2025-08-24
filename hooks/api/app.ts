@@ -4,11 +4,15 @@ import { getRequest } from '@/utils/request';
 import { createCategoryDropdownOptions } from '@/utils/utils';
 import { useQuery } from '@tanstack/react-query';
 
-export const useFetchAllCategory = () => {
+export const useFetchAllCategory = (query: any) => {
+    const queryParams = new URLSearchParams(query).toString();
+
     const { data, isLoading, error } = useQuery({
-        queryKey: [QUERY_KEYS.CATEGORY.LIST_ALL],
+        queryKey: [QUERY_KEYS.CATEGORY.LIST_ALL, query],
         queryFn: async () => {
-            const response = await getRequest(API_ROUTES.CATEGORY);
+            const response = await getRequest(
+                API_ROUTES.CATEGORY + `?${queryParams}`
+            );
             return response?.data?.result?.rows || [];
         },
         staleTime: 5 * 60 * 1000, // 5 minutes

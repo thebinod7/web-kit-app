@@ -21,7 +21,9 @@ import SubmitToday from '../SubmitToday';
 import SingleLineLoader from '@/components/mini/SingleLineLoader';
 
 export default function ProductDashboardPage() {
-    const { all_categories } = useFetchAllCategory();
+    const { all_categories } = useFetchAllCategory({
+        perPage: 50,
+    });
     const params = useParams();
     const cuid = params.cuid as string;
 
