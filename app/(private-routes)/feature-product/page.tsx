@@ -1,14 +1,20 @@
 'use client';
+import { API_ROUTES } from '@/app/constants/api';
+import { FEATURED_ACTIONS } from '@/app/constants/constants';
 import FeatureProductSelectCard from '@/components/FeatureProductSelectCard';
+import BtnPrimary from '@/components/mini/BtnPrimary';
 import { useListMyProductQuery } from '@/hooks/api/product/hook.product';
+import { useProductStore } from '@/store/store.product';
+import { generateCookieHeaders } from '@/utils/localstorage';
+import { postRequest } from '@/utils/request';
+import { hasAllValues, sanitizeError } from '@/utils/utils';
+import { useMutation } from '@tanstack/react-query';
 import { useState } from 'react';
+import { toast } from 'sonner';
 import FeatureOptionSelector, { FEATURE_TYPE } from './FeatureOptionSelector';
 import { ProductForm } from './ProductForm';
-import { useProductStore } from '@/store/store.product';
-import { hasAllValues } from '@/utils/utils';
-import { toast } from 'sonner';
-import BtnPrimary from '@/components/mini/BtnPrimary';
 
+// TODO: write cleanup for expired featured products
 export default function FeatureProduct() {
     const { productPrimaryDetails } = useProductStore((state) => state);
 
@@ -18,11 +24,38 @@ export default function FeatureProduct() {
     const [selectedOption, setSelectedOption] = useState('');
     const [selectedProduct, setSelectedProduct] = useState('');
 
+    const featureProductMutation = useMutation({
+        mutationFn: (payload: any) => {
+            return postRequest(
+                `${API_ROUTES.PRODUCTS}/featured`,
+                payload,
+                generateCookieHeaders()
+            );
+        },
+        onError: (error: any) => {
+            toast.error(sanitizeError(error));
+        },
+        onSuccess: ({ data }) => {
+            toast.success('Product featured successfully!');
+        },
+    });
+
     const handleSubmit = () => {
-        const isValid = hasAllValues(productPrimaryDetails);
-        if (!isValid)
+        if (selectedOption === FEATURE_TYPE.EXISTING) {
+            if (!selectedProduct)
+                return toast.error('Please select your product!');
+            return featureProductMutation.mutate({
+                productId: selectedProduct,
+                action: FEATURED_ACTIONS.SELECT_PRODUCT,
+            });
+        }
+        const valid = hasAllValues(productPrimaryDetails);
+        if (!valid)
             return toast.error('Please make sure all fields are filled!');
-        console.log('Submit:', productPrimaryDetails);
+        return featureProductMutation.mutate({
+            ...productPrimaryDetails,
+            action: FEATURED_ACTIONS.CREATE_PRODUCT,
+        });
     };
 
     console.log('Rows:', rows);
@@ -30,7 +63,8 @@ export default function FeatureProduct() {
     return (
         <div className="min-h-screen bg-white">
             {/* Header */}
-            <header className="border-b border-gray-200">
+
+            {/* <header className="border-b border-gray-200">
                 <div className="max-w-4xl mx-auto px-4 py-4">
                     <h1 className="text-3xl font-bold text-gray-800">
                         Feature a Product
@@ -40,7 +74,7 @@ export default function FeatureProduct() {
                         users
                     </p>
                 </div>
-            </header>
+            </header> */}
 
             <main className="max-w-4xl mx-auto px-4 py-4">
                 <div className="space-y-8">
@@ -105,8 +139,9 @@ export default function FeatureProduct() {
                     {selectedOption && (
                         <div className="flex justify-end pt-6 border-t border-gray-200">
                             <BtnPrimary
+                                processing={featureProductMutation.isPending}
                                 handleClick={handleSubmit}
-                                text="Feature Product"
+                                text={`Feature Product at $7.77`}
                             />
                         </div>
                     )}

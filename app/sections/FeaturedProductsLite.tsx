@@ -111,7 +111,7 @@ export default function FeaturedProductsLite({
                                 Boost your product visibility and reach more
                                 users.{' '}
                                 <span className="text-blue-500">
-                                    Click here to get featured.
+                                    GET STARTED
                                 </span>
                             </p>
                             <div className="flex items-center gap-1 mt-2">

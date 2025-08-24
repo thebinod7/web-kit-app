@@ -55,3 +55,8 @@ export const SOCIAL_LINKS = {
     FACEBOOK: '',
     TWITTER: 'https://x.com/breakfreekit',
 };
+
+export const FEATURED_ACTIONS = {
+    SELECT_PRODUCT: 'SELECT_PRODUCT',
+    CREATE_PRODUCT: 'CREATE_PRODUCT',
+};
