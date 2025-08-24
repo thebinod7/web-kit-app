@@ -21,6 +21,7 @@ export const PRODUCT_TABS = {
 
 export const DEBOUNCE_DELAY = 300; // 300ms
 export const CONTACT_EMAIL = 'connect@breakfreekit.com';
+export const CATEGORY_LIST_LIMIT = 50;
 
 export const MAX_MULTIPLE_FILES = 4;
 export const COOKIE_EXPIRY = 7 * 24 * 60 * 60; // 7 days

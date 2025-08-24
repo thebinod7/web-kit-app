@@ -1,7 +1,11 @@
 'use client';
 
 import { API_ROUTES } from '@/app/constants/api';
-import { PRICING_TYPES, PRODUCT_TABS } from '@/app/constants/constants';
+import {
+    CATEGORY_LIST_LIMIT,
+    PRICING_TYPES,
+    PRODUCT_TABS,
+} from '@/app/constants/constants';
 import DropzoneUploader from '@/components/DropzoneUploader';
 import ProductTabs from '@/components/ProductTabs';
 import { useFetchAllCategory } from '@/hooks/api/app';
@@ -22,7 +26,7 @@ import SingleLineLoader from '@/components/mini/SingleLineLoader';
 
 export default function ProductDashboardPage() {
     const { all_categories } = useFetchAllCategory({
-        perPage: 50,
+        perPage: CATEGORY_LIST_LIMIT,
     });
     const params = useParams();
     const cuid = params.cuid as string;

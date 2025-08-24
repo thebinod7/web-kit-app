@@ -1,6 +1,7 @@
 'use client';
 
 import { API_ROUTES } from '@/app/constants/api';
+import { CATEGORY_LIST_LIMIT } from '@/app/constants/constants';
 import DropzoneUploader from '@/components/DropzoneUploader';
 import { useFetchAllCategory } from '@/hooks/api/app';
 import { useProductStore } from '@/store/store.product';
@@ -15,7 +16,9 @@ import { useCallback, useState } from 'react';
 import { toast } from 'sonner';
 
 export function ProductForm() {
-    const { all_categories } = useFetchAllCategory();
+    const { all_categories } = useFetchAllCategory({
+        perPage: CATEGORY_LIST_LIMIT,
+    });
 
     const { productPrimaryDetails, setProductPrimaryDetails } = useProductStore(
         (state) => state
