@@ -1,10 +1,9 @@
 'use client';
 import { APP_PATHS } from '@/app/constants/api';
 import { ICONS } from '@/app/constants/images';
+import { ArrowUp } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import WebsiteLink from './mini/WebsiteLink';
-import { ArrowBigUp, ArrowUp } from 'lucide-react';
 
 interface ISuperProduct {
     name: string;

@@ -41,7 +41,7 @@ export default async function page({ searchParams }: any) {
                             result.rows.map((product: any) => (
                                 <SuperProductCard
                                     key={product.cuid}
-                                    websiteUrl={product.websiteUrl}
+                                    upvotes={product._count.ProductFeedback}
                                     logoUrl={product.logoUrl}
                                     name={product.name}
                                     slug={product.slug}
