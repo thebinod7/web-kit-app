@@ -32,3 +32,4 @@ jobs:
                       NEXT_PUBLIC_POSTHOG_HOST=${{ secrets.NEXT_PUBLIC_POSTHOG_HOST }}
                       NEXT_PUBLIC_POSTHOG_KEY=${{ secrets.NEXT_PUBLIC_POSTHOG_KEY }}
                       NEXT_PUBLIC_RUNNING_ENV=${{ secrets.NEXT_PUBLIC_RUNNING_ENV }}
+                      PRIVATE_API_ENDPOINT=${{ secrets.PRIVATE_API_ENDPOINT }}
