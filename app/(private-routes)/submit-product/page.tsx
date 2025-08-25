@@ -55,7 +55,7 @@ export default function SubmitProductPage() {
             <div className="max-w-2xl mx-auto">
                 <FomoAlertBox />
 
-                <section className="mb-5">
+                <section className="mb-4">
                     <HeaderH2 text="Submit Your Product" />
                 </section>
 

@@ -91,7 +91,7 @@ export function ProductForm() {
                 <div className="space-y-2">
                     <label
                         htmlFor="logo"
-                        className="text-sm font-medium text-gray-700 flex items-center gap-2"
+                        className="text-sm font-medium text-gray-900 flex items-center gap-2"
                     >
                         <ImageIcon className="w-4 h-4 text-gray-500" />
                         Product Logo{' '}
@@ -117,7 +117,7 @@ export function ProductForm() {
                 <div className="space-y-2">
                     <label
                         htmlFor="name"
-                        className="text-sm font-medium text-gray-700 flex items-center gap-2"
+                        className="text-sm font-medium text-gray-900 flex items-center gap-2"
                     >
                         <Type className="w-4 h-4 text-gray-500" />
                         Product Name
@@ -130,7 +130,7 @@ export function ProductForm() {
                         onChange={(e) =>
                             handleInputChange('name', e.target.value)
                         }
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-gray-800 focus:border-gray-800"
+                        className="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900 shadow-sm focus:border-black focus:ring-black"
                         required
                     />
                 </div>
@@ -140,7 +140,7 @@ export function ProductForm() {
                     <div className="space-y-2">
                         <label
                             htmlFor="websiteUrl"
-                            className="text-sm font-medium text-gray-700 flex items-center gap-2"
+                            className="text-sm font-medium text-gray-900 flex items-center gap-2"
                         >
                             <Globe className="w-4 h-4 text-gray-500" />
                             Website URL
@@ -153,7 +153,7 @@ export function ProductForm() {
                             onChange={(e) =>
                                 handleInputChange('websiteUrl', e.target.value)
                             }
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-gray-800 focus:border-gray-800"
+                            className="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900 shadow-sm focus:border-black focus:ring-black"
                             required
                         />
                     </div>
@@ -161,7 +161,7 @@ export function ProductForm() {
                     <div className="space-y-2">
                         <label
                             htmlFor="category"
-                            className="text-sm font-medium text-gray-700 flex items-center gap-2"
+                            className="text-sm font-medium text-gray-900 flex items-center gap-2"
                         >
                             <Tag className="w-4 h-4 text-gray-500" />
                             Category
@@ -172,7 +172,7 @@ export function ProductForm() {
                             onChange={(e) =>
                                 handleInputChange('categoryId', e.target.value)
                             }
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-gray-800 focus:border-gray-800"
+                            className="w-full rounded-md border border-gray-300 px-3 py-2.5 text-gray-900 shadow-sm focus:border-black focus:ring-black"
                             required
                         >
                             <option value="">Select a category</option>
@@ -189,7 +189,7 @@ export function ProductForm() {
                 <div className="space-y-2">
                     <label
                         htmlFor="tagline"
-                        className="text-sm font-medium text-gray-700 flex items-center gap-2"
+                        className="text-sm font-medium text-gray-900 flex items-center gap-2"
                     >
                         <FileText className="w-4 h-4 text-gray-500" />
                         Tagline
@@ -202,7 +202,7 @@ export function ProductForm() {
                         onChange={(e) =>
                             handleInputChange('tagline', e.target.value)
                         }
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-gray-800 focus:border-gray-800"
+                        className="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900 shadow-sm focus:border-black focus:ring-black"
                         maxLength={100}
                         required
                     />
@@ -215,19 +215,20 @@ export function ProductForm() {
                 <div className="space-y-2">
                     <label
                         htmlFor="description"
-                        className="text-sm font-medium text-gray-700 flex items-center gap-2"
+                        className="text-sm font-medium text-gray-900 flex items-center gap-2"
                     >
                         <FileText className="w-4 h-4 text-gray-500" />
                         Description
                     </label>
                     <textarea
+                        rows={4}
                         id="description"
                         placeholder="Tell us more about your product. What problem does it solve? What makes it special?"
                         value={productPrimaryDetails?.description}
                         onChange={(e) =>
                             handleInputChange('description', e.target.value)
                         }
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-gray-800 focus:border-gray-800 min-h-[120px]"
+                        className="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900 shadow-sm focus:border-black focus:ring-black"
                         maxLength={500}
                         required
                     />

@@ -5,7 +5,7 @@ const FUTURE_COST = 5;
 
 export default function FomoAlertBox() {
     return (
-        <div className="relative overflow-hidden bg-white border border-gray-200 text-gray-900 p-5 rounded-2xl mb-10 shadow-sm hover:shadow-md transition-shadow duration-300">
+        <div className="relative overflow-hidden bg-white border border-gray-200 text-gray-900 p-5 rounded-2xl mb-6 shadow-xl hover:shadow-2xl transition-shadow duration-300">
             {/* Subtle gradient background */}
             <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/30 via-white to-purple-50/30"></div>
 
