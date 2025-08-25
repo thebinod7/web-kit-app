@@ -32,7 +32,7 @@ export default function BtnPrimary({
                     disabled={processing}
                     type="button"
                     onClick={handleClick}
-                    className={`px-6 cursor-pointer py-2.5 rounded-lg font-semibold transition-all bg-gray-900 text-white hover:bg-gray-800`}
+                    className={`px-6 cursor-pointer py-2 rounded-lg font-medium text-sm transition-all bg-black text-white hover:bg-gray-800`}
                 >
                     {processing ? 'Please wait...' : text}
                 </button>

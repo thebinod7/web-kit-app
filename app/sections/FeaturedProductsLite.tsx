@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { APP_PATHS } from '../constants/api';
 import { ICONS } from '../constants/images';
+import { FEATURED_COST } from '../constants/constants';
 
 const TOTAL_AVAILABLE = 7;
 
@@ -104,7 +105,7 @@ export default function FeaturedProductsLite({
                             <div className="flex items-center gap-2 mb-1">
                                 <div className="w-2 h-2 bg-gradient-to-r from-orange-500 to-red-500 rounded-full animate-pulse"></div>
                                 <h4 className="font-semibold text-slate-800">
-                                    Premium Spot
+                                    Premium Spot - ${FEATURED_COST.SEVEN_DAYS}
                                 </h4>
                             </div>
                             <p className="text-sm text-slate-600">

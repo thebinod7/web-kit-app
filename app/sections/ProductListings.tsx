@@ -36,7 +36,7 @@ export default function ProductListings({
                                 tagline={app.tagline}
                                 category={app.category?.name}
                                 logoUrl={app.logoUrl}
-                                websiteUrl={app.websiteUrl}
+                                upvotes={app._count.ProductFeedback}
                                 key={index}
                             />
                         ))}

@@ -234,7 +234,7 @@ export default function ProductDashboardPage() {
                                             type="text"
                                             id="name"
                                             name="name"
-                                            value={productBasicInfo.name}
+                                            value={productBasicInfo.name || ''}
                                             onChange={handleInputChange}
                                             className="block w-full rounded-md border border-gray-300 bg-gray-50 p-2 text-gray-900 shadow-sm focus:border-black focus:ring-black sm:text-sm"
                                         />

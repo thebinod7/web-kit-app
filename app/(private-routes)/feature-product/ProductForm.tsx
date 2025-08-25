@@ -96,7 +96,7 @@ export function ProductForm() {
                         <ImageIcon className="w-4 h-4 text-gray-500" />
                         Product Logo{' '}
                         <span className="text-xs">
-                            Upload square logo for the best result.
+                            Square logo is recommended.
                         </span>
                     </label>
                     <div className="flex items-center gap-4">

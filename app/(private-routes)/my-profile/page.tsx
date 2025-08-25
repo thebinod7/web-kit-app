@@ -163,7 +163,7 @@ export default function page() {
                             id="bio"
                             name="bio"
                             rows={4}
-                            value={formData.bio}
+                            value={formData.bio || ''}
                             onChange={handleChange}
                             placeholder="Enter your bio"
                             className="border border-gray-300 rounded-lg px-4 py-2.5 shadow-sm focus:outline-none focus:ring-2 text-base text-gray-900 transition-all duration-200 mt-1 block w-full"
@@ -174,7 +174,7 @@ export default function page() {
                         <button
                             disabled={updateProfileMutation.isPending}
                             type="submit"
-                            className={`px-6 cursor-pointer py-2.5 rounded-lg font-semibold transition-all bg-orange-400 text-white hover:bg-orange-500`}
+                            className={`px-6 cursor-pointer py-2 rounded-lg font-medium text-sm transition-all bg-black text-white hover:bg-gray-800`}
                         >
                             {updateProfileMutation.isPending
                                 ? 'Saving Changes...'

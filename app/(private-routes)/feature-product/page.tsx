@@ -62,20 +62,6 @@ export default function FeatureProduct() {
 
     return (
         <div className="min-h-screen bg-white">
-            {/* Header */}
-
-            {/* <header className="border-b border-gray-200">
-                <div className="max-w-4xl mx-auto px-4 py-4">
-                    <h1 className="text-3xl font-bold text-gray-800">
-                        Feature a Product
-                    </h1>
-                    <p className="text-gray-600 mt-2">
-                        Showcase your product to our community of makers and
-                        users
-                    </p>
-                </div>
-            </header> */}
-
             <main className="max-w-4xl mx-auto px-4 py-4">
                 <div className="space-y-8">
                     {/* Option Selection */}
@@ -110,14 +96,22 @@ export default function FeatureProduct() {
                             </div> */}
 
                             <div className="space-y-3 max-h-96 overflow-y-auto">
-                                {rows.map((product: any) => (
-                                    <FeatureProductSelectCard
-                                        key={product.cuid}
-                                        product={product}
-                                        selectedProduct={selectedProduct}
-                                        setSelectedProduct={setSelectedProduct}
-                                    />
-                                ))}
+                                {rows.length > 10 ? (
+                                    rows.map((product: any) => (
+                                        <FeatureProductSelectCard
+                                            key={product.cuid}
+                                            product={product}
+                                            selectedProduct={selectedProduct}
+                                            setSelectedProduct={
+                                                setSelectedProduct
+                                            }
+                                        />
+                                    ))
+                                ) : (
+                                    <div className="text-md text-gray-600">
+                                        No products found! Please create one.
+                                    </div>
+                                )}
                             </div>
                         </div>
                     )}
@@ -139,9 +133,10 @@ export default function FeatureProduct() {
                     {selectedOption && (
                         <div className="flex justify-end pt-6 border-t border-gray-200">
                             <BtnPrimary
+                                variant="secondary"
                                 processing={featureProductMutation.isPending}
                                 handleClick={handleSubmit}
-                                text={`Feature Product at $7.77`}
+                                text={`Feature Product`}
                             />
                         </div>
                     )}

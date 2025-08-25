@@ -53,19 +53,9 @@ export default function SubmitProductPage() {
     return (
         <div className="min-h-screen bg-white py-6 px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl mx-auto">
-                {/* <p className="text-lg text-gray-600 mb-8">
-                    To maintain the quality and credibility of our platform,
-                    every product is carefully reviewed by our team before going
-                    live. Providing accurate, and complete details will help us
-                    approve your submission faster.
-                    <span role="img" aria-label="smiling face with sunglasses">
-                        🌟
-                    </span>
-                </p> */}
-
                 <FomoAlertBox />
 
-                <section className="mb-2">
+                <section className="mb-5">
                     <HeaderH2 text="Submit Your Product" />
                 </section>
 
@@ -73,6 +63,7 @@ export default function SubmitProductPage() {
 
                 <div className="flex justify-end pt-6 border-t border-gray-200">
                     <BtnPrimary
+                        variant="secondary"
                         handleClick={handleFormSubmit}
                         text="Submit for Review"
                         processing={saveProductMutation.isPending}
