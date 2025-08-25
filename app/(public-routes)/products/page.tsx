@@ -8,8 +8,10 @@ import HeaderSection from './HeaderSection';
 import PartnersSection from './Partners';
 import ResetFilters from './ResetFilters';
 
+const BASE_API_URL = SERVER_ENV.PRIVATE_API_ENDPOINT;
+
 export default async function page({ searchParams }: any) {
-    let API_ENDPOINT = `${SERVER_ENV.PRIVATE_API_ENDPOINT}/api/v1/products`;
+    let API_ENDPOINT = `${BASE_API_URL}/api/v1/products`;
 
     const categorySlug = (await searchParams).categorySlug || '';
     const name = (await searchParams).search || '';

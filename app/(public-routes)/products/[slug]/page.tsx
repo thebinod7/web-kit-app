@@ -6,9 +6,11 @@ import ProductDetailsSidebar from '../blocks/ProductDetailsSidebar';
 import ProductDetailsTabs from '../blocks/ProductDetailsTabs';
 import ProductHeader from '../blocks/ProductHeader';
 
+const API_BASE_URL = SERVER_ENV.PRIVATE_API_ENDPOINT;
+
 export default async function ProductDetailsPage({ params }: { params: any }) {
     const { slug } = await params;
-    let API_ENDPOINT = `${SERVER_ENV.PRIVATE_API_ENDPOINT}/api/v1/products/details/${slug}`;
+    let API_ENDPOINT = `${API_BASE_URL}/api/v1/products/details/${slug}`;
     const resposnse = await fetch(`${API_ENDPOINT}`, NEXT_SERVER_REVALIDATE);
     const data = await resposnse.json();
     const result = data?.result || null;
