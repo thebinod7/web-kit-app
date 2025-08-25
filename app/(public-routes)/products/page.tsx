@@ -1,14 +1,15 @@
+import { NEXT_SERVER_REVALIDATE } from '@/app/constants/constants';
 import BlankResult from '@/components/BlankResult';
 import ServerSidePagination from '@/components/ServerSidePagination';
-import { PUBLIC_ENV } from '@/utils/env';
+import SuperProductCard from '@/components/SuperProductCard';
+import { SERVER_ENV } from '@/utils/env';
 import Link from 'next/link';
 import HeaderSection from './HeaderSection';
 import PartnersSection from './Partners';
 import ResetFilters from './ResetFilters';
-import SuperProductCard from '@/components/SuperProductCard';
 
 export default async function page({ searchParams }: any) {
-    let API_ENDPOINT = `${PUBLIC_ENV.API_ENDPOINT}/api/v1/products`;
+    let API_ENDPOINT = `${SERVER_ENV.PRIVATE_API_ENDPOINT}/api/v1/products`;
 
     const categorySlug = (await searchParams).categorySlug || '';
     const name = (await searchParams).search || '';
@@ -22,7 +23,7 @@ export default async function page({ searchParams }: any) {
     if (params.toString()) {
         API_ENDPOINT += `?${params.toString()}`;
     }
-    const resposnse = await fetch(`${API_ENDPOINT}`, { cache: 'no-store' });
+    const resposnse = await fetch(`${API_ENDPOINT}`, NEXT_SERVER_REVALIDATE);
     const data = await resposnse.json();
     const result = data?.result || {};
 

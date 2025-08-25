@@ -1,7 +1,7 @@
 'use client';
 import { APP_PATHS } from '@/app/constants/api';
 import { ICONS } from '@/app/constants/images';
-import { ArrowUp } from 'lucide-react';
+import { ChevronUp } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -35,8 +35,10 @@ export default function SuperProductCard({
             </div> */}
 
             <div className="absolute text-gray-600 font-semibold top-4 right-4 flex items-center gap-1">
-                <ArrowUp className="w-4 h-4 " />
-                {upvotes || '0'}
+                <div className="flex flex-col items-center">
+                    <ChevronUp className="w-4 h-4" />
+                    <p>{upvotes || '0'}</p>
+                </div>
             </div>
 
             <div className="flex items-center gap-4 mt-3">
@@ -57,12 +59,12 @@ export default function SuperProductCard({
                         <h2 className="text-lg font-semibold text-gray-900 mb-1">
                             {name}
                         </h2>
-                        <p className="text-gray-500 text-sm leading-relaxed">
+                        <p className="text-gray-500 line-clamp-2 text-sm leading-relaxed">
                             {tagline}
                         </p>
                     </div>
 
-                    <div className="flex-shrink-0 mt-4">
+                    <div className="flex-shrink-0 mt-10">
                         <span className="px-3 py-2 bg-gray-100 text-orange-500 text-sm font-medium rounded-full transition-all duration-200">
                             {category || 'Uncategorized'}
                         </span>

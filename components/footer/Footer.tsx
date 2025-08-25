@@ -72,12 +72,12 @@ export default function Footer() {
                                 </Link>
                             </li>
                             <li>
-                                <a
-                                    href="#leaderboard"
+                                <Link
+                                    href={APP_PATHS.LEADERBOARD}
                                     className="hover:text-white transition-colors"
                                 >
                                     Leaderboard
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>

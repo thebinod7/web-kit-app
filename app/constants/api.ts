@@ -9,13 +9,14 @@ export const API_ROUTES = {
 };
 
 export const APP_PATHS = {
-    LOGIN: '/login',
-    SIGNUP: '/signup',
     DASHBOARD: '/dashboard',
-    MY_PRODUCTS: '/my-products',
-    SUBMIT_PRODUCT: '/submit-product',
     EDIT_PRODUCT: '/edit-product',
-    PRODUCTS: '/products',
-    MY_PROFILE: '/my-profile',
     FEATURE_PRODUCT: '/feature-product',
+    LEADERBOARD: '/leaderboard',
+    LOGIN: '/login',
+    MY_PROFILE: '/my-profile',
+    MY_PRODUCTS: '/my-products',
+    PRODUCTS: '/products',
+    SIGNUP: '/signup',
+    SUBMIT_PRODUCT: '/submit-product',
 };

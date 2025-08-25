@@ -44,7 +44,7 @@ export default function Header() {
                     <div className="flex-1 flex justify-center">
                         <div className="hidden md:flex items-center space-x-6">
                             <Link
-                                href="/#leaderboard"
+                                href={APP_PATHS.LEADERBOARD}
                                 className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium"
                             >
                                 Leaderboard

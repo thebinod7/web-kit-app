@@ -1,4 +1,5 @@
-import { PUBLIC_ENV } from '@/utils/env';
+import { NEXT_SERVER_REVALIDATE } from '@/app/constants/constants';
+import { SERVER_ENV } from '@/utils/env';
 import { formatEnum } from '@/utils/utils';
 import ProductDetailActions from '../blocks/ProductDetailActions';
 import ProductDetailsSidebar from '../blocks/ProductDetailsSidebar';
@@ -6,9 +7,9 @@ import ProductDetailsTabs from '../blocks/ProductDetailsTabs';
 import ProductHeader from '../blocks/ProductHeader';
 
 export default async function ProductDetailsPage({ params }: { params: any }) {
-    const slug = params.slug;
-    let API_ENDPOINT = `${PUBLIC_ENV.API_ENDPOINT}/api/v1/products/details/${slug}`;
-    const resposnse = await fetch(`${API_ENDPOINT}`, { cache: 'no-store' });
+    const { slug } = await params;
+    let API_ENDPOINT = `${SERVER_ENV.PRIVATE_API_ENDPOINT}/api/v1/products/details/${slug}`;
+    const resposnse = await fetch(`${API_ENDPOINT}`, NEXT_SERVER_REVALIDATE);
     const data = await resposnse.json();
     const result = data?.result || null;
     if (!result)
