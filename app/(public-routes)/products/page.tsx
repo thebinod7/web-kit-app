@@ -2,13 +2,13 @@ import { NEXT_SERVER_REVALIDATE } from '@/app/constants/constants';
 import BlankResult from '@/components/BlankResult';
 import ServerSidePagination from '@/components/ServerSidePagination';
 import SuperProductCard from '@/components/SuperProductCard';
-import { SERVER_ENV } from '@/utils/env';
+import { PUBLIC_ENV } from '@/utils/env';
 import Link from 'next/link';
 import HeaderSection from './HeaderSection';
 import PartnersSection from './Partners';
 import ResetFilters from './ResetFilters';
 
-const BASE_API_URL = SERVER_ENV.PRIVATE_API_ENDPOINT;
+const BASE_API_URL = PUBLIC_ENV.API_ENDPOINT;
 
 export default async function page({ searchParams }: any) {
     let API_ENDPOINT = `${BASE_API_URL}/api/v1/products`;

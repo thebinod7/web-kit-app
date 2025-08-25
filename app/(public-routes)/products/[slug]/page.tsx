@@ -1,12 +1,12 @@
 import { NEXT_SERVER_REVALIDATE } from '@/app/constants/constants';
-import { SERVER_ENV } from '@/utils/env';
+import { PUBLIC_ENV } from '@/utils/env';
 import { formatEnum } from '@/utils/utils';
 import ProductDetailActions from '../blocks/ProductDetailActions';
 import ProductDetailsSidebar from '../blocks/ProductDetailsSidebar';
 import ProductDetailsTabs from '../blocks/ProductDetailsTabs';
 import ProductHeader from '../blocks/ProductHeader';
 
-const API_BASE_URL = SERVER_ENV.PRIVATE_API_ENDPOINT;
+const API_BASE_URL = PUBLIC_ENV.API_ENDPOINT;
 
 export default async function ProductDetailsPage({ params }: { params: any }) {
     const { slug } = await params;
