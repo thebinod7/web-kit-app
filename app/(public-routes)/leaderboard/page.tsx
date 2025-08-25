@@ -1,12 +1,12 @@
 import { APP_PATHS } from '@/app/constants/api';
 import { NEXT_SERVER_REVALIDATE } from '@/app/constants/constants';
 import LeaderCard from '@/components/LeaderCard';
-import { SERVER_ENV } from '@/utils/env';
+import { PUBLIC_ENV } from '@/utils/env';
 import { Trophy } from 'lucide-react';
 import Link from 'next/link';
 import { Fragment } from 'react';
 
-const API_ENDPOINT = `${SERVER_ENV.PRIVATE_API_ENDPOINT}/api/v1/products/leaderboard`;
+const API_ENDPOINT = `${PUBLIC_ENV.API_ENDPOINT}/api/v1/products/leaderboard`;
 
 export default async function page() {
     const resposnse = await fetch(`${API_ENDPOINT}`, NEXT_SERVER_REVALIDATE);
