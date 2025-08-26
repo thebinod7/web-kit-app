@@ -1,7 +1,7 @@
 'use client';
 import { API_ROUTES, APP_PATHS } from '@/app/constants/api';
 import { COOKIE_EXPIRY } from '@/app/constants/constants';
-import { LOCAL_KEYS, setLocalUser } from '@/utils/localstorage';
+import { LOCAL_KEYS } from '@/utils/localstorage';
 import { postRequest } from '@/utils/request';
 import { useGoogleLogin } from '@react-oauth/google';
 import { useMutation } from '@tanstack/react-query';
@@ -26,7 +26,6 @@ export default function Component() {
         onSuccess: ({ data }) => {
             toast.success('Successfully logged in with Google!');
             const { accessToken } = data.result;
-            setLocalUser(data.result.user);
             setCookie(LOCAL_KEYS.ACCESS_TOKEN, accessToken, {
                 secure: true,
                 maxAge: COOKIE_EXPIRY,
