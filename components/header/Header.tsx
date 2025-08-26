@@ -2,7 +2,7 @@
 import { APP_PATHS } from '@/app/constants/api';
 import { useGetMeUser } from '@/hooks/api/user/hook.user';
 import { useAppStore } from '@/store/store.app';
-import { LOCAL_KEYS } from '@/utils/localstorage';
+import { getLocalUser, LOCAL_KEYS, setLocalUser } from '@/utils/localstorage';
 import { getCookie } from 'cookies-next/client';
 import Link from 'next/link';
 import { useEffect } from 'react';
@@ -11,16 +11,16 @@ import UserProfileDropdown from '../UserProfileDropdown';
 export default function Header() {
     const accessToken = getCookie(LOCAL_KEYS.ACCESS_TOKEN);
     const { data } = useGetMeUser(accessToken || '');
-    const { result } = data?.data || {};
+    const { result: freshUser } = data?.data || {};
 
     const setLoggedInUser = useAppStore((state) => state.setLoggedInUser);
     const loggedUser = useAppStore((state) => state.loggedInUser);
 
     useEffect(() => {
-        if (result) {
-            setLoggedInUser(result);
-        }
-    }, [result]);
+        const localUser = getLocalUser();
+        if (localUser) setLoggedInUser(localUser);
+        if (freshUser) setLocalUser(freshUser);
+    }, [freshUser]);
 
     return (
         <nav className="border-b border-gray-100 bg-white sticky top-0 z-50">
