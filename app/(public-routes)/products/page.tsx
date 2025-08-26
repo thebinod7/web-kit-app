@@ -1,11 +1,10 @@
 import { NEXT_SERVER_REVALIDATE } from '@/app/constants/constants';
+import FeaturedProductsLite from '@/app/sections/FeaturedProductsLite';
 import BlankResult from '@/components/BlankResult';
 import ServerSidePagination from '@/components/ServerSidePagination';
 import SuperProductCard from '@/components/SuperProductCard';
 import { PUBLIC_ENV } from '@/utils/env';
-import Link from 'next/link';
 import HeaderSection from './HeaderSection';
-import PartnersSection from './Partners';
 import ResetFilters from './ResetFilters';
 
 const BASE_API_URL = PUBLIC_ENV.API_ENDPOINT;
@@ -62,7 +61,7 @@ export default async function page({ searchParams }: any) {
                 </div>
                 {/* Right Column */}
                 <div className="lg:col-span-1 mt-10 lg:mt-0">
-                    <section className="mb-10">
+                    {/* <section className="mb-10">
                         <h2 className="text-sm font-semibold uppercase text-gray-700 mb-4">
                             Product Categories
                         </h2>
@@ -90,8 +89,8 @@ export default async function page({ searchParams }: any) {
                         {result.categories.length < 1 && (
                             <div className="text-sm">No categories found!</div>
                         )}
-                    </section>
-                    <PartnersSection />
+                    </section> */}
+                    <FeaturedProductsLite featuredList={result.featuredList} />
                 </div>
             </div>
         </main>

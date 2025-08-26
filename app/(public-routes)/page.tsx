@@ -55,7 +55,7 @@ export default async function page() {
             <section id="products">
                 <ProductListings
                     products={result?.rows || []}
-                    featuredListLite={result?.featuredListLite || []}
+                    featuredList={result?.featuredList || []}
                 />
             </section>
 

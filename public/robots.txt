@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Host
+Host: https://breakfreekit.com
+
+# Sitemaps
+Sitemap: https://breakfreekit.com/sitemap.xml

@@ -5,12 +5,12 @@ import WeeklyStats from './WeeklyStats';
 
 interface ProductListProps {
     products: any[];
-    featuredListLite: any[];
+    featuredList: any[];
 }
 
 export default function ProductListings({
     products,
-    featuredListLite,
+    featuredList,
 }: ProductListProps) {
     return (
         <section id="apps" className="py-5 bg-gray-50">
@@ -57,9 +57,7 @@ export default function ProductListings({
                     <aside className="lg:w-80 flex-shrink-0 space-y-4">
                         <WeeklyStats />
 
-                        <FeaturedProductsLite
-                            featuredListLite={featuredListLite}
-                        />
+                        <FeaturedProductsLite featuredList={featuredList} />
                     </aside>
                 </div>
             </div>

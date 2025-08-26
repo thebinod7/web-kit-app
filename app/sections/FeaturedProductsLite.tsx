@@ -62,9 +62,9 @@ const SidebarProductCard = ({ product }: { product: ISideProduct }) => (
 );
 
 export default function FeaturedProductsLite({
-    featuredListLite,
+    featuredList,
 }: {
-    featuredListLite: ISideProduct[];
+    featuredList: ISideProduct[];
 }) {
     return (
         <div className="bg-gradient-to-br from-white via-slate-50/50 to-blue-50/30 border border-slate-200/60 rounded-2xl p-6 shadow-sm backdrop-blur-sm relative overflow-hidden">
@@ -87,9 +87,12 @@ export default function FeaturedProductsLite({
             </div>
 
             <ul className="space-y-3 relative z-10">
-                {featuredListLite.map((item: ISideProduct, index: number) => {
+                {featuredList.map((item: any, index: number) => {
                     return (
-                        <SidebarProductCard product={item} key={index + 1} />
+                        <SidebarProductCard
+                            product={item.product}
+                            key={index + 1}
+                        />
                     );
                 })}
             </ul>
@@ -117,11 +120,11 @@ export default function FeaturedProductsLite({
                             </p>
                             <div className="flex items-center gap-1 mt-2">
                                 <span className="text-xs font-medium text-orange-600">
-                                    {TOTAL_AVAILABLE === featuredListLite.length
+                                    {TOTAL_AVAILABLE === featuredList.length
                                         ? ''
                                         : `Only ${
                                               TOTAL_AVAILABLE -
-                                              featuredListLite.length
+                                              featuredList.length
                                           }
                                     remaining`}
                                 </span>
