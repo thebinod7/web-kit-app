@@ -51,7 +51,7 @@ const SidebarProductCard = ({ product }: { product: ISideProduct }) => (
                                 {product.name}
                             </Link>
                         </h3>
-                        <p className="text-xs text-gray-600 line-clamp-2 leading-relaxed">
+                        <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed">
                             {product.tagline}
                         </p>
                     </div>

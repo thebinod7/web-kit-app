@@ -12,7 +12,7 @@ export default function ProductOverview({
     return (
         <>
             {images.length > 0 && (
-                <div className="h-[300px] mb-10">
+                <div className="h-[350px] mb-10">
                     <GallerySlider data={images} />
                 </div>
             )}
