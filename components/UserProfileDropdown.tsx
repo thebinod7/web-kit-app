@@ -4,7 +4,7 @@ import { APP_PATHS } from '@/app/constants/api';
 import { ICurrentUser } from '@/types';
 import { clearLocalStorage, LOCAL_KEYS } from '@/utils/localstorage';
 import { deleteCookie } from 'cookies-next/client';
-import { ChevronDown, LogOut, Settings, User, Wrench } from 'lucide-react';
+import { ChevronDown, LogOut, User, Wrench } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
@@ -67,7 +67,7 @@ export default function UserProfileDropdown({
                     )}
 
                     <span className="ml-3 hidden text-base font-medium md:inline">
-                        {loggedInUser.name}
+                        {loggedInUser?.name || '-'}
                     </span>
                     <ChevronDown
                         className="ml-1 h-5 w-5 hidden md:inline"
