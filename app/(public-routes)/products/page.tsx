@@ -1,4 +1,3 @@
-import { NEXT_SERVER_REVALIDATE } from '@/app/constants/constants';
 import FeaturedProductsLite from '@/app/sections/FeaturedProductsLite';
 import ServerSidePagination from '@/components/ServerSidePagination';
 import SuperProductCard from '@/components/SuperProductCard';
@@ -8,6 +7,39 @@ import HeaderSection from './HeaderSection';
 import ResetFilters from './ResetFilters';
 
 const BASE_API_URL = PUBLIC_ENV.API_ENDPOINT;
+
+function CategoryPill({ filter, category }: { filter: string; category: any }) {
+    return (
+        <Link
+            key={category.cuid}
+            href={`/products?filter=${category.slug}`}
+            className="cursor-pointer"
+        >
+            <span
+                className={`
+                  inline-flex items-center px-3 py-1.5 rounded-full text-xs font-black
+                  border transition-all duration-200 ease-in-out
+                  ${
+                      filter === category.slug
+                          ? 'border-orange-300 text-orange-600'
+                          : 'border-gray-300 text-gray-700'
+                  }
+                  hover:shadow-sm
+                 bg-white   hover:border-gray-400 hover:bg-gray-50'
+                  }
+                `}
+            >
+                {category.name}
+                <span
+                    className={`ml-1.5 text-xs text-gray-500'
+                                                }`}
+                >
+                    ({category._count?.Product || 0})
+                </span>
+            </span>
+        </Link>
+    );
+}
 
 export default async function page({ searchParams }: any) {
     let API_ENDPOINT = `${BASE_API_URL}/api/v1/products`;
@@ -24,7 +56,9 @@ export default async function page({ searchParams }: any) {
     if (params.toString()) {
         API_ENDPOINT += `?${params.toString()}`;
     }
-    const resposnse = await fetch(`${API_ENDPOINT}`, NEXT_SERVER_REVALIDATE);
+    const resposnse = await fetch(`${API_ENDPOINT}`, {
+        next: { revalidate: 0 },
+    });
     const data = await resposnse.json();
     const result = data?.result || {};
 
@@ -40,34 +74,11 @@ export default async function page({ searchParams }: any) {
                     <div className="flex flex-wrap gap-2">
                         {result.categories.map((category: any) => {
                             return (
-                                <Link
+                                <CategoryPill
                                     key={category.cuid}
-                                    href={`/products?filter=${category.slug}`}
-                                    className="cursor-pointer"
-                                >
-                                    <span
-                                        className={`
-                  inline-flex items-center px-3 py-1.5 rounded-full text-xs font-black
-                  border transition-all duration-200 ease-in-out
-                  ${
-                      filter === category.slug
-                          ? 'border-orange-300 text-orange-600'
-                          : 'border-gray-300 text-gray-700'
-                  }
-                  hover:shadow-sm
-                 bg-white   hover:border-gray-400 hover:bg-gray-50'
-                  }
-                `}
-                                    >
-                                        {category.name}
-                                        <span
-                                            className={`ml-1.5 text-xs text-gray-500'
-                                                }`}
-                                        >
-                                            (10)
-                                        </span>
-                                    </span>
-                                </Link>
+                                    filter={filter}
+                                    category={category}
+                                />
                             );
                         })}
                     </div>
@@ -88,7 +99,7 @@ export default async function page({ searchParams }: any) {
                                 />
                             ))
                         ) : (
-                            <div className="text-sm text-center text-gray-500 mt-8">
+                            <div className="text-sm text-center text-gray-500 py-16">
                                 No products found. Please select different
                                 filter.
                             </div>
@@ -100,35 +111,6 @@ export default async function page({ searchParams }: any) {
                 </div>
                 {/* Right Column */}
                 <div className="lg:col-span-1 mt-10 lg:mt-0">
-                    {/* <section className="mb-10">
-                        <h2 className="text-sm font-semibold uppercase text-gray-700 mb-4">
-                            Product Categories
-                        </h2>
-                        <div className="grid grid-cols-3 gap-4">
-                            {result.categories.length > 0 &&
-                                result.categories.map((cat: any) => {
-                                    return (
-                                        <Link
-                                            href={`/products?categorySlug=${cat.slug}`}
-                                            key={cat.cuid}
-                                            className={`flex flex-col items-center justify-center p-4 rounded-lg border transition-all duration-200 hover:shadow-md cursor-pointer
-        ${
-            categorySlug === cat.slug
-                ? 'bg-blue-50 border-orange-200 text-orange-600'
-                : 'bg-white border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-orange-300'
-        }`}
-                                        >
-                                            <span className="mt-2 text-sm font-medium">
-                                                {cat.name}
-                                            </span>
-                                        </Link>
-                                    );
-                                })}
-                        </div>
-                        {result.categories.length < 1 && (
-                            <div className="text-sm">No categories found!</div>
-                        )}
-                    </section> */}
                     <FeaturedProductsLite featuredList={result.featuredList} />
                 </div>
             </div>
