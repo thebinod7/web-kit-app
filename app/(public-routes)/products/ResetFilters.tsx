@@ -1,16 +1,15 @@
-import { FilterX } from 'lucide-react';
+import { X } from 'lucide-react';
 import Link from 'next/link';
-import React from 'react';
 
 export default function ResetFilters() {
     return (
-        <div className="flex justify-end mb-4 cursor-pointer">
+        <div className="mb-3 flex justify-end">
             <Link
-                href="/products"
-                className="flex justify-center whitespace-nowrap rounded-md text-sm font-medium border border-input h-10 px-4 py-2 items-center gap-2"
+                href={'/products'}
+                className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700 transition-colors"
             >
-                <FilterX className="h-4 w-4" />
-                Reset Filters
+                <X size={14} />
+                Clear all
             </Link>
         </div>
     );

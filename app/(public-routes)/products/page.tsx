@@ -1,9 +1,9 @@
 import { NEXT_SERVER_REVALIDATE } from '@/app/constants/constants';
 import FeaturedProductsLite from '@/app/sections/FeaturedProductsLite';
-import BlankResult from '@/components/BlankResult';
 import ServerSidePagination from '@/components/ServerSidePagination';
 import SuperProductCard from '@/components/SuperProductCard';
 import { PUBLIC_ENV } from '@/utils/env';
+import Link from 'next/link';
 import HeaderSection from './HeaderSection';
 import ResetFilters from './ResetFilters';
 
@@ -12,14 +12,14 @@ const BASE_API_URL = PUBLIC_ENV.API_ENDPOINT;
 export default async function page({ searchParams }: any) {
     let API_ENDPOINT = `${BASE_API_URL}/api/v1/products`;
 
-    const categorySlug = (await searchParams).categorySlug || '';
+    const filter = (await searchParams).filter || '';
     const name = (await searchParams).search || '';
     const page = (await searchParams).page;
 
     const params = new URLSearchParams();
     if (page) params.set('page', page);
     if (name) params.set('name', name);
-    if (categorySlug) params.set('categorySlug', categorySlug);
+    if (filter) params.set('categorySlug', filter);
 
     if (params.toString()) {
         API_ENDPOINT += `?${params.toString()}`;
@@ -30,15 +30,51 @@ export default async function page({ searchParams }: any) {
 
     return (
         <main className="min-h-screen bg-gray-50 text-gray-900">
-            <div className="container mx-auto px-4 py-12 lg:grid lg:grid-cols-3 lg:gap-12">
+            <div className="container mx-auto px-4 py-6 lg:grid lg:grid-cols-3 lg:gap-12">
                 {/* Left Column */}
                 <div className="lg:col-span-2">
                     <HeaderSection />
-                    {categorySlug && <ResetFilters />}
+                    {filter && <ResetFilters />}
+
+                    {/* Category pills */}
+                    <div className="flex flex-wrap gap-2">
+                        {result.categories.map((category: any) => {
+                            return (
+                                <Link
+                                    key={category.cuid}
+                                    href={`/products?filter=${category.slug}`}
+                                    className="cursor-pointer"
+                                >
+                                    <span
+                                        className={`
+                  inline-flex items-center px-3 py-1.5 rounded-full text-xs font-black
+                  border transition-all duration-200 ease-in-out
+                  ${
+                      filter === category.slug
+                          ? 'border-orange-300 text-orange-600'
+                          : 'border-gray-300 text-gray-700'
+                  }
+                  hover:shadow-sm
+                 bg-white   hover:border-gray-400 hover:bg-gray-50'
+                  }
+                `}
+                                    >
+                                        {category.name}
+                                        <span
+                                            className={`ml-1.5 text-xs text-gray-500'
+                                                }`}
+                                        >
+                                            (10)
+                                        </span>
+                                    </span>
+                                </Link>
+                            );
+                        })}
+                    </div>
 
                     {/* <SearchBar /> */}
                     {/* <SortDropdown /> */}
-                    <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
+                    <div className="grid mt-6 grid-cols-1 md:grid-cols-1 gap-6">
                         {result?.rows.length > 0 ? (
                             result.rows.map((product: any) => (
                                 <SuperProductCard
@@ -52,7 +88,10 @@ export default async function page({ searchParams }: any) {
                                 />
                             ))
                         ) : (
-                            <BlankResult message="No result found for your search. Please try different query." />
+                            <div className="text-sm text-center text-gray-500 mt-8">
+                                No products found. Please select different
+                                filter.
+                            </div>
                         )}
                     </div>
                     {result?.rows.length > 0 && (
