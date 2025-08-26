@@ -12,11 +12,26 @@ const PROTECTED_ROUTES = [
 ];
 
 export function isTokenExpired(token: string) {
-    const decoded: any = jwtDecode(token);
-    const currentTime = Math.floor(Date.now() / 1000);
-    const isExpired = currentTime > decoded.exp;
-    // const isUser = decoded.role === USER_ROLES.USER;
-    return { isExpired, isUser: true };
+    try {
+        const decoded: any = jwtDecode(token);
+        // Add safety checks
+        if (!decoded || typeof decoded !== 'object') {
+            return { isExpired: true, isUser: false };
+        }
+
+        // Check if exp property exists
+        if (!decoded.exp || typeof decoded.exp !== 'number') {
+            return { isExpired: true, isUser: false };
+        }
+
+        const currentTime = Math.floor(Date.now() / 1000);
+        const isExpired = currentTime > decoded.exp;
+        // const isUser = decoded.role === USER_ROLES.USER;
+        return { isExpired, isUser: true };
+    } catch (err) {
+        console.error('JWT decode error:', err);
+        return { isExpired: true, isUser: false };
+    }
 }
 
 export async function middleware(req: NextRequest) {
