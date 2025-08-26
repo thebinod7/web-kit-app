@@ -7,6 +7,7 @@ const PROTECTED_ROUTES = [
     '/dashboard',
     '/edit-product',
     '/my-products',
+    'featured-product',
     '/submit-product',
     '/feature-product',
 ];
