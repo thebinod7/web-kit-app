@@ -1,7 +1,7 @@
 export const APP_TITLE = 'BreakFreeKit';
 export const APP_CODE = 'BFK';
 export const APP_DESCRIPTION =
-    'Discover, Launch, and Dominate: The Product Discovery Platform.';
+    'Bring Your Product into the Spotlight - Every product get at least 24 hours of exposure.';
 export const FOOTER_TITLE =
     'Find us on social media and stay up to date with the latest news and updates.';
 
@@ -18,6 +18,14 @@ export const PRODUCT_TABS = {
     MEDIA: 'Media',
     SOCIALS: 'Socials',
 };
+
+// ============OG GRAPH DETAILS============
+export const DEFAULT_OG_URL = 'https://breakfreekit.com';
+export const DEFAULT_METADATA = {
+    metadataBase: new URL(DEFAULT_OG_URL),
+};
+export const DEFAULT_OG_IMAGE_URL =
+    'https://breakfreekit-assets.s3.eu-north-1.amazonaws.com/default.png';
 
 export const DEBOUNCE_DELAY = 300; // 300ms
 export const CONTACT_EMAIL = 'connect@breakfreekit.com';
