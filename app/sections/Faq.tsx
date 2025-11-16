@@ -4,28 +4,24 @@ import HeaderH2 from '@/components/mini/HeaderH2';
 
 const faqItems = [
     {
-        question: 'What is this platform and how does it work?',
-        answer: 'This platform is a community-driven hub where makers, developers, and founders launch and showcase their digital products. Users can explore trending tools, upvote their favorites, and engage with creators through comments and feedback.',
+        question: 'Is the resume generator completely free to use?',
+        answer: 'Yes! Our resume generator is 100% free. You can create, edit, download, and share your resume without any hidden fees or subscriptions.',
     },
     {
-        question: 'Who can submit a product?',
-        answer: "Anyone with a product, be it an app, website, SaaS tool, or digital service can submit it. Whether you're a solo indie hacker, startup founder, or creative agency, you're welcome to launch and get discovered.",
+        question: 'Do I need to create an account to build my resume?',
+        answer: 'No. You can start building your resume instantly without signing up. However, creating an account lets you save multiple resumes and access them anytime.',
     },
     {
-        question: 'Is it free to launch a product?',
-        answer: 'Yes, launching your product is completely free. We believe in giving every creator a fair chance to get exposure, regardless of budget or background.',
+        question: 'In which format can I download my resume?',
+        answer: 'You can download your resume in PDF format, which is universally accepted by employers and ATS-friendly.',
     },
     {
-        question: 'Can I launch the same product more than once?',
-        answer: 'Yes, you can relaunch your product if there have been significant updates, new features, or major changes. Relaunching helps bring renewed attention and feedback from the community.',
+        question: 'Is the resume template ATS-friendly?',
+        answer: 'Yes. All our templates are designed to be Applicant Tracking System (ATS) friendly so your resume passes automated filters used by employers.',
     },
     {
-        question: 'Can I edit my product after submission?',
-        answer: 'Absolutely. You can update your product description, images, links, and other details at any time from your dashboard to keep things fresh and accurate.',
-    },
-    {
-        question: 'Do I need an account to explore or upvote products?',
-        answer: 'You can browse and explore products freely, but you willll need to create an account to upvote, comment, or submit your own product. Signing up helps us keep the community genuine and engaged.',
+        question: 'Can I edit my resume after downloading it?',
+        answer: 'Absolutely. You can return anytime, load your saved resume, and make unlimited edits before downloading the updated version.',
     },
 ];
 

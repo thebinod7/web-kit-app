@@ -1,4 +1,4 @@
-import { APP_TITLE, CONTACT_EMAIL } from '@/app/constants/constants';
+import { APP_NAME, CONTACT_EMAIL } from '@/app/constants/constants';
 
 export default function PrivacyPolicy() {
     return (
@@ -10,14 +10,14 @@ export default function PrivacyPolicy() {
                     </h1>
 
                     <div className="text-sm text-gray-500 mb-8">
-                        Last Updated: August 13, 2025
+                        Last Updated: August 15, 2025
                     </div>
 
                     <div className="space-y-8">
                         <section>
                             <p className="text-gray-600">
-                                This Privacy Policy applies to {APP_TITLE} (the
-                                "Platform") owned and operated by {APP_TITLE}{' '}
+                                This Privacy Policy applies to {APP_NAME} (the
+                                "Platform") owned and operated by {APP_NAME}{' '}
                                 Inc. ("we", "us", or "our"). This Privacy Policy
                                 describes how we collect, use, share, and
                                 protect the personal information you provide
@@ -47,17 +47,8 @@ export default function PrivacyPolicy() {
                                     name, website, social media links
                                 </li>
                                 <li>
-                                    Product submissions: product names,
-                                    descriptions, images, videos, websites, and
-                                    launch details
-                                </li>
-                                <li>
-                                    Community interactions: comments, reviews,
-                                    votes, follows, and direct messages
-                                </li>
-                                <li>
                                     Creator profiles: portfolio information,
-                                    skills, achievements, and maker history
+                                    skills, achievements, and history
                                 </li>
                                 <li>Contact and support communications</li>
                             </ul>
@@ -75,8 +66,8 @@ export default function PrivacyPolicy() {
                                     time spent, click patterns, search queries
                                 </li>
                                 <li>
-                                    Product interaction data: votes, comments,
-                                    shares, bookmarks, and engagement metrics
+                                    Product interaction data: shares, bookmarks,
+                                    and engagement metrics
                                 </li>
                                 <li>
                                     Location data: approximate location based on
@@ -128,25 +119,9 @@ export default function PrivacyPolicy() {
                                     Create and maintain your account and profile
                                 </li>
                                 <li>
-                                    Process product submissions and feature them
-                                    in our directory
+                                    Send notifications about platform activity
                                 </li>
-                                <li>
-                                    Enable community interactions, voting, and
-                                    discussions
-                                </li>
-                                <li>
-                                    Send notifications about platform activity,
-                                    product launches, and community updates
-                                </li>
-                                <li>
-                                    Personalize content recommendations and
-                                    discover relevant products
-                                </li>
-                                <li>
-                                    Generate analytics and insights for makers
-                                    and our platform
-                                </li>
+                                <li>Generate analytics and insights</li>
                                 <li>
                                     Prevent fraud, abuse, and ensure platform
                                     security
@@ -171,9 +146,8 @@ export default function PrivacyPolicy() {
                                 Public Information:
                             </h3>
                             <p className="text-gray-600 mb-3">
-                                Much of your activity on {APP_TITLE} is public
-                                by design, including your profile information,
-                                product submissions, comments, votes, and maker
+                                Much of your activity on {APP_NAME} is public by
+                                design, including your profile information, and
                                 activities. This information may be visible to
                                 other users, search engines, and accessed
                                 through our API by third-party developers.
@@ -229,7 +203,7 @@ export default function PrivacyPolicy() {
                                 Business Transfers:
                             </h3>
                             <p className="text-gray-600">
-                                If {APP_TITLE} is involved in a merger,
+                                If {APP_NAME} is involved in a merger,
                                 acquisition, or sale of assets, your information
                                 may be transferred. We will notify you via email
                                 and prominent platform notice before your
@@ -317,7 +291,7 @@ export default function PrivacyPolicy() {
                                 International Data Transfers
                             </h2>
                             <p className="text-gray-600">
-                                {APP_TITLE} operates globally and may transfer
+                                {APP_NAME} operates globally and may transfer
                                 your information to countries other than where
                                 you reside. We ensure appropriate safeguards are
                                 in place to protect your information during
@@ -332,8 +306,8 @@ export default function PrivacyPolicy() {
                                 Children's Privacy
                             </h2>
                             <p className="text-gray-600">
-                                {APP_TITLE} is not intended for children under
-                                13 years of age. We do not knowingly collect
+                                {APP_NAME} is not intended for children under 13
+                                years of age. We do not knowingly collect
                                 personal information from children under 13. If
                                 you believe a child has provided us with
                                 personal information, please contact us
@@ -351,7 +325,7 @@ export default function PrivacyPolicy() {
                                 legal requirements, or other factors. We will
                                 notify you of material changes via email or
                                 prominent platform notice before they take
-                                effect. Your continued use of {APP_TITLE} after
+                                effect. Your continued use of {APP_NAME} after
                                 changes become effective constitutes acceptance
                                 of the updated policy.
                             </p>

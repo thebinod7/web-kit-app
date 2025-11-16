@@ -1,4 +1,4 @@
-import { APP_TITLE, CONTACT_EMAIL } from '@/app/constants/constants';
+import { APP_NAME, CONTACT_EMAIL } from '@/app/constants/constants';
 
 export default function TermsOfService() {
     return (
@@ -10,18 +10,18 @@ export default function TermsOfService() {
                     </h1>
 
                     <div className="text-sm text-gray-500 mb-8">
-                        Last Updated: August 13, 2025
+                        Last Updated: August 15, 2025
                     </div>
 
                     <div className="space-y-6">
                         <section>
                             <p className="text-gray-600">
-                                Welcome to {APP_TITLE}! These Terms of Service
+                                Welcome to {APP_NAME}! These Terms of Service
                                 ("Terms") govern your access to and use of {}
-                                {APP_TITLE}'s website, services, and
-                                applications (collectively, the "Platform"). By
-                                creating an account, accessing, or using our
-                                Platform, you agree to be bound by these Terms.
+                                {APP_NAME}'s website, services, and applications
+                                (collectively, the "Platform"). By creating an
+                                account, accessing, or using our Platform, you
+                                agree to be bound by these Terms.
                             </p>
                             <p className="text-gray-600 mt-3">
                                 If you are using our Platform on behalf of an
@@ -31,11 +31,10 @@ export default function TermsOfService() {
                                 organization.
                             </p>
                             <p className="text-gray-600 mt-3">
-                                {APP_TITLE} is a community platform for
-                                discovering, sharing, and discussing innovative
-                                products, startups, and digital tools. We
-                                connect makers, entrepreneurs, and enthusiasts
-                                in a collaborative environment.
+                                {APP_NAME} is a free tool hub that provides a
+                                range of tools to solve daily life problems.
+                                Primarily, it focuses on free resume generation
+                                and dowloading templates.
                             </p>
                         </section>
 
@@ -93,28 +92,12 @@ export default function TermsOfService() {
                                 You may use our Platform to:
                             </p>
                             <ul className="list-disc pl-5 text-gray-600 space-y-2 mb-3">
+                                <li>Create and dowload free resume.</li>
+                                <li>Update your profile and preferences</li>
+                                <li>Browse and use resume templates</li>
+                                <li>Update resume and download templates</li>
                                 <li>
-                                    Discover and explore innovative products and
-                                    services
-                                </li>
-                                <li>
-                                    Submit your own products for community
-                                    feedback and exposure
-                                </li>
-                                <li>
-                                    Vote, comment, and engage with the community
-                                </li>
-                                <li>
-                                    Follow makers and products you're interested
-                                    in
-                                </li>
-                                <li>
-                                    Share products on social media and other
-                                    platforms
-                                </li>
-                                <li>
-                                    Participate in discussions and provide
-                                    constructive feedback
+                                    Use all the free tools available on our site
                                 </li>
                             </ul>
 
@@ -126,10 +109,6 @@ export default function TermsOfService() {
                                 <li>
                                     Submit false, misleading, or incomplete
                                     product information
-                                </li>
-                                <li>
-                                    Manipulate voting through fake accounts,
-                                    bots, or vote buying
                                 </li>
                                 <li>Spam, harass, or abuse other users</li>
                                 <li>
@@ -165,134 +144,14 @@ export default function TermsOfService() {
 
                         <section>
                             <h2 className="text-xl font-semibold text-gray-800 mb-3">
-                                3. Product Submissions and Content
-                            </h2>
-
-                            <h3 className="text-lg font-medium text-gray-800 mt-4 mb-2">
-                                a. Submission Requirements
-                            </h3>
-                            <p className="text-gray-600 mb-3">
-                                When submitting products to {APP_TITLE}, you
-                                must:
-                            </p>
-                            <ul className="list-disc pl-5 text-gray-600 space-y-2 mb-3">
-                                <li>
-                                    Provide accurate product information,
-                                    descriptions, and media
-                                </li>
-                                <li>
-                                    Have proper rights to submit and represent
-                                    the product
-                                </li>
-                                <li>
-                                    Ensure your product is functional and
-                                    accessible
-                                </li>
-                                <li>
-                                    Follow our content guidelines and quality
-                                    standards
-                                </li>
-                                <li>
-                                    Not submit duplicate or substantially
-                                    similar products
-                                </li>
-                                <li>
-                                    Respect launch dates and timing guidelines
-                                </li>
-                            </ul>
-
-                            <h3 className="text-lg font-medium text-gray-800 mt-4 mb-2">
-                                b. Content Ownership and License
-                            </h3>
-                            <p className="text-gray-600 mb-3">
-                                You retain ownership of content you submit to{' '}
-                                {APP_TITLE}. However, by submitting content, you
-                                grant us a worldwide, royalty-free,
-                                non-exclusive license to:
-                            </p>
-                            <ul className="list-disc pl-5 text-gray-600 space-y-2 mb-3">
-                                <li>
-                                    Display, distribute, and promote your
-                                    content on our Platform
-                                </li>
-                                <li>
-                                    Create derivative works for promotional and
-                                    platform purposes
-                                </li>
-                                <li>
-                                    Allow other users to share and interact with
-                                    your content
-                                </li>
-                                <li>
-                                    Use your content in marketing materials and
-                                    communications
-                                </li>
-                            </ul>
-
-                            <h3 className="text-lg font-medium text-gray-800 mt-4 mb-2">
-                                c. Content Moderation
-                            </h3>
-                            <p className="text-gray-600">
-                                We reserve the right to review, modify, or
-                                remove any content that violates these Terms,
-                                our community guidelines, or applicable laws. We
-                                may also feature, promote, or highlight certain
-                                products at our discretion.
-                            </p>
-                        </section>
-
-                        <section>
-                            <h2 className="text-xl font-semibold text-gray-800 mb-3">
-                                4. Voting System and Community Interactions
-                            </h2>
-
-                            <h3 className="text-lg font-medium text-gray-800 mt-4 mb-2">
-                                a. Fair Voting
-                            </h3>
-                            <p className="text-gray-600 mb-3">
-                                Our voting system relies on authentic community
-                                engagement. You agree to:
-                            </p>
-                            <ul className="list-disc pl-5 text-gray-600 space-y-2 mb-3">
-                                <li>
-                                    Vote genuinely based on your opinion of
-                                    products
-                                </li>
-                                <li>
-                                    Not manipulate votes through artificial
-                                    means
-                                </li>
-                                <li>
-                                    Not coordinate vote campaigns or exchanges
-                                </li>
-                                <li>
-                                    Respect the democratic nature of our
-                                    community rankings
-                                </li>
-                            </ul>
-
-                            <h3 className="text-lg font-medium text-gray-800 mt-4 mb-2">
-                                b. Comments and Discussions
-                            </h3>
-                            <p className="text-gray-600">
-                                When participating in discussions, maintain
-                                respectful, constructive dialogue. Provide
-                                helpful feedback, ask meaningful questions, and
-                                contribute positively to the community
-                                conversation.
-                            </p>
-                        </section>
-
-                        <section>
-                            <h2 className="text-xl font-semibold text-gray-800 mb-3">
-                                5. Intellectual Property Rights
+                                3. Intellectual Property Rights
                             </h2>
 
                             <h3 className="text-lg font-medium text-gray-800 mt-4 mb-2">
                                 a. Platform Ownership
                             </h3>
                             <p className="text-gray-600 mb-3">
-                                {APP_TITLE} owns all rights to our Platform,
+                                {APP_NAME} owns all rights to our Platform,
                                 including but not limited to:
                             </p>
                             <ul className="list-disc pl-5 text-gray-600 space-y-2 mb-3">
@@ -328,15 +187,15 @@ export default function TermsOfService() {
                             </h3>
                             <p className="text-gray-600">
                                 Any feedback, suggestions, or ideas you provide
-                                about {APP_TITLE} become our property. We may
-                                use this feedback to improve our Platform
-                                without compensation or attribution to you.
+                                about {APP_NAME} become our property. We may use
+                                this feedback to improve our Platform without
+                                compensation or attribution to you.
                             </p>
                         </section>
 
                         <section>
                             <h2 className="text-xl font-semibold text-gray-800 mb-3">
-                                6. Premium Features and Payments
+                                4. Premium Features and Payments
                             </h2>
                             <p className="text-gray-600 mb-3">
                                 We may offer premium features, promotional
@@ -356,7 +215,7 @@ export default function TermsOfService() {
 
                         <section>
                             <h2 className="text-xl font-semibold text-gray-800 mb-3">
-                                7. Privacy and Data Protection
+                                5. Privacy and Data Protection
                             </h2>
                             <p className="text-gray-600">
                                 Your privacy is important to us. Our Privacy
@@ -370,7 +229,7 @@ export default function TermsOfService() {
 
                         <section>
                             <h2 className="text-xl font-semibold text-gray-800 mb-3">
-                                8. Third-Party Services and Links
+                                6. Third-Party Services and Links
                             </h2>
                             <p className="text-gray-600">
                                 Our Platform may contain links to third-party
@@ -384,7 +243,7 @@ export default function TermsOfService() {
 
                         <section>
                             <h2 className="text-xl font-semibold text-gray-800 mb-3">
-                                9. Disclaimers and Limitations
+                                7. Disclaimers and Limitations
                             </h2>
 
                             <h3 className="text-lg font-medium text-gray-800 mt-4 mb-2">
@@ -398,18 +257,7 @@ export default function TermsOfService() {
                             </p>
 
                             <h3 className="text-lg font-medium text-gray-800 mt-4 mb-2">
-                                b. Content Disclaimer
-                            </h3>
-                            <p className="text-gray-600 mb-3">
-                                Products and content on our Platform are
-                                submitted by users. We do not endorse, verify,
-                                or guarantee the accuracy, quality, or safety of
-                                submitted products. Users interact with products
-                                and makers at their own risk.
-                            </p>
-
-                            <h3 className="text-lg font-medium text-gray-800 mt-4 mb-2">
-                                c. Warranty Disclaimer
+                                b. Warranty Disclaimer
                             </h3>
                             <p className="text-gray-600 uppercase">
                                 OUR PLATFORM IS PROVIDED "AS IS" WITHOUT
@@ -423,15 +271,15 @@ export default function TermsOfService() {
 
                         <section>
                             <h2 className="text-xl font-semibold text-gray-800 mb-3">
-                                10. Limitation of Liability
+                                8. Limitation of Liability
                             </h2>
                             <p className="text-gray-600 uppercase mb-3">
                                 TO THE MAXIMUM EXTENT PERMITTED BY LAW,{' '}
-                                {APP_TITLE} SHALL NOT BE LIABLE FOR ANY
-                                INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR
-                                PUNITIVE DAMAGES, INCLUDING LOST PROFITS, DATA
-                                LOSS, OR BUSINESS INTERRUPTION, ARISING FROM
-                                YOUR USE OF OUR PLATFORM.
+                                {APP_NAME} SHALL NOT BE LIABLE FOR ANY INDIRECT,
+                                INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE
+                                DAMAGES, INCLUDING LOST PROFITS, DATA LOSS, OR
+                                BUSINESS INTERRUPTION, ARISING FROM YOUR USE OF
+                                OUR PLATFORM.
                             </p>
                             <p className="text-gray-600">
                                 Our total liability to you for any claims
@@ -444,11 +292,11 @@ export default function TermsOfService() {
 
                         <section>
                             <h2 className="text-xl font-semibold text-gray-800 mb-3">
-                                11. Indemnification
+                                9. Indemnification
                             </h2>
                             <p className="text-gray-600">
                                 You agree to defend, indemnify, and hold{' '}
-                                {APP_TITLE} harmless from any claims, damages,
+                                {APP_NAME} harmless from any claims, damages,
                                 losses, or expenses (including reasonable
                                 attorney fees) arising from:
                             </p>
@@ -471,7 +319,7 @@ export default function TermsOfService() {
 
                         <section>
                             <h2 className="text-xl font-semibold text-gray-800 mb-3">
-                                12. Account Termination
+                                10. Account Termination
                             </h2>
 
                             <h3 className="text-lg font-medium text-gray-800 mt-4 mb-2">
@@ -521,7 +369,7 @@ export default function TermsOfService() {
 
                         <section>
                             <h2 className="text-xl font-semibold text-gray-800 mb-3">
-                                13. Dispute Resolution
+                                11. Dispute Resolution
                             </h2>
                             <p className="text-gray-600 mb-3">
                                 We encourage resolving disputes through direct
@@ -541,16 +389,12 @@ export default function TermsOfService() {
                                     Submit to binding arbitration for unresolved
                                     matters
                                 </li>
-                                <li>
-                                    Disputes shall be governed by [Your
-                                    Jurisdiction] law
-                                </li>
                             </ul>
                         </section>
 
                         <section>
                             <h2 className="text-xl font-semibold text-gray-800 mb-3">
-                                14. Changes to Terms
+                                12. Changes to Terms
                             </h2>
                             <p className="text-gray-600 mb-3">
                                 We may update these Terms periodically to
@@ -577,7 +421,7 @@ export default function TermsOfService() {
 
                         <section>
                             <h2 className="text-xl font-semibold text-gray-800 mb-3">
-                                15. General Provisions
+                                13. General Provisions
                             </h2>
 
                             <h3 className="text-lg font-medium text-gray-800 mt-4 mb-2">
@@ -587,7 +431,7 @@ export default function TermsOfService() {
                                 These Terms, together with our Privacy Policy
                                 and any additional terms for specific features,
                                 constitute the entire agreement between you and{' '}
-                                {APP_TITLE}.
+                                {APP_NAME}.
                             </p>
 
                             <h3 className="text-lg font-medium text-gray-800 mt-4 mb-2">

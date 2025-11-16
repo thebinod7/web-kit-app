@@ -71,8 +71,8 @@ export default function Hero({
 
                     {/* Description */}
                     <p className="text-xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
-                        Launch, showcase, and grow your product with a community
-                        built for makers.
+                        Create and showcase your resume with tools designed for
+                        career growth.
                     </p>
 
                     {/* Call to Action Button */}

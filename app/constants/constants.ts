@@ -1,3 +1,4 @@
+export const APP_NAME = 'BreakFreeKit';
 export const APP_TITLE =
     'Free Resume Creator – No Signup Required, Download in PDF';
 export const APP_CODE = 'BFK';
