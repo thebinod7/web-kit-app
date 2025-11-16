@@ -4,7 +4,7 @@ import {
     FOOTER_TITLE,
     SOCIAL_LINKS,
 } from '@/app/constants/constants';
-import { Facebook, Instagram, Twitter } from 'lucide-react';
+import { Instagram, Twitter } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Footer() {
@@ -49,15 +49,15 @@ export default function Footer() {
                         <ul className="space-y-2 text-gray-400">
                             <li>
                                 <Link
-                                    href={APP_PATHS.SUBMIT_PRODUCT}
+                                    href={APP_PATHS.GENERATE_RESUME}
                                     className="hover:text-white transition-colors"
                                 >
-                                    Submit Product
+                                    Generate Resume
                                 </Link>
                             </li>
                             <li>
                                 <Link
-                                    href="/feature-product"
+                                    href="#"
                                     className="hover:text-white transition-colors"
                                 >
                                     Get Featured
@@ -65,18 +65,10 @@ export default function Footer() {
                             </li>
                             <li>
                                 <Link
-                                    href={APP_PATHS.PRODUCTS}
+                                    href="#"
                                     className="hover:text-white transition-colors"
                                 >
                                     Browse All
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href={APP_PATHS.LEADERBOARD}
-                                    className="hover:text-white transition-colors"
-                                >
-                                    Leaderboard
                                 </Link>
                             </li>
                         </ul>

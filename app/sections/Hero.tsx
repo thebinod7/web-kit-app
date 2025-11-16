@@ -62,10 +62,10 @@ export default function Hero({
                     {/* Headline */}
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
                         <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-                            Discover & Promote
+                            Free & No Signup
                         </span>
                         <span className="block bg-gradient-to-r from-amber-500 via-orange-500 to-red-600 bg-clip-text text-transparent animate-pulse">
-                            Amazing Apps
+                            Resume
                         </span>
                     </h1>
 
@@ -78,10 +78,10 @@ export default function Hero({
                     {/* Call to Action Button */}
                     <div className="flex justify-center">
                         <Link
-                            href={APP_PATHS.SUBMIT_PRODUCT}
+                            href={APP_PATHS.GENERATE_RESUME}
                             className="inline-flex items-center space-x-2 bg-gray-900 text-white px-8 py-4 rounded-full hover:bg-gray-800 transition-all transform hover:scale-105"
                         >
-                            <span>Submit Your Product</span>
+                            <span>Create Your Resume</span>
                             <ArrowRight className="w-5 h-5" />
                         </Link>
                     </div>

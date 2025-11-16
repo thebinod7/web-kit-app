@@ -1,7 +1,8 @@
-export const APP_TITLE = 'BreakFreeKit';
+export const APP_TITLE =
+    'Free Resume Creator – No Signup Required, Download in PDF';
 export const APP_CODE = 'BFK';
 export const APP_DESCRIPTION =
-    'Bring Your Product into the Spotlight - Every product get at least 24 hours of exposure.';
+    'Build a professional resume for free in minutes. Choose from modern templates, fill in your details, and download your resume instantly—no signup required. Perfect for freshers and experienced job seekers';
 export const FOOTER_TITLE =
     'Find us on social media and stay up to date with the latest news and updates.';
 

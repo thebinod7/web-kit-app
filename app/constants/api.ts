@@ -11,12 +11,13 @@ export const API_ROUTES = {
 export const APP_PATHS = {
     DASHBOARD: '/dashboard',
     EDIT_PRODUCT: '/edit-product',
-    FEATURE_PRODUCT: '/feature-product',
-    LEADERBOARD: '/leaderboard',
+    CONTACT: '/contact',
+    ABOUT: '/about',
     LOGIN: '/login',
     MY_PROFILE: '/my-profile',
     MY_PRODUCTS: '/my-products',
     PRODUCTS: '/products',
     SIGNUP: '/signup',
     SUBMIT_PRODUCT: '/submit-product',
+    GENERATE_RESUME: '/generate-free-resume-online',
 };

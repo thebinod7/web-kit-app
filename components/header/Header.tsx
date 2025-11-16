@@ -53,16 +53,16 @@ export default function Header() {
                     <div className="flex-1 flex justify-center">
                         <div className="hidden md:flex items-center space-x-6">
                             <Link
-                                href={APP_PATHS.LEADERBOARD}
+                                href={APP_PATHS.ABOUT}
                                 className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium"
                             >
-                                Leaderboard
+                                About
                             </Link>
                             <Link
-                                href={APP_PATHS.PRODUCTS}
+                                href={APP_PATHS.CONTACT}
                                 className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium"
                             >
-                                Products
+                                Contact
                             </Link>
                             <Link
                                 href="/#faq"
@@ -71,16 +71,16 @@ export default function Header() {
                                 FAQs
                             </Link>
                             <Link
-                                href={APP_PATHS.SUBMIT_PRODUCT}
+                                href={APP_PATHS.GENERATE_RESUME}
                                 className="mt-4 cursor-pointer flex items-center gap-2 rounded-md bg-black px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-gray-800 focus:outline-none focus:ring-offset-2 md:mt-0"
                             >
-                                + Submit Product
+                                Generate Resume
                             </Link>
                         </div>
                     </div>
 
                     {/* Right: Profile/Login */}
-                    <div className="flex-shrink-0">
+                    {/* <div className="flex-shrink-0">
                         {loggedUser ? (
                             <UserProfileDropdown loggedInUser={loggedUser} />
                         ) : (
@@ -91,7 +91,7 @@ export default function Header() {
                                 Login
                             </Link>
                         )}
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </nav>
