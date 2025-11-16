@@ -52,7 +52,7 @@ export default function Footer() {
                                     href={APP_PATHS.GENERATE_RESUME}
                                     className="hover:text-white transition-colors"
                                 >
-                                    Generate Resume
+                                    Create Resume
                                 </Link>
                             </li>
                             <li>
@@ -68,7 +68,7 @@ export default function Footer() {
                                     href="#"
                                     className="hover:text-white transition-colors"
                                 >
-                                    Browse All
+                                    More Tools
                                 </Link>
                             </li>
                         </ul>

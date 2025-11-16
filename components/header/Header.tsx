@@ -74,7 +74,7 @@ export default function Header() {
                                 href={APP_PATHS.GENERATE_RESUME}
                                 className="mt-4 cursor-pointer flex items-center gap-2 rounded-md bg-black px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-gray-800 focus:outline-none focus:ring-offset-2 md:mt-0"
                             >
-                                Generate Resume
+                                Create Resume
                             </Link>
                         </div>
                     </div>
