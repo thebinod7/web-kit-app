@@ -62,7 +62,7 @@ const WeeklyStats = () => {
 
             {loading ? (
                 <div className="space-y-2">
-                    <div className="h-6 bg-gray-200 rounded animate-pulse"></div>
+                    <div className="h-3 bg-gray-200 rounded animate-pulse"></div>
                     <div className="h-3 bg-gray-100 rounded animate-pulse w-16"></div>
                 </div>
             ) : (

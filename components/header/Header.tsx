@@ -7,6 +7,7 @@ import { getCookie } from 'cookies-next/client';
 import Link from 'next/link';
 import { useEffect } from 'react';
 import UserProfileDropdown from '../UserProfileDropdown';
+import Image from 'next/image';
 
 export default function Header() {
     const accessToken = getCookie(LOCAL_KEYS.ACCESS_TOKEN);
@@ -28,7 +29,15 @@ export default function Header() {
                 <div className="flex items-center h-16">
                     {/* Left: Logo */}
                     <div className="flex-shrink-0">
-                        <Link href="/" className="flex items-center space-x-2">
+                        <Link href={'/'}>
+                            <Image
+                                src="/bfk.svg"
+                                alt="BreakFreeKit"
+                                width={200}
+                                height={50}
+                            />
+                        </Link>
+                        {/* <Link href="/" className="flex items-center space-x-2">
                             <div className="w-11 h-11 bg-orange-400 rounded-4xl flex items-center justify-center">
                                 <span className="text-white font-bold text-2xl">
                                     B
@@ -37,7 +46,7 @@ export default function Header() {
                             <span className="text-xl font-semibold text-gray-900">
                                 BreakFreeKit
                             </span>
-                        </Link>
+                        </Link> */}
                     </div>
 
                     {/* Center: Menu */}
