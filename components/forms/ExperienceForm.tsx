@@ -65,10 +65,13 @@ export function ExperienceForm({ resume, setResume }: ExperienceFormProps) {
                         </button>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-1 gap-3">
+                        <label className="block text-sm font-bold text-foreground">
+                            Job Title
+                        </label>
                         <input
                             type="text"
-                            placeholder="Position *"
+                            placeholder="Job Title *"
                             value={exp.position}
                             onChange={(e) =>
                                 updateExperience(
@@ -77,10 +80,28 @@ export function ExperienceForm({ resume, setResume }: ExperienceFormProps) {
                                     e.target.value
                                 )
                             }
+                            className={`w-full
+                                px-4 py-2
+                                rounded-lg
+                                bg-gray-100
+                                border border-gray-200
+                                text-foreground
+                                placeholder:text-gray-400
+                                focus:outline-none
+                                focus:ring-primary/30
+                                disabled:bg-gray-50
+                                disabled:text-muted-foreground
+                                disabled:cursor-not-allowed
+                                disabled:border-gray-100
+                                hover:border-gray-300`}
                         />
+
+                        <label className="block text-sm font-bold text-foreground">
+                            Employer
+                        </label>
                         <input
                             type="text"
-                            placeholder="Company *"
+                            placeholder="Employer *"
                             value={exp.company}
                             onChange={(e) =>
                                 updateExperience(
@@ -89,9 +110,26 @@ export function ExperienceForm({ resume, setResume }: ExperienceFormProps) {
                                     e.target.value
                                 )
                             }
+                            className={`w-full
+                                px-4 py-2
+                                rounded-lg
+                                bg-gray-100
+                                border border-gray-200
+                                text-foreground
+                                placeholder:text-gray-400
+                                focus:outline-none
+                                focus:ring-primary/30
+                                disabled:bg-gray-50
+                                disabled:text-muted-foreground
+                                disabled:cursor-not-allowed
+                                disabled:border-gray-100
+                                hover:border-gray-300`}
                         />
                     </div>
 
+                    <label className="block text-sm font-bold text-foreground">
+                        Location
+                    </label>
                     <input
                         type="text"
                         placeholder="Location"
@@ -99,7 +137,25 @@ export function ExperienceForm({ resume, setResume }: ExperienceFormProps) {
                         onChange={(e) =>
                             updateExperience(exp.id, 'location', e.target.value)
                         }
+                        className={`w-full
+                                px-4 py-2
+                                rounded-lg
+                                bg-gray-100
+                                border border-gray-200
+                                text-foreground
+                                placeholder:text-gray-400
+                                focus:outline-none
+                                focus:ring-primary/30
+                                disabled:bg-gray-50
+                                disabled:text-muted-foreground
+                                disabled:cursor-not-allowed
+                                disabled:border-gray-100
+                                hover:border-gray-300`}
                     />
+
+                    <label className="block text-sm font-bold text-foreground">
+                        Start & End Date
+                    </label>
 
                     <div className="grid grid-cols-2 gap-3">
                         <input
@@ -113,6 +169,20 @@ export function ExperienceForm({ resume, setResume }: ExperienceFormProps) {
                                     e.target.value
                                 )
                             }
+                            className={`w-full
+                                px-4 py-2
+                                rounded-lg
+                                bg-gray-100
+                                border border-gray-200
+                                text-foreground
+                                placeholder:text-gray-400
+                                focus:outline-none
+                                focus:ring-primary/30
+                                disabled:bg-gray-50
+                                disabled:text-muted-foreground
+                                disabled:cursor-not-allowed
+                                disabled:border-gray-100
+                                hover:border-gray-300`}
                         />
                         <div className="flex items-center gap-2">
                             <input
@@ -127,6 +197,20 @@ export function ExperienceForm({ resume, setResume }: ExperienceFormProps) {
                                     )
                                 }
                                 disabled={exp.currentlyWorking}
+                                className={`w-full
+                                px-4 py-2
+                                rounded-lg
+                                bg-gray-100
+                                border border-gray-200
+                                text-foreground
+                                placeholder:text-gray-400
+                                focus:outline-none
+                                focus:ring-primary/30
+                                disabled:bg-gray-50
+                                disabled:text-muted-foreground
+                                disabled:cursor-not-allowed
+                                disabled:border-gray-100
+                                hover:border-gray-300`}
                             />
                             <label className="flex items-center gap-2 text-sm text-slate-700">
                                 <input
@@ -145,6 +229,9 @@ export function ExperienceForm({ resume, setResume }: ExperienceFormProps) {
                         </div>
                     </div>
 
+                    <label className="block text-sm font-bold text-foreground">
+                        Description
+                    </label>
                     <textarea
                         placeholder="Description (achievements, responsibilities...)"
                         value={exp.description}
@@ -156,6 +243,20 @@ export function ExperienceForm({ resume, setResume }: ExperienceFormProps) {
                             )
                         }
                         rows={3}
+                        className={`w-full
+                                px-4 py-2
+                                rounded-lg
+                                bg-gray-100
+                                border border-gray-200
+                                text-foreground
+                                placeholder:text-gray-400
+                                focus:outline-none
+                                focus:ring-primary/30
+                                disabled:bg-gray-50
+                                disabled:text-muted-foreground
+                                disabled:cursor-not-allowed
+                                disabled:border-gray-100
+                                hover:border-gray-300`}
                     />
                 </div>
             ))}

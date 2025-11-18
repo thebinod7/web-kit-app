@@ -1,6 +1,6 @@
 'use client';
 
-import { Mail, Phone, MapPin, Globe, Linkedin } from 'lucide-react';
+import { Mail, Phone, MapPin, Globe, Linkedin, Calendar } from 'lucide-react';
 import type { Resume } from '@/types/resume';
 
 interface ResumePreviewProps {
@@ -18,6 +18,8 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
         certifications,
         publications,
     } = resume;
+
+    console.log('PI=>', personalInfo);
 
     return (
         <div className="p-8 max-h-[calc(100vh-120px)] overflow-y-auto bg-white text-slate-900">
@@ -43,6 +45,12 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                         <div className="flex items-center gap-1">
                             <Phone size={14} />
                             {personalInfo.phone}
+                        </div>
+                    )}
+                    {personalInfo.dateOfBirth && (
+                        <div className="flex items-center gap-1">
+                            <Calendar size={14} />
+                            {personalInfo.dateOfBirth}
                         </div>
                     )}
                     {personalInfo.location && (
