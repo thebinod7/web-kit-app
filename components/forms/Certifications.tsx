@@ -79,6 +79,20 @@ export function CertificationsForm({
                                     e.target.value
                                 )
                             }
+                            className={`w-full
+                                px-4 py-2
+                                rounded-lg
+                                bg-gray-100
+                                border border-gray-200
+                                text-foreground
+                                placeholder:text-gray-400
+                                focus:outline-none
+                                focus:ring-primary/30
+                                disabled:bg-gray-50
+                                disabled:text-muted-foreground
+                                disabled:cursor-not-allowed
+                                disabled:border-gray-100
+                                hover:border-gray-300`}
                         />
                         <input
                             type="text"
@@ -91,6 +105,20 @@ export function CertificationsForm({
                                     e.target.value
                                 )
                             }
+                            className={`w-full
+                                px-4 py-2
+                                rounded-lg
+                                bg-gray-100
+                                border border-gray-200
+                                text-foreground
+                                placeholder:text-gray-400
+                                focus:outline-none
+                                focus:ring-primary/30
+                                disabled:bg-gray-50
+                                disabled:text-muted-foreground
+                                disabled:cursor-not-allowed
+                                disabled:border-gray-100
+                                hover:border-gray-300`}
                         />
                     </div>
 
@@ -106,6 +134,20 @@ export function CertificationsForm({
                                     e.target.value
                                 )
                             }
+                            className={`w-full
+                                px-4 py-2
+                                rounded-lg
+                                bg-gray-100
+                                border border-gray-200
+                                text-foreground
+                                placeholder:text-gray-400
+                                focus:outline-none
+                                focus:ring-primary/30
+                                disabled:bg-gray-50
+                                disabled:text-muted-foreground
+                                disabled:cursor-not-allowed
+                                disabled:border-gray-100
+                                hover:border-gray-300`}
                         />
                         <input
                             type="url"
@@ -118,6 +160,20 @@ export function CertificationsForm({
                                     e.target.value
                                 )
                             }
+                            className={`w-full
+                                px-4 py-2
+                                rounded-lg
+                                bg-gray-100
+                                border border-gray-200
+                                text-foreground
+                                placeholder:text-gray-400
+                                focus:outline-none
+                                focus:ring-primary/30
+                                disabled:bg-gray-50
+                                disabled:text-muted-foreground
+                                disabled:cursor-not-allowed
+                                disabled:border-gray-100
+                                hover:border-gray-300`}
                         />
                     </div>
                 </div>

@@ -62,17 +62,38 @@ export function ProjectsForm({ resume, setResume }: ProjectsFormProps) {
                         </button>
                     </div>
 
+                    <label className="block text-sm font-bold text-foreground">
+                        Project Title
+                    </label>
+
                     <input
                         type="text"
-                        placeholder="Project Title *"
+                        placeholder="Project Title"
                         value={project.title}
                         onChange={(e) =>
                             updateProject(project.id, 'title', e.target.value)
                         }
+                        className={`w-full
+                                px-4 py-2
+                                rounded-lg
+                                bg-gray-100
+                                border border-gray-200
+                                text-foreground
+                                placeholder:text-gray-400
+                                focus:outline-none
+                                focus:ring-primary/30
+                                disabled:bg-gray-50
+                                disabled:text-muted-foreground
+                                disabled:cursor-not-allowed
+                                disabled:border-gray-100
+                                hover:border-gray-300`}
                     />
 
+                    <label className="block text-sm font-bold text-foreground">
+                        Short Description
+                    </label>
                     <textarea
-                        placeholder="Project Description"
+                        placeholder="Description"
                         value={project.description}
                         onChange={(e) =>
                             updateProject(
@@ -82,8 +103,25 @@ export function ProjectsForm({ resume, setResume }: ProjectsFormProps) {
                             )
                         }
                         rows={2}
+                        className={`w-full
+                                px-4 py-2
+                                rounded-lg
+                                bg-gray-100
+                                border border-gray-200
+                                text-foreground
+                                placeholder:text-gray-400
+                                focus:outline-none
+                                focus:ring-primary/30
+                                disabled:bg-gray-50
+                                disabled:text-muted-foreground
+                                disabled:cursor-not-allowed
+                                disabled:border-gray-100
+                                hover:border-gray-300`}
                     />
 
+                    <label className="block text-sm font-bold text-foreground">
+                        Technologies Used
+                    </label>
                     <input
                         type="text"
                         placeholder="Technologies Used"
@@ -95,8 +133,25 @@ export function ProjectsForm({ resume, setResume }: ProjectsFormProps) {
                                 e.target.value
                             )
                         }
+                        className={`w-full
+                                px-4 py-2
+                                rounded-lg
+                                bg-gray-100
+                                border border-gray-200
+                                text-foreground
+                                placeholder:text-gray-400
+                                focus:outline-none
+                                focus:ring-primary/30
+                                disabled:bg-gray-50
+                                disabled:text-muted-foreground
+                                disabled:cursor-not-allowed
+                                disabled:border-gray-100
+                                hover:border-gray-300`}
                     />
 
+                    <label className="block text-sm font-bold text-foreground">
+                        Project Link
+                    </label>
                     <input
                         type="url"
                         placeholder="Project Link (GitHub, Demo, etc.)"
@@ -104,6 +159,20 @@ export function ProjectsForm({ resume, setResume }: ProjectsFormProps) {
                         onChange={(e) =>
                             updateProject(project.id, 'link', e.target.value)
                         }
+                        className={`w-full
+                                px-4 py-2
+                                rounded-lg
+                                bg-gray-100
+                                border border-gray-200
+                                text-foreground
+                                placeholder:text-gray-400
+                                focus:outline-none
+                                focus:ring-primary/30
+                                disabled:bg-gray-50
+                                disabled:text-muted-foreground
+                                disabled:cursor-not-allowed
+                                disabled:border-gray-100
+                                hover:border-gray-300`}
                     />
                 </div>
             ))}

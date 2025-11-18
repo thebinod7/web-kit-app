@@ -64,16 +64,36 @@ export function PublicationsForm({ resume, setResume }: PublicationsFormProps) {
                         </button>
                     </div>
 
+                    <label className="block text-sm font-bold text-foreground">
+                        Publication Title
+                    </label>
                     <input
                         type="text"
-                        placeholder="Publication Title *"
+                        placeholder="Publication Title"
                         value={pub.title}
                         onChange={(e) =>
                             updatePublication(pub.id, 'title', e.target.value)
                         }
+                        className={`w-full
+                                px-4 py-2
+                                rounded-lg
+                                bg-gray-100
+                                border border-gray-200
+                                text-foreground
+                                placeholder:text-gray-400
+                                focus:outline-none
+                                focus:ring-primary/30
+                                disabled:bg-gray-50
+                                disabled:text-muted-foreground
+                                disabled:cursor-not-allowed
+                                disabled:border-gray-100
+                                hover:border-gray-300`}
                     />
 
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-1 gap-3">
+                        <label className="block text-sm font-bold text-foreground">
+                            Publication Name
+                        </label>
                         <input
                             type="text"
                             placeholder="Publication Name"
@@ -85,7 +105,25 @@ export function PublicationsForm({ resume, setResume }: PublicationsFormProps) {
                                     e.target.value
                                 )
                             }
+                            className={`w-full
+                                px-4 py-2
+                                rounded-lg
+                                bg-gray-100
+                                border border-gray-200
+                                text-foreground
+                                placeholder:text-gray-400
+                                focus:outline-none
+                                focus:ring-primary/30
+                                disabled:bg-gray-50
+                                disabled:text-muted-foreground
+                                disabled:cursor-not-allowed
+                                disabled:border-gray-100
+                                hover:border-gray-300`}
                         />
+
+                        <label className="block text-sm font-bold text-foreground">
+                            Publication Date
+                        </label>
                         <input
                             type="date"
                             placeholder="Publication Date"
@@ -97,9 +135,26 @@ export function PublicationsForm({ resume, setResume }: PublicationsFormProps) {
                                     e.target.value
                                 )
                             }
+                            className={`w-full
+                                px-4 py-2
+                                rounded-lg
+                                bg-gray-100
+                                border border-gray-200
+                                text-foreground
+                                placeholder:text-gray-400
+                                focus:outline-none
+                                focus:ring-primary/30
+                                disabled:bg-gray-50
+                                disabled:text-muted-foreground
+                                disabled:cursor-not-allowed
+                                disabled:border-gray-100
+                                hover:border-gray-300`}
                         />
                     </div>
 
+                    <label className="block text-sm font-bold text-foreground">
+                        Publication Link
+                    </label>
                     <input
                         type="url"
                         placeholder="Link to Publication"
@@ -107,6 +162,20 @@ export function PublicationsForm({ resume, setResume }: PublicationsFormProps) {
                         onChange={(e) =>
                             updatePublication(pub.id, 'link', e.target.value)
                         }
+                        className={`w-full
+                                px-4 py-2
+                                rounded-lg
+                                bg-gray-100
+                                border border-gray-200
+                                text-foreground
+                                placeholder:text-gray-400
+                                focus:outline-none
+                                focus:ring-primary/30
+                                disabled:bg-gray-50
+                                disabled:text-muted-foreground
+                                disabled:cursor-not-allowed
+                                disabled:border-gray-100
+                                hover:border-gray-300`}
                     />
                 </div>
             ))}
