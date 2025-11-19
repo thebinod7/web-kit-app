@@ -124,7 +124,7 @@ export function ProjectsForm({ resume, setResume }: ProjectsFormProps) {
                     </label>
                     <input
                         type="text"
-                        placeholder="Technologies Used"
+                        placeholder="Eg: Node.js, React, etc."
                         value={project.technologies}
                         onChange={(e) =>
                             updateProject(

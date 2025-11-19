@@ -73,7 +73,7 @@ export function CertificationsForm({
                         </label>
                         <input
                             type="text"
-                            placeholder="Certification Name *"
+                            placeholder="Certification Name"
                             value={cert.name}
                             onChange={(e) =>
                                 updateCertification(
@@ -103,7 +103,7 @@ export function CertificationsForm({
                         </label>
                         <input
                             type="text"
-                            placeholder="Issuer (e.g., Udemy, Google)"
+                            placeholder="Issuer (e.g. AWS, Udemy, Google)"
                             value={cert.issuer}
                             onChange={(e) =>
                                 updateCertification(

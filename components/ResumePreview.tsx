@@ -2,7 +2,7 @@
 
 import { Mail, Phone, MapPin, Globe, Linkedin, Calendar } from 'lucide-react';
 import type { Resume } from '@/types/resume';
-import { formatDateToDMY } from '@/utils/date';
+import { formatDateToDMY, formatDateToMMYY } from '@/utils/date';
 
 interface ResumePreviewProps {
     resume: Resume;
@@ -125,9 +125,11 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                                         </p>
                                     </div>
                                     <p className="text-slate-500 whitespace-nowrap">
-                                        {exp.startDate}{' '}
+                                        {formatDateToMMYY(exp.startDate)}{' '}
                                         {exp.endDate
-                                            ? `- ${exp.endDate}`
+                                            ? `- ${formatDateToMMYY(
+                                                  exp.endDate
+                                              )}`
                                             : '- Present'}
                                     </p>
                                 </div>
@@ -162,7 +164,7 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                                         </p>
                                     </div>
                                     <p className="text-slate-500">
-                                        {edu.graduationDate}
+                                        {formatDateToDMY(edu.graduationDate)}
                                     </p>
                                 </div>
                                 {edu.details && (
@@ -246,7 +248,17 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                                 <div className="flex justify-between items-start">
                                     <div>
                                         <p className="font-semibold text-slate-900">
-                                            {cert.name}
+                                            {cert.name}{' '}
+                                            {cert.link && (
+                                                <a
+                                                    href={cert.link}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="text-blue-600 text-xs hover:underline"
+                                                >
+                                                    View Certificate
+                                                </a>
+                                            )}
                                         </p>
                                         {cert.issuer && (
                                             <p className="text-slate-600">
@@ -255,7 +267,7 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                                         )}
                                     </div>
                                     <p className="text-slate-500">
-                                        {cert.date}
+                                        {formatDateToDMY(cert.date)}
                                     </p>
                                 </div>
                             </div>
@@ -276,7 +288,17 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                                 <div className="flex justify-between items-start">
                                     <div>
                                         <p className="font-semibold text-slate-900">
-                                            {pub.title}
+                                            {pub.title}{' '}
+                                            {pub.link && (
+                                                <a
+                                                    href={pub.link}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="text-blue-600 text-xs hover:underline"
+                                                >
+                                                    View Publication
+                                                </a>
+                                            )}
                                         </p>
                                         {pub.publication && (
                                             <p className="text-slate-600">
@@ -284,7 +306,9 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                                             </p>
                                         )}
                                     </div>
-                                    <p className="text-slate-500">{pub.date}</p>
+                                    <p className="text-slate-500">
+                                        {formatDateToDMY(pub.date)}
+                                    </p>
                                 </div>
                             </div>
                         ))}

@@ -1,5 +1,5 @@
 import type { Resume } from '@/types/resume';
-import { formatDateToDMY } from './date';
+import { formatDateToDMY, formatDateToMMYY } from './date';
 
 export function downloadResume(resume: Resume) {
     const html = generateResumeHTML(resume);
@@ -261,8 +261,10 @@ function generateResumeHTML(resume: Resume): string {
                         exp.location ? `, ${exp.location}` : ''
                     }</div>
                   </div>
-                  <div class="entry-date">${exp.startDate}${
-                        exp.endDate ? ` - ${exp.endDate}` : ' - Present'
+                  <div class="entry-date">${formatDateToMMYY(exp.startDate)}${
+                        exp.endDate
+                            ? ` - ${formatDateToMMYY(exp.endDate)}`
+                            : ' - Present'
                     }</div>
                 </div>
                 ${
@@ -295,7 +297,9 @@ function generateResumeHTML(resume: Resume): string {
                     }</div>
                     <div class="entry-subtitle">${edu.school}</div>
                   </div>
-                  <div class="entry-date">${edu.graduationDate}</div>
+                  <div class="entry-date">${formatDateToDMY(
+                      edu.graduationDate
+                  )}</div>
                 </div>
                 ${
                     edu.details
@@ -350,6 +354,11 @@ function generateResumeHTML(resume: Resume): string {
                         ? `<div class="entry-description"><strong>Technologies:</strong> ${project.technologies}</div>`
                         : ''
                 }
+                 ${
+                     project.link
+                         ? `<div class="entry-description"><strong>Link:</strong> <a href="${project.link}" style="color: #0066cc; font-size: 12px; text-decoration: none;">View Project</a></div>`
+                         : ''
+                 }
               </div>
             `
                 )
@@ -369,8 +378,12 @@ function generateResumeHTML(resume: Resume): string {
                     (cert) => `
               <div class="entry">
                 <div class="entry-header">
-                  <div class="entry-title">${cert.name}</div>
-                  <div class="entry-date">${cert.date}</div>
+                  <div class="entry-title">${cert.name}  ${
+                        cert.link
+                            ? `<a href="${cert.link}" style="color: #0066cc; font-size: 10px; text-decoration: none;">View Certificate</a>`
+                            : ''
+                    }</div>
+                  <div class="entry-date">${formatDateToDMY(cert.date)}</div>
                 </div>
                 ${
                     cert.issuer
@@ -396,8 +409,12 @@ function generateResumeHTML(resume: Resume): string {
                     (pub) => `
               <div class="entry">
                 <div class="entry-header">
-                  <div class="entry-title">${pub.title}</div>
-                  <div class="entry-date">${pub.date}</div>
+                  <div class="entry-title">${pub.title}   ${
+                        pub.link
+                            ? `<a href="${pub.link}" style="color: #0066cc; font-size: 10px; text-decoration: none;">View Publication</a>`
+                            : ''
+                    }</div>
+                  <div class="entry-date">${formatDateToDMY(pub.date)}</div>
                 </div>
                 ${
                     pub.publication
