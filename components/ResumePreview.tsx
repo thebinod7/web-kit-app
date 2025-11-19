@@ -2,6 +2,7 @@
 
 import { Mail, Phone, MapPin, Globe, Linkedin, Calendar } from 'lucide-react';
 import type { Resume } from '@/types/resume';
+import { formatDateToDMY } from '@/utils/date';
 
 interface ResumePreviewProps {
     resume: Resume;
@@ -25,16 +26,23 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
         <div className="p-8 max-h-[calc(100vh-120px)] overflow-y-auto bg-white text-slate-900">
             {/* Header */}
             <div className="mb-6 border-b border-slate-300 pb-6">
-                <h1 className="text-3xl font-bold tracking-tight">
+                <h1 className="text-3xl text-center font-bold tracking-tight">
                     {personalInfo.name || 'Your Name'}
                 </h1>
                 {personalInfo.title && (
-                    <p className="text-base text-slate-600 mt-1">
+                    <p className="text-base text-center text-slate-600 mt-1">
                         {personalInfo.title}
                     </p>
                 )}
 
                 <div className="flex flex-wrap gap-4 mt-3 text-sm text-slate-600">
+                    {personalInfo.location && (
+                        <div className="flex items-center gap-1">
+                            <MapPin size={14} />
+                            {personalInfo.location}
+                        </div>
+                    )}
+
                     {personalInfo.email && (
                         <div className="flex items-center gap-1">
                             <Mail size={14} />
@@ -50,15 +58,11 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                     {personalInfo.dateOfBirth && (
                         <div className="flex items-center gap-1">
                             <Calendar size={14} />
-                            {personalInfo.dateOfBirth}
+                            {personalInfo.dateOfBirth &&
+                                formatDateToDMY(personalInfo.dateOfBirth)}
                         </div>
                     )}
-                    {personalInfo.location && (
-                        <div className="flex items-center gap-1">
-                            <MapPin size={14} />
-                            {personalInfo.location}
-                        </div>
-                    )}
+
                     {personalInfo.website && (
                         <div className="flex items-center gap-1">
                             <Globe size={14} />

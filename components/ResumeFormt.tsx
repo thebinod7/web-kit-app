@@ -1,23 +1,15 @@
 'use client';
 
-import { useState } from 'react';
-import { Plus, Trash2 } from 'lucide-react';
 import type { Resume } from '@/types/resume';
-import { PersonalInfoForm } from './forms/PersonalInfo';
-import { SummaryForm } from './forms/SummaryForm';
-import { ExperienceForm } from './forms/ExperienceForm';
-import { EducationForm } from './forms/EducationForm';
-import { SkillsForm } from './forms/SkillsForm';
-import { ProjectsForm } from './forms/ProjectsForm';
+import { useState } from 'react';
 import { CertificationsForm } from './forms/Certifications';
+import { EducationForm } from './forms/EducationForm';
+import { ExperienceForm } from './forms/ExperienceForm';
+import { PersonalInfoForm } from './forms/PersonalInfo';
+import { ProjectsForm } from './forms/ProjectsForm';
 import { PublicationsForm } from './forms/Publications';
-// import { SummaryForm } from './forms/summary-form';
-// import { ExperienceForm } from './forms/experience-form';
-// import { EducationForm } from './forms/education-form';
-// import { SkillsForm } from './forms/skills-form';
-// import { ProjectsForm } from './forms/projects-form';
-// import { CertificationsForm } from './forms/certifications-form';
-// import { PublicationsForm } from './forms/publications-form';
+import { SkillsForm } from './forms/SkillsForm';
+import { SummaryForm } from './forms/SummaryForm';
 
 interface ResumeFormProps {
     resume: Resume;

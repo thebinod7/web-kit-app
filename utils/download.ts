@@ -1,4 +1,5 @@
 import type { Resume } from '@/types/resume';
+import { formatDateToDMY } from './date';
 
 export function downloadResume(resume: Resume) {
     const html = generateResumeHTML(resume);
@@ -194,7 +195,13 @@ function generateResumeHTML(resume: Resume): string {
                   ? `<div class="title">${personalInfo.title}</div>`
                   : ''
           }
+          
           <div class="contact-info">
+            ${
+                personalInfo.location
+                    ? `<span class="contact-item">${personalInfo.location}</span>`
+                    : ''
+            }
             ${
                 personalInfo.email
                     ? `<span class="contact-item">${personalInfo.email}</span>`
@@ -205,14 +212,18 @@ function generateResumeHTML(resume: Resume): string {
                     ? `<span class="contact-item">${personalInfo.phone}</span>`
                     : ''
             }
+
             ${
-                personalInfo.location
-                    ? `<span class="contact-item">${personalInfo.location}</span>`
+                personalInfo.dateOfBirth
+                    ? `<span class="contact-item">${formatDateToDMY(
+                          personalInfo.dateOfBirth
+                      )}</span>`
                     : ''
             }
+         
             ${
                 personalInfo.website
-                    ? `<span class="contact-item"><a href="${personalInfo.website}" style="color: #0066cc; text-decoration: none;">${personalInfo.website}</a></span>`
+                    ? `<span class="contact-item"><a href="${personalInfo.website}" style="color: #0066cc; text-decoration: none;">Website</a></span>`
                     : ''
             }
             ${
