@@ -2,27 +2,20 @@ import type { Resume } from '@/types/resume';
 
 export function downloadResume(resume: Resume) {
     const html = generateResumeHTML(resume);
-    const element = document.createElement('a');
-    const file = new Blob([html], { type: 'text/html' });
-    element.href = URL.createObjectURL(file);
-    element.download = `${
-        resume.personalInfo.name.replace(/\s+/g, '_') || 'Resume'
-    }.html`;
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
 
-    // For PDF, open print dialog
-    setTimeout(() => {
-        const printWindow = window.open('', '', 'width=800,height=600');
-        if (printWindow) {
-            printWindow.document.write(html);
-            printWindow.document.close();
-            printWindow.focus();
+    // Only open print dialog, don't download HTML
+    const printWindow = window.open('', '', 'width=800,height=600');
+    if (printWindow) {
+        printWindow.document.write(html);
+        printWindow.document.close();
+        printWindow.focus();
+
+        // Wait for content to load before printing
+        printWindow.onload = () => {
             printWindow.print();
             printWindow.close();
-        }
-    }, 100);
+        };
+    }
 }
 
 function generateResumeHTML(resume: Resume): string {
@@ -183,6 +176,11 @@ function generateResumeHTML(resume: Resume): string {
             max-width: 100%;
             margin: 0;
             padding: 0.5in;
+          }
+          /* Remove browser print headers and footers */
+          @page {
+            margin: 0.5in;
+            size: letter;
           }
         }
       </style>

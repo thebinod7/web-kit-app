@@ -67,7 +67,10 @@ export function CertificationsForm({
                         </button>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-1 gap-3">
+                        <label className="block text-sm font-bold text-foreground">
+                            Certification
+                        </label>
                         <input
                             type="text"
                             placeholder="Certification Name *"
@@ -94,9 +97,13 @@ export function CertificationsForm({
                                 disabled:border-gray-100
                                 hover:border-gray-300`}
                         />
+
+                        <label className="block text-sm font-bold text-foreground">
+                            Issuer
+                        </label>
                         <input
                             type="text"
-                            placeholder="Issuer (e.g., AWS, Google)"
+                            placeholder="Issuer (e.g., Udemy, Google)"
                             value={cert.issuer}
                             onChange={(e) =>
                                 updateCertification(
@@ -122,7 +129,10 @@ export function CertificationsForm({
                         />
                     </div>
 
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-1 gap-3">
+                        <label className="block text-sm font-bold text-foreground">
+                            Issue Date
+                        </label>
                         <input
                             type="date"
                             placeholder="Issue Date"
@@ -149,6 +159,10 @@ export function CertificationsForm({
                                 disabled:border-gray-100
                                 hover:border-gray-300`}
                         />
+
+                        <label className="block text-sm font-bold text-foreground">
+                            Link
+                        </label>
                         <input
                             type="url"
                             placeholder="Credential Link"
