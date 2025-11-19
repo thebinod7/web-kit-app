@@ -7,16 +7,27 @@ import { downloadResume } from '@/utils/download';
 import { ResumePreview } from '@/components/ResumePreview';
 import { ResumeForm } from '@/components/ResumeFormt';
 
+//  personalInfo: {
+//         name: 'John Doe',
+//         title: 'Software Engineer',
+//         email: 'john@mail.com',
+//         phone: '+90989899',
+//         location: 'Sydney, Australia',
+//         dateOfBirth: '20/10/1990',
+//         website: 'https://johndoe.com',
+//         linkedin: 'https://linkedin.com/johndoe',
+//     },
+
 const defaultResume: Resume = {
     personalInfo: {
-        name: 'John Doe',
-        title: 'Software Engineer',
-        email: 'john@mail.com',
-        phone: '+90989899',
-        location: 'Sydney, Australia',
+        name: '',
+        title: '',
+        email: '',
+        phone: '',
+        location: '',
         dateOfBirth: '',
-        website: 'https://johndoe.com',
-        linkedin: 'https://linkedin.com/johndoe',
+        website: '',
+        linkedin: '',
     },
     summary: '',
     experience: [],

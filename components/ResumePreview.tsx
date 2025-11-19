@@ -164,7 +164,7 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                                         </p>
                                     </div>
                                     <p className="text-slate-500">
-                                        {formatDateToDMY(edu.graduationDate)}
+                                        {formatDateToMMYY(edu.graduationDate)}
                                     </p>
                                 </div>
                                 {edu.details && (

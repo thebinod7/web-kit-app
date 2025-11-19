@@ -297,7 +297,7 @@ function generateResumeHTML(resume: Resume): string {
                     }</div>
                     <div class="entry-subtitle">${edu.school}</div>
                   </div>
-                  <div class="entry-date">${formatDateToDMY(
+                  <div class="entry-date">${formatDateToMMYY(
                       edu.graduationDate
                   )}</div>
                 </div>

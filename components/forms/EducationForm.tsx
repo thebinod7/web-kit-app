@@ -156,7 +156,7 @@ export function EducationForm({ resume, setResume }: EducationFormProps) {
                             Graduation Date
                         </label>
                         <input
-                            type="date"
+                            type="month"
                             placeholder="Graduation Date"
                             value={edu.graduationDate}
                             onChange={(e) =>

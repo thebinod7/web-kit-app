@@ -159,7 +159,7 @@ export function ExperienceForm({ resume, setResume }: ExperienceFormProps) {
 
                     <div className="grid grid-cols-2 gap-3">
                         <input
-                            type="date"
+                            type="month"
                             placeholder="Start Date"
                             value={exp.startDate}
                             onChange={(e) =>
@@ -186,7 +186,7 @@ export function ExperienceForm({ resume, setResume }: ExperienceFormProps) {
                         />
                         <div className="flex items-center gap-2">
                             <input
-                                type="date"
+                                type="month"
                                 placeholder="End Date"
                                 value={exp.endDate}
                                 onChange={(e) =>
@@ -212,7 +212,7 @@ export function ExperienceForm({ resume, setResume }: ExperienceFormProps) {
                                 disabled:border-gray-100
                                 hover:border-gray-300`}
                             />
-                            <label className="flex items-center gap-2 text-sm text-slate-700">
+                            {/* <label className="flex items-center gap-2 text-sm text-slate-700">
                                 <input
                                     type="checkbox"
                                     checked={exp.currentlyWorking}
@@ -225,7 +225,7 @@ export function ExperienceForm({ resume, setResume }: ExperienceFormProps) {
                                     }
                                 />
                                 Current
-                            </label>
+                            </label> */}
                         </div>
                     </div>
 
