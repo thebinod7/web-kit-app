@@ -19,7 +19,6 @@ export function SummaryForm({ resume, setResume }: SummaryFormProps) {
                                 rounded-lg
                                 bg-gray-100
                                 border border-gray-200
-                                text-foreground
                                 placeholder:text-gray-400
                                 focus:outline-none
                                 focus:ring-primary/30
@@ -27,7 +26,8 @@ export function SummaryForm({ resume, setResume }: SummaryFormProps) {
                                 disabled:text-muted-foreground
                                 disabled:cursor-not-allowed
                                 disabled:border-gray-100
-                                hover:border-gray-300`}
+                                hover:border-gray-300
+                                text-gray-800`}
         />
     );
 }

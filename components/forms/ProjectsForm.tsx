@@ -62,7 +62,7 @@ export function ProjectsForm({ resume, setResume }: ProjectsFormProps) {
                         </button>
                     </div>
 
-                    <label className="block text-sm font-bold text-foreground">
+                    <label className="block text-sm font-bold text-gray-800">
                         Project Title
                     </label>
 
@@ -78,7 +78,7 @@ export function ProjectsForm({ resume, setResume }: ProjectsFormProps) {
                                 rounded-lg
                                 bg-gray-100
                                 border border-gray-200
-                                text-foreground
+                                text-gray-800
                                 placeholder:text-gray-400
                                 focus:outline-none
                                 focus:ring-primary/30
@@ -89,7 +89,7 @@ export function ProjectsForm({ resume, setResume }: ProjectsFormProps) {
                                 hover:border-gray-300`}
                     />
 
-                    <label className="block text-sm font-bold text-foreground">
+                    <label className="block text-sm font-bold text-gray-800">
                         Short Description
                     </label>
                     <textarea
@@ -108,7 +108,7 @@ export function ProjectsForm({ resume, setResume }: ProjectsFormProps) {
                                 rounded-lg
                                 bg-gray-100
                                 border border-gray-200
-                                text-foreground
+                                text-gray-800
                                 placeholder:text-gray-400
                                 focus:outline-none
                                 focus:ring-primary/30
@@ -119,7 +119,7 @@ export function ProjectsForm({ resume, setResume }: ProjectsFormProps) {
                                 hover:border-gray-300`}
                     />
 
-                    <label className="block text-sm font-bold text-foreground">
+                    <label className="block text-sm font-bold text-gray-800">
                         Technologies Used
                     </label>
                     <input
@@ -138,7 +138,7 @@ export function ProjectsForm({ resume, setResume }: ProjectsFormProps) {
                                 rounded-lg
                                 bg-gray-100
                                 border border-gray-200
-                                text-foreground
+                                text-gray-800
                                 placeholder:text-gray-400
                                 focus:outline-none
                                 focus:ring-primary/30
@@ -149,7 +149,7 @@ export function ProjectsForm({ resume, setResume }: ProjectsFormProps) {
                                 hover:border-gray-300`}
                     />
 
-                    <label className="block text-sm font-bold text-foreground">
+                    <label className="block text-sm font-bold text-gray-800">
                         Project Link
                     </label>
                     <input
@@ -164,7 +164,7 @@ export function ProjectsForm({ resume, setResume }: ProjectsFormProps) {
                                 rounded-lg
                                 bg-gray-100
                                 border border-gray-200
-                                text-foreground
+                                text-gray-800
                                 placeholder:text-gray-400
                                 focus:outline-none
                                 focus:ring-primary/30

@@ -66,7 +66,7 @@ export function ExperienceForm({ resume, setResume }: ExperienceFormProps) {
                     </div>
 
                     <div className="grid grid-cols-1 gap-3">
-                        <label className="block text-sm font-bold text-foreground">
+                        <label className="block text-sm font-bold text-gray-800">
                             Job Title
                         </label>
                         <input
@@ -85,7 +85,6 @@ export function ExperienceForm({ resume, setResume }: ExperienceFormProps) {
                                 rounded-lg
                                 bg-gray-100
                                 border border-gray-200
-                                text-foreground
                                 placeholder:text-gray-400
                                 focus:outline-none
                                 focus:ring-primary/30
@@ -93,10 +92,11 @@ export function ExperienceForm({ resume, setResume }: ExperienceFormProps) {
                                 disabled:text-muted-foreground
                                 disabled:cursor-not-allowed
                                 disabled:border-gray-100
-                                hover:border-gray-300`}
+                                hover:border-gray-300
+                                text-gray-800`}
                         />
 
-                        <label className="block text-sm font-bold text-foreground">
+                        <label className="block text-sm font-bold text-gray-800">
                             Employer
                         </label>
                         <input
@@ -115,7 +115,6 @@ export function ExperienceForm({ resume, setResume }: ExperienceFormProps) {
                                 rounded-lg
                                 bg-gray-100
                                 border border-gray-200
-                                text-foreground
                                 placeholder:text-gray-400
                                 focus:outline-none
                                 focus:ring-primary/30
@@ -123,11 +122,11 @@ export function ExperienceForm({ resume, setResume }: ExperienceFormProps) {
                                 disabled:text-muted-foreground
                                 disabled:cursor-not-allowed
                                 disabled:border-gray-100
-                                hover:border-gray-300`}
+                                hover:border-gray-300 text-gray-800`}
                         />
                     </div>
 
-                    <label className="block text-sm font-bold text-foreground">
+                    <label className="block text-sm font-bold text-gray-800">
                         Location
                     </label>
                     <input
@@ -142,7 +141,7 @@ export function ExperienceForm({ resume, setResume }: ExperienceFormProps) {
                                 rounded-lg
                                 bg-gray-100
                                 border border-gray-200
-                                text-foreground
+                                text-gray-800
                                 placeholder:text-gray-400
                                 focus:outline-none
                                 focus:ring-primary/30
@@ -153,7 +152,7 @@ export function ExperienceForm({ resume, setResume }: ExperienceFormProps) {
                                 hover:border-gray-300`}
                     />
 
-                    <label className="block text-sm font-bold text-foreground">
+                    <label className="block text-sm font-bold text-gray-800">
                         Start & End Date
                     </label>
 
@@ -174,7 +173,7 @@ export function ExperienceForm({ resume, setResume }: ExperienceFormProps) {
                                 rounded-lg
                                 bg-gray-100
                                 border border-gray-200
-                                text-foreground
+                                text-gray-800
                                 placeholder:text-gray-400
                                 focus:outline-none
                                 focus:ring-primary/30
@@ -202,7 +201,7 @@ export function ExperienceForm({ resume, setResume }: ExperienceFormProps) {
                                 rounded-lg
                                 bg-gray-100
                                 border border-gray-200
-                                text-foreground
+                                text-gray-800
                                 placeholder:text-gray-400
                                 focus:outline-none
                                 focus:ring-primary/30
@@ -229,7 +228,7 @@ export function ExperienceForm({ resume, setResume }: ExperienceFormProps) {
                         </div>
                     </div>
 
-                    <label className="block text-sm font-bold text-foreground">
+                    <label className="block text-sm font-bold text-gray-800">
                         Description
                     </label>
                     <textarea
@@ -248,7 +247,7 @@ export function ExperienceForm({ resume, setResume }: ExperienceFormProps) {
                                 rounded-lg
                                 bg-gray-100
                                 border border-gray-200
-                                text-foreground
+                                text-gray-800
                                 placeholder:text-gray-400
                                 focus:outline-none
                                 focus:ring-primary/30

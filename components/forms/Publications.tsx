@@ -64,7 +64,7 @@ export function PublicationsForm({ resume, setResume }: PublicationsFormProps) {
                         </button>
                     </div>
 
-                    <label className="block text-sm font-bold text-foreground">
+                    <label className="block text-sm font-bold text-gray-800">
                         Publication Title
                     </label>
                     <input
@@ -79,7 +79,7 @@ export function PublicationsForm({ resume, setResume }: PublicationsFormProps) {
                                 rounded-lg
                                 bg-gray-100
                                 border border-gray-200
-                                text-foreground
+                                text-gray-800
                                 placeholder:text-gray-400
                                 focus:outline-none
                                 focus:ring-primary/30
@@ -91,7 +91,7 @@ export function PublicationsForm({ resume, setResume }: PublicationsFormProps) {
                     />
 
                     <div className="grid grid-cols-1 gap-3">
-                        <label className="block text-sm font-bold text-foreground">
+                        <label className="block text-sm font-bold text-gray-800">
                             Publication Name
                         </label>
                         <input
@@ -110,7 +110,7 @@ export function PublicationsForm({ resume, setResume }: PublicationsFormProps) {
                                 rounded-lg
                                 bg-gray-100
                                 border border-gray-200
-                                text-foreground
+                                text-gray-800
                                 placeholder:text-gray-400
                                 focus:outline-none
                                 focus:ring-primary/30
@@ -121,7 +121,7 @@ export function PublicationsForm({ resume, setResume }: PublicationsFormProps) {
                                 hover:border-gray-300`}
                         />
 
-                        <label className="block text-sm font-bold text-foreground">
+                        <label className="block text-sm font-bold text-gray-800">
                             Publication Date
                         </label>
                         <input
@@ -140,7 +140,7 @@ export function PublicationsForm({ resume, setResume }: PublicationsFormProps) {
                                 rounded-lg
                                 bg-gray-100
                                 border border-gray-200
-                                text-foreground
+                                text-gray-800
                                 placeholder:text-gray-400
                                 focus:outline-none
                                 focus:ring-primary/30
@@ -152,7 +152,7 @@ export function PublicationsForm({ resume, setResume }: PublicationsFormProps) {
                         />
                     </div>
 
-                    <label className="block text-sm font-bold text-foreground">
+                    <label className="block text-sm font-bold text-gray-800">
                         Publication Link
                     </label>
                     <input
@@ -167,7 +167,7 @@ export function PublicationsForm({ resume, setResume }: PublicationsFormProps) {
                                 rounded-lg
                                 bg-gray-100
                                 border border-gray-200
-                                text-foreground
+                                text-gray-800
                                 placeholder:text-gray-400
                                 focus:outline-none
                                 focus:ring-primary/30

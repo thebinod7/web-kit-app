@@ -68,7 +68,7 @@ export function CertificationsForm({
                     </div>
 
                     <div className="grid grid-cols-1 gap-3">
-                        <label className="block text-sm font-bold text-foreground">
+                        <label className="block text-sm font-bold text-gray-800">
                             Certification
                         </label>
                         <input
@@ -87,7 +87,7 @@ export function CertificationsForm({
                                 rounded-lg
                                 bg-gray-100
                                 border border-gray-200
-                                text-foreground
+                                text-gray-800
                                 placeholder:text-gray-400
                                 focus:outline-none
                                 focus:ring-primary/30
@@ -98,7 +98,7 @@ export function CertificationsForm({
                                 hover:border-gray-300`}
                         />
 
-                        <label className="block text-sm font-bold text-foreground">
+                        <label className="block text-sm font-bold text-gray-800">
                             Issuer
                         </label>
                         <input
@@ -117,7 +117,7 @@ export function CertificationsForm({
                                 rounded-lg
                                 bg-gray-100
                                 border border-gray-200
-                                text-foreground
+                                text-gray-800
                                 placeholder:text-gray-400
                                 focus:outline-none
                                 focus:ring-primary/30
@@ -130,7 +130,7 @@ export function CertificationsForm({
                     </div>
 
                     <div className="grid grid-cols-1 gap-3">
-                        <label className="block text-sm font-bold text-foreground">
+                        <label className="block text-sm font-bold text-gray-800">
                             Issue Date
                         </label>
                         <input
@@ -149,7 +149,7 @@ export function CertificationsForm({
                                 rounded-lg
                                 bg-gray-100
                                 border border-gray-200
-                                text-foreground
+                                text-gray-800
                                 placeholder:text-gray-400
                                 focus:outline-none
                                 focus:ring-primary/30
@@ -160,7 +160,7 @@ export function CertificationsForm({
                                 hover:border-gray-300`}
                         />
 
-                        <label className="block text-sm font-bold text-foreground">
+                        <label className="block text-sm font-bold text-gray-800">
                             Link
                         </label>
                         <input
@@ -179,7 +179,7 @@ export function CertificationsForm({
                                 rounded-lg
                                 bg-gray-100
                                 border border-gray-200
-                                text-foreground
+                                text-gray-800
                                 placeholder:text-gray-400
                                 focus:outline-none
                                 focus:ring-primary/30

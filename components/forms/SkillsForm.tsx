@@ -42,7 +42,7 @@ export function SkillsForm({ resume, setResume }: SkillsFormProps) {
                 {resume.skills.map((skill: any) => (
                     <div
                         key={skill.id}
-                        className="flex items-center gap-2 px-3 py-1 bg-slate-100 border border-slate-300 rounded-full text-sm"
+                        className="flex items-center text-gray-800 gap-2 px-3 py-1 bg-slate-100 border border-slate-300 rounded-full text-sm"
                     >
                         <input
                             type="text"
