@@ -262,7 +262,7 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                                         </p>
                                         {cert.issuer && (
                                             <p className="text-slate-600">
-                                                {cert.issuer}
+                                                Issued By: {cert.issuer}
                                             </p>
                                         )}
                                     </div>
@@ -302,7 +302,7 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                                         </p>
                                         {pub.publication && (
                                             <p className="text-slate-600">
-                                                {pub.publication}
+                                                Published By: {pub.publication}
                                             </p>
                                         )}
                                     </div>

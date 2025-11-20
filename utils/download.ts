@@ -202,23 +202,23 @@ function generateResumeHTML(resume: Resume): string {
           <div class="contact-info">
             ${
                 personalInfo.location
-                    ? `<span class="contact-item">${personalInfo.location}</span>`
+                    ? `<span class="contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin-icon lucide-map-pin"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg> ${personalInfo.location}</span>`
                     : ''
             }
             ${
                 personalInfo.email
-                    ? `<span class="contact-item">${personalInfo.email}</span>`
+                    ? `<span class="contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail-icon lucide-mail"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg> ${personalInfo.email}</span>`
                     : ''
             }
             ${
                 personalInfo.phone
-                    ? `<span class="contact-item">${personalInfo.phone}</span>`
+                    ? `<span class="contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone-icon lucide-phone"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg> ${personalInfo.phone}</span>`
                     : ''
             }
 
             ${
                 personalInfo.dateOfBirth
-                    ? `<span class="contact-item">${formatDateToDMY(
+                    ? `<span class="contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-icon lucide-calendar"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg> ${formatDateToDMY(
                           personalInfo.dateOfBirth
                       )}</span>`
                     : ''
@@ -390,7 +390,7 @@ function generateResumeHTML(resume: Resume): string {
                 </div>
                 ${
                     cert.issuer
-                        ? `<div class="entry-subtitle">${cert.issuer}</div>`
+                        ? `<div class="entry-subtitle">Issued By: ${cert.issuer}</div>`
                         : ''
                 }
               </div>
@@ -421,7 +421,7 @@ function generateResumeHTML(resume: Resume): string {
                 </div>
                 ${
                     pub.publication
-                        ? `<div class="entry-subtitle">${pub.publication}</div>`
+                        ? `<div class="entry-subtitle">Published By: ${pub.publication}</div>`
                         : ''
                 }
               </div>
