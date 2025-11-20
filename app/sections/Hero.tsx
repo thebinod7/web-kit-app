@@ -71,7 +71,7 @@ export default function Hero({
 
                     {/* Description */}
                     <p className="text-xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
-                        Create and showcase your resume with tools designed for
+                        Create and showcase your resume with a tool designed for
                         career growth.
                     </p>
 
@@ -81,7 +81,7 @@ export default function Hero({
                             href={APP_PATHS.GENERATE_RESUME}
                             className="inline-flex items-center space-x-2 bg-gray-900 text-white px-8 py-4 rounded-full hover:bg-gray-800 transition-all transform hover:scale-105"
                         >
-                            <span>Create Your Resume</span>
+                            <span>Create Resume</span>
                             <ArrowRight className="w-5 h-5" />
                         </Link>
                     </div>

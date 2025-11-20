@@ -140,10 +140,13 @@ function generateResumeHTML(resume: Resume): string {
           font-size: 12px;
         }
         .skill-tag {
-          background: #f0f0f0;
-          padding: 4px 10px;
-          border-radius: 3px;
-          color: #333;
+          padding: 6px 14px;
+          background: #e6f0ff;
+          border-radius: 999px; 
+          font-size: 14px;
+          font-weight: 500;
+          border: 1px solid #c7dcff;
+          display: inline-block;
         }
         .bullet {
           margin-left: 20px;

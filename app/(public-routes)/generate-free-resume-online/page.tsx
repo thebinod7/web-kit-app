@@ -20,14 +20,14 @@ import { ResumeForm } from '@/components/ResumeFormt';
 
 const defaultResume: Resume = {
     personalInfo: {
-        name: '',
-        title: '',
-        email: '',
-        phone: '',
-        location: '',
+        name: 'John Doe',
+        title: 'Software Engineer',
+        email: 'john@mail.com',
+        phone: '+90989899',
+        location: 'Sydney, Australia',
         dateOfBirth: '',
-        website: '',
-        linkedin: '',
+        website: 'https://johndoe.com',
+        linkedin: 'https://linkedin.com/johndoe',
     },
     summary: '',
     experience: [],
