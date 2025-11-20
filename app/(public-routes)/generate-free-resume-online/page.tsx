@@ -1,33 +1,23 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Plus, Trash2, Eye, EyeOff, Download } from 'lucide-react';
 import type { Resume } from '@/types/resume';
 import { downloadResume } from '@/utils/download';
 import { ResumePreview } from '@/components/ResumePreview';
 import { ResumeForm } from '@/components/ResumeFormt';
-
-//  personalInfo: {
-//         name: 'John Doe',
-//         title: 'Software Engineer',
-//         email: 'john@mail.com',
-//         phone: '+90989899',
-//         location: 'Sydney, Australia',
-//         dateOfBirth: '20/10/1990',
-//         website: 'https://johndoe.com',
-//         linkedin: 'https://linkedin.com/johndoe',
-//     },
+import { getResumeLocal, saveResumeLocal } from '@/utils/localstorage';
 
 const defaultResume: Resume = {
     personalInfo: {
-        name: 'John Doe',
-        title: 'Software Engineer',
-        email: 'john@mail.com',
-        phone: '+90989899',
-        location: 'Sydney, Australia',
+        name: '',
+        title: '',
+        email: '',
+        phone: '',
+        location: '',
         dateOfBirth: '',
-        website: 'https://johndoe.com',
-        linkedin: 'https://linkedin.com/johndoe',
+        website: '',
+        linkedin: '',
     },
     summary: '',
     experience: [],
@@ -43,8 +33,16 @@ export default function Home() {
     const [showPreview, setShowPreview] = useState(true);
 
     const handleDownload = () => {
+        saveResumeLocal(resume);
         downloadResume(resume);
     };
+
+    useEffect(() => {
+        const storedResume = getResumeLocal();
+        if (storedResume) {
+            setResume(storedResume);
+        }
+    }, []);
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
@@ -76,7 +74,7 @@ export default function Home() {
                             className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-slate-900 rounded-lg hover:bg-slate-800 transition-colors"
                         >
                             <Download size={18} />
-                            Download PDF
+                            Save & Download
                         </button>
                     </div>
                 </div>

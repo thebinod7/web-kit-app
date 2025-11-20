@@ -71,7 +71,7 @@ export function ExperienceForm({ resume, setResume }: ExperienceFormProps) {
                         </label>
                         <input
                             type="text"
-                            placeholder="Job Title *"
+                            placeholder="Job Title"
                             value={exp.position}
                             onChange={(e) =>
                                 updateExperience(
@@ -101,7 +101,7 @@ export function ExperienceForm({ resume, setResume }: ExperienceFormProps) {
                         </label>
                         <input
                             type="text"
-                            placeholder="Employer *"
+                            placeholder="Employer"
                             value={exp.company}
                             onChange={(e) =>
                                 updateExperience(
