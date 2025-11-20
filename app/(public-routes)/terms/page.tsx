@@ -30,12 +30,6 @@ export default function TermsOfService() {
                                 Terms, and "you" refers to both you and that
                                 organization.
                             </p>
-                            <p className="text-gray-600 mt-3">
-                                {APP_NAME} is a free tool hub that provides a
-                                range of tools to solve daily life problems.
-                                Primarily, it focuses on free resume generation
-                                and dowloading templates.
-                            </p>
                         </section>
 
                         <section>
@@ -48,7 +42,7 @@ export default function TermsOfService() {
                             </p>
                             <ul className="list-disc pl-5 text-gray-600 space-y-2">
                                 <li>
-                                    Be at least 13 years old (or the minimum age
+                                    Be at least 16 years old (or the minimum age
                                     in your jurisdiction)
                                 </li>
                                 <li>
@@ -108,7 +102,7 @@ export default function TermsOfService() {
                             <ul className="list-disc pl-5 text-gray-600 space-y-2">
                                 <li>
                                     Submit false, misleading, or incomplete
-                                    product information
+                                    information
                                 </li>
                                 <li>Spam, harass, or abuse other users</li>
                                 <li>
@@ -130,10 +124,6 @@ export default function TermsOfService() {
                                 <li>
                                     Impersonate others or misrepresent your
                                     identity
-                                </li>
-                                <li>
-                                    Engage in commercial activities outside
-                                    approved channels
                                 </li>
                                 <li>
                                     Circumvent our systems, security measures,
@@ -205,9 +195,6 @@ export default function TermsOfService() {
                             <ul className="list-disc pl-5 text-gray-600 space-y-2">
                                 <li>Subscription fees and billing terms</li>
                                 <li>Refund and cancellation policies</li>
-                                <li>
-                                    Enhanced product promotion and visibility
-                                </li>
                                 <li>Priority customer support</li>
                                 <li>Analytics and insights access</li>
                             </ul>
@@ -305,7 +292,6 @@ export default function TermsOfService() {
                                     Your violation of these Terms or applicable
                                     laws
                                 </li>
-                                <li>Your content or product submissions</li>
                                 <li>
                                     Your interactions with other users or third
                                     parties

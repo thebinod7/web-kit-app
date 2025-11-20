@@ -14,7 +14,7 @@ export default function AboutUs() {
                     <p className="text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
                         Build professional resumes online quickly and easily
                         with our free resume maker. No sign-up required, no
-                        fees—just customizable templates designed for job
+                        fees, just customizable templates designed for job
                         seekers, students, and career changers.
                     </p>
                 </div>
@@ -28,7 +28,7 @@ export default function AboutUs() {
                     </h2>
                     <p className="text-lg text-gray-700 mb-4">
                         Welcome to {APP_NAME}, your go-to platform for creating
-                        professional resumes—absolutely free and with zero
+                        professional resumes, absolutely free and with zero
                         sign-up required. Our mission is simple: empower job
                         seekers to build modern, polished resumes effortlessly,
                         without jumping through unnecessary hoops.
@@ -38,17 +38,17 @@ export default function AboutUs() {
                         the next step in your career, {APP_NAME} {}
                         streamlines the process. Easily choose from expertly
                         designed templates, edit your resume online, and
-                        instantly download in PDF format—no accounts, no fees,
+                        instantly download in PDF format. No accounts, no fees,
                         and no limitations. Your privacy and convenience are our
                         top priorities, so you can create, update, and save your
-                        resume as often as you need—all without sharing personal
-                        information or creating an account.
+                        resume as often as you need, all without sharing
+                        personal information or creating an account.
                     </p>
 
                     <p className="text-lg text-gray-700">
                         Thousands of users trust {APP_NAME} to quickly build
                         winning resumes that stand out to recruiters. Try it
-                        today and get hired faster—no registration, no strings
+                        today and get hired faster, no registration, no strings
                         attached. Start building your future now!
                     </p>
                 </section>

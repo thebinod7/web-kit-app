@@ -21,10 +21,7 @@ export default function PrivacyPolicy() {
                                 Inc. ("we", "us", or "our"). This Privacy Policy
                                 describes how we collect, use, share, and
                                 protect the personal information you provide
-                                when using our product discovery and launch
-                                platform, including when you create accounts,
-                                submit products, engage with our community, or
-                                use our services.
+                                when using our resume builder.
                             </p>
                         </section>
 
@@ -45,10 +42,6 @@ export default function PrivacyPolicy() {
                                 <li>
                                     Professional information: job title, company
                                     name, website, social media links
-                                </li>
-                                <li>
-                                    Creator profiles: portfolio information,
-                                    skills, achievements, and history
                                 </li>
                                 <li>Contact and support communications</li>
                             </ul>
@@ -182,11 +175,7 @@ export default function PrivacyPolicy() {
                             <p className="text-gray-600 mb-3">
                                 We may share aggregated, non-personally
                                 identifiable information with partners,
-                                investors, and researchers to provide insights
-                                about product trends, user behavior, and
-                                platform analytics. We may also share
-                                information with launch partners and sponsors
-                                for featured content and events.
+                                investors, and sponsors.
                             </p>
 
                             <h3 className="text-lg font-medium text-gray-800 mb-2">
