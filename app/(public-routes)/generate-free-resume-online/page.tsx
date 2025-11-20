@@ -49,7 +49,7 @@ export default function Home() {
             {/* Header */}
             <div className="sticky top-0 z-50 bg-white border-b border-slate-200">
                 <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-                    <div>
+                    <div className="hidden sm:block">
                         <h1 className="text-2xl font-bold text-slate-900">
                             Resume Builder
                         </h1>
