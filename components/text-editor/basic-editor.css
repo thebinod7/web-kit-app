@@ -1,0 +1,58 @@
+.basic-toolbar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.basic-toolbar button {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+
+.basic-toolbar button.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.basic-editor {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+.basic-editor-container {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px;
+    min-height: 200px;
+}
+
+.basic-placeholder {
+    color: #999;
+    font-style: italic;
+    padding: 8px;
+}
+
+.basic-content {
+    outline: none;
+}
+
+/* Ensure lists display correctly */
+.basic-content ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    padding-left: 0.5rem;
+}
+
+.basic-content ol {
+    list-style-type: decimal;
+    margin-left: 1.5rem;
+    padding-left: 0.5rem;
+}
+
+.basic-content li {
+    margin: 0.25rem 0;
+}

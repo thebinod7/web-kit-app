@@ -62,10 +62,10 @@ export default function Hero({
                     {/* Headline */}
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
                         <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-                            Free & No Signup
+                            No Signup | No Payment
                         </span>
-                        <span className="block bg-gradient-to-r from-amber-500 via-orange-500 to-red-600 bg-clip-text text-transparent animate-pulse">
-                            Resume
+                        <span className="block bg-gradient-to-r mt-3 from-amber-500 via-orange-500 to-red-600 bg-clip-text text-transparent animate-pulse">
+                            Free Resume
                         </span>
                     </h1>
 
