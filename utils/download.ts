@@ -48,7 +48,7 @@ function generateResumeHTML(resume: Resume): string {
         body {
           font-family: 'Inter', 'Lato', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
           line-height: 1.6;
-          color: #1a1a1a;
+          color: #000000;
           background: white;
         }
         ul {
@@ -76,17 +76,17 @@ function generateResumeHTML(resume: Resume): string {
         .name {
           font-size: 32px;
           font-weight: 700;
-          color: #1a1a1a;
+          color: #000000;
           margin-bottom: 5px;
         }
         .title {
           font-size: 16px;
-          color: #555;
+          color: #000000;
           margin-bottom: 10px;
         }
         .contact-info {
           font-size: 13px;
-          color: #666;
+          color: #000000;
           display: flex;
           justify-content: center;
           flex-wrap: wrap;
@@ -105,7 +105,7 @@ function generateResumeHTML(resume: Resume): string {
           font-weight: 700;
           text-transform: uppercase;
           letter-spacing: 1px;
-          color: #1a1a1a;
+          color: #000000;
           margin-bottom: 12px;
           padding-bottom: 8px;
           border-bottom: 1px solid #ddd;
@@ -113,34 +113,42 @@ function generateResumeHTML(resume: Resume): string {
         .summary-text {
           font-size: 13px;
           line-height: 1.7;
-          color: #444;
+          color: #000000;
           text-align: justify;
         }
         .entry {
           margin-bottom: 15px;
+        }
+        .language-entry {
+          margin-bottom: 10px;
         }
         .entry-header {
           display: flex;
           justify-content: space-between;
           margin-bottom: 3px;
         }
+        .language-entry-title {
+          font-size: 10px;
+          font-weight: 600;
+          color: #000000;
+        }
         .entry-title {
           font-size: 13px;
           font-weight: 600;
-          color: #1a1a1a;
+          color: #000000;
         }
         .entry-subtitle {
           font-size: 12px;
-          color: #666;
+          color: #000000;
           font-style: italic;
         }
         .entry-date {
           font-size: 12px;
-          color: #888;
+          color: #333333;
         }
         .entry-description {
           font-size: 12px;
-          color: #555;
+          color: #000000;
           margin-top: 5px;
           line-height: 1.5;
         }
@@ -151,27 +159,27 @@ function generateResumeHTML(resume: Resume): string {
           font-size: 12px;
         }
         .skill-tag {
-          padding: 0.25rem 0.88rem;  
+          padding: 0.25rem 0.5rem;  
           background-color: #ffffff;  
           border: 1px solid #d1d5db;   
           border-radius: 9999px;       
-          font-size: 0.875rem;   
+          font-size: 0.55rem;   
           font-weight: 500;
           display: inline-block;
         }
         .language-badge {
-          padding: 0.1rem 0.66rem;       
+          padding: 0.25rem 0.5rem;       
           background-color: #ffffff;    
           border: 1px solid #d1d5db;   
           border-radius: 9999px;       
-          font-size: 0.875rem;    
+          font-size: 0.55rem;    
         }
         .bullet {
           margin-left: 20px;
           text-indent: -10px;
           margin-bottom: 5px;
           font-size: 12px;
-          color: #555;
+          color: #333333;
         }
         .bullet::before {
           content: "• ";
@@ -179,7 +187,7 @@ function generateResumeHTML(resume: Resume): string {
         }
         .flex-container {
           display: flex;
-          align-items: center;
+          align-items: baseline;
           gap: 0.5rem;
         }
         }
@@ -252,7 +260,7 @@ function generateResumeHTML(resume: Resume): string {
                 personalInfo.website
                     ? `<div class="flex-container">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-globe-icon lucide-globe"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-                    <span class="contact-item"><a href="${personalInfo.website}" style="color: #555; text-decoration: none;">Website</a></span>
+                    <span class="contact-item"><a href="${personalInfo.website}" style="color: #000000; text-decoration: none;">Website</a></span>
                     </div>`
                     : ''
             }
@@ -261,7 +269,7 @@ function generateResumeHTML(resume: Resume): string {
                 personalInfo.linkedin
                     ? `<div class="flex-container">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin-icon lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                    <span class="contact-item"><a href="${personalInfo.linkedin}" style="color: #555; text-decoration: none;">LinkedIn</a></span>
+                    <span class="contact-item"><a href="${personalInfo.linkedin}" style="color: #000000; text-decoration: none;">LinkedIn</a></span>
                     </div>`
                     : ''
             }
@@ -386,7 +394,7 @@ function generateResumeHTML(resume: Resume): string {
                 }
                  ${
                      project.link
-                         ? `<a href="${project.link}" style="color: #555; font-size: 12px; text-decoration: none;"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link-icon lucide-external-link"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></a></div>`
+                         ? `<a href="${project.link}" style="color: #555; text-decoration: none;"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link-icon lucide-external-link"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></a></div>`
                          : ''
                  }
                 <div>
@@ -413,14 +421,20 @@ function generateResumeHTML(resume: Resume): string {
                 .map(
                     (cert) => `
               <div class="entry">
-                <div class="entry-header">
+               <div class="entry-header">
                   <div class="entry-title flex-container">
-                  <span>${cert.name}<span>
-                   ${
-                       cert.link
-                           ? `<a href="${cert.link}" style="color: #555; font-size: 12px; text-decoration: none;"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link-icon lucide-external-link"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></a></div>`
-                           : ''
-                   }
+                    <span>${cert.name}</span>
+                    ${
+                        cert.link
+                            ? `<a href="${cert.link}" style="color: #555; text-decoration: none;" class="external-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                              <path d="M15 3h6v6"/>
+                              <path d="M10 14 21 3"/>
+                              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                            </svg>
+                          </a>`
+                            : ''
+                    }
                   </div>
                   <div class="entry-date">${formatDateToDMY(cert.date)}</div>
                 </div>
@@ -448,16 +462,23 @@ function generateResumeHTML(resume: Resume): string {
                     (pub) => `
               <div class="entry">
                 <div class="entry-header">
-                  <div class="entry-title">
-                  <span>${pub.title}</span>
-                   ${
-                       pub.link
-                           ? `<a href="${pub.link}" style="color: #555; font-size: 12px; text-decoration: none;"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link-icon lucide-external-link"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></a></div>`
-                           : ''
-                   }
+                  <div class="entry-title flex-container">
+                    <span>${pub.title}</span>
+                    ${
+                        pub.link
+                            ? `<a href="${pub.link}" style="color: #555; text-decoration: none;" class="external-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                              <path d="M15 3h6v6"/>
+                              <path d="M10 14 21 3"/>
+                              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                            </svg>
+                          </a>`
+                            : ''
+                    }
                   </div>
                   <div class="entry-date">${formatDateToDMY(pub.date)}</div>
                 </div>
+
                 ${
                     pub.publication
                         ? `<div class="entry-subtitle">Published By: ${pub.publication}</div>`
@@ -480,9 +501,9 @@ function generateResumeHTML(resume: Resume): string {
             ${languages
                 .map(
                     (lang) => `
-              <div class="entry">
+              <div class="language-entry">
                 <div class="entry-header">
-                  <div class="entry-title">${lang.language}</div>
+                  <div class="language-entry-title">${lang.language}</div>
                   <div class="language-badge">${lang.level}</div>
                 </div>
               </div>
