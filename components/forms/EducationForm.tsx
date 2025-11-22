@@ -2,6 +2,13 @@
 
 import { Plus, Trash2 } from 'lucide-react';
 import type { Resume, EducationEntry } from '@/types/resume';
+import dynamic from 'next/dynamic';
+
+const RichTextEditor = dynamic(
+    () =>
+        import('@/components/RichTextEditor').then((mod) => mod.RichTextEditor),
+    { ssr: false }
+);
 
 interface EducationFormProps {
     resume: Resume;
@@ -187,27 +194,11 @@ export function EducationForm({ resume, setResume }: EducationFormProps) {
                         Description
                     </label>
 
-                    <textarea
-                        placeholder="Additional details (relevant courses, honors, etc.)"
+                    <RichTextEditor
                         value={edu.details}
-                        onChange={(e) =>
-                            updateEducation(edu.id, 'details', e.target.value)
+                        onChange={(html) =>
+                            updateEducation(edu.id, 'details', html)
                         }
-                        rows={2}
-                        className={`w-full
-                                px-4 py-2
-                                rounded-lg
-                                bg-gray-100
-                                border border-gray-200
-                                text-gray-800
-                                placeholder:text-gray-400
-                                focus:outline-none
-                                focus:ring-primary/30
-                                disabled:bg-gray-50
-                                disabled:text-muted-foreground
-                                disabled:cursor-not-allowed
-                                disabled:border-gray-100
-                                hover:border-gray-300`}
                     />
                 </div>
             ))}

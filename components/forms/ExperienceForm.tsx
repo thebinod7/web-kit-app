@@ -2,7 +2,13 @@
 
 import { Plus, Trash2 } from 'lucide-react';
 import type { Resume, ExperienceEntry } from '@/types/resume';
+import dynamic from 'next/dynamic';
 
+const RichTextEditor = dynamic(
+    () =>
+        import('@/components/RichTextEditor').then((mod) => mod.RichTextEditor),
+    { ssr: false }
+);
 interface ExperienceFormProps {
     resume: Resume;
     setResume: (resume: Resume) => void;
@@ -231,7 +237,14 @@ export function ExperienceForm({ resume, setResume }: ExperienceFormProps) {
                     <label className="block text-sm font-bold text-gray-800">
                         Description
                     </label>
-                    <textarea
+
+                    <RichTextEditor
+                        value={exp.description}
+                        onChange={(html) =>
+                            updateExperience(exp.id, 'description', html)
+                        }
+                    />
+                    {/* <textarea
                         placeholder="Description (achievements, responsibilities...)"
                         value={exp.description}
                         onChange={(e) =>
@@ -256,7 +269,7 @@ export function ExperienceForm({ resume, setResume }: ExperienceFormProps) {
                                 disabled:cursor-not-allowed
                                 disabled:border-gray-100
                                 hover:border-gray-300`}
-                    />
+                    /> */}
                 </div>
             ))}
 

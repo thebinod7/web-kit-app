@@ -138,9 +138,12 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                                     </p>
                                 </div>
                                 {exp.description && (
-                                    <p className="text-slate-700 mt-1">
-                                        {exp.description}
-                                    </p>
+                                    <p
+                                        className="prose max-w-none text-sm text-slate-700 leading-relaxed"
+                                        dangerouslySetInnerHTML={{
+                                            __html: exp.description,
+                                        }}
+                                    />
                                 )}
                             </div>
                         ))}
@@ -172,9 +175,12 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                                     </p>
                                 </div>
                                 {edu.details && (
-                                    <p className="text-slate-700 mt-1">
-                                        {edu.details}
-                                    </p>
+                                    <p
+                                        className="prose max-w-none text-sm text-slate-700 leading-relaxed"
+                                        dangerouslySetInnerHTML={{
+                                            __html: edu.details,
+                                        }}
+                                    />
                                 )}
                             </div>
                         ))}
