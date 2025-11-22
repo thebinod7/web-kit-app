@@ -29,6 +29,7 @@ function generateResumeHTML(resume: Resume): string {
         projects,
         certifications,
         publications,
+        languages,
     } = resume;
 
     return `
@@ -45,7 +46,7 @@ function generateResumeHTML(resume: Resume): string {
           box-sizing: border-box;
         }
         body {
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+          font-family: 'Inter', 'Lato', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
           line-height: 1.6;
           color: #1a1a1a;
           background: white;
@@ -64,13 +65,12 @@ function generateResumeHTML(resume: Resume): string {
         .container {
           max-width: 850px;
           margin: 0 auto;
-          padding: 40px;
+          padding: 5px;
           background: white;
         }
         .header {
           text-align: center;
-          margin-bottom: 30px;
-          border-bottom: 2px solid #333;
+          margin-bottom: 15px;
           padding-bottom: 20px;
         }
         .name {
@@ -151,13 +151,20 @@ function generateResumeHTML(resume: Resume): string {
           font-size: 12px;
         }
         .skill-tag {
-          padding: 6px 14px;
-          background: #e6f0ff;
-          border-radius: 999px; 
-          font-size: 14px;
+          padding: 0.25rem 0.88rem;  
+          background-color: #ffffff;  
+          border: 1px solid #d1d5db;   
+          border-radius: 9999px;       
+          font-size: 0.875rem;   
           font-weight: 500;
-          border: 1px solid #c7dcff;
           display: inline-block;
+        }
+        .language-badge {
+          padding: 0.1rem 0.66rem;       
+          background-color: #ffffff;    
+          border: 1px solid #d1d5db;   
+          border-radius: 9999px;       
+          font-size: 0.875rem;    
         }
         .bullet {
           margin-left: 20px;
@@ -169,6 +176,12 @@ function generateResumeHTML(resume: Resume): string {
         .bullet::before {
           content: "• ";
           margin-right: 8px;
+        }
+        .flex-container {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
         }
         @media (max-width: 600px) {
           .container {
@@ -195,7 +208,7 @@ function generateResumeHTML(resume: Resume): string {
           /* Remove browser print headers and footers */
           @page {
             margin: 0.5in;
-            size: letter;
+            size: A4;
           }
         }
       </style>
@@ -237,12 +250,19 @@ function generateResumeHTML(resume: Resume): string {
          
             ${
                 personalInfo.website
-                    ? `<span class="contact-item"><a href="${personalInfo.website}" style="color: #0066cc; text-decoration: none;">Website</a></span>`
+                    ? `<div class="flex-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-globe-icon lucide-globe"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                    <span class="contact-item"><a href="${personalInfo.website}" style="color: #555; text-decoration: none;">Website</a></span>
+                    </div>`
                     : ''
             }
+
             ${
                 personalInfo.linkedin
-                    ? `<span class="contact-item"><a href="${personalInfo.linkedin}" style="color: #0066cc; text-decoration: none;">LinkedIn</a></span>`
+                    ? `<div class="flex-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin-icon lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                    <span class="contact-item"><a href="${personalInfo.linkedin}" style="color: #555; text-decoration: none;">LinkedIn</a></span>
+                    </div>`
                     : ''
             }
           </div>
@@ -358,21 +378,23 @@ function generateResumeHTML(resume: Resume): string {
                 <div class="entry-header">
                   <div class="entry-title">${project.title}</div>
                 </div>
+                <div class="flex-container">
                 ${
                     project.description
                         ? `<div class="entry-description">${project.description}</div>`
                         : ''
                 }
+                 ${
+                     project.link
+                         ? `<a href="${project.link}" style="color: #555; font-size: 12px; text-decoration: none;"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link-icon lucide-external-link"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></a></div>`
+                         : ''
+                 }
+                <div>
                 ${
                     project.technologies
                         ? `<div class="entry-description"><strong>Technologies:</strong> ${project.technologies}</div>`
                         : ''
                 }
-                 ${
-                     project.link
-                         ? `<div class="entry-description"><strong>Link:</strong> <a href="${project.link}" style="color: #0066cc; font-size: 12px; text-decoration: none;">View Project</a></div>`
-                         : ''
-                 }
               </div>
             `
                 )
@@ -392,11 +414,14 @@ function generateResumeHTML(resume: Resume): string {
                     (cert) => `
               <div class="entry">
                 <div class="entry-header">
-                  <div class="entry-title">${cert.name}  ${
-                        cert.link
-                            ? `<a href="${cert.link}" style="color: #0066cc; font-size: 10px; text-decoration: none;">View Certificate</a>`
-                            : ''
-                    }</div>
+                  <div class="entry-title flex-container">
+                  <span>${cert.name}<span>
+                   ${
+                       cert.link
+                           ? `<a href="${cert.link}" style="color: #555; font-size: 12px; text-decoration: none;"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link-icon lucide-external-link"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></a></div>`
+                           : ''
+                   }
+                  </div>
                   <div class="entry-date">${formatDateToDMY(cert.date)}</div>
                 </div>
                 ${
@@ -423,11 +448,14 @@ function generateResumeHTML(resume: Resume): string {
                     (pub) => `
               <div class="entry">
                 <div class="entry-header">
-                  <div class="entry-title">${pub.title}   ${
-                        pub.link
-                            ? `<a href="${pub.link}" style="color: #0066cc; font-size: 10px; text-decoration: none;">View Publication</a>`
-                            : ''
-                    }</div>
+                  <div class="entry-title">
+                  <span>${pub.title}</span>
+                   ${
+                       pub.link
+                           ? `<a href="${pub.link}" style="color: #555; font-size: 12px; text-decoration: none;"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link-icon lucide-external-link"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></a></div>`
+                           : ''
+                   }
+                  </div>
                   <div class="entry-date">${formatDateToDMY(pub.date)}</div>
                 </div>
                 ${
@@ -443,6 +471,28 @@ function generateResumeHTML(resume: Resume): string {
         `
                 : ''
         }
+
+         ${
+             languages.length > 0
+                 ? `
+          <div class="section">
+            <div class="section-title">Languages</div>
+            ${languages
+                .map(
+                    (lang) => `
+              <div class="entry">
+                <div class="entry-header">
+                  <div class="entry-title">${lang.language}</div>
+                  <div class="language-badge">${lang.level}</div>
+                </div>
+              </div>
+            `
+                )
+                .join('')}
+          </div>
+        `
+                 : ''
+         }
       </div>
     </body>
     </html>

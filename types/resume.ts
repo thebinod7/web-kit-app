@@ -58,6 +58,12 @@ export interface PublicationEntry {
     link: string;
 }
 
+export interface LanguageEntry {
+    id: string;
+    language: string;
+    level: string;
+}
+
 export interface Resume {
     personalInfo: PersonalInfo;
     summary: string;
@@ -67,4 +73,5 @@ export interface Resume {
     projects: ProjectEntry[];
     certifications: CertificationEntry[];
     publications: PublicationEntry[];
+    languages: LanguageEntry[];
 }

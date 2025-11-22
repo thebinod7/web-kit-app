@@ -1,6 +1,14 @@
 'use client';
 
-import { Mail, Phone, MapPin, Globe, Linkedin, Calendar } from 'lucide-react';
+import {
+    Mail,
+    Phone,
+    MapPin,
+    Globe,
+    Linkedin,
+    Calendar,
+    ExternalLink,
+} from 'lucide-react';
 import type { Resume } from '@/types/resume';
 import { formatDateToDMY, formatDateToMMYY } from '@/utils/date';
 
@@ -18,14 +26,13 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
         projects,
         certifications,
         publications,
+        languages,
     } = resume;
-
-    console.log('PI=>', personalInfo);
 
     return (
         <div className="p-8 max-h-[calc(100vh-120px)] overflow-y-auto bg-white text-slate-900">
             {/* Header */}
-            <div className="mb-6 border-b border-slate-300 pb-6">
+            <div className="mb-6 pb-6">
                 <h1 className="text-3xl text-center font-bold tracking-tight">
                     {personalInfo.name || 'Your Name'}
                 </h1>
@@ -70,7 +77,6 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                                 href={personalInfo.website}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-blue-600 hover:underline"
                             >
                                 Website
                             </a>
@@ -83,7 +89,6 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                                 href={personalInfo.linkedin}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-blue-600 hover:underline"
                             >
                                 LinkedIn
                             </a>
@@ -198,7 +203,7 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                         {skills.map((skill: any) => (
                             <span
                                 key={skill.id}
-                                className="px-3 py-1 bg-slate-100 text-slate-700 rounded text-sm"
+                                className="px-4 py-1.5 bg-white border border-gray-300 rounded-full text-sm"
                             >
                                 {skill.name}
                             </span>
@@ -220,8 +225,17 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                                     {project.title}
                                 </p>
                                 {project.description && (
-                                    <p className="text-slate-700">
-                                        {project.description}
+                                    <p className="text-slate-700 flex gap-2 items-center">
+                                        {project.description}{' '}
+                                        {project.link && (
+                                            <a
+                                                href={project.link}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                <ExternalLink size={14} />
+                                            </a>
+                                        )}
                                     </p>
                                 )}
                                 {project.technologies && (
@@ -229,16 +243,6 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                                         <strong>Tech:</strong>{' '}
                                         {project.technologies}
                                     </p>
-                                )}
-                                {project.link && (
-                                    <a
-                                        href={project.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-blue-600 hover:underline"
-                                    >
-                                        View Project
-                                    </a>
                                 )}
                             </div>
                         ))}
@@ -257,16 +261,15 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                             <div key={cert.id} className="text-sm">
                                 <div className="flex justify-between items-start">
                                     <div>
-                                        <p className="font-semibold text-slate-900">
+                                        <p className="font-semibold text-slate-900 flex items-center gap-2">
                                             {cert.name}{' '}
                                             {cert.link && (
                                                 <a
                                                     href={cert.link}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="text-blue-600 text-xs hover:underline"
                                                 >
-                                                    View Certificate
+                                                    <ExternalLink size={14} />
                                                 </a>
                                             )}
                                         </p>
@@ -288,7 +291,7 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
 
             {/* Publications */}
             {publications.length > 0 && (
-                <section>
+                <section className="mb-6">
                     <h2 className="text-lg font-bold text-slate-900 mb-3 uppercase tracking-wide border-b border-slate-300 pb-1">
                         Publications
                     </h2>
@@ -297,16 +300,15 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                             <div key={pub.id} className="text-sm">
                                 <div className="flex justify-between items-start">
                                     <div>
-                                        <p className="font-semibold text-slate-900">
+                                        <p className="font-semibold text-slate-900 flex items-center gap-2">
                                             {pub.title}{' '}
                                             {pub.link && (
                                                 <a
                                                     href={pub.link}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="text-blue-600 text-xs hover:underline"
                                                 >
-                                                    View Publication
+                                                    <ExternalLink size={14} />
                                                 </a>
                                             )}
                                         </p>
@@ -325,6 +327,30 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                     </div>
                 </section>
             )}
+
+            {/* Languages */}
+            <section>
+                <h2 className="text-lg font-bold text-slate-900 mb-3 uppercase tracking-wide border-b border-slate-300 pb-1">
+                    Languages
+                </h2>
+                <div className="space-y-2">
+                    {languages.map((lang) => (
+                        <div
+                            key={lang.id}
+                            className="flex items-center justify-between text-sm"
+                        >
+                            <span className="font-semibold text-slate-800">
+                                {lang.language}
+                            </span>
+                            <span
+                                className={`px-4 py-1.5 bg-white border border-gray-300 rounded-full text-sm`}
+                            >
+                                {lang.level}
+                            </span>
+                        </div>
+                    ))}
+                </div>
+            </section>
         </div>
     );
 }

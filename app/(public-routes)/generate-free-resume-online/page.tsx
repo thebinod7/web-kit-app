@@ -26,6 +26,7 @@ const defaultResume: Resume = {
     projects: [],
     certifications: [],
     publications: [],
+    languages: [],
 };
 
 export default function Home() {
@@ -40,7 +41,10 @@ export default function Home() {
     useEffect(() => {
         const storedResume = getResumeLocal();
         if (storedResume) {
-            setResume(storedResume);
+            setResume({
+                ...resume,
+                ...storedResume,
+            });
         }
     }, []);
 

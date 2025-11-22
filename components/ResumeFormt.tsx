@@ -10,6 +10,7 @@ import { ProjectsForm } from './forms/ProjectsForm';
 import { PublicationsForm } from './forms/Publications';
 import { SkillsForm } from './forms/SkillsForm';
 import { SummaryForm } from './forms/SummaryForm';
+import { LanguageForm } from './forms/LanguageForm';
 
 interface ResumeFormProps {
     resume: Resume;
@@ -46,6 +47,7 @@ export function ResumeForm({ resume, setResume }: ResumeFormProps) {
         { id: 'projects', label: 'Projects' },
         { id: 'certifications', label: 'Certifications' },
         { id: 'publications', label: 'Publications' },
+        { id: 'languages', label: 'Languages' },
     ];
 
     return (
@@ -132,6 +134,12 @@ export function ResumeForm({ resume, setResume }: ResumeFormProps) {
                             )}
                             {section.id === 'publications' && (
                                 <PublicationsForm
+                                    resume={resume}
+                                    setResume={setResume}
+                                />
+                            )}
+                            {section.id === 'languages' && (
+                                <LanguageForm
                                     resume={resume}
                                     setResume={setResume}
                                 />
