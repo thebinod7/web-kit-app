@@ -98,9 +98,13 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                     <h2 className="text-lg font-bold text-slate-900 mb-2 uppercase tracking-wide border-b border-slate-300 pb-1">
                         Summary
                     </h2>
-                    <p className="text-sm text-slate-700 leading-relaxed">
+                    {/* <p className="text-sm text-slate-700 leading-relaxed">
                         {summary}
-                    </p>
+                    </p> */}
+                    <p
+                        className="prose max-w-none text-sm text-slate-700 leading-relaxed"
+                        dangerouslySetInnerHTML={{ __html: summary }}
+                    />
                 </section>
             )}
 

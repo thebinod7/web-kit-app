@@ -50,6 +50,17 @@ function generateResumeHTML(resume: Resume): string {
           color: #1a1a1a;
           background: white;
         }
+        ul {
+            list-style-type: disc;
+            padding-left: 2.25rem;
+        }
+        ol {
+            list-style-type: decimal;
+            padding-left: 2.25rem;
+        }
+        li {
+            margin-bottom: 0.25rem;
+        }
         .container {
           max-width: 850px;
           margin: 0 auto;

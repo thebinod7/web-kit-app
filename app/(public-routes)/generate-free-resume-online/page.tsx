@@ -6,7 +6,6 @@ import type { Resume } from '@/types/resume';
 import { downloadResume } from '@/utils/download';
 import { getResumeLocal, saveResumeLocal } from '@/utils/localstorage';
 import { Download, Eye, EyeOff } from 'lucide-react';
-import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 const defaultResume: Resume = {
@@ -32,8 +31,6 @@ const defaultResume: Resume = {
 export default function Home() {
     const [resume, setResume] = useState<Resume>(defaultResume);
     const [showPreview, setShowPreview] = useState(true);
-
-    const router = useRouter();
 
     const handleDownload = () => {
         saveResumeLocal(resume);
