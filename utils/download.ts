@@ -98,7 +98,7 @@ function generateResumeHTML(resume: Resume): string {
           gap: 5px;
         }
         .section {
-          margin-bottom: 15px;
+          margin-bottom: 20px;
         }
         .section-title {
           font-size: 14px;
@@ -117,7 +117,7 @@ function generateResumeHTML(resume: Resume): string {
           text-align: justify;
         }
         .entry {
-          margin-bottom: 8px;
+          margin-bottom: 10px;
         }
         .language-entry {
           margin-bottom: 10px;
@@ -125,7 +125,6 @@ function generateResumeHTML(resume: Resume): string {
         .entry-header {
           display: flex;
           justify-content: space-between;
-          margin-bottom: 2px;
         }
         .language-entry-title {
           font-size: 10px;
@@ -138,7 +137,7 @@ function generateResumeHTML(resume: Resume): string {
           color: #000000;
         }
         .entry-subtitle {
-          font-size: 10px;
+          font-size: 11px;
           color: #000000;
         }
         .entry-date {
@@ -148,7 +147,6 @@ function generateResumeHTML(resume: Resume): string {
         .entry-description {
           font-size: 12px;
           color: #000000;
-          margin-top: 5px;
           line-height: 1.5;
         }
         .skills-list {
@@ -189,6 +187,8 @@ function generateResumeHTML(resume: Resume): string {
           align-items: baseline;
           gap: 0.5rem;
         }
+        .project-entry-header {
+          display: block;
         }
         @media (max-width: 600px) {
           .container {
@@ -210,11 +210,11 @@ function generateResumeHTML(resume: Resume): string {
           .container {
             max-width: 100%;
             margin: 0;
-            padding: 0.5in;
+            padding: 0.3in;
           }
           /* Remove browser print headers and footers */
           @page {
-            margin: 0.5in;
+            margin: 0.3in;
             size: A4;
           }
         }
@@ -225,9 +225,8 @@ function generateResumeHTML(resume: Resume): string {
         <div class="header">
           <div class="name">${personalInfo.name}</div>
           ${
-              personalInfo.title
-                  ? `<div class="title">${personalInfo.title}</div>`
-                  : ''
+              personalInfo.title &&
+              `<div class="title">${personalInfo.title}</div>`
           }
           
           <div class="contact-info">
@@ -316,7 +315,7 @@ function generateResumeHTML(resume: Resume): string {
                   <div>
                     <div class="entry-title">${exp.position}</div>
                     <div class="entry-subtitle">${exp.company}${
-                        exp.location ? `, ${exp.location}` : ''
+                        exp.location && ` • ${exp.location}`
                     }</div>
                   </div>
                   <div class="entry-date">${formatDateToMMYY(exp.startDate)}${
@@ -326,9 +325,8 @@ function generateResumeHTML(resume: Resume): string {
                     }</div>
                 </div>
                 ${
-                    exp.description
-                        ? `<div class="entry-description">${exp.description}</div>`
-                        : ''
+                    exp.description &&
+                    `<div class="entry-description">${exp.description}</div>`
                 }
               </div>
             `
@@ -360,9 +358,8 @@ function generateResumeHTML(resume: Resume): string {
                   )}</div>
                 </div>
                 ${
-                    edu.details
-                        ? `<div class="entry-description">${edu.details}</div>`
-                        : ''
+                    edu.details &&
+                    `<div class="entry-description">${edu.details}</div>`
                 }
               </div>
             `
@@ -373,43 +370,49 @@ function generateResumeHTML(resume: Resume): string {
                 : ''
         }
 
+
+ ${
+     projects.length > 0
+         ? `<div class="section"><div class="section-title">Projects</div>${projects
+               .map(
+                   (project) => `
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">${project.title}</div>
+        </div>
+
+        <div class="flex-container">
+          ${
+              project.subtitle &&
+              `<div class="entry-subtitle">${project.subtitle}</div>`
+          }
+
+          ${
+              project.link
+                  ? `<a href="${project.link}" style="color: #555; text-decoration: none;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                       viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                       stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M15 3h6v6"/>
+                    <path d="M10 14 21 3"/>
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  </svg>
+                </a>`
+                  : ''
+          }
+        </div>
+
         ${
-            projects.length > 0
-                ? `
-          <div class="section">
-            <div class="section-title">Projects</div>
-            ${projects
-                .map(
-                    (project) => `
-              <div class="entry">
-                <div class="entry-header">
-                  <div class="entry-title">${project.title}</div>
-                </div>
-                <div class="flex-container">
-                ${
-                    project.description
-                        ? `<div class="entry-description">${project.description}</div>`
-                        : ''
-                }
-                 ${
-                     project.link
-                         ? `<a href="${project.link}" style="color: #555; text-decoration: none;"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link-icon lucide-external-link"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></a></div>`
-                         : ''
-                 }
-                <div>
-                ${
-                    project.technologies
-                        ? `<div class="entry-description"><strong>Tech:</strong> ${project.technologies}</div>`
-                        : ''
-                }
-              </div>
-            `
-                )
-                .join('')}
-          </div>
-        `
-                : ''
+            project.description &&
+            `<div class="entry-description">${project.description}</div>`
         }
+      </div>
+    `
+               )
+               .join('')}</div>`
+         : ''
+ }
+
 
         ${
             certifications.length > 0
@@ -438,9 +441,8 @@ function generateResumeHTML(resume: Resume): string {
                   <div class="entry-date">${formatDateToDMY(cert.date)}</div>
                 </div>
                 ${
-                    cert.issuer
-                        ? `<div class="entry-subtitle">Issued By: ${cert.issuer}</div>`
-                        : ''
+                    cert.issuer &&
+                    `<div class="entry-subtitle">Issued By: ${cert.issuer}</div>`
                 }
               </div>
             `
@@ -479,9 +481,8 @@ function generateResumeHTML(resume: Resume): string {
                 </div>
 
                 ${
-                    pub.publication
-                        ? `<div class="entry-subtitle">Published By: ${pub.publication}</div>`
-                        : ''
+                    pub.publication &&
+                    `<div class="entry-subtitle">Published By: ${pub.publication}</div>`
                 }
               </div>
             `

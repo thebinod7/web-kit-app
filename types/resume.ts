@@ -37,8 +37,8 @@ export interface Skill {
 export interface ProjectEntry {
     id: string;
     title: string;
+    subtitle: string;
     description: string;
-    technologies: string;
     link: string;
 }
 

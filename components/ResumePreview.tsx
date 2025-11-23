@@ -224,9 +224,9 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                                 <p className="font-semibold text-slate-900">
                                     {project.title}
                                 </p>
-                                {project.description && (
+                                {project.subtitle && (
                                     <p className="text-slate-700 flex gap-2 items-center">
-                                        {project.description}{' '}
+                                        {project.subtitle}{' '}
                                         {project.link && (
                                             <a
                                                 href={project.link}
@@ -238,11 +238,13 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                                         )}
                                     </p>
                                 )}
-                                {project.technologies && (
-                                    <p className="text-slate-600">
-                                        <strong>Tech:</strong>{' '}
-                                        {project.technologies}
-                                    </p>
+                                {project.description && (
+                                    <p
+                                        className="prose max-w-none text-sm text-slate-700 leading-relaxed"
+                                        dangerouslySetInnerHTML={{
+                                            __html: project.description,
+                                        }}
+                                    />
                                 )}
                             </div>
                         ))}
