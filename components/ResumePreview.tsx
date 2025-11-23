@@ -113,6 +113,25 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                 </section>
             )}
 
+            {/* Skills */}
+            {skills.length > 0 && (
+                <section className="mb-6">
+                    <h2 className="text-lg font-bold text-slate-900 mb-3 uppercase tracking-wide border-b border-slate-300 pb-1">
+                        Skills
+                    </h2>
+                    <div className="flex flex-wrap gap-2">
+                        {skills.map((skill: any) => (
+                            <span
+                                key={skill.id}
+                                className="px-4 py-1.5 bg-white border border-gray-300 rounded-full text-sm"
+                            >
+                                {skill.name}
+                            </span>
+                        ))}
+                    </div>
+                </section>
+            )}
+
             {/* Experience */}
             {experience.length > 0 && (
                 <section className="mb-6">
@@ -188,25 +207,6 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                                     />
                                 )}
                             </div>
-                        ))}
-                    </div>
-                </section>
-            )}
-
-            {/* Skills */}
-            {skills.length > 0 && (
-                <section className="mb-6">
-                    <h2 className="text-lg font-bold text-slate-900 mb-3 uppercase tracking-wide border-b border-slate-300 pb-1">
-                        Skills
-                    </h2>
-                    <div className="flex flex-wrap gap-2">
-                        {skills.map((skill: any) => (
-                            <span
-                                key={skill.id}
-                                className="px-4 py-1.5 bg-white border border-gray-300 rounded-full text-sm"
-                            >
-                                {skill.name}
-                            </span>
                         ))}
                     </div>
                 </section>

@@ -60,7 +60,7 @@ function generateResumeHTML(resume: Resume): string {
             padding-left: 2.25rem;
         }
         li {
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.1rem;
         }
         .container {
           max-width: 850px;
@@ -98,7 +98,7 @@ function generateResumeHTML(resume: Resume): string {
           gap: 5px;
         }
         .section {
-          margin-bottom: 25px;
+          margin-bottom: 15px;
         }
         .section-title {
           font-size: 14px;
@@ -117,7 +117,7 @@ function generateResumeHTML(resume: Resume): string {
           text-align: justify;
         }
         .entry {
-          margin-bottom: 15px;
+          margin-bottom: 8px;
         }
         .language-entry {
           margin-bottom: 10px;
@@ -125,7 +125,7 @@ function generateResumeHTML(resume: Resume): string {
         .entry-header {
           display: flex;
           justify-content: space-between;
-          margin-bottom: 3px;
+          margin-bottom: 2px;
         }
         .language-entry-title {
           font-size: 10px;
@@ -138,12 +138,11 @@ function generateResumeHTML(resume: Resume): string {
           color: #000000;
         }
         .entry-subtitle {
-          font-size: 12px;
+          font-size: 10px;
           color: #000000;
-          font-style: italic;
         }
         .entry-date {
-          font-size: 12px;
+          font-size: 10px;
           color: #333333;
         }
         .entry-description {
@@ -287,6 +286,23 @@ function generateResumeHTML(resume: Resume): string {
                 : ''
         }
 
+           ${
+               skills.length > 0
+                   ? `
+          <div class="section">
+            <div class="section-title">Skills</div>
+            <div class="skills-list">
+              ${skills
+                  .map(
+                      (skill) => `<span class="skill-tag">${skill.name}</span>`
+                  )
+                  .join('')}
+            </div>
+          </div>
+        `
+                   : ''
+           }
+
         ${
             experience.length > 0
                 ? `
@@ -358,23 +374,6 @@ function generateResumeHTML(resume: Resume): string {
         }
 
         ${
-            skills.length > 0
-                ? `
-          <div class="section">
-            <div class="section-title">Skills</div>
-            <div class="skills-list">
-              ${skills
-                  .map(
-                      (skill) => `<span class="skill-tag">${skill.name}</span>`
-                  )
-                  .join('')}
-            </div>
-          </div>
-        `
-                : ''
-        }
-
-        ${
             projects.length > 0
                 ? `
           <div class="section">
@@ -400,7 +399,7 @@ function generateResumeHTML(resume: Resume): string {
                 <div>
                 ${
                     project.technologies
-                        ? `<div class="entry-description"><strong>Technologies:</strong> ${project.technologies}</div>`
+                        ? `<div class="entry-description"><strong>Tech:</strong> ${project.technologies}</div>`
                         : ''
                 }
               </div>

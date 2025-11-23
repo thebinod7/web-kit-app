@@ -41,9 +41,9 @@ export function ResumeForm({ resume, setResume }: ResumeFormProps) {
     const sections = [
         { id: 'personal', label: 'Personal Information', required: true },
         { id: 'summary', label: 'Professional Summary' },
+        { id: 'skills', label: 'Skills' },
         { id: 'experience', label: 'Work Experience' },
         { id: 'education', label: 'Education' },
-        { id: 'skills', label: 'Skills' },
         { id: 'projects', label: 'Projects' },
         { id: 'certifications', label: 'Certifications' },
         { id: 'publications', label: 'Publications' },
