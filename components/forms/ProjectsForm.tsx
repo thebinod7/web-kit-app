@@ -20,8 +20,8 @@ export function ProjectsForm({ resume, setResume }: ProjectsFormProps) {
         const newProject: ProjectEntry = {
             id: Date.now().toString(),
             title: '',
+            subtitle: '',
             description: '',
-            technologies: '',
             link: '',
         };
         setResume({
