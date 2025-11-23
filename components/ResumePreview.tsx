@@ -42,37 +42,39 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                     </p>
                 )}
 
-                <div className="flex flex-wrap gap-4 mt-3 text-sm text-slate-600">
+                <div className="flex flex-wrap gap-2 mt-3 text-sm text-slate-600">
                     {personalInfo.location && (
                         <div className="flex items-center gap-1">
-                            <MapPin size={14} />
+                            <MapPin size={12} />
                             {personalInfo.location}
                         </div>
                     )}
 
                     {personalInfo.email && (
                         <div className="flex items-center gap-1">
-                            <Mail size={14} />
+                            <Mail size={12} />
                             {personalInfo.email}
                         </div>
                     )}
                     {personalInfo.phone && (
                         <div className="flex items-center gap-1">
-                            <Phone size={14} />
+                            <Phone size={12} />
                             {personalInfo.phone}
                         </div>
                     )}
                     {personalInfo.dateOfBirth && (
                         <div className="flex items-center gap-1">
-                            <Calendar size={14} />
+                            <Calendar size={12} />
                             {personalInfo.dateOfBirth &&
                                 formatDateToDMY(personalInfo.dateOfBirth)}
                         </div>
                     )}
+                </div>
 
+                <div className="flex justify-center gap-2 mt-3 text-sm text-slate-600">
                     {personalInfo.website && (
                         <div className="flex items-center gap-1">
-                            <Globe size={14} />
+                            <Globe size={12} />
                             <a
                                 href={personalInfo.website}
                                 target="_blank"
@@ -84,7 +86,7 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                     )}
                     {personalInfo.linkedin && (
                         <div className="flex items-center gap-1">
-                            <Linkedin size={14} />
+                            <Linkedin size={12} />
                             <a
                                 href={personalInfo.linkedin}
                                 target="_blank"
