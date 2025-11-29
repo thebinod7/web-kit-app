@@ -331,28 +331,30 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
             )}
 
             {/* Languages */}
-            <section>
-                <h2 className="text-lg font-bold text-slate-900 mb-3 uppercase tracking-wide border-b border-slate-300 pb-1">
-                    Languages
-                </h2>
-                <div className="space-y-2">
-                    {languages.map((lang) => (
-                        <div
-                            key={lang.id}
-                            className="flex items-center justify-between text-sm"
-                        >
-                            <span className="font-semibold text-slate-800">
-                                {lang.language}
-                            </span>
-                            <span
-                                className={`px-4 py-1.5 bg-white border border-gray-300 rounded-full text-sm`}
+            {languages.length > 0 && (
+                <section>
+                    <h2 className="text-lg font-bold text-slate-900 mb-3 uppercase tracking-wide border-b border-slate-300 pb-1">
+                        Languages
+                    </h2>
+                    <div className="space-y-2">
+                        {languages.map((lang) => (
+                            <div
+                                key={lang.id}
+                                className="flex items-center justify-between text-sm"
                             >
-                                {lang.level}
-                            </span>
-                        </div>
-                    ))}
-                </div>
-            </section>
+                                <span className="font-semibold text-slate-800">
+                                    {lang.language}
+                                </span>
+                                <span
+                                    className={`px-4 py-1.5 bg-white border border-gray-300 rounded-full text-sm`}
+                                >
+                                    {lang.level}
+                                </span>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            )}
         </div>
     );
 }
