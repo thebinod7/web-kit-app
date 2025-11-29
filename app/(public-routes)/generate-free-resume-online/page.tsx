@@ -1,11 +1,16 @@
 'use client';
 
+import ConfirmBox from '@/components/ConfirmBox';
 import { ResumeForm } from '@/components/ResumeFormt';
 import { ResumePreview } from '@/components/ResumePreview';
 import type { Resume } from '@/types/resume';
 import { downloadResume } from '@/utils/download';
-import { getResumeLocal, saveResumeLocal } from '@/utils/localstorage';
-import { Download, Eye, EyeOff } from 'lucide-react';
+import {
+    getResumeLocal,
+    removeResumeLocal,
+    saveResumeLocal,
+} from '@/utils/localstorage';
+import { Download, Eye, EyeOff, Trash } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 const defaultResume: Resume = {
@@ -22,7 +27,7 @@ const defaultResume: Resume = {
     summary: '',
     experience: [],
     education: [],
-    skills: [],
+    skills: '',
     projects: [],
     certifications: [],
     publications: [],
@@ -36,6 +41,12 @@ export default function Home() {
     const handleDownload = () => {
         saveResumeLocal(resume);
         downloadResume(resume);
+    };
+
+    const handleResetClick = () => {
+        setResume(defaultResume);
+        removeResumeLocal();
+        window.location.reload();
     };
 
     useEffect(() => {
@@ -62,6 +73,7 @@ export default function Home() {
                         </p>
                     </div>
                     <div className="flex gap-3">
+                        <ConfirmBox onConfirm={handleResetClick} />
                         <button
                             onClick={() => setShowPreview(!showPreview)}
                             className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors"

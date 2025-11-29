@@ -29,6 +29,10 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
         languages,
     } = resume;
 
+    const currentSkills = Array.isArray(skills)
+        ? skills.map((s) => s.name.join(', '))
+        : skills;
+
     return (
         <div className="p-8 max-h-[calc(100vh-120px)] overflow-y-auto bg-white text-slate-900">
             {/* Header */}
@@ -116,21 +120,15 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
             )}
 
             {/* Skills */}
-            {skills.length > 0 && (
+            {skills && (
                 <section className="mb-6">
                     <h2 className="text-lg font-bold text-slate-900 mb-3 uppercase tracking-wide border-b border-slate-300 pb-1">
                         Skills
                     </h2>
-                    <div className="flex flex-wrap gap-2">
-                        {skills.map((skill: any) => (
-                            <span
-                                key={skill.id}
-                                className="px-4 py-1.5 bg-white border border-gray-300 rounded-full text-sm"
-                            >
-                                {skill.name}
-                            </span>
-                        ))}
-                    </div>
+                    <p
+                        className="prose max-w-none text-sm text-slate-700 leading-relaxed"
+                        dangerouslySetInnerHTML={{ __html: currentSkills }}
+                    />
                 </section>
             )}
 

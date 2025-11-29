@@ -286,17 +286,11 @@ function generateResumeHTML(resume: Resume): string {
         }
 
            ${
-               skills.length > 0
+               skills
                    ? `
           <div class="section">
             <div class="section-title">Skills</div>
-            <div class="skills-list">
-              ${skills
-                  .map(
-                      (skill) => `<span class="skill-tag">${skill.name}</span>`
-                  )
-                  .join('')}
-            </div>
+            <div class="summary-text">${skills}</div>
           </div>
         `
                    : ''

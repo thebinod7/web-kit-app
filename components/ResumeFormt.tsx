@@ -21,11 +21,11 @@ export function ResumeForm({ resume, setResume }: ResumeFormProps) {
     const [expandedSections, setExpandedSections] = useState<
         Record<string, boolean>
     >({
-        personal: true,
-        summary: true,
-        experience: true,
-        education: true,
-        skills: true,
+        personal: false,
+        summary: false,
+        experience: false,
+        education: false,
+        skills: false,
         projects: false,
         certifications: false,
         publications: false,
@@ -102,6 +102,12 @@ export function ResumeForm({ resume, setResume }: ResumeFormProps) {
                                     setResume={setResume}
                                 />
                             )}
+                            {section.id === 'skills' && (
+                                <SkillsForm
+                                    resume={resume}
+                                    setResume={setResume}
+                                />
+                            )}
                             {section.id === 'experience' && (
                                 <ExperienceForm
                                     resume={resume}
@@ -110,12 +116,6 @@ export function ResumeForm({ resume, setResume }: ResumeFormProps) {
                             )}
                             {section.id === 'education' && (
                                 <EducationForm
-                                    resume={resume}
-                                    setResume={setResume}
-                                />
-                            )}
-                            {section.id === 'skills' && (
-                                <SkillsForm
                                     resume={resume}
                                     setResume={setResume}
                                 />

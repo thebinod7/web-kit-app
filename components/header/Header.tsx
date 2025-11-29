@@ -1,27 +1,21 @@
 'use client';
 import { APP_PATHS } from '@/app/constants/api';
-import { useGetMeUser } from '@/hooks/api/user/hook.user';
-import { useAppStore } from '@/store/store.app';
-import { LOCAL_KEYS } from '@/utils/localstorage';
-import { getCookie } from 'cookies-next/client';
-import Link from 'next/link';
-import { useEffect } from 'react';
-import UserProfileDropdown from '../UserProfileDropdown';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Header() {
-    const accessToken = getCookie(LOCAL_KEYS.ACCESS_TOKEN);
-    const { data } = useGetMeUser(accessToken || '');
-    const { result } = data?.data || {};
+    // const accessToken = getCookie(LOCAL_KEYS.ACCESS_TOKEN);
+    // const { data } = useGetMeUser(accessToken || '');
+    // const { result } = data?.data || {};
 
-    const setLoggedInUser = useAppStore((state) => state.setLoggedInUser);
-    const loggedUser = useAppStore((state) => state.loggedInUser);
+    // const setLoggedInUser = useAppStore((state) => state.setLoggedInUser);
+    // const loggedUser = useAppStore((state) => state.loggedInUser);
 
-    useEffect(() => {
-        if (result) {
-            setLoggedInUser(result);
-        }
-    }, [result]);
+    // useEffect(() => {
+    //     if (result) {
+    //         setLoggedInUser(result);
+    //     }
+    // }, [result]);
 
     return (
         <nav className="border-b border-gray-100 bg-white sticky top-0 z-50">
