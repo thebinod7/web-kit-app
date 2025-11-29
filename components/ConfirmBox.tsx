@@ -53,7 +53,7 @@ export default function ConfirmBox({ onConfirm }: { onConfirm: () => void }) {
             className="flex cursor-pointer items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors"
         >
             <Trash size={18} />
-            Reset
+            Clear Resume
         </button>
     );
 }
