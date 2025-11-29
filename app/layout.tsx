@@ -12,7 +12,7 @@ const myFont = Inter({
 });
 
 export const metadata: Metadata = {
-    title: `${APP_TITLE} - Discover, Launch, and Dominate: The Product Discovery Platform.`,
+    title: `${APP_TITLE} - Free Resume Builder`,
     description: APP_DESCRIPTION,
 };
 
