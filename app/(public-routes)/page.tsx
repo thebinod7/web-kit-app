@@ -8,6 +8,8 @@ import {
 } from '../constants/constants';
 import Faq from '../sections/Faq';
 import Hero from '../sections/Hero';
+import SeoSection from '../sections/Seo';
+import FeaturesSection from '../sections/Features';
 
 export const generateMetadata = async (): Promise<Metadata> => {
     const title = APP_TITLE;
@@ -36,6 +38,10 @@ export default async function page() {
     return (
         <div className="min-h-screen bg-white">
             <Hero totalUsers={8} userProfiles={[]} />
+
+            <SeoSection />
+
+            <FeaturesSection />
 
             <section id="faq">
                 <Faq />

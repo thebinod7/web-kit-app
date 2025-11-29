@@ -64,15 +64,16 @@ export default function Hero({
                         <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
                             Free & No Signup
                         </span>
-                        <span className="block bg-gradient-to-r from-amber-500 via-orange-500 to-red-600 bg-clip-text text-transparent animate-pulse">
-                            Resume
+                        <span className="block mt-1 text-5xl sm:text-6xl lg:text-7xl bg-gradient-to-r from-amber-500 via-orange-500 to-red-600 bg-clip-text text-transparent animate-pulse">
+                            Resume Generator
                         </span>
                     </h1>
 
                     {/* Description */}
                     <p className="text-xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
-                        Create and showcase your resume with a tool designed for
-                        career growth.
+                        Create a professional resume in minutes. No account
+                        needed, no hidden fees. Just fill in your information
+                        and download your polished resume instantly.
                     </p>
 
                     {/* Call to Action Button */}
@@ -85,6 +86,11 @@ export default function Hero({
                             <ArrowRight className="w-5 h-5" />
                         </Link>
                     </div>
+
+                    <p className="mt-6 text-sm text-slate-500">
+                        Takes less than 15 minutes • No signup required •
+                        Privacy guaranteed
+                    </p>
                 </div>
             </div>
         </section>
