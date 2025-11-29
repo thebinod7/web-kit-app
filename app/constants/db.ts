@@ -10,7 +10,7 @@ export const BLOG_ARTICLES = [
         excerpt:
             'Learn exactly how to structure, format, and write a developer resume that passes ATS scans and impresses hiring managers. A step-by-step guide built for engineers, with examples, tips, and a free tool you can use instantly.',
         author: BLOG_AUTHOR,
-        date: 'July 3, 2025',
+        date: 'Nov 29, 2025',
         category: 'Guide',
         readTime: '8 min read',
         image: LOGO_IMAGE,
@@ -19,13 +19,13 @@ export const BLOG_ARTICLES = [
     },
     {
         id: 2,
-        title: 'Top Skills Every Software Engineer Should Add to Their Resume in 2025 (With Examples)',
+        title: 'Top Skills Every Software Engineer Should Add to Their Resume in 2025-2026 (With Examples)',
         excerpt:
             'A curated list of the most in-demand technical and soft skills software engineers need on their resumes in 2025-2026. Includes real examples and tips to showcase your skills the right way.',
         author: BLOG_AUTHOR,
-        date: 'July 5, 2025',
+        date: 'Nov 29, 2025',
         category: 'Insights',
-        readTime: '5 min read',
+        readTime: '7 min read',
         image: LOGO_IMAGE,
         slug: 'software-engineer-resume-skills-2025-2026',
         tags: ['Skills', 'Software Engineer', 'Developer'],

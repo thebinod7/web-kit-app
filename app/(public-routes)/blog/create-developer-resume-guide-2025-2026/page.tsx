@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
     return (
-        <main className="min-h-screen bg-white">
+        <div className="min-h-screen bg-white">
             {/* Blog Article */}
             <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
                 {/* Article Header */}
@@ -48,13 +48,11 @@ export default function BlogPage() {
                         {currentArticle?.excerpt}
                     </p>
                     <div className="flex flex-col sm:flex-row sm:items-center gap-4 text-sm text-gray-500">
-                        <time dateTime="2025-01-15">
-                            {currentArticle?.category}
-                        </time>
+                        <span>{currentArticle?.category}</span>
                         <span className="hidden sm:block">•</span>
                         <span>{currentArticle?.readTime}</span>
                         <span className="hidden sm:block">•</span>
-                        <span>Updated for {currentArticle?.date}</span>
+                        <span>Last updated: {currentArticle?.date}</span>
                     </div>
                 </header>
 
@@ -578,6 +576,6 @@ export default function BlogPage() {
                     </div>
                 </section>
             </article>
-        </main>
+        </div>
     );
 }
