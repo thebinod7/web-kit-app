@@ -120,7 +120,7 @@ export default function ResumeFormatsPage() {
             problem:
                 'Mixing date formats (01/2023 vs Jan 2023 vs January 2023) confuses ATS systems and looks sloppy.',
             solution:
-                'Use consistent formatting: Month Year (Jan 2023). Be clear on all dates—employment, education, certifications.',
+                'Use consistent formatting: Month Year (Jan 2023). Be clear on all dates employment, education, certifications.',
         },
         {
             icon: AlertCircle,
@@ -267,7 +267,7 @@ export default function ResumeFormatsPage() {
                             Why Resume Format Matters for Tech Interviews
                         </h2>
                         <p className="mb-4 text-lg text-slate-700">
-                            Your resume format isn't just about aesthetics—it's
+                            Your resume format isn't just about aesthetics, it's
                             about strategy. The right format can:
                         </p>
                         <ul className="space-y-3 text-slate-700">
@@ -573,7 +573,7 @@ export default function ResumeFormatsPage() {
                             Try Our Free Resume Generator →
                         </Link>
                         <p className="mt-4 text-sm text-slate-400">
-                            No signup. No credit card. No hassle.
+                            No signup. No hidden fees. No hassle.
                         </p>
                     </div>
 
@@ -659,9 +659,9 @@ export default function ResumeFormatsPage() {
                                 <span>
                                     <strong>
                                         Hybrid format is best for most tech
-                                        professionals
+                                        professionals:
                                     </strong>{' '}
-                                    in 2025—it balances ATS requirements with
+                                    in 2025, it balances ATS requirements with
                                     recruiter preferences
                                 </span>
                             </li>
@@ -686,9 +686,9 @@ export default function ResumeFormatsPage() {
                                 />
                                 <span>
                                     <strong>
-                                        Format is just the structure
-                                    </strong>
-                                    —content matters more. Use the Action +
+                                        Format is just the structure:
+                                    </strong>{' '}
+                                    Content matters more. Use the Action +
                                     Technology + Metric formula for every bullet
                                     point
                                 </span>
@@ -699,8 +699,8 @@ export default function ResumeFormatsPage() {
                                     className="mt-0.5 flex-shrink-0 text-orange-500"
                                 />
                                 <span>
-                                    <strong>Avoid fancy formatting</strong>
-                                    —simple, clean, ATS-friendly resumes win.
+                                    <strong>Avoid fancy formatting:</strong>{' '}
+                                    Simple, clean, ATS-friendly resumes win.
                                     Free generators handle this automatically
                                 </span>
                             </li>
@@ -727,7 +727,7 @@ export default function ResumeFormatsPage() {
                         </Link>
                     </div>
                     <p className="mt-4 text-sm text-slate-600">
-                        Free • No signup • No credit card required
+                        No Cost • No signup • Hassle free
                     </p>
                 </section>
             </article>

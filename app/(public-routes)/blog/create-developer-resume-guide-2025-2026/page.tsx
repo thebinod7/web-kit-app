@@ -106,7 +106,7 @@ export default function BlogPage() {
                             determines whether you get the interview or get
                             filtered out by Applicant Tracking Systems (ATS). A
                             well-crafted developer resume doesn't just list your
-                            jobs—it tells the story of a capable engineer who
+                            jobs, it tells the story of a capable engineer who
                             solves real problems and delivers results.
                         </p>
                     </section>
@@ -132,22 +132,22 @@ export default function BlogPage() {
                             </p>
                             <ul className="space-y-2 text-gray-700">
                                 <li>
-                                    • Use standard fonts: Arial, Calibri, or
+                                    Use standard fonts: Arial, Calibri, or
                                     similar
                                 </li>
                                 <li>
-                                    • Avoid graphics, tables, and columns that
+                                    Avoid graphics, tables, and columns that
                                     confuse ATS
                                 </li>
                                 <li>
-                                    • Use standard section headers (Experience,
+                                    Use standard section headers (Experience,
                                     Skills, Education)
                                 </li>
                                 <li>
-                                    • Include keywords from the job description
+                                    Include keywords from the job description
                                     naturally
                                 </li>
-                                <li>• Save as PDF or DOCX for compatibility</li>
+                                <li>Save as PDF or DOCX for compatibility</li>
                             </ul>
                         </div>
 
@@ -308,7 +308,7 @@ export default function BlogPage() {
                                     </h3>
                                     <ul className="space-y-2 text-gray-700 pl-6 border-l-2 border-orange-200">
                                         {section.tips.map((tip, idx) => (
-                                            <li key={idx}>• {tip}</li>
+                                            <li key={idx}>{tip}</li>
                                         ))}
                                     </ul>
                                 </div>
@@ -390,52 +390,6 @@ export default function BlogPage() {
                                         •
                                     </span>
                                     <p className="text-gray-700">{mistake}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </section>
-
-                    {/* Section 7 */}
-                    <section id="section-6">
-                        <h2 className="text-3xl font-bold text-slate-900 mb-4">
-                            Free Tools to Perfect Your Developer Resume
-                        </h2>
-                        <p className="text-gray-700 leading-relaxed mb-6">
-                            You don't need expensive resume builders. Here are
-                            free tools that actually work:
-                        </p>
-
-                        <div className="grid gap-4">
-                            {[
-                                {
-                                    tool: 'ResumeKit (Our Tool)',
-                                    desc: 'Free resume generator built for developers. Create, format, and download instantly. No signup required.',
-                                },
-                                {
-                                    tool: 'Grammarly',
-                                    desc: 'Catches grammar and spelling errors. Free version covers basics; premium checks tone and clarity.',
-                                },
-                                {
-                                    tool: 'ATS Resume Checker',
-                                    desc: "Several free online tools check if your resume passes ATS scanning. Search 'ATS resume checker' for options.",
-                                },
-                                {
-                                    tool: 'GitHub Copilot',
-                                    desc: 'Use AI to help write bullet points that quantify impact and sound professional.',
-                                },
-                                {
-                                    tool: 'Canva',
-                                    desc: 'If you want a visually formatted resume, Canva has free developer resume templates (though keep it ATS-safe).',
-                                },
-                            ].map((item, idx) => (
-                                <div
-                                    key={idx}
-                                    className="border border-gray-200 p-6 rounded-lg hover:border-orange-300 hover:bg-orange-50 transition-colors"
-                                >
-                                    <h3 className="font-semibold text-slate-900 mb-2">
-                                        {item.tool}
-                                    </h3>
-                                    <p className="text-gray-600">{item.desc}</p>
                                 </div>
                             ))}
                         </div>

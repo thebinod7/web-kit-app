@@ -34,7 +34,7 @@ export const BLOG_ARTICLES = [
         id: 3,
         title: 'Free Developer Resume Formats That Work Best for Tech Interviews in 2025-2026',
         excerpt:
-            'Learn which resume formats work best for software engineers and developers in 2025-2026. The best resume formats for tech interviews, including chronological, skills-based, and hybrid formats.. A simple breakdown of chronological, skills-based, and hybrid formats — and how to structure them using a free, no-signup resume generator.',
+            'Learn which resume formats work best for software engineers and developers in 2025-2026. The best resume formats for tech interviews, including chronological, skills-based, and hybrid formats. A simple breakdown of chronological, skills-based, and hybrid formats and how to structure them using a free, no-signup resume generator.',
         author: BLOG_AUTHOR,
         date: 'Nov 29, 2025',
         category: 'Insights',
