@@ -13,6 +13,7 @@ export const APP_PATHS = {
     EDIT_PRODUCT: '/edit-product',
     CONTACT: '/contact',
     ABOUT: '/about',
+    BLOG: '/blog',
     LOGIN: '/login',
     MY_PROFILE: '/my-profile',
     MY_PRODUCTS: '/my-products',

@@ -59,10 +59,10 @@ export default function Header() {
                                 Contact
                             </Link>
                             <Link
-                                href="/#faq"
+                                href={APP_PATHS.BLOG}
                                 className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium"
                             >
-                                FAQs
+                                Blog
                             </Link>
                             <Link
                                 href={APP_PATHS.GENERATE_RESUME}
