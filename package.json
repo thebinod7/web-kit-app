@@ -21,7 +21,7 @@
         "draftjs-to-html": "^0.9.1",
         "jwt-decode": "^4.0.0",
         "lucide-react": "^0.525.0",
-        "next": "15.3.5",
+        "next": "15.3.6",
         "next-sitemap": "^4.2.3",
         "posthog-js": "^1.260.1",
         "react": "^19.1.0",
